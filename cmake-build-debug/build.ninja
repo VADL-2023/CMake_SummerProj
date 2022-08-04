@@ -388,6 +388,67 @@ build IMU/libIMU.a: CXX_STATIC_LIBRARY_LINKER__IMU_Debug IMU/CMakeFiles/IMU.dir/
 #############################################
 # Utility command for rebuild_cache
 
+build LOG/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd "/Users/andrewnoonan/Documents/VADL Summer 2022/Code/CMake_SummerProj/cmake-build-debug/LOG" && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --regenerate-during-build -S"/Users/andrewnoonan/Documents/VADL Summer 2022/Code/CMake_SummerProj" -B"/Users/andrewnoonan/Documents/VADL Summer 2022/Code/CMake_SummerProj/cmake-build-debug"
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build LOG/rebuild_cache: phony LOG/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for edit_cache
+
+build LOG/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd "/Users/andrewnoonan/Documents/VADL Summer 2022/Code/CMake_SummerProj/cmake-build-debug/LOG" && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build LOG/edit_cache: phony LOG/CMakeFiles/edit_cache.util
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target LOG
+
+
+#############################################
+# Order-only phony target for LOG
+
+build cmake_object_order_depends_target_LOG: phony || cmake_object_order_depends_target_IMU cmake_object_order_depends_target_VN
+
+build LOG/CMakeFiles/LOG.dir/src/LOG.o: CXX_COMPILER__LOG_Debug /Users/andrewnoonan/Documents/VADL$ Summer$ 2022/Code/CMake_SummerProj/LOG/src/LOG.cpp || cmake_object_order_depends_target_LOG
+  DEP_FILE = LOG/CMakeFiles/LOG.dir/src/LOG.o.d
+  FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.0.sdk
+  INCLUDES = -I"/Users/andrewnoonan/Documents/VADL Summer 2022/Code/CMake_SummerProj/LOG/include" -I"/Users/andrewnoonan/Documents/VADL Summer 2022/Code/CMake_SummerProj/IMU/include" -I"/Users/andrewnoonan/Documents/VADL Summer 2022/Code/CMake_SummerProj/VectorNav/include/vn"
+  OBJECT_DIR = LOG/CMakeFiles/LOG.dir
+  OBJECT_FILE_DIR = LOG/CMakeFiles/LOG.dir/src
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target LOG
+
+
+#############################################
+# Link the static library LOG/libLOG.a
+
+build LOG/libLOG.a: CXX_STATIC_LIBRARY_LINKER__LOG_Debug LOG/CMakeFiles/LOG.dir/src/LOG.o || IMU/libIMU.a VectorNav/libVN.a
+  ARCH_FLAGS = -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.0.sdk
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = LOG/CMakeFiles/LOG.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = LOG/libLOG.a
+  TARGET_PDB = LOG.a.dbg
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /Users/andrewnoonan/Documents/VADL Summer 2022/Code/CMake_SummerProj/CMakeLists.txt
+# =============================================================================
+
+
+#############################################
+# Utility command for rebuild_cache
+
 build MainDriver/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
   COMMAND = cd "/Users/andrewnoonan/Documents/VADL Summer 2022/Code/CMake_SummerProj/cmake-build-debug/MainDriver" && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --regenerate-during-build -S"/Users/andrewnoonan/Documents/VADL Summer 2022/Code/CMake_SummerProj" -B"/Users/andrewnoonan/Documents/VADL Summer 2022/Code/CMake_SummerProj/cmake-build-debug"
   DESC = Running CMake to regenerate build system...
@@ -414,12 +475,12 @@ build MainDriver/edit_cache: phony MainDriver/CMakeFiles/edit_cache.util
 #############################################
 # Order-only phony target for myProject
 
-build cmake_object_order_depends_target_myProject: phony || cmake_object_order_depends_target_IMU cmake_object_order_depends_target_Library1 cmake_object_order_depends_target_VN
+build cmake_object_order_depends_target_myProject: phony || cmake_object_order_depends_target_IMU cmake_object_order_depends_target_LOG cmake_object_order_depends_target_Library1 cmake_object_order_depends_target_VN
 
 build MainDriver/CMakeFiles/myProject.dir/src/main.o: CXX_COMPILER__myProject_Debug /Users/andrewnoonan/Documents/VADL$ Summer$ 2022/Code/CMake_SummerProj/MainDriver/src/main.cpp || cmake_object_order_depends_target_myProject
   DEP_FILE = MainDriver/CMakeFiles/myProject.dir/src/main.o.d
   FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.0.sdk
-  INCLUDES = -I"/Users/andrewnoonan/Documents/VADL Summer 2022/Code/CMake_SummerProj/MainDriver/include" -I"/Users/andrewnoonan/Documents/VADL Summer 2022/Code/CMake_SummerProj/Library1/include" -I"/Users/andrewnoonan/Documents/VADL Summer 2022/Code/CMake_SummerProj/VectorNav/include/vn" -I"/Users/andrewnoonan/Documents/VADL Summer 2022/Code/CMake_SummerProj/IMU/include"
+  INCLUDES = -I"/Users/andrewnoonan/Documents/VADL Summer 2022/Code/CMake_SummerProj/MainDriver/include" -I"/Users/andrewnoonan/Documents/VADL Summer 2022/Code/CMake_SummerProj/Library1/include" -I"/Users/andrewnoonan/Documents/VADL Summer 2022/Code/CMake_SummerProj/VectorNav/include/vn" -I"/Users/andrewnoonan/Documents/VADL Summer 2022/Code/CMake_SummerProj/IMU/include" -I"/Users/andrewnoonan/Documents/VADL Summer 2022/Code/CMake_SummerProj/LOG/include"
   OBJECT_DIR = MainDriver/CMakeFiles/myProject.dir
   OBJECT_FILE_DIR = MainDriver/CMakeFiles/myProject.dir/src
 
@@ -431,9 +492,9 @@ build MainDriver/CMakeFiles/myProject.dir/src/main.o: CXX_COMPILER__myProject_De
 #############################################
 # Link the executable MainDriver/myProject
 
-build MainDriver/myProject: CXX_EXECUTABLE_LINKER__myProject_Debug MainDriver/CMakeFiles/myProject.dir/src/main.o | Library1/libLibrary1.a VectorNav/libVN.a IMU/libIMU.a VectorNav/libVN.a || IMU/libIMU.a Library1/libLibrary1.a VectorNav/libVN.a
+build MainDriver/myProject: CXX_EXECUTABLE_LINKER__myProject_Debug MainDriver/CMakeFiles/myProject.dir/src/main.o | Library1/libLibrary1.a VectorNav/libVN.a IMU/libIMU.a LOG/libLOG.a IMU/libIMU.a VectorNav/libVN.a || IMU/libIMU.a LOG/libLOG.a Library1/libLibrary1.a VectorNav/libVN.a
   FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.0.sdk
-  LINK_LIBRARIES = Library1/libLibrary1.a  VectorNav/libVN.a  IMU/libIMU.a  VectorNav/libVN.a
+  LINK_LIBRARIES = Library1/libLibrary1.a  VectorNav/libVN.a  IMU/libIMU.a  LOG/libLOG.a  IMU/libIMU.a  VectorNav/libVN.a
   OBJECT_DIR = MainDriver/CMakeFiles/myProject.dir
   POST_BUILD = :
   PRE_LINK = :
@@ -445,11 +506,15 @@ build MainDriver/myProject: CXX_EXECUTABLE_LINKER__myProject_Debug MainDriver/CM
 
 build IMU: phony IMU/libIMU.a
 
+build LOG: phony LOG/libLOG.a
+
 build Library1: phony Library1/libLibrary1.a
 
 build VN: phony VectorNav/libVN.a
 
 build libIMU.a: phony IMU/libIMU.a
+
+build libLOG.a: phony LOG/libLOG.a
 
 build libLibrary1.a: phony Library1/libLibrary1.a
 
@@ -465,7 +530,7 @@ build myProject: phony MainDriver/myProject
 #############################################
 # Folder: /Users/andrewnoonan/Documents/VADL Summer 2022/Code/CMake_SummerProj/cmake-build-debug
 
-build all: phony Library1/all VectorNav/all IMU/all MainDriver/all
+build all: phony Library1/all VectorNav/all IMU/all LOG/all MainDriver/all
 
 # =============================================================================
 
@@ -473,6 +538,13 @@ build all: phony Library1/all VectorNav/all IMU/all MainDriver/all
 # Folder: /Users/andrewnoonan/Documents/VADL Summer 2022/Code/CMake_SummerProj/cmake-build-debug/IMU
 
 build IMU/all: phony IMU/libIMU.a
+
+# =============================================================================
+
+#############################################
+# Folder: /Users/andrewnoonan/Documents/VADL Summer 2022/Code/CMake_SummerProj/cmake-build-debug/LOG
+
+build LOG/all: phony LOG/libLOG.a
 
 # =============================================================================
 
@@ -507,14 +579,14 @@ build VectorNav/all: phony VectorNav/libVN.a
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | ../CMakeLists.txt ../IMU/CMakeLists.txt ../Library1/CMakeLists.txt ../MainDriver/CMakeLists.txt ../VectorNav/CMakeLists.txt /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Compiler/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Compiler/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Compiler/Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Apple-Clang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Apple-Clang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Apple-Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.21.1/CMakeCCompiler.cmake CMakeFiles/3.21.1/CMakeCXXCompiler.cmake CMakeFiles/3.21.1/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | ../CMakeLists.txt ../IMU/CMakeLists.txt ../LOG/CMakeLists.txt ../Library1/CMakeLists.txt ../MainDriver/CMakeLists.txt ../VectorNav/CMakeLists.txt /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Compiler/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Compiler/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Compiler/Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Apple-Clang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Apple-Clang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Apple-Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.21.1/CMakeCCompiler.cmake CMakeFiles/3.21.1/CMakeCXXCompiler.cmake CMakeFiles/3.21.1/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build ../CMakeLists.txt ../IMU/CMakeLists.txt ../Library1/CMakeLists.txt ../MainDriver/CMakeLists.txt ../VectorNav/CMakeLists.txt /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Compiler/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Compiler/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Compiler/Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Apple-Clang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Apple-Clang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Apple-Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.21.1/CMakeCCompiler.cmake CMakeFiles/3.21.1/CMakeCXXCompiler.cmake CMakeFiles/3.21.1/CMakeSystem.cmake: phony
+build ../CMakeLists.txt ../IMU/CMakeLists.txt ../LOG/CMakeLists.txt ../Library1/CMakeLists.txt ../MainDriver/CMakeLists.txt ../VectorNav/CMakeLists.txt /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Compiler/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Compiler/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Compiler/Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Apple-Clang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Apple-Clang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Apple-Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.21.1/CMakeCCompiler.cmake CMakeFiles/3.21.1/CMakeCXXCompiler.cmake CMakeFiles/3.21.1/CMakeSystem.cmake: phony
 
 
 #############################################

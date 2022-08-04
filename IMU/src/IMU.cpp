@@ -1,6 +1,6 @@
 #include <iostream>
 #include <pigpio.h>
-#include "config.hpp"
+#include "config_IMU.hpp"
 #include "IMU.hpp"
 #include "commonOutMutex.hpp"
 
@@ -91,7 +91,7 @@ void IMU::reset()
 		gpioSleep(PI_TIME_RELATIVE, 2, 0);
 
 		{ out_guard();
-		  cout << "IMU: Resetted" << endl; }
+		  cout << "IMU: Reset Successful" << endl; }
 	}
 }
 

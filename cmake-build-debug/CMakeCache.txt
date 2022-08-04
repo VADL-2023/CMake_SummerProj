@@ -217,6 +217,9 @@ IMU_LIB_DEPENDS:STATIC=general;VN;
 //Single output directory for building all libraries.
 LIBRARY_OUTPUT_PATH:PATH=
 
+//Dependencies for the target
+LOG_LIB_DEPENDS:STATIC=general;IMU;
+
 //Value Computed by CMake
 myProject_BINARY_DIR:STATIC=/Users/andrewnoonan/Documents/VADL Summer 2022/Code/CMake_SummerProj/cmake-build-debug
 
@@ -319,7 +322,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=5
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=6
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

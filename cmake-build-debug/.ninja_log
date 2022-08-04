@@ -1,8 +1,8 @@
 # ninja log v5
 1724	4846	1659569097639627512	VectorNav/src/CMakeFiles/VN.dir/searcher.o	88dff4fa06ede3f4
-21	1723	1659569094523208779	VectorNav/src/CMakeFiles/VN.dir/memoryport.o	68f07dd258311f3e
-3655	3744	1659585378422417142	VectorNav/CMakeFiles/VN.dir/src/port.o	159fee5546bc4dfc
 3715	5175	1659569097977488555	VectorNav/src/CMakeFiles/VN.dir/util.o	1dd755d7aed095bb
+3655	3744	1659585378422417142	VectorNav/CMakeFiles/VN.dir/src/port.o	159fee5546bc4dfc
+21	1723	1659569094523208779	VectorNav/src/CMakeFiles/VN.dir/memoryport.o	68f07dd258311f3e
 5054	6458	1659585381136526099	VectorNav/CMakeFiles/VN.dir/src/sensors.o	a25345285c127fd8
 5710	5952	1659569098765968000	VectorNav/src/libVN.a	a2f5784124c061a9
 16	2832	1659569095611606614	VectorNav/src/CMakeFiles/VN.dir/ezasyncdata.o	86325113d4bac306
@@ -22,7 +22,7 @@
 2833	4167	1659569096965277861	VectorNav/src/CMakeFiles/VN.dir/thread.o	abdb629f766894f6
 24	1851	1659585376527307534	VectorNav/CMakeFiles/VN.dir/src/util.o	69d725e805e2e5e2
 4365	5925	1659585380602712559	VectorNav/CMakeFiles/VN.dir/src/searcher.o	19e4a8ca5f043a3e
-1	284	1659588198360758934	build.ninja	a3789d3ed33717ff
+2	391	1659592051870885642	build.ninja	a3789d3ed33717ff
 6	206	1659569093014174059	VectorNav/src/CMakeFiles/VN.dir/dllvalidator.o	7915c48a7ed17a28
 4248	5521	1659585380189241312	VectorNav/CMakeFiles/VN.dir/src/position.o	4c3e59268f7b2931
 4	506	1659569093320848000	Library1/src/libLibrary1.a	926a3e9f3d3cbed
@@ -30,7 +30,7 @@
 3102	5522	1659585380187747066	VectorNav/CMakeFiles/VN.dir/src/packet.o	487fec790be94e03
 22	2810	1659585377487286698	VectorNav/CMakeFiles/VN.dir/src/serialport.o	f844d43419ce20d5
 2585	5257	1659569098046192883	VectorNav/src/CMakeFiles/VN.dir/serialport.o	966385903b757066
-3227	3320	1659585378008617000	Library1/libLibrary1.a	267fc444837d636b
+17	188	1659591991858693000	Library1/libLibrary1.a	267fc444837d636b
 1852	3039	1659585377698033944	VectorNav/CMakeFiles/VN.dir/src/event.o	f762b8ecf935aae
 590	2585	1659569095372063087	VectorNav/src/CMakeFiles/VN.dir/position.o	478a8311e7d92022
 1588	3394	1659585378071845486	VectorNav/CMakeFiles/VN.dir/src/attitude.o	4138eda7893bd63d
@@ -42,10 +42,12 @@
 2489	5230	1659585379895393906	VectorNav/CMakeFiles/VN.dir/src/compositedata.o	f74e92e001d627d8
 3778	5666	1659569098463629347	VectorNav/src/CMakeFiles/VN.dir/utilities.o	ee0be3879ebe18b8
 4167	5358	1659569098147323213	VectorNav/src/CMakeFiles/VN.dir/vntime.o	4372307d40e29e7d
-1387	3226	1659585377903777729	Library1/CMakeFiles/Library1.dir/src/foo.o	9491f90078aa4b42
+38	2457	1659589299083565219	Library1/CMakeFiles/Library1.dir/src/foo.o	9491f90078aa4b42
 6690	6762	1659585381449159627	MainDriver/myProject	60ba574a20dbff78
 1832	5710	1659569098504797705	VectorNav/src/CMakeFiles/VN.dir/sensors.o	a431be171286444d
 25	1588	1659585376264395514	VectorNav/CMakeFiles/VN.dir/src/vntime.o	24ccf6618ccd5939
 30	2614	1659585377279718897	VectorNav/CMakeFiles/VN.dir/src/utilities.o	e47d116b8cea8227
 3039	3102	1659585377786604140	VectorNav/CMakeFiles/VN.dir/src/dllvalidator.o	cace9549bf2d1ddb
 6458	6690	1659585381379559000	VectorNav/libVN.a	431b57a8a368d6f8
+3	2176	1659592057414460379	LOG/CMakeFiles/LOG.dir/src/LOG.o	460f91e0f0a77b43
+7	1303	1659592178048651347	MainDriver/CMakeFiles/myProject.dir/src/main.o	1ced138aa712bb61

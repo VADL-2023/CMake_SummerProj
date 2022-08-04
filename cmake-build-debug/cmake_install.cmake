@@ -42,6 +42,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/Users/andrewnoonan/Documents/VADL Summer 2022/Code/CMake_SummerProj/cmake-build-debug/Library1/cmake_install.cmake")
   include("/Users/andrewnoonan/Documents/VADL Summer 2022/Code/CMake_SummerProj/cmake-build-debug/VectorNav/cmake_install.cmake")
   include("/Users/andrewnoonan/Documents/VADL Summer 2022/Code/CMake_SummerProj/cmake-build-debug/IMU/cmake_install.cmake")
+  include("/Users/andrewnoonan/Documents/VADL Summer 2022/Code/CMake_SummerProj/cmake-build-debug/LOG/cmake_install.cmake")
   include("/Users/andrewnoonan/Documents/VADL Summer 2022/Code/CMake_SummerProj/cmake-build-debug/MainDriver/cmake_install.cmake")
 
 endif()

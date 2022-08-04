@@ -11,7 +11,8 @@
 						1,
 						2,
 						3,
-						4
+						4,
+						5
 					],
 					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
 					"minimumCMakeVersion" : 
@@ -33,7 +34,7 @@
 					"source" : "Library1",
 					"targetIndexes" : 
 					[
-						1
+						2
 					]
 				},
 				{
@@ -48,7 +49,7 @@
 					"source" : "VectorNav",
 					"targetIndexes" : 
 					[
-						2
+						3
 					]
 				},
 				{
@@ -67,6 +68,21 @@
 					]
 				},
 				{
+					"build" : "LOG",
+					"jsonFile" : "directory-LOG-Debug-75cb160c3ea68e0bb17a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.4"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "LOG",
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
 					"build" : "MainDriver",
 					"jsonFile" : "directory-MainDriver-Debug-bcbb06025f2092f1b43a.json",
 					"minimumCMakeVersion" : 
@@ -78,7 +94,7 @@
 					"source" : "MainDriver",
 					"targetIndexes" : 
 					[
-						3
+						4
 					]
 				}
 			],
@@ -92,7 +108,8 @@
 						1,
 						2,
 						3,
-						4
+						4,
+						5
 					],
 					"name" : "myProject",
 					"targetIndexes" : 
@@ -100,7 +117,8 @@
 						0,
 						1,
 						2,
-						3
+						3,
+						4
 					]
 				}
 			],
@@ -111,6 +129,13 @@
 					"id" : "IMU::@a507c9855df5c9dc6614",
 					"jsonFile" : "target-IMU-Debug-9be1c4f2349db35a4032.json",
 					"name" : "IMU",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "LOG::@685a1041b41e51cc4153",
+					"jsonFile" : "target-LOG-Debug-4c19471a146871785a68.json",
+					"name" : "LOG",
 					"projectIndex" : 0
 				},
 				{
@@ -128,9 +153,9 @@
 					"projectIndex" : 0
 				},
 				{
-					"directoryIndex" : 4,
+					"directoryIndex" : 5,
 					"id" : "myProject::@9fe5c7dc6dc5115a1b8c",
-					"jsonFile" : "target-myProject-Debug-414728a22967999cbb0b.json",
+					"jsonFile" : "target-myProject-Debug-a777f7cd2f0564a575c1.json",
 					"name" : "myProject",
 					"projectIndex" : 0
 				}

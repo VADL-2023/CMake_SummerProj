@@ -69,6 +69,10 @@
 				{
 					"backtrace" : 2,
 					"path" : "/Users/andrewnoonan/Documents/VADL Summer 2022/Code/CMake_SummerProj/IMU/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/andrewnoonan/Documents/VADL Summer 2022/Code/CMake_SummerProj/LOG/include"
 				}
 			],
 			"language" : "CXX",
@@ -82,6 +86,10 @@
 	[
 		{
 			"backtrace" : 2,
+			"id" : "Library1::@39c0fce444fd8ad06b94"
+		},
+		{
+			"backtrace" : 2,
 			"id" : "VN::@bb203840e00a9933f9cb"
 		},
 		{
@@ -90,7 +98,7 @@
 		},
 		{
 			"backtrace" : 2,
-			"id" : "Library1::@39c0fce444fd8ad06b94"
+			"id" : "LOG::@685a1041b41e51cc4153"
 		}
 	],
 	"id" : "myProject::@9fe5c7dc6dc5115a1b8c",
@@ -114,6 +122,16 @@
 			{
 				"backtrace" : 2,
 				"fragment" : "VectorNav/libVN.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "IMU/libIMU.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "LOG/libLOG.a",
 				"role" : "libraries"
 			},
 			{

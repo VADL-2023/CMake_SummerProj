@@ -691,7 +691,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "5"
+			"value" : "6"
 		},
 		{
 			"name" : "CMAKE_OBJCOPY",
@@ -1124,6 +1124,18 @@
 			],
 			"type" : "PATH",
 			"value" : ""
+		},
+		{
+			"name" : "LOG_LIB_DEPENDS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Dependencies for the target"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "general;IMU;"
 		},
 		{
 			"name" : "myProject_BINARY_DIR",
