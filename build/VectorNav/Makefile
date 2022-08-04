@@ -288,6 +288,21 @@ src/dllvalidator.s:
 .PHONY : src/dllvalidator.s
 
 # target to build an object file
+src/error_detection.o:
+	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/error_detection.o
+.PHONY : src/error_detection.o
+
+# target to preprocess a source file
+src/error_detection.i:
+	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/error_detection.i
+.PHONY : src/error_detection.i
+
+# target to generate assembly for a file
+src/error_detection.s:
+	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/error_detection.s
+.PHONY : src/error_detection.s
+
+# target to build an object file
 src/event.o:
 	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/event.o
 .PHONY : src/event.o
@@ -542,6 +557,9 @@ help:
 	@echo "... src/dllvalidator.o"
 	@echo "... src/dllvalidator.i"
 	@echo "... src/dllvalidator.s"
+	@echo "... src/error_detection.o"
+	@echo "... src/error_detection.i"
+	@echo "... src/error_detection.s"
 	@echo "... src/event.o"
 	@echo "... src/event.i"
 	@echo "... src/event.s"

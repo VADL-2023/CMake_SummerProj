@@ -4,6 +4,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/VN.dir/src/conversions.o"
   "CMakeFiles/VN.dir/src/criticalsection.o"
   "CMakeFiles/VN.dir/src/dllvalidator.o"
+  "CMakeFiles/VN.dir/src/error_detection.o"
   "CMakeFiles/VN.dir/src/event.o"
   "CMakeFiles/VN.dir/src/ezasyncdata.o"
   "CMakeFiles/VN.dir/src/memoryport.o"
@@ -19,8 +20,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/VN.dir/src/util.o"
   "CMakeFiles/VN.dir/src/utilities.o"
   "CMakeFiles/VN.dir/src/vntime.o"
-  "libVN.a"
   "libVN.pdb"
+  "libVN.so"
 )
 
 # Per-language clean rules from dependency scanning.

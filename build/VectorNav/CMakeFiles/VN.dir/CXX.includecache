@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../VectorNav/include/vn/error_detection.h
+cstddef
+-
+string
+-
+int.h
+../VectorNav/include/vn/int.h
+
+../VectorNav/include/vn/int.h
+stdint.h
+-
+
+/home/pi/CMake_SummerProj/VectorNav/src/error_detection.cpp
+vn/error_detection.h
+/home/pi/CMake_SummerProj/VectorNav/src/vn/error_detection.h
+iostream
+-
+

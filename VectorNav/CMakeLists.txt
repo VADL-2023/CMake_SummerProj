@@ -1,11 +1,12 @@
 include_directories(include)
 add_library(VN
-        src/attitude.cpp include/vn/attitude.h
+        src/attitude.cpp 
         src/compositedata.cpp
         src/conversions.cpp
         src/criticalsection.cpp
         src/dllvalidator.cpp
         src/event.cpp
+        src/error_detection.cpp
         src/ezasyncdata.cpp
         src/memoryport.cpp
         src/packet.cpp

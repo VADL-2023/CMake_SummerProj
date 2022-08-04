@@ -1,1 +1,1 @@
-/usr/bin/cc -rdynamic CMakeFiles/x_pigpio.dir/x_pigpio.c.o -o x_pigpio  -Wl,-rpath,/home/pi/CMake_SummerProj/build/pigpio-master libpigpio.so -lrt -lpthread 
+/usr/bin/cc -rdynamic CMakeFiles/x_pigpio.dir/x_pigpio.c.o -o x_pigpio  -Wl,-rpath,/home/pi/CMake_SummerProj/build/pigpio-master libpigpio.so -lrt -pthread 

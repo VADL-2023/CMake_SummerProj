@@ -154,9 +154,22 @@ VectorNav/CMakeFiles/VN.dir/src/event.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VN.dir/src/event.s"
 	cd /home/pi/CMake_SummerProj/build/VectorNav && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/CMake_SummerProj/VectorNav/src/event.cpp -o CMakeFiles/VN.dir/src/event.s
 
+VectorNav/CMakeFiles/VN.dir/src/error_detection.o: VectorNav/CMakeFiles/VN.dir/flags.make
+VectorNav/CMakeFiles/VN.dir/src/error_detection.o: ../VectorNav/src/error_detection.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object VectorNav/CMakeFiles/VN.dir/src/error_detection.o"
+	cd /home/pi/CMake_SummerProj/build/VectorNav && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/VN.dir/src/error_detection.o -c /home/pi/CMake_SummerProj/VectorNav/src/error_detection.cpp
+
+VectorNav/CMakeFiles/VN.dir/src/error_detection.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/VN.dir/src/error_detection.i"
+	cd /home/pi/CMake_SummerProj/build/VectorNav && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/CMake_SummerProj/VectorNav/src/error_detection.cpp > CMakeFiles/VN.dir/src/error_detection.i
+
+VectorNav/CMakeFiles/VN.dir/src/error_detection.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VN.dir/src/error_detection.s"
+	cd /home/pi/CMake_SummerProj/build/VectorNav && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/CMake_SummerProj/VectorNav/src/error_detection.cpp -o CMakeFiles/VN.dir/src/error_detection.s
+
 VectorNav/CMakeFiles/VN.dir/src/ezasyncdata.o: VectorNav/CMakeFiles/VN.dir/flags.make
 VectorNav/CMakeFiles/VN.dir/src/ezasyncdata.o: ../VectorNav/src/ezasyncdata.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object VectorNav/CMakeFiles/VN.dir/src/ezasyncdata.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object VectorNav/CMakeFiles/VN.dir/src/ezasyncdata.o"
 	cd /home/pi/CMake_SummerProj/build/VectorNav && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/VN.dir/src/ezasyncdata.o -c /home/pi/CMake_SummerProj/VectorNav/src/ezasyncdata.cpp
 
 VectorNav/CMakeFiles/VN.dir/src/ezasyncdata.i: cmake_force
@@ -169,7 +182,7 @@ VectorNav/CMakeFiles/VN.dir/src/ezasyncdata.s: cmake_force
 
 VectorNav/CMakeFiles/VN.dir/src/memoryport.o: VectorNav/CMakeFiles/VN.dir/flags.make
 VectorNav/CMakeFiles/VN.dir/src/memoryport.o: ../VectorNav/src/memoryport.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object VectorNav/CMakeFiles/VN.dir/src/memoryport.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object VectorNav/CMakeFiles/VN.dir/src/memoryport.o"
 	cd /home/pi/CMake_SummerProj/build/VectorNav && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/VN.dir/src/memoryport.o -c /home/pi/CMake_SummerProj/VectorNav/src/memoryport.cpp
 
 VectorNav/CMakeFiles/VN.dir/src/memoryport.i: cmake_force
@@ -182,7 +195,7 @@ VectorNav/CMakeFiles/VN.dir/src/memoryport.s: cmake_force
 
 VectorNav/CMakeFiles/VN.dir/src/packet.o: VectorNav/CMakeFiles/VN.dir/flags.make
 VectorNav/CMakeFiles/VN.dir/src/packet.o: ../VectorNav/src/packet.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object VectorNav/CMakeFiles/VN.dir/src/packet.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object VectorNav/CMakeFiles/VN.dir/src/packet.o"
 	cd /home/pi/CMake_SummerProj/build/VectorNav && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/VN.dir/src/packet.o -c /home/pi/CMake_SummerProj/VectorNav/src/packet.cpp
 
 VectorNav/CMakeFiles/VN.dir/src/packet.i: cmake_force
@@ -195,7 +208,7 @@ VectorNav/CMakeFiles/VN.dir/src/packet.s: cmake_force
 
 VectorNav/CMakeFiles/VN.dir/src/packetfinder.o: VectorNav/CMakeFiles/VN.dir/flags.make
 VectorNav/CMakeFiles/VN.dir/src/packetfinder.o: ../VectorNav/src/packetfinder.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object VectorNav/CMakeFiles/VN.dir/src/packetfinder.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object VectorNav/CMakeFiles/VN.dir/src/packetfinder.o"
 	cd /home/pi/CMake_SummerProj/build/VectorNav && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/VN.dir/src/packetfinder.o -c /home/pi/CMake_SummerProj/VectorNav/src/packetfinder.cpp
 
 VectorNav/CMakeFiles/VN.dir/src/packetfinder.i: cmake_force
@@ -208,7 +221,7 @@ VectorNav/CMakeFiles/VN.dir/src/packetfinder.s: cmake_force
 
 VectorNav/CMakeFiles/VN.dir/src/port.o: VectorNav/CMakeFiles/VN.dir/flags.make
 VectorNav/CMakeFiles/VN.dir/src/port.o: ../VectorNav/src/port.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object VectorNav/CMakeFiles/VN.dir/src/port.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object VectorNav/CMakeFiles/VN.dir/src/port.o"
 	cd /home/pi/CMake_SummerProj/build/VectorNav && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/VN.dir/src/port.o -c /home/pi/CMake_SummerProj/VectorNav/src/port.cpp
 
 VectorNav/CMakeFiles/VN.dir/src/port.i: cmake_force
@@ -221,7 +234,7 @@ VectorNav/CMakeFiles/VN.dir/src/port.s: cmake_force
 
 VectorNav/CMakeFiles/VN.dir/src/position.o: VectorNav/CMakeFiles/VN.dir/flags.make
 VectorNav/CMakeFiles/VN.dir/src/position.o: ../VectorNav/src/position.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object VectorNav/CMakeFiles/VN.dir/src/position.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object VectorNav/CMakeFiles/VN.dir/src/position.o"
 	cd /home/pi/CMake_SummerProj/build/VectorNav && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/VN.dir/src/position.o -c /home/pi/CMake_SummerProj/VectorNav/src/position.cpp
 
 VectorNav/CMakeFiles/VN.dir/src/position.i: cmake_force
@@ -234,7 +247,7 @@ VectorNav/CMakeFiles/VN.dir/src/position.s: cmake_force
 
 VectorNav/CMakeFiles/VN.dir/src/searcher.o: VectorNav/CMakeFiles/VN.dir/flags.make
 VectorNav/CMakeFiles/VN.dir/src/searcher.o: ../VectorNav/src/searcher.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object VectorNav/CMakeFiles/VN.dir/src/searcher.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object VectorNav/CMakeFiles/VN.dir/src/searcher.o"
 	cd /home/pi/CMake_SummerProj/build/VectorNav && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/VN.dir/src/searcher.o -c /home/pi/CMake_SummerProj/VectorNav/src/searcher.cpp
 
 VectorNav/CMakeFiles/VN.dir/src/searcher.i: cmake_force
@@ -247,7 +260,7 @@ VectorNav/CMakeFiles/VN.dir/src/searcher.s: cmake_force
 
 VectorNav/CMakeFiles/VN.dir/src/sensors.o: VectorNav/CMakeFiles/VN.dir/flags.make
 VectorNav/CMakeFiles/VN.dir/src/sensors.o: ../VectorNav/src/sensors.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object VectorNav/CMakeFiles/VN.dir/src/sensors.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object VectorNav/CMakeFiles/VN.dir/src/sensors.o"
 	cd /home/pi/CMake_SummerProj/build/VectorNav && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/VN.dir/src/sensors.o -c /home/pi/CMake_SummerProj/VectorNav/src/sensors.cpp
 
 VectorNav/CMakeFiles/VN.dir/src/sensors.i: cmake_force
@@ -260,7 +273,7 @@ VectorNav/CMakeFiles/VN.dir/src/sensors.s: cmake_force
 
 VectorNav/CMakeFiles/VN.dir/src/serialport.o: VectorNav/CMakeFiles/VN.dir/flags.make
 VectorNav/CMakeFiles/VN.dir/src/serialport.o: ../VectorNav/src/serialport.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object VectorNav/CMakeFiles/VN.dir/src/serialport.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object VectorNav/CMakeFiles/VN.dir/src/serialport.o"
 	cd /home/pi/CMake_SummerProj/build/VectorNav && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/VN.dir/src/serialport.o -c /home/pi/CMake_SummerProj/VectorNav/src/serialport.cpp
 
 VectorNav/CMakeFiles/VN.dir/src/serialport.i: cmake_force
@@ -273,7 +286,7 @@ VectorNav/CMakeFiles/VN.dir/src/serialport.s: cmake_force
 
 VectorNav/CMakeFiles/VN.dir/src/thread.o: VectorNav/CMakeFiles/VN.dir/flags.make
 VectorNav/CMakeFiles/VN.dir/src/thread.o: ../VectorNav/src/thread.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object VectorNav/CMakeFiles/VN.dir/src/thread.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object VectorNav/CMakeFiles/VN.dir/src/thread.o"
 	cd /home/pi/CMake_SummerProj/build/VectorNav && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/VN.dir/src/thread.o -c /home/pi/CMake_SummerProj/VectorNav/src/thread.cpp
 
 VectorNav/CMakeFiles/VN.dir/src/thread.i: cmake_force
@@ -286,7 +299,7 @@ VectorNav/CMakeFiles/VN.dir/src/thread.s: cmake_force
 
 VectorNav/CMakeFiles/VN.dir/src/types.o: VectorNav/CMakeFiles/VN.dir/flags.make
 VectorNav/CMakeFiles/VN.dir/src/types.o: ../VectorNav/src/types.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object VectorNav/CMakeFiles/VN.dir/src/types.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object VectorNav/CMakeFiles/VN.dir/src/types.o"
 	cd /home/pi/CMake_SummerProj/build/VectorNav && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/VN.dir/src/types.o -c /home/pi/CMake_SummerProj/VectorNav/src/types.cpp
 
 VectorNav/CMakeFiles/VN.dir/src/types.i: cmake_force
@@ -299,7 +312,7 @@ VectorNav/CMakeFiles/VN.dir/src/types.s: cmake_force
 
 VectorNav/CMakeFiles/VN.dir/src/util.o: VectorNav/CMakeFiles/VN.dir/flags.make
 VectorNav/CMakeFiles/VN.dir/src/util.o: ../VectorNav/src/util.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object VectorNav/CMakeFiles/VN.dir/src/util.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object VectorNav/CMakeFiles/VN.dir/src/util.o"
 	cd /home/pi/CMake_SummerProj/build/VectorNav && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/VN.dir/src/util.o -c /home/pi/CMake_SummerProj/VectorNav/src/util.cpp
 
 VectorNav/CMakeFiles/VN.dir/src/util.i: cmake_force
@@ -312,7 +325,7 @@ VectorNav/CMakeFiles/VN.dir/src/util.s: cmake_force
 
 VectorNav/CMakeFiles/VN.dir/src/utilities.o: VectorNav/CMakeFiles/VN.dir/flags.make
 VectorNav/CMakeFiles/VN.dir/src/utilities.o: ../VectorNav/src/utilities.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object VectorNav/CMakeFiles/VN.dir/src/utilities.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object VectorNav/CMakeFiles/VN.dir/src/utilities.o"
 	cd /home/pi/CMake_SummerProj/build/VectorNav && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/VN.dir/src/utilities.o -c /home/pi/CMake_SummerProj/VectorNav/src/utilities.cpp
 
 VectorNav/CMakeFiles/VN.dir/src/utilities.i: cmake_force
@@ -325,7 +338,7 @@ VectorNav/CMakeFiles/VN.dir/src/utilities.s: cmake_force
 
 VectorNav/CMakeFiles/VN.dir/src/vntime.o: VectorNav/CMakeFiles/VN.dir/flags.make
 VectorNav/CMakeFiles/VN.dir/src/vntime.o: ../VectorNav/src/vntime.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object VectorNav/CMakeFiles/VN.dir/src/vntime.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object VectorNav/CMakeFiles/VN.dir/src/vntime.o"
 	cd /home/pi/CMake_SummerProj/build/VectorNav && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/VN.dir/src/vntime.o -c /home/pi/CMake_SummerProj/VectorNav/src/vntime.cpp
 
 VectorNav/CMakeFiles/VN.dir/src/vntime.i: cmake_force
@@ -344,6 +357,7 @@ VN_OBJECTS = \
 "CMakeFiles/VN.dir/src/criticalsection.o" \
 "CMakeFiles/VN.dir/src/dllvalidator.o" \
 "CMakeFiles/VN.dir/src/event.o" \
+"CMakeFiles/VN.dir/src/error_detection.o" \
 "CMakeFiles/VN.dir/src/ezasyncdata.o" \
 "CMakeFiles/VN.dir/src/memoryport.o" \
 "CMakeFiles/VN.dir/src/packet.o" \
@@ -362,34 +376,34 @@ VN_OBJECTS = \
 # External object files for target VN
 VN_EXTERNAL_OBJECTS =
 
-VectorNav/libVN.a: VectorNav/CMakeFiles/VN.dir/src/attitude.o
-VectorNav/libVN.a: VectorNav/CMakeFiles/VN.dir/src/compositedata.o
-VectorNav/libVN.a: VectorNav/CMakeFiles/VN.dir/src/conversions.o
-VectorNav/libVN.a: VectorNav/CMakeFiles/VN.dir/src/criticalsection.o
-VectorNav/libVN.a: VectorNav/CMakeFiles/VN.dir/src/dllvalidator.o
-VectorNav/libVN.a: VectorNav/CMakeFiles/VN.dir/src/event.o
-VectorNav/libVN.a: VectorNav/CMakeFiles/VN.dir/src/ezasyncdata.o
-VectorNav/libVN.a: VectorNav/CMakeFiles/VN.dir/src/memoryport.o
-VectorNav/libVN.a: VectorNav/CMakeFiles/VN.dir/src/packet.o
-VectorNav/libVN.a: VectorNav/CMakeFiles/VN.dir/src/packetfinder.o
-VectorNav/libVN.a: VectorNav/CMakeFiles/VN.dir/src/port.o
-VectorNav/libVN.a: VectorNav/CMakeFiles/VN.dir/src/position.o
-VectorNav/libVN.a: VectorNav/CMakeFiles/VN.dir/src/searcher.o
-VectorNav/libVN.a: VectorNav/CMakeFiles/VN.dir/src/sensors.o
-VectorNav/libVN.a: VectorNav/CMakeFiles/VN.dir/src/serialport.o
-VectorNav/libVN.a: VectorNav/CMakeFiles/VN.dir/src/thread.o
-VectorNav/libVN.a: VectorNav/CMakeFiles/VN.dir/src/types.o
-VectorNav/libVN.a: VectorNav/CMakeFiles/VN.dir/src/util.o
-VectorNav/libVN.a: VectorNav/CMakeFiles/VN.dir/src/utilities.o
-VectorNav/libVN.a: VectorNav/CMakeFiles/VN.dir/src/vntime.o
-VectorNav/libVN.a: VectorNav/CMakeFiles/VN.dir/build.make
-VectorNav/libVN.a: VectorNav/CMakeFiles/VN.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pi/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Linking CXX static library libVN.a"
-	cd /home/pi/CMake_SummerProj/build/VectorNav && $(CMAKE_COMMAND) -P CMakeFiles/VN.dir/cmake_clean_target.cmake
+VectorNav/libVN.so: VectorNav/CMakeFiles/VN.dir/src/attitude.o
+VectorNav/libVN.so: VectorNav/CMakeFiles/VN.dir/src/compositedata.o
+VectorNav/libVN.so: VectorNav/CMakeFiles/VN.dir/src/conversions.o
+VectorNav/libVN.so: VectorNav/CMakeFiles/VN.dir/src/criticalsection.o
+VectorNav/libVN.so: VectorNav/CMakeFiles/VN.dir/src/dllvalidator.o
+VectorNav/libVN.so: VectorNav/CMakeFiles/VN.dir/src/event.o
+VectorNav/libVN.so: VectorNav/CMakeFiles/VN.dir/src/error_detection.o
+VectorNav/libVN.so: VectorNav/CMakeFiles/VN.dir/src/ezasyncdata.o
+VectorNav/libVN.so: VectorNav/CMakeFiles/VN.dir/src/memoryport.o
+VectorNav/libVN.so: VectorNav/CMakeFiles/VN.dir/src/packet.o
+VectorNav/libVN.so: VectorNav/CMakeFiles/VN.dir/src/packetfinder.o
+VectorNav/libVN.so: VectorNav/CMakeFiles/VN.dir/src/port.o
+VectorNav/libVN.so: VectorNav/CMakeFiles/VN.dir/src/position.o
+VectorNav/libVN.so: VectorNav/CMakeFiles/VN.dir/src/searcher.o
+VectorNav/libVN.so: VectorNav/CMakeFiles/VN.dir/src/sensors.o
+VectorNav/libVN.so: VectorNav/CMakeFiles/VN.dir/src/serialport.o
+VectorNav/libVN.so: VectorNav/CMakeFiles/VN.dir/src/thread.o
+VectorNav/libVN.so: VectorNav/CMakeFiles/VN.dir/src/types.o
+VectorNav/libVN.so: VectorNav/CMakeFiles/VN.dir/src/util.o
+VectorNav/libVN.so: VectorNav/CMakeFiles/VN.dir/src/utilities.o
+VectorNav/libVN.so: VectorNav/CMakeFiles/VN.dir/src/vntime.o
+VectorNav/libVN.so: VectorNav/CMakeFiles/VN.dir/build.make
+VectorNav/libVN.so: VectorNav/CMakeFiles/VN.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pi/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Linking CXX shared library libVN.so"
 	cd /home/pi/CMake_SummerProj/build/VectorNav && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/VN.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-VectorNav/CMakeFiles/VN.dir/build: VectorNav/libVN.a
+VectorNav/CMakeFiles/VN.dir/build: VectorNav/libVN.so
 
 .PHONY : VectorNav/CMakeFiles/VN.dir/build
 

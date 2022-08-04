@@ -227,6 +227,36 @@ src/IMU.s:
 	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f IMU/CMakeFiles/IMU.dir/build.make IMU/CMakeFiles/IMU.dir/src/IMU.s
 .PHONY : src/IMU.s
 
+# target to build an object file
+src/common.o:
+	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f IMU/CMakeFiles/IMU.dir/build.make IMU/CMakeFiles/IMU.dir/src/common.o
+.PHONY : src/common.o
+
+# target to preprocess a source file
+src/common.i:
+	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f IMU/CMakeFiles/IMU.dir/build.make IMU/CMakeFiles/IMU.dir/src/common.i
+.PHONY : src/common.i
+
+# target to generate assembly for a file
+src/common.s:
+	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f IMU/CMakeFiles/IMU.dir/build.make IMU/CMakeFiles/IMU.dir/src/common.s
+.PHONY : src/common.s
+
+# target to build an object file
+src/commonOutMutex.o:
+	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f IMU/CMakeFiles/IMU.dir/build.make IMU/CMakeFiles/IMU.dir/src/commonOutMutex.o
+.PHONY : src/commonOutMutex.o
+
+# target to preprocess a source file
+src/commonOutMutex.i:
+	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f IMU/CMakeFiles/IMU.dir/build.make IMU/CMakeFiles/IMU.dir/src/commonOutMutex.i
+.PHONY : src/commonOutMutex.i
+
+# target to generate assembly for a file
+src/commonOutMutex.s:
+	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f IMU/CMakeFiles/IMU.dir/build.make IMU/CMakeFiles/IMU.dir/src/commonOutMutex.s
+.PHONY : src/commonOutMutex.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -245,6 +275,12 @@ help:
 	@echo "... src/IMU.o"
 	@echo "... src/IMU.i"
 	@echo "... src/IMU.s"
+	@echo "... src/common.o"
+	@echo "... src/common.i"
+	@echo "... src/common.s"
+	@echo "... src/commonOutMutex.o"
+	@echo "... src/commonOutMutex.i"
+	@echo "... src/commonOutMutex.s"
 .PHONY : help
 
 

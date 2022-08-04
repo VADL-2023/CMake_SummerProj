@@ -1,7 +1,9 @@
 file(REMOVE_RECURSE
   "CMakeFiles/IMU.dir/src/IMU.o"
-  "libIMU.a"
+  "CMakeFiles/IMU.dir/src/common.o"
+  "CMakeFiles/IMU.dir/src/commonOutMutex.o"
   "libIMU.pdb"
+  "libIMU.so"
 )
 
 # Per-language clean rules from dependency scanning.

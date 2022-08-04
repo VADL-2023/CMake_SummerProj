@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Library1.dir/src/foo.o"
-  "libLibrary1.a"
   "libLibrary1.pdb"
+  "libLibrary1.so"
 )
 
 # Per-language clean rules from dependency scanning.

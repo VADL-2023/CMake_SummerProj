@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/pi/CMake_SummerProj/VectorNav/src/conversions.cpp" "/home/pi/CMake_SummerProj/build/VectorNav/CMakeFiles/VN.dir/src/conversions.o"
   "/home/pi/CMake_SummerProj/VectorNav/src/criticalsection.cpp" "/home/pi/CMake_SummerProj/build/VectorNav/CMakeFiles/VN.dir/src/criticalsection.o"
   "/home/pi/CMake_SummerProj/VectorNav/src/dllvalidator.cpp" "/home/pi/CMake_SummerProj/build/VectorNav/CMakeFiles/VN.dir/src/dllvalidator.o"
+  "/home/pi/CMake_SummerProj/VectorNav/src/error_detection.cpp" "/home/pi/CMake_SummerProj/build/VectorNav/CMakeFiles/VN.dir/src/error_detection.o"
   "/home/pi/CMake_SummerProj/VectorNav/src/event.cpp" "/home/pi/CMake_SummerProj/build/VectorNav/CMakeFiles/VN.dir/src/event.o"
   "/home/pi/CMake_SummerProj/VectorNav/src/ezasyncdata.cpp" "/home/pi/CMake_SummerProj/build/VectorNav/CMakeFiles/VN.dir/src/ezasyncdata.o"
   "/home/pi/CMake_SummerProj/VectorNav/src/memoryport.cpp" "/home/pi/CMake_SummerProj/build/VectorNav/CMakeFiles/VN.dir/src/memoryport.o"
@@ -26,6 +27,11 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/pi/CMake_SummerProj/VectorNav/src/vntime.cpp" "/home/pi/CMake_SummerProj/build/VectorNav/CMakeFiles/VN.dir/src/vntime.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
+
+# Preprocessor definitions for this target.
+set(CMAKE_TARGET_DEFINITIONS_CXX
+  "VN_EXPORTS"
+  )
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH

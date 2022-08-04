@@ -3,11 +3,15 @@
 #include "config_IMU.hpp"
 #include "IMU.hpp"
 #include "pigpio.h"
+
 int main(){
     // IMU Connection and Configuration
     IMU mIMU;
-    //mIMU.connect(IMU_PORT, IMU_BAUD_RATE);
-	foo();
-	//std::cout << "Got Here"<<std::endl;
+    for (int i = 0; i < 10; ++i){
+    mIMU.receive();
+    std::cout << "Pressure: " << mIMU.pres << std::endl;
+    }
+
+
 	return 0;
 }

@@ -1,2 +1,1 @@
-/usr/bin/ar qc libLibrary1.a CMakeFiles/Library1.dir/src/foo.o
-/usr/bin/ranlib libLibrary1.a
+/usr/bin/c++ -fPIC -shared -Wl,-soname,libLibrary1.so -o libLibrary1.so CMakeFiles/Library1.dir/src/foo.o 

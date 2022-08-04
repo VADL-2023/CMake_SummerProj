@@ -45,6 +45,7 @@ void IMU::callback(void *userData, Packet &asyncPacket, size_t packetStartRunnin
 
 IMU::IMU()
 {
+	std::cout << "In IMU constructor, IMU_ACTIVE = " << IMU_ACTIVE << std::endl;
 	if (IMU_ACTIVE)
 	{
 		{ out_guard();

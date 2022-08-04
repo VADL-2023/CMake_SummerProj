@@ -224,19 +224,6 @@ VN/fast:
 .PHONY : VN/fast
 
 #=============================================================================
-# Target rules for targets named IMU
-
-# Build rule for target.
-IMU: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 IMU
-.PHONY : IMU
-
-# fast build rule for target.
-IMU/fast:
-	$(MAKE) $(MAKESILENT) -f IMU/CMakeFiles/IMU.dir/build.make IMU/CMakeFiles/IMU.dir/build
-.PHONY : IMU/fast
-
-#=============================================================================
 # Target rules for targets named pigpio
 
 # Build rule for target.
@@ -352,6 +339,19 @@ pigpiod: cmake_check_build_system
 pigpiod/fast:
 	$(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpiod.dir/build.make pigpio-master/CMakeFiles/pigpiod.dir/build
 .PHONY : pigpiod/fast
+
+#=============================================================================
+# Target rules for targets named IMU
+
+# Build rule for target.
+IMU: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 IMU
+.PHONY : IMU
+
+# fast build rule for target.
+IMU/fast:
+	$(MAKE) $(MAKESILENT) -f IMU/CMakeFiles/IMU.dir/build.make IMU/CMakeFiles/IMU.dir/build
+.PHONY : IMU/fast
 
 #=============================================================================
 # Target rules for targets named myProject
