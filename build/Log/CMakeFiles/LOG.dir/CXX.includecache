@@ -10,12 +10,12 @@
 sensors.h
 ../IMU/include/sensors.h
 
-../IMU/include/config_IMU.hpp
-sensors.h
-../IMU/include/sensors.h
+../IMU/include/common.hpp
+commonOutMutex.hpp
+../IMU/include/commonOutMutex.hpp
 
-../Library1/include/foo.h
-iostream
+../IMU/include/commonOutMutex.hpp
+mutex
 -
 
 ../Log/include/LOG.hpp
@@ -27,6 +27,10 @@ LOGBase.hpp
 ../Log/include/LOGBase.hpp
 
 ../Log/include/LOGBase.hpp
+
+../Log/include/config_log.hpp
+sensors.h
+../Log/include/sensors.h
 
 ../VectorNav/include/vn/boostpython.h
 boost/python.hpp
@@ -134,17 +138,19 @@ int.h
 export.h
 ../VectorNav/include/vn/export.h
 
-/home/pi/CMake_SummerProj/MainDriver/src/main.cpp
-foo.h
-/home/pi/CMake_SummerProj/MainDriver/src/foo.h
-sensors.h
-/home/pi/CMake_SummerProj/MainDriver/src/sensors.h
-config_IMU.hpp
-/home/pi/CMake_SummerProj/MainDriver/src/config_IMU.hpp
-IMU.hpp
-/home/pi/CMake_SummerProj/MainDriver/src/IMU.hpp
-LOG.hpp
-/home/pi/CMake_SummerProj/MainDriver/src/LOG.hpp
+/home/pi/CMake_SummerProj/Log/src/LOG.cpp
+iostream
+-
 pigpio.h
-/home/pi/CMake_SummerProj/MainDriver/src/pigpio.h
+/home/pi/CMake_SummerProj/Log/src/pigpio.h
+fstream
+-
+config_log.hpp
+/home/pi/CMake_SummerProj/Log/src/config_log.hpp
+LOG.hpp
+/home/pi/CMake_SummerProj/Log/src/LOG.hpp
+IMU.hpp
+/home/pi/CMake_SummerProj/Log/src/IMU.hpp
+common.hpp
+/home/pi/CMake_SummerProj/Log/src/common.hpp
 

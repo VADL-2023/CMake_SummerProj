@@ -354,6 +354,19 @@ IMU/fast:
 .PHONY : IMU/fast
 
 #=============================================================================
+# Target rules for targets named LOG
+
+# Build rule for target.
+LOG: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 LOG
+.PHONY : LOG
+
+# fast build rule for target.
+LOG/fast:
+	$(MAKE) $(MAKESILENT) -f Log/CMakeFiles/LOG.dir/build.make Log/CMakeFiles/LOG.dir/build
+.PHONY : LOG/fast
+
+#=============================================================================
 # Target rules for targets named myProject
 
 # Build rule for target.
@@ -381,6 +394,7 @@ help:
 	@echo "... package_source"
 	@echo "... rebuild_cache"
 	@echo "... IMU"
+	@echo "... LOG"
 	@echo "... Library1"
 	@echo "... VN"
 	@echo "... myProject"

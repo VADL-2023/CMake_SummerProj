@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -shared -Wl,-soname,libLOG.so -o libLOG.so CMakeFiles/LOG.dir/src/LOG.o  -Wl,-rpath,/home/pi/CMake_SummerProj/build/IMU:/home/pi/CMake_SummerProj/build/VectorNav:/home/pi/CMake_SummerProj/build/pigpio-master ../IMU/libIMU.so ../VectorNav/libVN.so ../pigpio-master/libpigpio.so -lpython3.9 
