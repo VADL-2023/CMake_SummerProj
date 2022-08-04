@@ -1,0 +1,2 @@
+/usr/bin/ar qc libIMU.a CMakeFiles/IMU.dir/src/IMU.o
+/usr/bin/ranlib libIMU.a

@@ -7,7 +7,7 @@
 class LOG
 {
 public:
-    
+    void foo();
 private:
 
 };

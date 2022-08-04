@@ -67,24 +67,37 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pi/CMakeListsTest
+CMAKE_SOURCE_DIR = /home/pi/CMake_SummerProj
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pi/CMakeListsTest/build
+CMAKE_BINARY_DIR = /home/pi/CMake_SummerProj/build
 
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
 
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
 
-.PHONY : rebuild_cache/fast
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
 
 # Special rule for the target edit_cache
 edit_cache:
@@ -97,11 +110,66 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
+# Special rule for the target package_source
+package_source:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
+	/usr/bin/cpack --config ./CPackSourceConfig.cmake /home/pi/CMake_SummerProj/build/CPackSourceConfig.cmake
+.PHONY : package_source
+
+# Special rule for the target package_source
+package_source/fast: package_source
+
+.PHONY : package_source/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
+
+# Special rule for the target package
+package: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool..."
+	/usr/bin/cpack --config ./CPackConfig.cmake
+.PHONY : package
+
+# Special rule for the target package
+package/fast: package
+
+.PHONY : package/fast
+
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/CMakeListsTest/build/CMakeFiles /home/pi/CMakeListsTest/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/CMake_SummerProj/build/CMakeFiles /home/pi/CMake_SummerProj/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/CMakeListsTest/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/CMake_SummerProj/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -130,19 +198,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named myProject
-
-# Build rule for target.
-myProject: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 myProject
-.PHONY : myProject
-
-# fast build rule for target.
-myProject/fast:
-	$(MAKE) $(MAKESILENT) -f MainDriver/src/CMakeFiles/myProject.dir/build.make MainDriver/src/CMakeFiles/myProject.dir/build
-.PHONY : myProject/fast
-
-#=============================================================================
 # Target rules for targets named Library1
 
 # Build rule for target.
@@ -152,7 +207,7 @@ Library1: cmake_check_build_system
 
 # fast build rule for target.
 Library1/fast:
-	$(MAKE) $(MAKESILENT) -f Library1/src/CMakeFiles/Library1.dir/build.make Library1/src/CMakeFiles/Library1.dir/build
+	$(MAKE) $(MAKESILENT) -f Library1/CMakeFiles/Library1.dir/build.make Library1/CMakeFiles/Library1.dir/build
 .PHONY : Library1/fast
 
 #=============================================================================
@@ -165,8 +220,151 @@ VN: cmake_check_build_system
 
 # fast build rule for target.
 VN/fast:
-	$(MAKE) $(MAKESILENT) -f VectorNav/src/CMakeFiles/VN.dir/build.make VectorNav/src/CMakeFiles/VN.dir/build
+	$(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/build
 .PHONY : VN/fast
+
+#=============================================================================
+# Target rules for targets named IMU
+
+# Build rule for target.
+IMU: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 IMU
+.PHONY : IMU
+
+# fast build rule for target.
+IMU/fast:
+	$(MAKE) $(MAKESILENT) -f IMU/CMakeFiles/IMU.dir/build.make IMU/CMakeFiles/IMU.dir/build
+.PHONY : IMU/fast
+
+#=============================================================================
+# Target rules for targets named pigpio
+
+# Build rule for target.
+pigpio: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pigpio
+.PHONY : pigpio
+
+# fast build rule for target.
+pigpio/fast:
+	$(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpio.dir/build.make pigpio-master/CMakeFiles/pigpio.dir/build
+.PHONY : pigpio/fast
+
+#=============================================================================
+# Target rules for targets named pigpiod_if
+
+# Build rule for target.
+pigpiod_if: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pigpiod_if
+.PHONY : pigpiod_if
+
+# fast build rule for target.
+pigpiod_if/fast:
+	$(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpiod_if.dir/build.make pigpio-master/CMakeFiles/pigpiod_if.dir/build
+.PHONY : pigpiod_if/fast
+
+#=============================================================================
+# Target rules for targets named pigpiod_if2
+
+# Build rule for target.
+pigpiod_if2: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pigpiod_if2
+.PHONY : pigpiod_if2
+
+# fast build rule for target.
+pigpiod_if2/fast:
+	$(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpiod_if2.dir/build.make pigpio-master/CMakeFiles/pigpiod_if2.dir/build
+.PHONY : pigpiod_if2/fast
+
+#=============================================================================
+# Target rules for targets named x_pigpio
+
+# Build rule for target.
+x_pigpio: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 x_pigpio
+.PHONY : x_pigpio
+
+# fast build rule for target.
+x_pigpio/fast:
+	$(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/x_pigpio.dir/build.make pigpio-master/CMakeFiles/x_pigpio.dir/build
+.PHONY : x_pigpio/fast
+
+#=============================================================================
+# Target rules for targets named x_pigpiod_if
+
+# Build rule for target.
+x_pigpiod_if: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 x_pigpiod_if
+.PHONY : x_pigpiod_if
+
+# fast build rule for target.
+x_pigpiod_if/fast:
+	$(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/x_pigpiod_if.dir/build.make pigpio-master/CMakeFiles/x_pigpiod_if.dir/build
+.PHONY : x_pigpiod_if/fast
+
+#=============================================================================
+# Target rules for targets named x_pigpiod_if2
+
+# Build rule for target.
+x_pigpiod_if2: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 x_pigpiod_if2
+.PHONY : x_pigpiod_if2
+
+# fast build rule for target.
+x_pigpiod_if2/fast:
+	$(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/x_pigpiod_if2.dir/build.make pigpio-master/CMakeFiles/x_pigpiod_if2.dir/build
+.PHONY : x_pigpiod_if2/fast
+
+#=============================================================================
+# Target rules for targets named pigs
+
+# Build rule for target.
+pigs: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pigs
+.PHONY : pigs
+
+# fast build rule for target.
+pigs/fast:
+	$(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigs.dir/build.make pigpio-master/CMakeFiles/pigs.dir/build
+.PHONY : pigs/fast
+
+#=============================================================================
+# Target rules for targets named pig2vcd
+
+# Build rule for target.
+pig2vcd: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pig2vcd
+.PHONY : pig2vcd
+
+# fast build rule for target.
+pig2vcd/fast:
+	$(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pig2vcd.dir/build.make pigpio-master/CMakeFiles/pig2vcd.dir/build
+.PHONY : pig2vcd/fast
+
+#=============================================================================
+# Target rules for targets named pigpiod
+
+# Build rule for target.
+pigpiod: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pigpiod
+.PHONY : pigpiod
+
+# fast build rule for target.
+pigpiod/fast:
+	$(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpiod.dir/build.make pigpio-master/CMakeFiles/pigpiod.dir/build
+.PHONY : pigpiod/fast
+
+#=============================================================================
+# Target rules for targets named myProject
+
+# Build rule for target.
+myProject: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 myProject
+.PHONY : myProject
+
+# fast build rule for target.
+myProject/fast:
+	$(MAKE) $(MAKESILENT) -f MainDriver/CMakeFiles/myProject.dir/build.make MainDriver/CMakeFiles/myProject.dir/build
+.PHONY : myProject/fast
 
 # Help Target
 help:
@@ -175,10 +373,26 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... install"
+	@echo "... install/local"
+	@echo "... install/strip"
+	@echo "... list_install_components"
+	@echo "... package"
+	@echo "... package_source"
 	@echo "... rebuild_cache"
+	@echo "... IMU"
 	@echo "... Library1"
 	@echo "... VN"
 	@echo "... myProject"
+	@echo "... pig2vcd"
+	@echo "... pigpio"
+	@echo "... pigpiod"
+	@echo "... pigpiod_if"
+	@echo "... pigpiod_if2"
+	@echo "... pigs"
+	@echo "... x_pigpio"
+	@echo "... x_pigpiod_if"
+	@echo "... x_pigpiod_if2"
 .PHONY : help
 
 

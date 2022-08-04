@@ -1,0 +1,1 @@
+/usr/bin/c++ -rdynamic CMakeFiles/myProject.dir/src/main.o -o myProject  -Wl,-rpath,/home/pi/CMake_SummerProj/build/pigpio-master ../Library1/libLibrary1.a ../VectorNav/libVN.a ../IMU/libIMU.a ../pigpio-master/libpigpio.so ../VectorNav/libVN.a 
