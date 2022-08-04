@@ -1,8 +1,9 @@
 {
+	"archive" : {},
 	"artifacts" : 
 	[
 		{
-			"path" : "MainDriver/myProject"
+			"path" : "IMU/libIMU.a"
 		}
 	],
 	"backtrace" : 1,
@@ -10,13 +11,13 @@
 	{
 		"commands" : 
 		[
-			"add_executable",
+			"add_library",
 			"target_link_libraries",
 			"include_directories"
 		],
 		"files" : 
 		[
-			"MainDriver/CMakeLists.txt"
+			"IMU/CMakeLists.txt"
 		],
 		"nodes" : 
 		[
@@ -26,13 +27,13 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 4,
+				"line" : 3,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 5,
+				"line" : 4,
 				"parent" : 0
 			},
 			{
@@ -56,7 +57,7 @@
 			[
 				{
 					"backtrace" : 3,
-					"path" : "/Users/andrewnoonan/Documents/VADL Summer 2022/Code/CMake_SummerProj/MainDriver/include"
+					"path" : "/Users/andrewnoonan/Documents/VADL Summer 2022/Code/CMake_SummerProj/IMU/include"
 				},
 				{
 					"backtrace" : 2,
@@ -74,45 +75,16 @@
 	[
 		{
 			"backtrace" : 2,
-			"id" : "Library1::@39c0fce444fd8ad06b94"
-		},
-		{
-			"backtrace" : 2,
 			"id" : "VN::@bb203840e00a9933f9cb"
 		}
 	],
-	"id" : "myProject::@9fe5c7dc6dc5115a1b8c",
-	"link" : 
-	{
-		"commandFragments" : 
-		[
-			{
-				"fragment" : "-g",
-				"role" : "flags"
-			},
-			{
-				"fragment" : "",
-				"role" : "flags"
-			},
-			{
-				"backtrace" : 2,
-				"fragment" : "Library1/libLibrary1.a",
-				"role" : "libraries"
-			},
-			{
-				"backtrace" : 2,
-				"fragment" : "VectorNav/libVN.a",
-				"role" : "libraries"
-			}
-		],
-		"language" : "CXX"
-	},
-	"name" : "myProject",
-	"nameOnDisk" : "myProject",
+	"id" : "IMU::@a507c9855df5c9dc6614",
+	"name" : "IMU",
+	"nameOnDisk" : "libIMU.a",
 	"paths" : 
 	{
-		"build" : "MainDriver",
-		"source" : "MainDriver"
+		"build" : "IMU",
+		"source" : "IMU"
 	},
 	"sourceGroups" : 
 	[
@@ -129,9 +101,9 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "MainDriver/src/main.cpp",
+			"path" : "IMU/src/IMU.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],
-	"type" : "EXECUTABLE"
+	"type" : "STATIC_LIBRARY"
 }
