@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../MainDriver/include/foo.h
+
+/home/pi/CMakeListsTest/MainDriver/src/main.cpp
+foo.h
+/home/pi/CMakeListsTest/MainDriver/src/foo.h
+

@@ -1,0 +1,126 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3
+					],
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.4"
+					},
+					"projectIndex" : 0,
+					"source" : "."
+				},
+				{
+					"build" : "Library1",
+					"jsonFile" : "directory-Library1-Debug-3c437c9ffd3780f528df.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.4"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "Library1",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "VectorNav",
+					"jsonFile" : "directory-VectorNav-Debug-e08fb21a036d6f4d3489.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.4"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "VectorNav",
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"build" : "MainDriver",
+					"jsonFile" : "directory-MainDriver-Debug-bcbb06025f2092f1b43a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.4"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "MainDriver",
+					"targetIndexes" : 
+					[
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					],
+					"name" : "myProject",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 1,
+					"id" : "Library1::@39c0fce444fd8ad06b94",
+					"jsonFile" : "target-Library1-Debug-6714d7588bd47cdd2325.json",
+					"name" : "Library1",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "VN::@bb203840e00a9933f9cb",
+					"jsonFile" : "target-VN-Debug-91a6b5195dcb292ce50f.json",
+					"name" : "VN",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "myProject::@9fe5c7dc6dc5115a1b8c",
+					"jsonFile" : "target-myProject-Debug-a4596280c2d5ae304767.json",
+					"name" : "myProject",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/andrewnoonan/Documents/VADL Summer 2022/Code/CMake_SummerProj/cmake-build-debug",
+		"source" : "/Users/andrewnoonan/Documents/VADL Summer 2022/Code/CMake_SummerProj"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}
