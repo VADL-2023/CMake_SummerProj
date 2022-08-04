@@ -1,36 +1,48 @@
-#include "foo.h"
 #include "sensors.h"
 #include "config_IMU.hpp"
-#include "IMU.hpp"
-#include "LOG.hpp"
 #include "pigpio.h"
+#include <stddef.h>
 
 int main(){
-    // IMU Connection and Configuration
-    VnSensor mVN;
-    std::cout << "IMU Connecting" << std::endl;
-    mVN.connect(IMU_PORT,IMU_BAUD_RATE);
-    if (!mVN.isConnected()){
-        throw "IMU Failed to Connect";
-    }else{
-        std::cout << "IMU Connected" << std::endl;
-    }
+    std::cout << "Initialize GPIO Returned: " << gpioInitialise() << std::endl;
+        
     
-    ImuMeasurementsRegister response;
-    for (int i = 0; i < 40; ++i){
-    response = mVN.readImuMeasurements();
-    //std::cout << "Pressure: " << response.pressure << std::endl;
-    }
+    uint8_t servoPin = 18;
+    // Initialize GPIO
+    //gpioSetMode(servoPin, PI_OUTPUT);
+    //gpioSleep(0,1,0);
     
-    if (IMU_ACTIVE){
-    std::cout << "IMU: Disconnecting" << std::endl;
+    gpioServo(servoPin,1000);
+    std::cout << "Pulse: " << gpioGetServoPulsewidth(servoPin) << std::endl;
+    gpioSleep(0,2,0);
+    gpioServo(servoPin,2000);
+    std::cout << "Pulse: " << gpioGetServoPulsewidth(servoPin) << std::endl;
+    gpioSleep(0,2,0);
+    gpioServo(servoPin,1501);
+    std::cout << "Pulse: " << gpioGetServoPulsewidth(servoPin) << std::endl;
+    gpioSleep(0,2,0);
+    gpioServo(servoPin,1000);
+    std::cout << "Pulse: " << gpioGetServoPulsewidth(servoPin) << std::endl;
+    gpioSleep(0,2,0);
+    
 
-    //mVN.unregisterAsyncPacketReceivedHandler();
-    mVN.disconnect();
-
-    std::cout << "IMU: Disconnected" << std::endl;
-	}
-
+/*
+        for (int j = 0; j < 250; ++j){
+        gpioWrite(servoPin,1);
+        gpioSleep(0, 0, 1000);
+        gpioWrite(servoPin,0); 
+        gpioSleep(0, 0, 20000-1000);
+        }
+        
+        for (int j = 0; j < 250; ++j){
+        gpioWrite(servoPin,1);
+        gpioSleep(0, 0, 2000);
+        gpioWrite(servoPin,0); 
+        gpioSleep(0, 0, 20000-2000);
+        }
+    */
+    
+    gpioTerminate();
 
 	return 0;
 }
