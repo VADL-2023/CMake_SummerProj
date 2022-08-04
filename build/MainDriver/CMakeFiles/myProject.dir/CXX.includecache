@@ -6,27 +6,9 @@
 
 #IncludeRegexTransform: 
 
-../IMU/include/IMU.hpp
-sensors.h
-../IMU/include/sensors.h
-
 ../IMU/include/config_IMU.hpp
 sensors.h
 ../IMU/include/sensors.h
-
-../Library1/include/foo.h
-iostream
--
-
-../Log/include/LOG.hpp
-fstream
--
-IMU.hpp
-../Log/include/IMU.hpp
-LOGBase.hpp
-../Log/include/LOGBase.hpp
-
-../Log/include/LOGBase.hpp
 
 ../VectorNav/include/vn/boostpython.h
 boost/python.hpp
@@ -135,16 +117,10 @@ export.h
 ../VectorNav/include/vn/export.h
 
 /home/pi/CMake_SummerProj/MainDriver/src/main.cpp
-foo.h
-/home/pi/CMake_SummerProj/MainDriver/src/foo.h
 sensors.h
 /home/pi/CMake_SummerProj/MainDriver/src/sensors.h
 config_IMU.hpp
 /home/pi/CMake_SummerProj/MainDriver/src/config_IMU.hpp
-IMU.hpp
-/home/pi/CMake_SummerProj/MainDriver/src/IMU.hpp
-LOG.hpp
-/home/pi/CMake_SummerProj/MainDriver/src/LOG.hpp
 pigpio.h
 /home/pi/CMake_SummerProj/MainDriver/src/pigpio.h
 

@@ -1,5 +1,8 @@
+#include "foo.h"
 #include "sensors.h"
-#include "config_IMU.hpp" //Copy this file into MainDriver includes -> currently in IMU
+#include "config_IMU.hpp"
+#include "IMU.hpp"
+#include "LOG.hpp"
 #include "pigpio.h"
 
 int main(){
@@ -15,7 +18,7 @@ int main(){
     
     ImuMeasurementsRegister response;
     for (int i = 0; i < 40; ++i){
-    response = mVN.readImuMeasurements(); //Actually dive into implementation so we're not sending the same command over and over
+    response = mVN.readImuMeasurements();
     //std::cout << "Pressure: " << response.pressure << std::endl;
     }
     
