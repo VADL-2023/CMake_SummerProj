@@ -11,4 +11,3 @@ target_link_libraries(myProject Library1 VN IMU pigpio LOG) #no log rn
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)
 target_link_libraries(myProject ${CMAKE_THREAD_LIBS_INIT})
-

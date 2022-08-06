@@ -5,7 +5,9 @@ project(myProject)
 add_subdirectory(Library1)
 add_subdirectory(VectorNav)
 add_subdirectory(pigpio-master)
-add_subdirectory(IMU) #Add libraries above main Driver (have to be created to link)
+add_subdirectory(IMU) 
 add_subdirectory(Log)
-add_subdirectory(MainDriver)
 
+
+#Add libraries above main Driver (have to be created to link)
+add_subdirectory(MainDriver)

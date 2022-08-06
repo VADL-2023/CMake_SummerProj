@@ -3,13 +3,13 @@
 
 #include <string>
 
-#include "vn/int.h"
-#include "vn/nocopy.h"
-#include "vn/sensors.h"
-#include "vn/compositedata.h"
-#include "vn/criticalsection.h"
-#include "vn/event.h"
-#include "vn/export.h"
+#include "int.h"
+#include "nocopy.h"
+#include "sensors.h"
+#include "compositedata.h"
+#include "criticalsection.h"
+#include "event.h"
+#include "export.h"
 
 namespace vn {
 namespace sensors {
@@ -19,9 +19,13 @@ namespace sensors {
 class vn_proglib_DLLEXPORT EzAsyncData : private util::NoCopy
 {
 private:
-	explicit EzAsyncData(VnSensor* sensor);
+	
 
 public:
+	// ANDREW NOONAN 8/5/22 MOVED CONSTRUCTOR FROM PRIVATE TO PUBLIC
+	//I'm probably just missing a dumb friend class somewhere, but time is tight and this is a quick way to interface w the IMU
+	explicit EzAsyncData(VnSensor* sensor);
+
 	/// \brief DTOR
 	~EzAsyncData();
 

@@ -3,10 +3,10 @@
 
 #include <vector>
 
-#include "vn/export.h"
-#include "vn/packet.h"
-#include "vn/attitude.h"
-#include "vn/position.h"
+#include "export.h"
+#include "packet.h"
+#include "attitude.h"
+#include "position.h"
 
 namespace vn {
 namespace sensors {

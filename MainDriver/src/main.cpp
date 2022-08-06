@@ -1,7 +1,7 @@
 #include "sensors.h"
 #include "config_IMU.hpp" //Copy this file into MainDriver includes -> currently in IMU
 #include "pigpio.h"
-uint8_t servoPin = 18;
+uint8_t servoPin = 23;
 
 void moveServo(bool dir){
     if (dir){
@@ -28,10 +28,10 @@ int main(){
     bool prevDir = false;
     bool curDir = false;
     ImuMeasurementsRegister response;
-    for (int i = 0; i < 100; ++i){
+    for (int i = 0; i < 1000; ++i){
         response = mVN.readImuMeasurements(); //Actually dive into implementation so we're not sending the same command over and over
-        float accel = response.accel[2];
-        std::cout << "Accel Z: " << accel << std::endl;
+        float accel = response.pressure;
+        std::cout << "Temp: " << accel << std::endl;
         curDir = (accel > 0 ? true : false);
         if (curDir != prevDir){
             std::cout << "Direction change, moving servo" << std::endl;
@@ -50,6 +50,8 @@ int main(){
     std::cout << "IMU: Disconnected" << std::endl;
 	}
 
+    gpioServo(servoPin, 1500);
+    gpioSleep(0,3,0);
 
 	return 0;
 }
