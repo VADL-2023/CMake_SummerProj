@@ -1,7 +1,12 @@
 #include "sensors.h"
 #include "config_IMU.hpp" //Copy this file into MainDriver includes -> currently in IMU
 #include "pigpio.h"
-uint8_t servoPin = 23;
+
+// define 4 servo pins
+uint8_t servoPin = 18;
+//uint8_t servoPin2 = 18;
+//uint8_t servoPin3 = 23;
+//uint8_t servoPin4 = 23;
 
 void moveServo(bool dir){
     if (dir){
@@ -25,21 +30,23 @@ int main(){
         std::cout << "IMU Connected" << std::endl;
     }
     
+    
     bool prevDir = false;
     bool curDir = false;
     ImuMeasurementsRegister response;
-    for (int i = 0; i < 1000; ++i){
+    for (int i = 0; i < 100; ++i){
         response = mVN.readImuMeasurements(); //Actually dive into implementation so we're not sending the same command over and over
-        float accel = response.pressure;
-        std::cout << "Temp: " << accel << std::endl;
-        curDir = (accel > 0 ? true : false);
+        float pres = response.accel[2];
+        std::cout << "Temp: " << pres << std::endl;
+        curDir = (pres > 0 ? true : false);
         if (curDir != prevDir){
             std::cout << "Direction change, moving servo" << std::endl;
             moveServo(curDir);
             prevDir = curDir;
         }
-        
     }
+    
+     
     
     if (IMU_ACTIVE){
     std::cout << "IMU: Disconnecting" << std::endl;
