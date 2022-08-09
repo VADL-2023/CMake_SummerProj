@@ -213,19 +213,19 @@ myProject/fast:
 .PHONY : myProject/fast
 
 # target to build an object file
-src/servoTest.o:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f MainDriver/CMakeFiles/myProject.dir/build.make MainDriver/CMakeFiles/myProject.dir/src/servoTest.o
-.PHONY : src/servoTest.o
+src/main.o:
+	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f MainDriver/CMakeFiles/myProject.dir/build.make MainDriver/CMakeFiles/myProject.dir/src/main.o
+.PHONY : src/main.o
 
 # target to preprocess a source file
-src/servoTest.i:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f MainDriver/CMakeFiles/myProject.dir/build.make MainDriver/CMakeFiles/myProject.dir/src/servoTest.i
-.PHONY : src/servoTest.i
+src/main.i:
+	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f MainDriver/CMakeFiles/myProject.dir/build.make MainDriver/CMakeFiles/myProject.dir/src/main.i
+.PHONY : src/main.i
 
 # target to generate assembly for a file
-src/servoTest.s:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f MainDriver/CMakeFiles/myProject.dir/build.make MainDriver/CMakeFiles/myProject.dir/src/servoTest.s
-.PHONY : src/servoTest.s
+src/main.s:
+	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f MainDriver/CMakeFiles/myProject.dir/build.make MainDriver/CMakeFiles/myProject.dir/src/main.s
+.PHONY : src/main.s
 
 # Help Target
 help:
@@ -242,9 +242,9 @@ help:
 	@echo "... package_source"
 	@echo "... rebuild_cache"
 	@echo "... myProject"
-	@echo "... src/servoTest.o"
-	@echo "... src/servoTest.i"
-	@echo "... src/servoTest.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
 .PHONY : help
 
 

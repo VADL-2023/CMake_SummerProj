@@ -7,6 +7,8 @@ uint16_t pulseMin = 500; // usecs
 uint16_t pulseMax = 2500; // usecs
 uint8_t servoRange = 180; // deg
 
+    
+
 // given an angle [yes mom, its in degrees] finds the specified pulse width to move there [for specified servo parameters)
 float convertAngle2PulseWidth(float angle) {
     float x = (pulseMax - pulseMin)*angle/servoRange + (pulseMax + pulseMin)/2.0; // angle between +-90
@@ -38,15 +40,26 @@ int main(){
     gpioSetMode(servoPin3, PI_OUTPUT);
     gpioSetMode(servoPin4, PI_OUTPUT);
     
+
+    
+    float x = 1500;
+    
     // move servos
-    moveServoPair(servoPin1,servoPin2,12);
+    gpioServo(servoPin1, x);
     gpioSleep(0,1,0);
-    moveServoPair(servoPin1,servoPin2,-12);
+    gpioServo(servoPin2, x);
     gpioSleep(0,1,0);
+    gpioServo(servoPin3, x);
+    gpioSleep(0,1,0);
+    gpioServo(servoPin4, x);
+    gpioSleep(0,1,0);
+    
+    
 
     // std::cout << "Pulse: " << gpioGetServoPulsewidth(servoPin1) << std::endl;
     
     gpioTerminate();
+    
 
 	return 0;
 }
