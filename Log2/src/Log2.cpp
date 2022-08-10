@@ -1,8 +1,11 @@
 #include "../include/Log2.h"
 
-Log2::Log2(std::ofstream &flight, std::ofstream &program, VnSensor* imu):
-mFlightLog(flight), mProgLog(program), mIMU(imu)
+Log2::Log2(std::ofstream &flight, std::ofstream &program, vn::sensors::VnSensor* imu):
+mIMU(imu)
 {
+    mFlightLog = flight; 
+    mProgLog = program;
+    
     time(&startTime);
     if (!(mFlightLog.is_open() && mProgLog.is_open())){
         std::cout << "Error opening file streams";
@@ -20,7 +23,7 @@ Log2::~Log2() {
     mIMU = nullptr;
 }
 // May have to add 'vn::sensors::' before ImuMeasurementsRegister, hopefully not
-void Log2::write(ImuMeasurementsRegister& data){
+void Log2::write(vn::sensors::ImuMeasurementsRegister& data){
     time_t curTime;
     time(&curTime);
 

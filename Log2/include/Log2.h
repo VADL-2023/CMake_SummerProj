@@ -14,16 +14,16 @@ private:
 
     time_t startTime;
 
-    VnSensor* mIMU;
+    vn::sensors::VnSensor* mIMU;
 
 
 public:
 
-    Log2(std::ofstream &flight, std::ofstream &program, VnSensor* imu);
+    Log2(std::ofstream &flight, std::ofstream &program, vn::sensors::VnSensor* imu);
 
     ~Log2();
     // May have to add 'vn::sensors::' before ImuMeasurementsRegister, hopefully not
-    void write(ImuMeasurementsRegister& data);
+    void write(vn::sensors::ImuMeasurementsRegister& data);
 
     void write(std::string& outputString);
 
