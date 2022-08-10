@@ -100,10 +100,11 @@ MainDriver/myProject: MainDriver/CMakeFiles/myProject.dir/src/main.o
 MainDriver/myProject: MainDriver/CMakeFiles/myProject.dir/build.make
 MainDriver/myProject: Library1/libLibrary1.so
 MainDriver/myProject: Log/libLOG.so
+MainDriver/myProject: Log2/libLog2.so
 MainDriver/myProject: IMU/libIMU.so
-MainDriver/myProject: VectorNav/libVN.so
 MainDriver/myProject: pigpio-master/libpigpio.so
 MainDriver/myProject: /usr/lib/aarch64-linux-gnu/libpython3.9.so
+MainDriver/myProject: VectorNav/libVN.so
 MainDriver/myProject: MainDriver/CMakeFiles/myProject.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pi/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable myProject"
 	cd /home/pi/CMake_SummerProj/build/MainDriver && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/myProject.dir/link.txt --verbose=$(VERBOSE)

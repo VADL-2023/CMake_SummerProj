@@ -4,6 +4,8 @@
 #include <stddef.h>
 #include <unistd.h> // has sleep() function
 #include <math.h>
+#include <algorithm> // array functions?
+#include <iostream>
 
 // conversion factors
 float ft2m = 0.3048; // [m/ft]
@@ -15,6 +17,16 @@ uint8_t finTiltAngle = 12; // [deg] fixed tilt angle for airfoil activation
 float h0 = 522*ft2m; // [m] elevation of launch site relative to sea level
 float R = 287; // [J/kg/K] universal gas constant
 float B = 0.0065; // [K/m] temperature lapse rate
+float tBurn = 1.6; // [s] burn time of motor (K1100)
+float burnSafetyMargin = 3; // what fraction of the burn time do we check for being at certain g level
+// float accelRoof = 3; // how many g's does the program need to see in order for launch to be detected
+float samplingFrequency = 20; // [Hz] how fast does the IMU sample data
+int numDataPointsChecked4Launch = ceil(tBurn/burnSafetyMargin*samplingFrequency); // how many acceleration points are averaged to see if data set is over accelRoof
+int numDataPointsChecked4Apogee = 10; // how many altitude points must a new max not be found for apogee to be declared
+float zDeploy = h0 + 650*ft2m; // [ft] altitude at which fins will deploy relative to sea level
+ 
+// vacuum test parameters (uncomment ones above)
+float accelRoof = 1.1;
 
 // servo parameters
 uint16_t pulseMin = 500; // [usecs] pulse width to send servo to one end of motion range
@@ -23,7 +35,8 @@ uint8_t servoRange = 180; // [deg] possible range of motion of servo
 
 // calibration parameters
 uint16_t numSampleReadings = 25; // amount of samples taken and averaged to find ground P and T
-float servoTestWaitTime = 1; // [s] amount of time between servo movement tests
+float servoTestTiltWaitTime = 1; // [s] amount of time between servo movement tests
+float servoTestBeginWaitTime = 1; // [s] amount of time before servo tests begin
 
 // define 4 servo pins
 uint8_t servoPinN = 18;
@@ -37,7 +50,7 @@ float convertAngle2PulseWidth(float angle) {
 }
 
 // moves a pair of servos in opposite CW/CCW directions (but same linear direction) by the same amount (you are outside of the rocket facing radially inward)
-void moveServoPair(uint8_t pin1, uint8_t pin2, float angle){
+void moveServoPair(uservoTestBeginWaitTimeint8_t pin1, uint8_t pin2, float angle){
     float pulseWidth1 = convertAngle2PulseWidth(angle);
     float pulseWidth2 = convertAngle2PulseWidth(-angle);
     
@@ -45,7 +58,7 @@ void moveServoPair(uint8_t pin1, uint8_t pin2, float angle){
     gpioServo(pin2, pulseWidth2);
 }
 
-// moves a single servo to specified angle [deg]
+// moves a single servo on [pin] to specified angle [deg]
 void moveServo(uint8_t pin, float angle) {
     float pulseWidth = convertAngle2PulseWidth(angle);
     gpioServo(pin,pulseWidth);
@@ -54,11 +67,11 @@ void moveServo(uint8_t pin, float angle) {
 // given pin and angle, activates test protocol for a single servo
 void testServo(uint8_t pin, float angle) {
     moveServo(pin, angle);
-    gpioSleep(0,servoTestWaitTime,0);
+    gpioSleep(0,servoTestTiltWaitTime,0);
     moveServo(pin, -angle);
-    gpioSleep(0,servoTestWaitTime,0);
+    gpioSleep(0,servoTestTiltWaitTime,0);
     moveServo(pin, 0); // end by moving servo to middle
-    gpioSleep(0,servoTestWaitTime,0);
+    gpioSleep(0,servoTestTiltWaitTime,0);
 }
 
 // given T0 [K], P0 [kPa], g0 [m/s^2], P [kPa], returns altitude relative to baseline
@@ -66,9 +79,18 @@ void testServo(uint8_t pin, float angle) {
 float pressure2Altitude(float T0, float P0, float g0, float P) {
     return h0 + T0/B*(pow(P/P0,-R*B/g0) - 1);
 }
+
+// given a float array, calculates the average of all the arrays values
+float calcArrayAverage(float array[], int size) {
+    float sum;
+    for (int i = 0; i <= size; ++i) {
+        sum += array[i];
+    }
+    return sum/size;
+}
     
 int main(){
-    /* P R E - F L I G H T  S T A G E*/
+    /* P R E - F L I G H T  S T A G E*//////////////////////////////////
     // declare variables which may get overwritten several times during go-nogo
     float pressureSum;
     float tempSum;
@@ -106,8 +128,7 @@ int main(){
         
         // test all 4 servos
         std::cout << "Testing Servo Activation" << std::endl;
-        sleep(2);
-        
+        sleep(servoTestBeginWaitTime);
         std::cout << "Testing North..." << std::endl;
         testServo(servoPinN,finTiltAngle);
         std::cout << "Testing East..." << std::endl;
@@ -117,14 +138,13 @@ int main(){
         std::cout << "Testing West..." << std::endl;
         testServo(servoPinW,finTiltAngle);
         
-        // calibrate ground level pressure and temperature
         ImuMeasurementsRegister response;
+        
+        // calibrate ground level pressure and temperature
         pressureSum = 0;
         tempSum = 0;
         gravSum = 0;
-        
-        std::cout << "Calibrating Baseline Parameters" << std::endl;
-        
+        std::cout << "Calibrating Baseline Parameters. Hold Still." << std::endl;
         for (int i = 0; i < numSampleReadings; ++i){
             response = mVN->readImuMeasurements();
             pressureSum += response.pressure;
@@ -134,12 +154,11 @@ int main(){
         P0 = pressureSum/numSampleReadings;
         T0 = tempSum/numSampleReadings + C2K;
         g0 = gravSum/numSampleReadings;
-        
-        std::cout << "Calibrated Temperature: " << T0 << " K" << std::endl;
+        std::cout << "Calibrated Temperature: " << T0 - C2K << " C" << std::endl;
         std::cout << "Calibrated Pressure: " << P0 << " kPa" << std::endl;
         std::cout << "Calibrated Gravity: " << g0 << " m/s^2" << std::endl;
         std::cout << "Are we a GO for flight?" << std::endl;
-        std::cin >> go; // get user input
+        std::cin >> go;
         
         // if no-go, undo initializations so we can try again
         if(go != "GO") {
@@ -150,81 +169,99 @@ int main(){
             delete mVN;
             gpioTerminate();
             std::cout << "GPIO Terminated" << std::endl;
-        } else { // if go, disconnect pointer so normal object can be created
+        } else { // if go, disconnect pointer so normal object can be created // this is weird pls take a look at this // I was getting object errors because this mVN is declared within the while loop, so it is not recognized outside of it. Destroy and create a new one. But does that defeat the whole checking initialization process?
             if (IMU_ACTIVE){
                 mVN->disconnect();
                 std::cout << "IMU Disconnected" << std::endl;
+                // delete mVN; // deleting older pointer here gives an error for some reason
             }
-            
         }
-        
     }
-
-    std::cout << "Pre-Flight Stage Passed" << std::endl;
-    
-    /* L A U N C H  S T A G E */
-    std::cout << "Ready for Assembly and Launch Rail" << std::endl;
+    std::cout << "Pre-Flight Stage Completed" << std::endl;
     
     VnSensor mVN;
     mVN.connect(IMU_PORT,IMU_BAUD_RATE);
-    
     ImuMeasurementsRegister response;
-    for (int i = 0; i < 100; ++i){
-        response = mVN.readImuMeasurements(); //Actually dive into implementation so we're not sending the same command over and over
-        float P = response.pressure;
-        float z = pressure2Altitude(T0,P0,g0,P)*m2ft;
-        
-        std::cout << "Pressure: " << P << " kPa" << std::endl;
-        std::cout << "Altitude: " << z << " ft" << std::endl;
+    if (!mVN.isConnected()){
+        throw "IMU Failed to Connect";
+        std::cout << "DO NOT CONTINUE FLIGHT" << std::endl;
+    }else{
+        std::cout << "IMU Connected" << std::endl;
     }
+    
+    /* L A U N C H  S T A G E */////////////////////////////////////////
+    std::cout << "Ready for Assembly and Launch Rail" << std::endl;
+    
+    float accelArray [numDataPointsChecked4Launch] = {};
+    float accelAvg;
+    
+    while(accelAvg < accelRoof*g0){
+        response = mVN.readImuMeasurements(); // record data
+        accelArray[0] = sqrt(pow(response.accel[0],2) + pow(response.accel[1],2) + pow(response.accel[2],2)); // total accel vector
+        accelAvg = calcArrayAverage(accelArray, numDataPointsChecked4Launch);
         
-    // move servos
+        for (int i = 0; i < numDataPointsChecked4Launch; ++i) { // shift array values down
+            accelArray[i+1] = accelArray[i];
+        }
+    }
+    std::cout << "Average acceleration exceeded " << accelRoof*g0 << " m/s^2 over " << numDataPointsChecked4Launch << " data points" << std::endl;
+    std::cout << "Rocket Has Launched" << std::endl;
+        
+    std::cout << "Waiting for Motor Burn Time" << std::endl;
+    sleep(tBurn);
+    
+    float zCurrent;
+    
+    std::cout << "Actively Checking Altitude" << std::endl;
+    while (zCurrent < zDeploy) {
+        response = mVN.readImuMeasurements();
+        zCurrent = pressure2Altitude(T0,P0,g0,response.pressure);
+    }
+    std::cout << "Deployment Altitude Reached" << std::endl;
+    
     moveServoPair(servoPinN,servoPinS,finTiltAngle);
-    gpioSleep(0,1,0);
-    moveServoPair(servoPinN,servoPinS,-finTiltAngle);
-    gpioSleep(0,1,0);
-    moveServoPair(servoPinN,servoPinS,finTiltAngle);
+    std::cout << "Fins Deployed" << std::endl;
+    
+    /* C O A S T I N G  S T A G E*//////////////////////////////////////
+    
+    float zCurrentArray [numDataPointsChecked4Apogee] = {};
+    float maxAltitude;
+    int samplesSinceMaxHasChanged;
+    
+    // loop runs until we havent hit a new max altitude for numDataPointsChecked
+    // i.e. we are not going up anymore
+    while(samplesSinceMaxHasChanged < numDataPointsChecked4Apogee) {
+        response = mVN.readImuMeasurements();
+        zCurrent = pressure2Altitude(T0,P0,g0,response.pressure);
+        zCurrentArray[0] = zCurrent;
+        
+        if (zCurrent >= maxAltitude) {
+            maxAltitude = zCurrent;
+            samplesSinceMaxHasChanged = 0;
+        } else {
+            ++samplesSinceMaxHasChanged;
+        }
+        
+        // shift array values
+        for (int i = 0; i < numDataPointsChecked4Apogee; ++i) {
+            zCurrentArray[i+1] = zCurrentArray[i];
+        }
+    }
+    
+    std::cout << "Altitude has not reached a new max for " << numDataPointsChecked4Apogee << " samples... retracting fins now." << std::endl;
+    
+    moveServoPair(servoPinN,servoPinS,0);
+    std::cout << "Fins Undeployed" << std::endl;
+    
+    /* D E S C E N T  S T A G E *///////////////////////////////////////
+    // all that needs to happen here is data keeps being saved and foils are kept at 0 angle
     
     if (IMU_ACTIVE){
-        //mVN->disconnect();
-        //std::cout << "IMU: Disconnected" << std::endl;
+        mVN.disconnect();
+        std::cout << "IMU: Disconnected" << std::endl;
 	}
-    
-    // delete mVN;
+    // delete mVN; // delete only needed for pointers
     gpioTerminate();
     
     return 0;
-} // end main
-    
-     
-    // HERE LIES CODE CEMETARY OF COMMENTED OUT CODE
-    /*
-    if (IMU_ACTIVE){
-    std::cout << "IMU: Disconnecting" << std::endl;
-
-    //mVN.unregisterAsyncPacketReceivedHandler();
-    mVN.disconnect();
-
-    std::cout << "IMU: Disconnected" << std::endl;
-	}
-
-    gpioServo(servoPin, 1500);
-    gpioSleep(0,3,0);
-
-	return 0; */
-    
-        //bool prevDir = false;
-    //bool curDir = false;
-    /*
-    ImuMeasurementsRegister response;
-    for (int i = 0; i < 100; ++i){
-        response = mVN.readImuMeasurements(); //Actually dive into implementation so we're not sending the same command over and over
-        float pres = response.accel[2];
-        std::cout << "Temp: " << pres << std::endl;
-        curDir = (pres > 0 ? true : false);
-        if (curDir != prevDir){
-            std::cout << "Direction change, moving servo" << std::endl;
-            moveServo(curDir);
-            prevDir = curDir;
-        }*/
-
+}

@@ -11,6 +11,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "../IMU/CMakeLists.txt"
   "../Library1/CMakeLists.txt"
   "../Log/CMakeLists.txt"
+  "../Log2/CMakeLists.txt"
   "../MainDriver/CMakeLists.txt"
   "../VectorNav/CMakeLists.txt"
   "CMakeFiles/3.18.4/CMakeCCompiler.cmake"
@@ -81,6 +82,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "pigpio-master/CMakeFiles/CMakeDirectoryInformation.cmake"
   "IMU/CMakeFiles/CMakeDirectoryInformation.cmake"
   "Log/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "Log2/CMakeFiles/CMakeDirectoryInformation.cmake"
   "MainDriver/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
@@ -99,5 +101,6 @@ set(CMAKE_DEPEND_INFO_FILES
   "pigpio-master/CMakeFiles/pigpiod.dir/DependInfo.cmake"
   "IMU/CMakeFiles/IMU.dir/DependInfo.cmake"
   "Log/CMakeFiles/LOG.dir/DependInfo.cmake"
+  "Log2/CMakeFiles/Log2.dir/DependInfo.cmake"
   "MainDriver/CMakeFiles/myProject.dir/DependInfo.cmake"
   )
