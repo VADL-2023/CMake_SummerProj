@@ -5,8 +5,8 @@ include_directories(include)
 #endif(COMMAND cmake_policy)
 
 
-add_executable(myProject src/main.cpp)
-target_link_libraries(myProject Library1 VN IMU pigpio LOG) #no log rn
+add_executable(myProject src/imuTest.cpp)
+target_link_libraries(myProject Library1 VN IMU pigpio Log2) #no log rn
 
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)
