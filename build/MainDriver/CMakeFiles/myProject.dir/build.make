@@ -76,27 +76,27 @@ include MainDriver/CMakeFiles/myProject.dir/progress.make
 # Include the compile flags for this target's objects.
 include MainDriver/CMakeFiles/myProject.dir/flags.make
 
-MainDriver/CMakeFiles/myProject.dir/src/imuTest.o: MainDriver/CMakeFiles/myProject.dir/flags.make
-MainDriver/CMakeFiles/myProject.dir/src/imuTest.o: ../MainDriver/src/imuTest.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object MainDriver/CMakeFiles/myProject.dir/src/imuTest.o"
-	cd /home/pi/CMake_SummerProj/build/MainDriver && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/myProject.dir/src/imuTest.o -c /home/pi/CMake_SummerProj/MainDriver/src/imuTest.cpp
+MainDriver/CMakeFiles/myProject.dir/src/vacuumTest.o: MainDriver/CMakeFiles/myProject.dir/flags.make
+MainDriver/CMakeFiles/myProject.dir/src/vacuumTest.o: ../MainDriver/src/vacuumTest.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object MainDriver/CMakeFiles/myProject.dir/src/vacuumTest.o"
+	cd /home/pi/CMake_SummerProj/build/MainDriver && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/myProject.dir/src/vacuumTest.o -c /home/pi/CMake_SummerProj/MainDriver/src/vacuumTest.cpp
 
-MainDriver/CMakeFiles/myProject.dir/src/imuTest.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/myProject.dir/src/imuTest.i"
-	cd /home/pi/CMake_SummerProj/build/MainDriver && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/CMake_SummerProj/MainDriver/src/imuTest.cpp > CMakeFiles/myProject.dir/src/imuTest.i
+MainDriver/CMakeFiles/myProject.dir/src/vacuumTest.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/myProject.dir/src/vacuumTest.i"
+	cd /home/pi/CMake_SummerProj/build/MainDriver && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/CMake_SummerProj/MainDriver/src/vacuumTest.cpp > CMakeFiles/myProject.dir/src/vacuumTest.i
 
-MainDriver/CMakeFiles/myProject.dir/src/imuTest.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/myProject.dir/src/imuTest.s"
-	cd /home/pi/CMake_SummerProj/build/MainDriver && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/CMake_SummerProj/MainDriver/src/imuTest.cpp -o CMakeFiles/myProject.dir/src/imuTest.s
+MainDriver/CMakeFiles/myProject.dir/src/vacuumTest.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/myProject.dir/src/vacuumTest.s"
+	cd /home/pi/CMake_SummerProj/build/MainDriver && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/CMake_SummerProj/MainDriver/src/vacuumTest.cpp -o CMakeFiles/myProject.dir/src/vacuumTest.s
 
 # Object files for target myProject
 myProject_OBJECTS = \
-"CMakeFiles/myProject.dir/src/imuTest.o"
+"CMakeFiles/myProject.dir/src/vacuumTest.o"
 
 # External object files for target myProject
 myProject_EXTERNAL_OBJECTS =
 
-MainDriver/myProject: MainDriver/CMakeFiles/myProject.dir/src/imuTest.o
+MainDriver/myProject: MainDriver/CMakeFiles/myProject.dir/src/vacuumTest.o
 MainDriver/myProject: MainDriver/CMakeFiles/myProject.dir/build.make
 MainDriver/myProject: Library1/libLibrary1.so
 MainDriver/myProject: IMU/libIMU.so

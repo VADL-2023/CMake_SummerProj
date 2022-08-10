@@ -46,6 +46,7 @@ int main(){
     mVN->disconnect();
 
     std::cout << "IMU: Disconnected" << std::endl;
+    std::cout << "POG" << std::endl;
 	}
     
     delete mVN;

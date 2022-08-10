@@ -12,7 +12,7 @@ private:
 
     std::ofstream mProgLog; // Program Output Log File, relative to current directory
 
-    time_t startTime;
+    clock_t startClock;
 
     vn::sensors::VnSensor* mIMU;
 

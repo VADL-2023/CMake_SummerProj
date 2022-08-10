@@ -213,19 +213,19 @@ myProject/fast:
 .PHONY : myProject/fast
 
 # target to build an object file
-src/imuTest.o:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f MainDriver/CMakeFiles/myProject.dir/build.make MainDriver/CMakeFiles/myProject.dir/src/imuTest.o
-.PHONY : src/imuTest.o
+src/vacuumTest.o:
+	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f MainDriver/CMakeFiles/myProject.dir/build.make MainDriver/CMakeFiles/myProject.dir/src/vacuumTest.o
+.PHONY : src/vacuumTest.o
 
 # target to preprocess a source file
-src/imuTest.i:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f MainDriver/CMakeFiles/myProject.dir/build.make MainDriver/CMakeFiles/myProject.dir/src/imuTest.i
-.PHONY : src/imuTest.i
+src/vacuumTest.i:
+	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f MainDriver/CMakeFiles/myProject.dir/build.make MainDriver/CMakeFiles/myProject.dir/src/vacuumTest.i
+.PHONY : src/vacuumTest.i
 
 # target to generate assembly for a file
-src/imuTest.s:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f MainDriver/CMakeFiles/myProject.dir/build.make MainDriver/CMakeFiles/myProject.dir/src/imuTest.s
-.PHONY : src/imuTest.s
+src/vacuumTest.s:
+	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f MainDriver/CMakeFiles/myProject.dir/build.make MainDriver/CMakeFiles/myProject.dir/src/vacuumTest.s
+.PHONY : src/vacuumTest.s
 
 # Help Target
 help:
@@ -242,9 +242,9 @@ help:
 	@echo "... package_source"
 	@echo "... rebuild_cache"
 	@echo "... myProject"
-	@echo "... src/imuTest.o"
-	@echo "... src/imuTest.i"
-	@echo "... src/imuTest.s"
+	@echo "... src/vacuumTest.o"
+	@echo "... src/vacuumTest.i"
+	@echo "... src/vacuumTest.s"
 .PHONY : help
 
 

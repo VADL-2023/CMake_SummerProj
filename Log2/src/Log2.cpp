@@ -6,7 +6,9 @@ mIMU(imu)
     mFlightLog.open(flightFilename);
     mProgLog.open(programFilename);
     
-    time(&startTime);
+    startClock = std::clock();
+    
+    //std::cout << "Start Clock" <<startClock << std::endl;
     if (!(mFlightLog.is_open() && mProgLog.is_open())){
         std::cout << "Error opening file streams";
     }else {
@@ -24,12 +26,12 @@ Log2::~Log2() {
 }
 // May have to add 'vn::sensors::' before ImuMeasurementsRegister, hopefully not
 void Log2::write(vn::sensors::ImuMeasurementsRegister& data){
-    time_t curTime;
-    time(&curTime);
-
+    clock_t currentClock = std::clock();
+    
+    //std::cout << "Clock" <<currentClock << std::endl;
     char buf[256];
     sprintf(buf, "%g, %6.3f, %6.3f, %6.3f, %6.3f, %6.3f, %6.3f, %6.3f, %6.3f, %6.3f, %6.3f, %6.3f\n",
-            difftime(startTime, curTime), data.mag[0], data.mag[1], data.mag[2], data.accel[0], data.accel[1], data.accel[2], data.gyro[0], data.gyro[1], data.gyro[2], data.temp, data.pressure);
+            (currentClock - startClock)/133260.4, data.mag[0], data.mag[1], data.mag[2], data.accel[0], data.accel[1], data.accel[2], data.gyro[0], data.gyro[1], data.gyro[2], data.temp, data.pressure);
     mFlightLog << buf;
 }
 
