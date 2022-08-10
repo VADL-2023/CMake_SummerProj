@@ -1,10 +1,10 @@
 #include "../include/Log2.h"
 
-Log2::Log2(std::ofstream &flight, std::ofstream &program, vn::sensors::VnSensor* imu):
+Log2::Log2(std::string &flightFilename, std::string &programFilename, vn::sensors::VnSensor* imu):
 mIMU(imu)
 {
-    mFlightLog = flight; 
-    mProgLog = program;
+    mFlightLog.open(flightFilename);
+    mProgLog.open(programFilename);
     
     time(&startTime);
     if (!(mFlightLog.is_open() && mProgLog.is_open())){
