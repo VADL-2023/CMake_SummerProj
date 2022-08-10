@@ -123,4 +123,10 @@ config_IMU.hpp
 /home/pi/CMake_SummerProj/MainDriver/src/config_IMU.hpp
 pigpio.h
 /home/pi/CMake_SummerProj/MainDriver/src/pigpio.h
+stddef.h
+-
+unistd.h
+-
+math.h
+-
 

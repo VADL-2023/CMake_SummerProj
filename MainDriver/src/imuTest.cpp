@@ -38,7 +38,7 @@ int main(){
     //Clock 100 measurements(using streamlined method)
     time(&t_start2);
     for (int i = 0; i < 100; ++i){
-        response2 = ez.currentData();
+        response2 = ez.getNextData(1000);
         //float accel = response.accel[2];
         //std::cout << "Accel Z: " << accel << std::endl;        
     }
