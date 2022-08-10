@@ -59,15 +59,6 @@
 /home/pi/CMake_SummerProj/build/Log/CMakeFiles/rebuild_cache.dir
 /home/pi/CMake_SummerProj/build/Log/CMakeFiles/package.dir
 /home/pi/CMake_SummerProj/build/Log/CMakeFiles/LOG.dir
-/home/pi/CMake_SummerProj/build/Log2/CMakeFiles/install/strip.dir
-/home/pi/CMake_SummerProj/build/Log2/CMakeFiles/edit_cache.dir
-/home/pi/CMake_SummerProj/build/Log2/CMakeFiles/package_source.dir
-/home/pi/CMake_SummerProj/build/Log2/CMakeFiles/install.dir
-/home/pi/CMake_SummerProj/build/Log2/CMakeFiles/list_install_components.dir
-/home/pi/CMake_SummerProj/build/Log2/CMakeFiles/rebuild_cache.dir
-/home/pi/CMake_SummerProj/build/Log2/CMakeFiles/package.dir
-/home/pi/CMake_SummerProj/build/Log2/CMakeFiles/install/local.dir
-/home/pi/CMake_SummerProj/build/Log2/CMakeFiles/Log2.dir
 /home/pi/CMake_SummerProj/build/MainDriver/CMakeFiles/install/local.dir
 /home/pi/CMake_SummerProj/build/MainDriver/CMakeFiles/edit_cache.dir
 /home/pi/CMake_SummerProj/build/MainDriver/CMakeFiles/package_source.dir

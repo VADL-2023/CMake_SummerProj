@@ -6,7 +6,7 @@ include_directories(include)
 
 
 add_executable(myProject src/main.cpp)
-target_link_libraries(myProject Library1 VN IMU pigpio LOG Log2) #no log rn
+target_link_libraries(myProject Library1 VN IMU pigpio LOG) #no log rn
 
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)

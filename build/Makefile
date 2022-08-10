@@ -367,19 +367,6 @@ LOG/fast:
 .PHONY : LOG/fast
 
 #=============================================================================
-# Target rules for targets named Log2
-
-# Build rule for target.
-Log2: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Log2
-.PHONY : Log2
-
-# fast build rule for target.
-Log2/fast:
-	$(MAKE) $(MAKESILENT) -f Log2/CMakeFiles/Log2.dir/build.make Log2/CMakeFiles/Log2.dir/build
-.PHONY : Log2/fast
-
-#=============================================================================
 # Target rules for targets named myProject
 
 # Build rule for target.
@@ -409,7 +396,6 @@ help:
 	@echo "... IMU"
 	@echo "... LOG"
 	@echo "... Library1"
-	@echo "... Log2"
 	@echo "... VN"
 	@echo "... myProject"
 	@echo "... pig2vcd"

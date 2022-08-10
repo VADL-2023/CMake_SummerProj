@@ -14,12 +14,8 @@ float C2K = 273.15; // Celsius to Kelvin
 
 // flight parameters
 uint8_t finTiltAngle = 12; // [deg] fixed tilt angle for airfoil activation 
-float h0 = 522*ft2m; // [m] elevation of launch site relative to sea level
-float R = 287; // [J/kg/K] universal gas constant
-float B = 0.0065; // [K/m] temperature lapse rate
-float tBurn = 1.6; // [s] burn time of motor (K1100)
-float burnSafetyMargin = 3; // what fraction of the burn time do we check for being at certain g level
-// float accelRoof = 3; // how many g's does the program need to see in order for launch to be detected
+uint8_t tBurn = 1.6; //[s] motor burn time
+float accelRoof = 3; // how many g's does the program need to see in order for launch to be detected
 float samplingFrequency = 20; // [Hz] how fast does the IMU sample data
 int numDataPointsChecked4Launch = ceil(tBurn/burnSafetyMargin*samplingFrequency); // how many acceleration points are averaged to see if data set is over accelRoof
 int numDataPointsChecked4Apogee = 10; // how many altitude points must a new max not be found for apogee to be declared
@@ -50,7 +46,7 @@ float convertAngle2PulseWidth(float angle) {
 }
 
 // moves a pair of servos in opposite CW/CCW directions (but same linear direction) by the same amount (you are outside of the rocket facing radially inward)
-void moveServoPair(uservoTestBeginWaitTimeint8_t pin1, uint8_t pin2, float angle){
+void moveServoPair(int8_t pin1, uint8_t pin2, float angle){
     float pulseWidth1 = convertAngle2PulseWidth(angle);
     float pulseWidth2 = convertAngle2PulseWidth(-angle);
     

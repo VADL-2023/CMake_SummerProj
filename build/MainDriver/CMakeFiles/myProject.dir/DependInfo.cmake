@@ -15,17 +15,15 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../VectorNav/include/vn"
   "../IMU/include"
   "../Log/include"
-  "../Log2/include"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
   "/home/pi/CMake_SummerProj/build/Library1/CMakeFiles/Library1.dir/DependInfo.cmake"
   "/home/pi/CMake_SummerProj/build/Log/CMakeFiles/LOG.dir/DependInfo.cmake"
-  "/home/pi/CMake_SummerProj/build/Log2/CMakeFiles/Log2.dir/DependInfo.cmake"
   "/home/pi/CMake_SummerProj/build/IMU/CMakeFiles/IMU.dir/DependInfo.cmake"
-  "/home/pi/CMake_SummerProj/build/pigpio-master/CMakeFiles/pigpio.dir/DependInfo.cmake"
   "/home/pi/CMake_SummerProj/build/VectorNav/CMakeFiles/VN.dir/DependInfo.cmake"
+  "/home/pi/CMake_SummerProj/build/pigpio-master/CMakeFiles/pigpio.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.
