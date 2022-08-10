@@ -19,13 +19,13 @@ private:
 
 public:
 
-    Log2(std::string &flightFilename, std::string &programFilename, vn::sensors::VnSensor* imu);
+    Log2(std::string flightFilename, std::string programFilename, vn::sensors::VnSensor* imu);
 
     ~Log2();
     // May have to add 'vn::sensors::' before ImuMeasurementsRegister, hopefully not
     void write(vn::sensors::ImuMeasurementsRegister& data);
 
-    void write(std::string& outputString);
+    void write(std::string outputString);
 
 };
 

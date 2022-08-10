@@ -1,6 +1,6 @@
 #include "../include/Log2.h"
 
-Log2::Log2(std::string &flightFilename, std::string &programFilename, vn::sensors::VnSensor* imu):
+Log2::Log2(std::string flightFilename, std::string programFilename, vn::sensors::VnSensor* imu):
 mIMU(imu)
 {
     mFlightLog.open(flightFilename);
@@ -27,12 +27,12 @@ void Log2::write(vn::sensors::ImuMeasurementsRegister& data){
     time_t curTime;
     time(&curTime);
 
-    char* buf[256];
+    char buf[256];
     sprintf(buf, "%g, %6.3f, %6.3f, %6.3f, %6.3f, %6.3f, %6.3f, %6.3f, %6.3f, %6.3f, %6.3f, %6.3f\n",
-            difftime(startTime, curTime), data.mag[0], data.mag[1], data.mag[2], data.accel[0], data.accel[1], data.accel[2], data.gyro[0], data.gyro[1], data.gyro[2]);
+            difftime(startTime, curTime), data.mag[0], data.mag[1], data.mag[2], data.accel[0], data.accel[1], data.accel[2], data.gyro[0], data.gyro[1], data.gyro[2], data.temp, data.pressure);
     mFlightLog << buf;
 }
 
-void Log2::write(std::string& outputString){
+void Log2::write(std::string outputString){
     mProgLog << outputString << '\n';
 }

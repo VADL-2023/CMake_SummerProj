@@ -1,0 +1,3 @@
+Successfully opened both file output streams 
+POG BABY POG
+In Destructor of Log2 object, closing fstreams, setting pointer to null

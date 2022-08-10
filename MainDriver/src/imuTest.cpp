@@ -3,7 +3,7 @@
 #include "pigpio.h"
 #include <ctime>
 #include "ezasyncdata.h"
-
+#include "Log2.h"
 
 int main(){
     //Initialize pigpio (for servos)
@@ -11,6 +11,8 @@ int main(){
     
     // IMU Connection and Configuration
     VnSensor* mVN = new VnSensor();
+    Log2 mLog("flightLogData", "programLogData", mVN);
+    mLog.write("POG BABY POG");
     
     std::cout << "IMU Connecting" << std::endl;
     mVN->connect(IMU_PORT,IMU_BAUD_RATE);
@@ -27,8 +29,9 @@ int main(){
     time(&t_start1);
     for (int i = 0; i < 100; ++i){
         response1 = mVN->readImuMeasurements();
-        float accel = response.accel[2];
-        std::cout << "Accel Z: " << accel << std::endl;        
+        float pressure = response1.pressure;
+        std::cout << "Accel Z: " << pressure << std::endl;   
+        mLog.write(response1);     
     }
     time(&t_end1);
     
