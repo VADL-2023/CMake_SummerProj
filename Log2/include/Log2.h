@@ -3,6 +3,11 @@
 #include <fstream>
 #include <ctime>
 
+#include <chrono>
+#include <iostream>
+#include <sys/time.h>
+#include <ctime>
+
 #ifndef MYPROJECT_NEWLOG_H
 #define MYPROJECT_NEWLOG_H
 
@@ -23,7 +28,7 @@ public:
 
     ~Log2();
     // May have to add 'vn::sensors::' before ImuMeasurementsRegister, hopefully not
-    void write(vn::sensors::ImuMeasurementsRegister& data);
+    void write(vn::sensors::ImuMeasurementsRegister& data, double elapsedTime);
 
     void write(std::string outputString);
 

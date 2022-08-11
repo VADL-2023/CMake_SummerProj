@@ -12,7 +12,6 @@ int main(){
     // IMU Connection and Configuration
     VnSensor* mVN = new VnSensor();
     Log2 mLog("flightLogData", "programLogData", mVN);
-    mLog.write("POG BABY POG");
     
     std::cout << "IMU Connecting" << std::endl;
     mVN->connect(IMU_PORT,IMU_BAUD_RATE);

@@ -5,51 +5,87 @@
 #include "ezasyncdata.h"
 #include "Log2.h"
 
+#include <chrono>
+#include <iostream>
+#include <sys/time.h>
+#include <ctime>
+
 int main(){
     //Initialize pigpio (for servos)
     gpioInitialise();
     
     // IMU Connection and Configuration
     VnSensor* mVN = new VnSensor();
-    Log2 mLog("flightLogData", "programLogData", mVN);
-    mLog.write("POG BABY POG");
     
-    std::cout << "IMU Connecting" << std::endl;
+    //Initialize Log object to save data
+    Log2 mLog("VT Flight Data Log", "VT Program Data Log", mVN);
+    
+    auto mTime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+    mLog.write(to_string(mTime)); 
+    mLog.write("IMU Connecting");
+    mTime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+    mLog.write(to_string(mTime));
+    
     mVN->connect(IMU_PORT,IMU_BAUD_RATE);
     if (!mVN->isConnected()){
         throw "IMU Failed to Connect";
     }else{
-        std::cout << "IMU Connected\n" << std::endl;
+        mLog.write("IMU Connected");
+        mTime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+        mLog.write(to_string(mTime));
     }
 
     ImuMeasurementsRegister response1;
     time_t t_start1, t_end1;
-    time_t t_start2, t_end2;
+    //time_t t_start2, t_end2;
     //Clock 100 measurements(using simplest Library method)
     time(&t_start1);
-    for (int i = 0; i < 100; ++i){
+    
+    uint16_t nMeasurements = 3600;
+    
+    mLog.write("Number of samples: ");
+    mLog.write(to_string(nMeasurements));
+    mLog.write("Expect run time (us): ");
+    mLog.write(to_string(nMeasurements/.02));
+    
+    auto mTimeStart = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+    
+    float targetPressure = 98;
+    
+    for (int i = 0; i < nMeasurements; ++i){
         response1 = mVN->readImuMeasurements();
-        //pressure = response1.pressure;
-        //std::cout << "Accel Z: " << pressure << std::endl;   
-        mLog.write(response1);     
+        
+        if (response1.pressure < targetPressure){
+            mLog.write("actuate servos!");
+            mTime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+            mLog.write(to_string(mTime));
+         }
+        auto mTimeEnd = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+        double elapsedTime = double(mTimeEnd - mTimeStart);
+        mLog.write(response1, elapsedTime);     
     }
     time(&t_end1);
     
-    //Print Results
-    double elapsed_1  = double(t_end1 - t_start1);
-    std::cout << "Time taken by original method: " << elapsed_1 << " sec" <<std::endl;
-    std::cout << "Original frequency: " << 100/elapsed_1 << " Hz\n"<< std::endl;
+    //Log Results
+    double elapsed_1 = double(t_end1 - t_start1);
+    
+    mLog.write("Time taken (s): "); 
+    mLog.write(to_string(elapsed_1));
+    mLog.write("Frequency: ");
+    mLog.write(to_string(nMeasurements/elapsed_1));
     
     if (IMU_ACTIVE){
-    std::cout << "IMU: Disconnecting" << std::endl;
+    mLog.write("IMU: Disconnecting");
 
     mVN->disconnect();
 
-    std::cout << "IMU: Disconnected" << std::endl;
-    std::cout << "POG" << std::endl;
-	}
+    mLog.write("IMU: Disconnected");
+    mTime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+    mLog.write(to_string(mTime));
+    
+    }
     
     delete mVN;
-
+    mLog.write("END");
 	return 0;
 }
