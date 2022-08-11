@@ -5,10 +5,10 @@
 #include "ezasyncdata.h"
 #include "Log2.h"
 
-#include <chrono>
-#include <iostream>
-#include <sys/time.h>
-#include <ctime>
+//#include <chrono>
+//#include <iostream>
+//#include <sys/time.h>
+//#include <ctime>
 
 int main(){
     //Initialize pigpio (for servos)
@@ -17,8 +17,22 @@ int main(){
     // IMU Connection and Configuration
     VnSensor* mVN = new VnSensor();
     
+    uint16_t nMeasurements = 3600;
+    float targetPressure = 97;
+    bool targetDetected = false;
+    
     //Initialize Log object to save data
-    Log2 mLog("VT Flight Data Log", "VT Program Data Log", mVN);
+    Log2 mLog("VT Flight Data Log 2", "VT Program Data Log 2", mVN);
+    
+    mLog.write("Date: 8/11");
+    mLog.write("Test Number: 2");
+    mLog.write("Number of samples: ");
+    mLog.write(to_string(nMeasurements));
+    mLog.write("Expected run time (us): ");
+    mLog.write(to_string(nMeasurements/.02));
+    mLog.write("Deployment pressure: ");
+    mLog.write(to_string(targetPressure));
+    mLog.write("-----------------------------");
     
     auto mTime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
     mLog.write(to_string(mTime)); 
@@ -40,23 +54,24 @@ int main(){
     //time_t t_start2, t_end2;
     //Clock 100 measurements(using simplest Library method)
     time(&t_start1);
-    
-    uint16_t nMeasurements = 3600;
-    
-    mLog.write("Number of samples: ");
-    mLog.write(to_string(nMeasurements));
-    mLog.write("Expect run time (us): ");
-    mLog.write(to_string(nMeasurements/.02));
-    
+
     auto mTimeStart = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
-    
-    float targetPressure = 98;
     
     for (int i = 0; i < nMeasurements; ++i){
         response1 = mVN->readImuMeasurements();
         
-        if (response1.pressure < targetPressure){
-            mLog.write("actuate servos!");
+        if (response1.pressure < targetPressure && !targetDetected){
+            targetDetected = true;
+            mLog.write("Actuate Servos!");
+            mLog.write(to_string(response1.pressure));
+            mTime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+            mLog.write(to_string(mTime));
+         }
+         
+         if (response1.pressure > (targetPressure + 1) && targetDetected){
+            targetDetected = false;
+            mLog.write("Descending back down!");
+            mLog.write(to_string(response1.pressure));
             mTime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
             mLog.write(to_string(mTime));
          }

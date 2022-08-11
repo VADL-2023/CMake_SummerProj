@@ -1,0 +1,31 @@
+Start Clock379217
+Successfully opened both file output streams 
+Date: 8/11
+Test Number: 2
+Number of samples: 
+3600
+Expected run time (us): 
+180000.000000
+Deployment pressure: 
+97.000000
+-----------------------------
+1660244922302
+IMU Connecting
+1660244922302
+IMU Connected
+1660244922308
+Actuate Servos!
+96.945000
+1660244967058
+Descending back down!
+98.018997
+1660245071560
+Time taken (s): 
+180.000000
+Frequency: 
+20.000000
+IMU: Disconnecting
+IMU: Disconnected
+1660245102312
+END
+In Destructor of Log2 object, closing fstreams, setting pointer to null
