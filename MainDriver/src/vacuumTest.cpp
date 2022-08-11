@@ -17,15 +17,15 @@ int main(){
     // IMU Connection and Configuration
     VnSensor* mVN = new VnSensor();
     
-    uint16_t nMeasurements = 3600;
-    float targetPressure = 97;
+    uint16_t nMeasurements = 2400;
+    float targetPressure = 98.5;
     bool targetDetected = false;
     
     //Initialize Log object to save data
-    Log2 mLog("VT Flight Data Log 2", "VT Program Data Log 2", mVN);
+    Log2 mLog("VT Flight Data Log 3", "VT Program Data Log 3", mVN);
     
     mLog.write("Date: 8/11");
-    mLog.write("Test Number: 2");
+    mLog.write("Test Number: 3");
     mLog.write("Number of samples: ");
     mLog.write(to_string(nMeasurements));
     mLog.write("Expected run time (us): ");
@@ -68,7 +68,7 @@ int main(){
             mLog.write(to_string(mTime));
          }
          
-         if (response1.pressure > (targetPressure + 1) && targetDetected){
+         if (response1.pressure > (targetPressure + .5) && targetDetected){
             targetDetected = false;
             mLog.write("Descending back down!");
             mLog.write(to_string(response1.pressure));
