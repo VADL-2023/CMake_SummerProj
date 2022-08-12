@@ -1,7 +1,8 @@
 include_directories(include)
-add_library(LOG
-        src/LOG.cpp
+
+add_library(Log
+        src/Log.cpp
         )
 
-target_link_libraries(LOG IMU VN)
-target_include_directories(LOG PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_link_libraries(Log VN)
+target_include_directories(Log PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)

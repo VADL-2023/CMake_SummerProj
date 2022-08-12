@@ -76,7 +76,7 @@ all: Library1/all
 all: VectorNav/all
 all: pigpio-master/all
 all: IMU/all
-all: Log2/all
+all: Log/all
 all: MainDriver/all
 
 .PHONY : all
@@ -86,7 +86,7 @@ preinstall: Library1/preinstall
 preinstall: VectorNav/preinstall
 preinstall: pigpio-master/preinstall
 preinstall: IMU/preinstall
-preinstall: Log2/preinstall
+preinstall: Log/preinstall
 preinstall: MainDriver/preinstall
 
 .PHONY : preinstall
@@ -96,7 +96,7 @@ clean: Library1/clean
 clean: VectorNav/clean
 clean: pigpio-master/clean
 clean: IMU/clean
-clean: Log2/clean
+clean: Log/clean
 clean: MainDriver/clean
 
 .PHONY : clean
@@ -138,22 +138,22 @@ Library1/clean: Library1/CMakeFiles/Library1.dir/clean
 .PHONY : Library1/clean
 
 #=============================================================================
-# Directory level rules for directory Log2
+# Directory level rules for directory Log
 
 # Recursive "all" directory target.
-Log2/all: Log2/CMakeFiles/Log2.dir/all
+Log/all: Log/CMakeFiles/Log.dir/all
 
-.PHONY : Log2/all
+.PHONY : Log/all
 
 # Recursive "preinstall" directory target.
-Log2/preinstall:
+Log/preinstall:
 
-.PHONY : Log2/preinstall
+.PHONY : Log/preinstall
 
 # Recursive "clean" directory target.
-Log2/clean: Log2/CMakeFiles/Log2.dir/clean
+Log/clean: Log/CMakeFiles/Log.dir/clean
 
-.PHONY : Log2/clean
+.PHONY : Log/clean
 
 #=============================================================================
 # Directory level rules for directory MainDriver
@@ -551,31 +551,31 @@ IMU/CMakeFiles/IMU.dir/clean:
 .PHONY : IMU/CMakeFiles/IMU.dir/clean
 
 #=============================================================================
-# Target rules for target Log2/CMakeFiles/Log2.dir
+# Target rules for target Log/CMakeFiles/Log.dir
 
 # All Build rule for target.
-Log2/CMakeFiles/Log2.dir/all: VectorNav/CMakeFiles/VN.dir/all
-	$(MAKE) $(MAKESILENT) -f Log2/CMakeFiles/Log2.dir/build.make Log2/CMakeFiles/Log2.dir/depend
-	$(MAKE) $(MAKESILENT) -f Log2/CMakeFiles/Log2.dir/build.make Log2/CMakeFiles/Log2.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pi/CMake_SummerProj/build/CMakeFiles --progress-num=7,8 "Built target Log2"
-.PHONY : Log2/CMakeFiles/Log2.dir/all
+Log/CMakeFiles/Log.dir/all: VectorNav/CMakeFiles/VN.dir/all
+	$(MAKE) $(MAKESILENT) -f Log/CMakeFiles/Log.dir/build.make Log/CMakeFiles/Log.dir/depend
+	$(MAKE) $(MAKESILENT) -f Log/CMakeFiles/Log.dir/build.make Log/CMakeFiles/Log.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pi/CMake_SummerProj/build/CMakeFiles --progress-num=7,8 "Built target Log"
+.PHONY : Log/CMakeFiles/Log.dir/all
 
 # Build rule for subdir invocation for target.
-Log2/CMakeFiles/Log2.dir/rule: cmake_check_build_system
+Log/CMakeFiles/Log.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/CMake_SummerProj/build/CMakeFiles 24
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Log2/CMakeFiles/Log2.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Log/CMakeFiles/Log.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/CMake_SummerProj/build/CMakeFiles 0
-.PHONY : Log2/CMakeFiles/Log2.dir/rule
+.PHONY : Log/CMakeFiles/Log.dir/rule
 
 # Convenience name for target.
-Log2: Log2/CMakeFiles/Log2.dir/rule
+Log: Log/CMakeFiles/Log.dir/rule
 
-.PHONY : Log2
+.PHONY : Log
 
 # clean rule for target.
-Log2/CMakeFiles/Log2.dir/clean:
-	$(MAKE) $(MAKESILENT) -f Log2/CMakeFiles/Log2.dir/build.make Log2/CMakeFiles/Log2.dir/clean
-.PHONY : Log2/CMakeFiles/Log2.dir/clean
+Log/CMakeFiles/Log.dir/clean:
+	$(MAKE) $(MAKESILENT) -f Log/CMakeFiles/Log.dir/build.make Log/CMakeFiles/Log.dir/clean
+.PHONY : Log/CMakeFiles/Log.dir/clean
 
 #=============================================================================
 # Target rules for target MainDriver/CMakeFiles/myProject.dir
@@ -585,7 +585,7 @@ MainDriver/CMakeFiles/myProject.dir/all: Library1/CMakeFiles/Library1.dir/all
 MainDriver/CMakeFiles/myProject.dir/all: VectorNav/CMakeFiles/VN.dir/all
 MainDriver/CMakeFiles/myProject.dir/all: pigpio-master/CMakeFiles/pigpio.dir/all
 MainDriver/CMakeFiles/myProject.dir/all: IMU/CMakeFiles/IMU.dir/all
-MainDriver/CMakeFiles/myProject.dir/all: Log2/CMakeFiles/Log2.dir/all
+MainDriver/CMakeFiles/myProject.dir/all: Log/CMakeFiles/Log.dir/all
 	$(MAKE) $(MAKESILENT) -f MainDriver/CMakeFiles/myProject.dir/build.make MainDriver/CMakeFiles/myProject.dir/depend
 	$(MAKE) $(MAKESILENT) -f MainDriver/CMakeFiles/myProject.dir/build.make MainDriver/CMakeFiles/myProject.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pi/CMake_SummerProj/build/CMakeFiles --progress-num=31,32 "Built target myProject"

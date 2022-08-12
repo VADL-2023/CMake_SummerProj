@@ -119,8 +119,6 @@ registers.h
 /home/pi/CMake_SummerProj/Log2/include/registers.h
 fstream
 -
-ctime
--
 chrono
 -
 iostream

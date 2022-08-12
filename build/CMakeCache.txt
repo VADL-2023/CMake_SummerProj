@@ -294,6 +294,9 @@ LOG_LIB_DEPENDS:STATIC=general;IMU;general;VN;
 //Dependencies for the target
 Log2_LIB_DEPENDS:STATIC=general;VN;
 
+//Dependencies for the target
+Log_LIB_DEPENDS:STATIC=general;VN;
+
 //Path to a file.
 PYTHON_INCLUDE_DIR:PATH=/usr/include/python3.9
 

@@ -1,9 +1,8 @@
 #include "sensors.h"
 #include "registers.h"
 #include <fstream>
-#include <ctime>
 
-#include <chrono>
+#include <chrono> 
 #include <iostream>
 #include <sys/time.h>
 #include <ctime>
@@ -11,26 +10,31 @@
 #ifndef MYPROJECT_NEWLOG_H
 #define MYPROJECT_NEWLOG_H
 
-class Log2{
+class Log{    
+
+    double startTime;
+    double currentTime;
+
 private:
     std::ofstream mFlightLog; // Flight Data Log File, relative to current directory
 
     std::ofstream mProgLog; // Program Output Log File, relative to current directory
 
-    clock_t startClock;
-
-    vn::sensors::VnSensor* mIMU;
-
+    vn::sensors::VnSensor* mIMU;    
 
 public:
 
-    Log2(std::string flightFilename, std::string programFilename, vn::sensors::VnSensor* imu);
+    Log(std::string flightFilename, std::string programFilename, vn::sensors::VnSensor* imu, double sTime);
 
-    ~Log2();
-    // May have to add 'vn::sensors::' before ImuMeasurementsRegister, hopefully not
-    void write(vn::sensors::ImuMeasurementsRegister& data, double elapsedTime);
+    ~Log();
 
+    void write(vn::sensors::ImuMeasurementsRegister& data);
+    
     void write(std::string outputString);
+
+    void writeTime(std::string outputString);
+    
+    double elapsedTime();
 
 };
 

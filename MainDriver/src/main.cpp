@@ -6,6 +6,7 @@
 #include <math.h>
 #include <algorithm> // array functions?
 #include <iostream>
+#include <Log>
 
 // conversion factors
 float ft2m = 0.3048; // [m/ft]
@@ -26,7 +27,7 @@ float samplingFrequency = 20; // [Hz] how fast does the IMU sample data
 float burnSafetyMargin = 3; // what fraction of t_burn will we check acceleration samples for
 int numDataPointsChecked4Launch = ceil(tBurn/burnSafetyMargin*samplingFrequency); // how many acceleration points are averaged to see if data set is over accelRoof
 int numDataPointsChecked4Apogee = 10; // how many altitude points must a new max not be found for apogee to be declared
-float zDeploy = h0 + 650*ft2m; // [ft] altitude at which fins will deploy relative to sea level
+float zDeploy = 650*ft2m; // [ft] altitude at which fins will deploy above ground level
 
 // servo parameters
 uint16_t pulseMin = 500; // [usecs] pulse width to send servo to one end of motion range
@@ -74,10 +75,10 @@ void testServo(uint8_t pin, float angle) {
     gpioSleep(0,servoTestTiltWaitTime,0);
 }
 
-// given T0 [K], P0 [kPa], g0 [m/s^2], P [kPa], returns altitude relative to baseline
+// given T0 [K], P0 [kPa], g0 [m/s^2], P [kPa], returns altitude above ground level
 // 0 indicates baseline measurement, R and B are constants
 float pressure2Altitude(float T0, float P0, float g0, float P) {
-    return h0 + T0/B*(pow(P/P0,-R*B/g0) - 1);
+    return T0/B*(pow(P/P0,-R*B/g0) - 1);
 }
 
 // given a float array, calculates the average of all the arrays values
@@ -118,6 +119,10 @@ int main(){
     
         // IMU Connection and Configuration
         VnSensor* mVN = new VnSensor();
+        
+        // initialize log (erases every loop?)
+        Log2 Log("Flight Data Log", "Program Data Log ", mVN);
+    
         std::cout << "IMU Connecting" << std::endl;
         mVN->connect(IMU_PORT,IMU_BAUD_RATE);
         if (!mVN->isConnected()){

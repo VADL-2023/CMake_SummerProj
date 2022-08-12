@@ -101,7 +101,7 @@ MainDriver/myProject: MainDriver/CMakeFiles/myProject.dir/build.make
 MainDriver/myProject: Library1/libLibrary1.so
 MainDriver/myProject: IMU/libIMU.so
 MainDriver/myProject: pigpio-master/libpigpio.so
-MainDriver/myProject: Log2/libLog2.so
+MainDriver/myProject: Log/libLog.so
 MainDriver/myProject: /usr/lib/aarch64-linux-gnu/libpython3.9.so
 MainDriver/myProject: VectorNav/libVN.so
 MainDriver/myProject: MainDriver/CMakeFiles/myProject.dir/link.txt

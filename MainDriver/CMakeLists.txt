@@ -6,7 +6,7 @@ include_directories(include)
 
 
 add_executable(myProject src/vacuumTest.cpp)
-target_link_libraries(myProject Library1 VN IMU pigpio Log2)
+target_link_libraries(myProject Library1 VN IMU pigpio Log)
 
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)

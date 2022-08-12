@@ -198,34 +198,34 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-Log/CMakeFiles/LOG.dir/rule:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Log/CMakeFiles/LOG.dir/rule
-.PHONY : Log/CMakeFiles/LOG.dir/rule
+Log/CMakeFiles/Log.dir/rule:
+	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Log/CMakeFiles/Log.dir/rule
+.PHONY : Log/CMakeFiles/Log.dir/rule
 
 # Convenience name for target.
-LOG: Log/CMakeFiles/LOG.dir/rule
+Log: Log/CMakeFiles/Log.dir/rule
 
-.PHONY : LOG
+.PHONY : Log
 
 # fast build rule for target.
-LOG/fast:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f Log/CMakeFiles/LOG.dir/build.make Log/CMakeFiles/LOG.dir/build
-.PHONY : LOG/fast
+Log/fast:
+	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f Log/CMakeFiles/Log.dir/build.make Log/CMakeFiles/Log.dir/build
+.PHONY : Log/fast
 
 # target to build an object file
-src/LOG.o:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f Log/CMakeFiles/LOG.dir/build.make Log/CMakeFiles/LOG.dir/src/LOG.o
-.PHONY : src/LOG.o
+src/Log.o:
+	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f Log/CMakeFiles/Log.dir/build.make Log/CMakeFiles/Log.dir/src/Log.o
+.PHONY : src/Log.o
 
 # target to preprocess a source file
-src/LOG.i:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f Log/CMakeFiles/LOG.dir/build.make Log/CMakeFiles/LOG.dir/src/LOG.i
-.PHONY : src/LOG.i
+src/Log.i:
+	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f Log/CMakeFiles/Log.dir/build.make Log/CMakeFiles/Log.dir/src/Log.i
+.PHONY : src/Log.i
 
 # target to generate assembly for a file
-src/LOG.s:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f Log/CMakeFiles/LOG.dir/build.make Log/CMakeFiles/LOG.dir/src/LOG.s
-.PHONY : src/LOG.s
+src/Log.s:
+	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f Log/CMakeFiles/Log.dir/build.make Log/CMakeFiles/Log.dir/src/Log.s
+.PHONY : src/Log.s
 
 # Help Target
 help:
@@ -241,10 +241,10 @@ help:
 	@echo "... package"
 	@echo "... package_source"
 	@echo "... rebuild_cache"
-	@echo "... LOG"
-	@echo "... src/LOG.o"
-	@echo "... src/LOG.i"
-	@echo "... src/LOG.s"
+	@echo "... Log"
+	@echo "... src/Log.o"
+	@echo "... src/Log.i"
+	@echo "... src/Log.s"
 .PHONY : help
 
 

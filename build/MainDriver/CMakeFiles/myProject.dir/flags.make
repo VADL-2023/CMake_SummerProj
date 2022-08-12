@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/pi/CMake_SummerProj/MainDriver/include -I/home/pi/CMake_SummerProj/Library1/include -I/home/pi/CMake_SummerProj/VectorNav/include/vn -I/home/pi/CMake_SummerProj/IMU/include -I/home/pi/CMake_SummerProj/Log2/include
+CXX_INCLUDES = -I/home/pi/CMake_SummerProj/MainDriver/include -I/home/pi/CMake_SummerProj/Library1/include -I/home/pi/CMake_SummerProj/VectorNav/include/vn -I/home/pi/CMake_SummerProj/IMU/include -I/home/pi/CMake_SummerProj/Log/include
 
 CXX_FLAGS = 
 
