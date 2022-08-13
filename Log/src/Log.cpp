@@ -16,7 +16,7 @@ mIMU(imu)
         mProgLog << "Error opening file streams";
     }else {
         mFlightLog
-                << "Time, MagX, MagY, MagZ, AccelX, AccelY, AccelZ, Yaw, Pitch, Roll, Temperature, Pressure, Altitude\n";
+                << "Time\t MagX\t MagY\t MagZ\t AccelX\t AccelY\t AccelZ\t Yaw\t Pitch\t Roll\t Temperature\t Pressure\t Altitude\n";
         mProgLog << "Start Time: " << std::__cxx11::to_string(startTime) << "\n";
         mProgLog << "Successfully opened both file output streams \n";
     }
@@ -41,7 +41,7 @@ void Log::write(vn::sensors::ImuMeasurementsRegister& data){
     }
     
     char buf[256];
-    sprintf(buf, "%g, %6.3f, %6.3f, %6.3f, %6.3f, %6.3f, %6.3f, %6.3f, %6.3f, %6.3f, %6.3f, %6.3f, %6.3f,\n",
+    sprintf(buf, "%g\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\n",
             elapsedTime(), data.mag[0], data.mag[1], data.mag[2], data.accel[0], data.accel[1], data.accel[2], data.gyro[0], data.gyro[1], data.gyro[2], data.temp, data.pressure, currentAlt);
     mFlightLog << buf;
 }
