@@ -1,0 +1,35 @@
+Start Time: 1660350565346.000000
+Successfully opened both file output streams 
+$Date: 8/12 (1.000000)$
+Flight Name: MAIN TEST
+
+Verify Critical Parameters: 
+Deployment Altitude: 198.119995 Meters AGL
+Deployment Altitude: 650.000000 Feet AGL
+Deployment Angle: 12 Degrees
+Motor Burn Time: 1 Seconds
+Motor Burn Safety Factor: 3.000000
+Trigger Acceleration: 1.500000 g
+Launch Detection Samples: 7
+Apogee Detection Samples: 10
+Landing Detection Samples: 200
+-----------------------------------
+
+
+
+GPIO Initialized
+IMU Connecting
+IMU Connected
+Testing Servo Activation
+Testing North...
+Testing East...
+Testing South...
+Testing West...
+Calibrating Baseline Parameters. Hold Still. (16281.000000)
+Calibrated Temperature: 30.700012 C
+Calibrated Pressure: 99.669052 kPa
+Calibrated Gravity: 9.508387 m/s^2
+Are we a GO for flight? (18535.000000)
+GO (19730.000000)
+In Destructor of Log2 object, closing fstreams, setting pointer to null
+End Time: 1660350585076.000000

@@ -35,7 +35,7 @@ uint8_t servoPinE = 12;
 uint8_t servoPinS = 13;
 uint8_t servoPinW = 19;
 
-uint16_t nMeasurements = 2000;
+uint16_t nMeasurements = 30;
 float targetAlt = 550*ft2m; //AGL (m)
 //float targetAltMin = 500*ft2m; //AGL (m)
 bool targetDetected = false;
@@ -58,7 +58,7 @@ void moveServoPair(int8_t pin1, uint8_t pin2, float angle){
 // moves a single servo on [pin] to specified angle [deg]
 void moveServo(uint8_t pin, float angle) {
     float pulseWidth = convertAngle2PulseWidth(angle);
-    gpioServo(pin,pulseWidth);
+    gpioServo(pin, pulseWidth);
 }
 
 // given T0 [K], P0 [kPa], g0 [m/s^2], P [kPa], returns altitude above ground level
@@ -89,12 +89,7 @@ int main(){
         moveServoPair(servoPinN, servoPinS, moveangle);
         sleep(1);
         moveServoPair(servoPinE, servoPinW, moveangle);
-        //sleep(3);
-        
-        //sleep(1);
-        // moveServo(servoPinS, moveangle);
-        //moveServo(servoPinE, moveangle);
-        //moveServo(servoPinW, moveangle);
+        sleep(1);
     }
     
     
@@ -127,25 +122,27 @@ int main(){
     //P0 = response.pressure;
     //T0 = response.temp;
     //g0 = sqrt(pow(response.accel[0],2) + pow(response.accel[1],2) + pow(response.accel[2],2));
+
+    auto startTime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+    
+    //Initialize Log object to save data
+    Log mLog("VT Flight Data 9", "VT Program Data 9", mVN, double(startTime));
     
     P0 = 99.73;
     T0 = 30.7;
     g0 = 9.5;
     
-    auto startTime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
-    
-    //Initialize Log object to save data
-    Log mLog("VT Flight Data 8", "VT Program Data 8", mVN, double(startTime));
+    mLog.saveBaselineParameters(R, B, P0, T0, g0);
     
     mLog.write("Date: 8/12");
-    mLog.write("Test Number: 8");
+    mLog.write("Test Number: 9");
     mLog.write("Number of samples: ");
     mLog.write(to_string(nMeasurements));
     mLog.write("Expected run time (us): ");
     mLog.write(to_string(nMeasurements/.02));
     mLog.write("Deployment altitude: ");
     mLog.write(to_string(targetAlt));
-    mLog.writeTime("-----------------------------------");
+    mLog.write("-----------------------------------");
     mLog.write("IMU Connecting");
 
     mVN->connect(IMU_PORT,IMU_BAUD_RATE);
@@ -162,15 +159,23 @@ int main(){
     
     for (int i = 0; i < nMeasurements; ++i){
         response = mVN->readImuMeasurements();
+     
+     /*   
+        if (i % 5){
+            mLog.writeDelim("TEST DELIM");
+        } else {
+            mLog.write("IGNORE");
+        }
+       */
         
-        mLog.write(to_string(pressure2Altitude(T0, P0, g0, response.pressure)));
+        //mLog.write(to_string(pressure2Altitude(T0, P0, g0, response.pressure)));
         
         if (pressure2Altitude(T0, P0, g0, response.pressure) > targetAlt && !targetDetected){
             targetDetected = true;
             apogeeReady = true;
             mLog.writeTime("Actuate Servos!");
-            mLog.write(to_string(response.pressure));
-            mLog.write(to_string(pressure2Altitude(T0, P0, g0, response.pressure)));
+            //mLog.write(to_string(response.pressure));
+            //mLog.write(to_string(pressure2Altitude(T0, P0, g0, response.pressure)));
             
             if (runServos) {
                 if (NandS){

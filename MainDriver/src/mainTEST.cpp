@@ -1,3 +1,5 @@
+//TEST COPY OF MAIN
+
 #include "sensors.h"
 #include "config_IMU.hpp" //Copy this file into MainDriver includes -> currently in IMU
 #include "pigpio.h"
@@ -22,7 +24,7 @@ float B = 6.5*km2m; //[K/m] variation of temperature within the troposphere
 float h0 = 522*ft2m; // [m] launch site altitude ASL
 uint8_t airfoilTiltAngle = 12; // [deg] fixed tilt angle for airfoil activation 
 uint8_t tBurn = 1.6; //[s] motor burn time
-float accelRoof = 3; // how many g's does the program need to see in order for launch to be detected
+float accelRoof = 1.5; // how many g's does the program need to see in order for launch to be detected
 float samplingFrequency = 20; // [Hz] how fast does the IMU sample data
 float burnSafetyMargin = 3; // what fraction of t_burn will we check acceleration samples for
 int numDataPointsChecked4Launch = ceil(tBurn/burnSafetyMargin*samplingFrequency); // how many acceleration points are averaged to see if data set is over accelRoof
@@ -127,10 +129,10 @@ int main(){
     ImuMeasurementsRegister response;
     
     startTime = getCurrentTime();
-    Log mLog("Flight Data Log", "Program Data Log", mVN, startTime);
+    Log mLog("Flight Data Log MAINTEST", "Program Data Log MAINTEST", mVN, startTime);
     
-    mLog.write("Date: 8/20");
-    mLog.write("Flight Name: AAC TEST 1\n");
+    mLog.writeDelim("Date: 8/12");
+    mLog.write("Flight Name: MAIN TEST\n");
     mLog.write("Verify Critical Parameters: ");
     mLog.write("Deployment Altitude: " + to_string(zDeploy) + " Meters AGL");
     mLog.write("Deployment Altitude: " + to_string(zDeploy*m2ft) + " Feet AGL");
@@ -143,7 +145,7 @@ int main(){
     mLog.write("Landing Detection Samples: " + to_string(numDataPointsChecked4Landing));
     mLog.write("-----------------------------------\n\n\n");
     sleep(3);
-    
+        
     // begin GO-NOGO Protocol
     string go = "NOGO";
     
@@ -180,6 +182,9 @@ int main(){
         }else{
             mLog.write("IMU Connected");
         }
+        
+        moveServoPair(servoPinN, servoPinS, 90);
+        moveServoPair(servoPinE, servoPinW, 90);
         
         // test all 4 servos
         mLog.write("Testing Servo Activation");
@@ -219,6 +224,8 @@ int main(){
         mLog.writeTime("Are we a GO for flight?");
         std::cin >> go;
         mLog.writeTime(go);
+        //return 0;
+
         
         // if no-go, undo initializations so we can try again
         /*
