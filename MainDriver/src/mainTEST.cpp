@@ -1,5 +1,3 @@
-//TEST COPY OF MAIN
-
 #include "sensors.h"
 #include "config_IMU.hpp" //Copy this file into MainDriver includes -> currently in IMU
 #include "pigpio.h"
@@ -24,13 +22,13 @@ float B = 6.5*km2m; //[K/m] variation of temperature within the troposphere
 float h0 = 522*ft2m; // [m] launch site altitude ASL
 uint8_t airfoilTiltAngle = 12; // [deg] fixed tilt angle for airfoil activation 
 uint8_t tBurn = 1.6; //[s] motor burn time
-float accelRoof = 1.5; // how many g's does the program need to see in order for launch to be detected
+float accelRoof = 1.6; // how many g's does the program need to see in order for launch to be detected
 float samplingFrequency = 20; // [Hz] how fast does the IMU sample data
 float burnSafetyMargin = 3; // what fraction of t_burn will we check acceleration samples for
 int numDataPointsChecked4Launch = ceil(tBurn/burnSafetyMargin*samplingFrequency); // how many acceleration points are averaged to see if data set is over accelRoof
-int numDataPointsChecked4Apogee = 10; // how many altitude points must a new max not be found for apogee to be declared
+int numDataPointsChecked4Apogee = 5; // how many altitude points must a new max not be found for apogee to be declared
 int numDataPointsChecked4Landing = 10*samplingFrequency; // how many altitude points must a new min not be found for landing to be declared
-float zDeploy = 650*ft2m; // [m] altitude at which fins will deploy above ground level
+float zDeploy = 550*ft2m; // [m] altitude at which fins will deploy above ground level
 
 // servo parameters
 uint16_t pulseMin = 500; // [usecs] pulse width to send servo to one end of motion range
@@ -112,6 +110,14 @@ void activeSleep(int sleepTime, VnSensor* imu, ImuMeasurementsRegister response,
     }
 }    
   */  
+
+void timeTest(long startTime, long testTime){
+    if (getCurrentTime() >= startTime + testTime){
+        //delete Log log;
+        exit(0);
+    }
+}
+
     
 int main(){
     /* P R E - F L I G H T  S T A G E*//////////////////////////////////
@@ -129,13 +135,13 @@ int main(){
     ImuMeasurementsRegister response;
     
     startTime = getCurrentTime();
-    Log mLog("Flight Data Log MAINTEST", "Program Data Log MAINTEST", mVN, startTime);
+    Log mLog("Flight Data Log MAINTEST 6", "Program Data Log MAINTEST 6", mVN, startTime);
     
-    mLog.writeDelim("Date: 8/12");
-    mLog.write("Flight Name: MAIN TEST\n");
+    mLog.write("Date: 8/13");
+    mLog.write("Flight Name: MainTEST 6\n");
     mLog.write("Verify Critical Parameters: ");
-    mLog.write("Deployment Altitude: " + to_string(zDeploy) + " Meters AGL");
     mLog.write("Deployment Altitude: " + to_string(zDeploy*m2ft) + " Feet AGL");
+    mLog.write("Deployment Altitude: " + to_string(zDeploy) + " Meters AGL");
     mLog.write("Deployment Angle: " + to_string(airfoilTiltAngle) + " Degrees");
     mLog.write("Motor Burn Time: " + to_string(tBurn) + " Seconds");
     mLog.write("Motor Burn Safety Factor: " + to_string(burnSafetyMargin));
@@ -144,8 +150,8 @@ int main(){
     mLog.write("Apogee Detection Samples: " + to_string(numDataPointsChecked4Apogee));
     mLog.write("Landing Detection Samples: " + to_string(numDataPointsChecked4Landing));
     mLog.write("-----------------------------------\n\n\n");
-    sleep(3);
-        
+    sleep(1);
+
     // begin GO-NOGO Protocol
     string go = "NOGO";
     
@@ -167,14 +173,6 @@ int main(){
         gpioSetMode(servoPinS, PI_OUTPUT);
         gpioSetMode(servoPinW, PI_OUTPUT);
         
-        /*
-        // IMU Connection and Configuration
-        mVN = new VnSensor();
-        
-        // initialize log (erases every loop?)
-        startTime = getCurrentTime();
-        Log mLog("Flight Data Log", "Program Data Log", mVN, startTime);
-    */
         mLog.write("IMU Connecting");
         mVN->connect(IMU_PORT,IMU_BAUD_RATE);
         if (!mVN->isConnected()){
@@ -183,20 +181,19 @@ int main(){
             mLog.write("IMU Connected");
         }
         
-        moveServoPair(servoPinN, servoPinS, 90);
-        moveServoPair(servoPinE, servoPinW, 90);
-        
         // test all 4 servos
-        mLog.write("Testing Servo Activation");
-        sleep(servoTestBeginWaitTime);
-        mLog.write("Testing North...");
-        testServo(servoPinN,airfoilTiltAngle);
-        mLog.write("Testing East...");
-        testServo(servoPinE,airfoilTiltAngle);
-        mLog.write("Testing South...");
-        testServo(servoPinS,airfoilTiltAngle);
-        mLog.write("Testing West...");
-        testServo(servoPinW,airfoilTiltAngle);
+        //mLog.write("Testing Servo Activation");
+        //sleep(servoTestBeginWaitTime);
+        //mLog.write("Testing North...");
+        //testServo(servoPinN,airfoilTiltAngle);
+        //mLog.write("Testing East...");
+        //testServo(servoPinE,airfoilTiltAngle);
+        //mLog.write("Testing South...");
+        //testServo(servoPinS,airfoilTiltAngle);
+        //mLog.write("Testing West...");
+        //testServo(servoPinW,airfoilTiltAngle);
+        
+        //timeTest(startTime, 2);
         
         // calibrate ground level pressure and temperature
         pressureSum = 0;
@@ -224,46 +221,16 @@ int main(){
         mLog.writeTime("Are we a GO for flight?");
         std::cin >> go;
         mLog.writeTime(go);
-        //return 0;
-
         
-        // if no-go, undo initializations so we can try again
-        /*
-        if(go != "GO") {
-            if (IMU_ACTIVE){
-                mVN->disconnect();
-                mLog.write("IMU Disconnected");
-            }
-            delete mVN;
-            gpioTerminate();
-            mLog.write("GPIO Terminated");
-        } else { // if go, disconnect pointer so normal object can be created // this is weird pls take a look at this // I was getting object errors because this mVN is declared within the while loop, so it is not recognized outside of it. Destroy and create a new one. But does that defeat the whole checking initialization process?
-            if (IMU_ACTIVE){
-                //mVN->disconnect();
-                mLog.write("IMU Disconnected");
-                // delete mVN; // deleting older pointer here gives an error for some reason
-            }
-        }
-        */
     }
     
     mLog.writeTime("Pre-Flight Stage Completed");
     
-    //VnSensor mVN;
-    //mVN->connect(IMU_PORT,IMU_BAUD_RATE);
-    //ImuMeasurementsRegister response;
-    /*
-    if (!mVN->isConnected()){
-        throw "IMU Failed to Connect";
-        mLog.writeTime("DO NOT CONTINUE FLIGHT");
-    }else{
-        mLog.write("IMU Connected");
-    }
-    */
     
     /* L A U N C H  S T A G E */////////////////////////////////////////
     
     mLog.write("Ready for Assembly and Launch Rail");
+    mLog.write("-----------------------------------\n\n\n");
     
     float accelArray [numDataPointsChecked4Launch] = {};
     float accelAvg = 0;
@@ -280,7 +247,7 @@ int main(){
     }
     
     mLog.write("Average acceleration exceeded " + to_string(accelRoof*g0) + " m/s^2 over " + to_string(numDataPointsChecked4Launch) + " data points");
-    mLog.writeTime("Rocket Has Launched");
+    mLog.writeDelim("Rocket Has Launched");
     mLog.write("Waiting for Motor Burn Time");
     
     //activeSleep(tBurn, mVN, response, mLog); //NOT WORKING ATM
@@ -301,12 +268,12 @@ int main(){
         response = mVN->readImuMeasurements();
         mLog.write(response);
         zCurrent = pressure2Altitude(T0, P0, g0, response.pressure);
-        mLog.write(to_string(zCurrent));
+        //mLog.write(to_string(zCurrent));
     }
     
-    mLog.write("Deployment Altitude Reached");
+    mLog.writeDelim("Deployment Altitude Eached");
     moveServoPair(servoPinN, servoPinS, airfoilTiltAngle); //CHECK IF NEED TO CONTINOUSLY "MOVE" SERVOS TO DEPLOY ANGLE
-    mLog.writeTime("Fins Deployed");
+    mLog.writeTime("Airfoils Deployed");
     
     /* C O A S T I N G  S T A G E*//////////////////////////////////////
     
@@ -314,7 +281,7 @@ int main(){
     float maxAltitude = 0;
     int samplesSinceMaxHasChanged = 0;
     
-    mLog.write("Looking for apogee");
+    mLog.write("Looking for Apogee");
     
     // loop runs until we havent hit a new max altitude for numDataPointsChecked
     // i.e. we are not going up anymore
@@ -337,14 +304,43 @@ int main(){
         }
     }
     
-    mLog.write("Altitude has not reached a new max for " + to_string(numDataPointsChecked4Apogee) + " samples... retracting fins now.");
+    mLog.write("Altitude has not reached a new max for " + to_string(numDataPointsChecked4Apogee) + " samples... deploying second pair of airfoils.");
+    mLog.writeDelim("Apogee Detected");
     
-    moveServoPair(servoPinN,servoPinS,0); //Change to deploying other two servos
-    mLog.writeTime("Fins Undeployed");
+    moveServoPair(servoPinN,servoPinS,12); 
+    mLog.write("Second Pair of Airfoils Deployed");
     
     /* D E S C E N T  S T A G E *///////////////////////////////////////
     // all that needs to happen here is data keeps being saved and foils are kept at deploy angle
     //ADD END CONDITION
+    
+    zCurrentArray [numDataPointsChecked4Apogee] = {};
+    float minAltitude = 1000000;
+    int samplesSinceMinHasChanged = 0;
+    
+    while (samplesSinceMinHasChanged < numDataPointsChecked4Landing){
+        response = mVN->readImuMeasurements();
+        mLog.write(response);
+        zCurrent = pressure2Altitude(T0, P0, g0, response.pressure);
+        zCurrentArray[0] = zCurrent;
+        
+        if (zCurrent < minAltitude){
+            minAltitude = zCurrent;
+            samplesSinceMinHasChanged = 0;
+        } else{
+            ++samplesSinceMinHasChanged;
+        }
+        
+        // shift array values
+        for (int i = 0; i < numDataPointsChecked4Apogee; ++i) {
+            zCurrentArray[i+1] = zCurrentArray[i];
+        }
+    }
+        
+    mLog.write("Altitude has not reached a new max for " + to_string(numDataPointsChecked4Apogee) + " samples... ending program.");
+    mLog.writeDelim("Landing Detected");
+    mLog.write("\n");
+    //add ag check, time check
     
     if (IMU_ACTIVE){
         //mVN.disconnect();

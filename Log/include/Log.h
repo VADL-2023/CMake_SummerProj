@@ -12,17 +12,17 @@
 
 class Log{    
 
-    double startTime;
-    double currentTime;
-    std::string delim; 
 
 private:
     std::ofstream mFlightLog; // Flight Data Log File, relative to current directory
 
     std::ofstream mProgLog; // Program Output Log File, relative to current directory
 
-    vn::sensors::VnSensor* mIMU;    
-    
+    vn::sensors::VnSensor* mIMU;   
+     
+    double startTime;
+    double currentTime;
+    double sampleNumber;
     float pressure0;
     float temperature0;
     float accelg0;
@@ -30,6 +30,8 @@ private:
     float B;
     float currentAlt;
     bool savedParameters;
+    std::string delim;
+    
     
     float calcAlt(vn::sensors::ImuMeasurementsRegister& data);
     

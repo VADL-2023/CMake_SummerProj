@@ -5,6 +5,7 @@ mIMU(imu)
 {
     //initialize variables
     this->startTime = sTime;
+    this->sampleNumber = 0;
     this->savedParameters = false;
     this->delim = "$";
     
@@ -18,15 +19,14 @@ mIMU(imu)
         mFlightLog
                 << "Time\t MagX\t MagY\t MagZ\t AccelX\t AccelY\t AccelZ\t Yaw\t Pitch\t Roll\t Temperature\t Pressure\t Altitude\n";
         mProgLog << "Start Time: " << std::__cxx11::to_string(startTime) << "\n";
-        mProgLog << "Successfully opened both file output streams \n";
     }
 }
 
 // deletion of Log pointer, close flight and program data files
 Log::~Log() {
-    mProgLog << "In Destructor of Log2 object, closing fstreams, setting pointer to null\n";
     mProgLog << "End Time: ";
     mProgLog << std::__cxx11::to_string(startTime + elapsedTime()) << '\n';
+    mProgLog << "End Log";
     mFlightLog.close();
     mProgLog.close();
     mIMU = nullptr;
@@ -37,8 +37,10 @@ void Log::write(vn::sensors::ImuMeasurementsRegister& data){
     if (savedParameters){
         currentAlt = calcAlt(data);
     } else{
-        currentAlt = -1;
+        currentAlt = -99999;
     }
+    
+    ++sampleNumber;
     
     char buf[256];
     sprintf(buf, "%g\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\n",
@@ -55,14 +57,14 @@ void Log::write(std::string outputString){
 // write string to program data file with timestamp and to console
 void Log::writeTime(std::string outputString){
     std::cout << outputString << std::endl;
-    mProgLog << outputString + " (" + std::to_string(elapsedTime()) << ")\n";
+    mProgLog << outputString + " (" + std::to_string(sampleNumber) + " | " + std::to_string(elapsedTime()) << ")\n";
     //mProgLog << elapsedTime() << '\n';
 }
 
 // write string to program data file with special delimiters and timestamp for MATLAB postprocessing, and to console
 void Log::writeDelim(std::string outputString){
     std::cout << outputString << std::endl;
-    mProgLog <<delim + outputString + " (" + std::to_string(elapsedTime()) + ")" + delim << '\n';
+    mProgLog <<delim + outputString + " (" + std::to_string(sampleNumber) + " | " + std::to_string(elapsedTime()) + ")" + delim << '\n';
 }
 
 // calculate time in milliseconds since Log pointer was created

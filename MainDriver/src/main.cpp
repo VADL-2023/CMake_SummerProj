@@ -132,8 +132,8 @@ int main(){
     mLog.write("Date: 8/20");
     mLog.write("Flight Name: AAC TEST 1\n");
     mLog.write("Verify Critical Parameters: ");
-    mLog.write("Deployment Altitude: " + to_string(zDeploy) + " Meters AGL");
     mLog.write("Deployment Altitude: " + to_string(zDeploy*m2ft) + " Feet AGL");
+    mLog.write("Deployment Altitude: " + to_string(zDeploy) + " Meters AGL");
     mLog.write("Deployment Angle: " + to_string(airfoilTiltAngle) + " Degrees");
     mLog.write("Motor Burn Time: " + to_string(tBurn) + " Seconds");
     mLog.write("Motor Burn Safety Factor: " + to_string(burnSafetyMargin));
@@ -256,7 +256,7 @@ int main(){
     
     /* L A U N C H  S T A G E */////////////////////////////////////////
     
-    mLog.write("Ready for Assembly and Launch Rail");
+    mLog.write("Ready for Assembly and Launch Rail\n");
     
     float accelArray [numDataPointsChecked4Launch] = {};
     float accelAvg = 0;
@@ -273,8 +273,8 @@ int main(){
     }
     
     mLog.write("Average acceleration exceeded " + to_string(accelRoof*g0) + " m/s^2 over " + to_string(numDataPointsChecked4Launch) + " data points");
-    mLog.writeTime("Rocket Has Launched");
-    mLog.write("Waiting for Motor Burn Time");
+    mLog.writeDelim("Rocket Has Launched");
+    mLog.write("Waiting for Motor Burn Time\n");
     
     //activeSleep(tBurn, mVN, response, mLog); //NOT WORKING ATM
     
@@ -289,7 +289,7 @@ int main(){
     
     float zCurrent = 0;
     
-    mLog.writeTime("Actively Checking Altitude");
+    mLog.writeTime("Actively Checking Altitude\n");
     while (zCurrent < zDeploy) {
         response = mVN->readImuMeasurements();
         mLog.write(response);
@@ -297,9 +297,9 @@ int main(){
         mLog.write(to_string(zCurrent));
     }
     
-    mLog.write("Deployment Altitude Reached");
+    mLog.writeDelim("Deployment Altitude Eached");
     moveServoPair(servoPinN, servoPinS, airfoilTiltAngle); //CHECK IF NEED TO CONTINOUSLY "MOVE" SERVOS TO DEPLOY ANGLE
-    mLog.writeTime("Fins Deployed");
+    mLog.writeTime("Airfoils Deployed\n");
     
     /* C O A S T I N G  S T A G E*//////////////////////////////////////
     
@@ -307,7 +307,7 @@ int main(){
     float maxAltitude = 0;
     int samplesSinceMaxHasChanged = 0;
     
-    mLog.write("Looking for apogee");
+    mLog.write("Looking for Apogee");
     
     // loop runs until we havent hit a new max altitude for numDataPointsChecked
     // i.e. we are not going up anymore
@@ -330,14 +330,41 @@ int main(){
         }
     }
     
-    mLog.write("Altitude has not reached a new max for " + to_string(numDataPointsChecked4Apogee) + " samples... retracting fins now.");
+    mLog.write("Altitude has not reached a new max for " + to_string(numDataPointsChecked4Apogee) + " samples... deploying second pair of airfoils.");
+    mLog.writeDelim("Apogee Detected");
     
-    moveServoPair(servoPinN,servoPinS,0); //Change to deploying other two servos
-    mLog.writeTime("Fins Undeployed");
+    moveServoPair(servoPinN,servoPinS,12); 
+    mLog.write("Second Pair of Airfoils Deployed\n");
     
     /* D E S C E N T  S T A G E *///////////////////////////////////////
     // all that needs to happen here is data keeps being saved and foils are kept at deploy angle
     //ADD END CONDITION
+    
+    float zCurrentArray [numDataPointsChecked4Apogee] = {};
+    float minAltitude = 1000000;
+    int samplesSinceMinHasChanged = 0;
+    
+    while (samplesSinceMinHasChanged < numDataPointsChecked4Landing){
+        response = mVN->readImuMeasurements();
+        mLog.write(response);
+        zCurrent = pressure2Altitude(T0, P0, g0, response.pressure());
+        
+        if (zCurrent < minAltitude){
+            minAltitude = zCurrent;
+            samplesSinceMinHasChanged = 0;
+        } else{
+            ++samplesSinceMinHasChanged;
+        }
+        
+        // shift array values
+        for (int i = 0; i < numDataPointsChecked4Apogee; ++i) {
+            zCurrentArray[i+1] = zCurrentArray[i];
+        }
+    }
+        
+    mLog.write("Altitude has not reached a new max for " + to_string(numDataPointsChecked4Apogee) + " samples... ending program.");
+    mLog.writeDelim("Landing Detected\n");
+    //add ag check, time check
     
     if (IMU_ACTIVE){
         //mVN.disconnect();
@@ -347,7 +374,7 @@ int main(){
     // delete mVN; // delete only needed for pointers
     gpioTerminate();
     
-    mLog.writeTime("END PROGRAM");
+    mLog.writeTime("\nEND PROGRAM\n");
     
     return 0;
 }
