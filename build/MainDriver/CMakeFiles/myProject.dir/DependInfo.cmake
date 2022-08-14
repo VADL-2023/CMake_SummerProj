@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/pi/CMake_SummerProj/MainDriver/src/mainTEST.cpp" "/home/pi/CMake_SummerProj/build/MainDriver/CMakeFiles/myProject.dir/src/mainTEST.o"
+  "/home/pi/CMake_SummerProj/MainDriver/src/main.cpp" "/home/pi/CMake_SummerProj/build/MainDriver/CMakeFiles/myProject.dir/src/main.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

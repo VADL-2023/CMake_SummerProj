@@ -21,7 +21,7 @@ float B = 6.5*km2m; //[K/m] variation of temperature within the troposphere
 // flight parameters
 float h0 = 522*ft2m; // [m] launch site altitude ASL
 uint8_t airfoilTiltAngle = 12; // [deg] fixed tilt angle for airfoil activation 
-uint8_t tBurn = 1.6; //[s] motor burn time
+float tBurn = 1.6; //[s] motor burn time
 float accelRoof = 1.6; // how many g's does the program need to see in order for launch to be detected
 float samplingFrequency = 20; // [Hz] how fast does the IMU sample data
 float burnSafetyMargin = 3; // what fraction of t_burn will we check acceleration samples for
@@ -111,14 +111,6 @@ void activeSleep(int sleepTime, VnSensor* imu, ImuMeasurementsRegister response,
 }    
   */  
 
-void timeTest(long startTime, long testTime){
-    if (getCurrentTime() >= startTime + testTime){
-        //delete Log log;
-        exit(0);
-    }
-}
-
-    
 int main(){
     /* P R E - F L I G H T  S T A G E*//////////////////////////////////
     
@@ -337,7 +329,7 @@ int main(){
         }
     }
         
-    mLog.write("Altitude has not reached a new max for " + to_string(numDataPointsChecked4Apogee) + " samples... ending program.");
+    mLog.write("Altitude has not reached a new min for " + to_string(numDataPointsChecked4Apogee) + " samples... ending program.");
     mLog.writeDelim("Landing Detected");
     mLog.write("\n");
     //add ag check, time check
@@ -350,7 +342,7 @@ int main(){
     // delete mVN; // delete only needed for pointers
     gpioTerminate();
     
-    mLog.writeTime("END PROGRAM");
+    mLog.writeTime("\nEND PROGRAM");
     
     return 0;
 }
