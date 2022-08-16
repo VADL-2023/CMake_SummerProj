@@ -174,16 +174,16 @@ int main(){
         }
         
         // test all 4 servos
-        //mLog.write("Testing Servo Activation");
-        //sleep(servoTestBeginWaitTime);
-        //mLog.write("Testing North...");
-        //testServo(servoPinN,airfoilTiltAngle);
-        //mLog.write("Testing East...");
-        //testServo(servoPinE,airfoilTiltAngle);
-        //mLog.write("Testing South...");
-        //testServo(servoPinS,airfoilTiltAngle);
-        //mLog.write("Testing West...");
-        //testServo(servoPinW,airfoilTiltAngle);
+        mLog.write("Testing Servo Activation");
+        sleep(servoTestBeginWaitTime);
+        mLog.write("Testing North...");
+        testServo(servoPinN,airfoilTiltAngle);
+        mLog.write("Testing East...");
+        testServo(servoPinE,airfoilTiltAngle);
+        mLog.write("Testing South...");
+        testServo(servoPinS,airfoilTiltAngle);
+        mLog.write("Testing West...");
+        testServo(servoPinW,airfoilTiltAngle);
         
         //timeTest(startTime, 2);
         

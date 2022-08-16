@@ -18,18 +18,22 @@ float km2m = 0.001; // [km/m]
 float R = 287; // [kg/JK] universal gas constant
 float B = 6.5*km2m; //[K/m] variation of temperature within the troposphere
 
-// flight parameters
+// possibly variable flight parameters (stuff we might change)
 float h0 = 522*ft2m; // [m] launch site altitude ASL
+float accelRoof = 3; // how many g's does the program need to see in order for launch to be detected
+
+// fixed flight parameters
+
 uint8_t airfoilTiltAngle = 12; // [deg] fixed tilt angle for airfoil activation 
 float tBurn = 1.6; //[s] motor burn time
-float accelRoof = 3; // how many g's does the program need to see in order for launch to be detected
+
 float samplingFrequency = 20; // [Hz] how fast does the IMU sample data
 float burnSafetyMargin = 3; // what fraction of t_burn will we check acceleration samples for
 int numDataPointsChecked4Launch = ceil(tBurn/burnSafetyMargin*samplingFrequency); // how many acceleration points are averaged to see if data set is over accelRoof
 int numDataPointsChecked4Apogee = 10; // how many altitude points must a new max not be found for apogee to be declared
-int numDataPointsChecked4Landing = 10*samplingFrequency; // how many altitude points must a new min not be found for landing to be declared
+int numDataPointsChecked4Landing = 15*samplingFrequency; // how many altitude points must a new min not be found for landing to be declared
 float zDeploy = 650*ft2m; // [m] altitude at which fins will deploy above ground level
-bool servoTest = false;
+bool servoTest = true;
 
 // servo parameters
 uint16_t pulseMin = 500; // [usecs] pulse width to send servo to one end of motion range
@@ -249,7 +253,7 @@ int main(){
     int sleepTime = tBurn;
     double currentTime = getCurrentTime();
     double endTime = sleepTime + getCurrentTime();
-    while (currentTime < endTime){
+    while (currentTime < endTime){ // read measurements while waiting
         response = mVN->readImuMeasurements();
         mLog.write(response);
         currentTime = getCurrentTime();
@@ -257,6 +261,7 @@ int main(){
     
     float zCurrent = 0;
     
+    // begin checking for altitude
     mLog.writeTime("Actively Checking Altitude");
     while (zCurrent < zDeploy) {
         response = mVN->readImuMeasurements();
@@ -265,7 +270,7 @@ int main(){
         //mLog.write(to_string(zCurrent));
     }
     
-    mLog.writeDelim("Deployment Altitude Eached");
+    mLog.writeDelim("Deployment Altitude Reached");
     moveServoPair(servoPinN, servoPinS, airfoilTiltAngle); //CHECK IF NEED TO CONTINOUSLY "MOVE" SERVOS TO DEPLOY ANGLE
     mLog.writeTime("Airfoils Deployed");
     
@@ -301,7 +306,7 @@ int main(){
     mLog.write("Altitude has not reached a new max for " + to_string(numDataPointsChecked4Apogee) + " samples... deploying second pair of airfoils.");
     mLog.writeDelim("Apogee Detected");
     
-    moveServoPair(servoPinN,servoPinS,12); 
+    moveServoPair(servoPinE,servoPinW,airfoilTiltAngle); 
     mLog.write("Second Pair of Airfoils Deployed");
     
     /* D E S C E N T  S T A G E *///////////////////////////////////////
@@ -324,12 +329,12 @@ int main(){
         }
         
         // shift array values
-        for (int i = 0; i < numDataPointsChecked4Apogee; ++i) {
+        for (int i = 0; i < numDataPointsChecked4Landing; ++i) {
             zCurrentArray[i+1] = zCurrentArray[i];
         }
     }
         
-    mLog.write("Altitude has not reached a new min for " + to_string(numDataPointsChecked4Apogee) + " samples... ending program.");
+    mLog.write("Altitude has not reached a new min for " + to_string(numDataPointsChecked4Landing) + " samples... ending program.");
     mLog.writeDelim("Landing Detected");
     //add ag check, time check
     
