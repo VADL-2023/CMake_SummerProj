@@ -18,19 +18,19 @@ float km2m = 0.001; // [km/m]
 float R = 287; // [kg/JK] universal gas constant
 float B = 6.5*km2m; //[K/m] variation of temperature within the troposphere
 
-// possibly variable flight parameters (stuff we might change)
-float accelRoof = 1.2; // how many g's does the program need to see in order for launch to be detected
-float burnSafetyMargin = 3; // what fraction of t_burn will we check acceleration samples for
-
 // fixed flight parameters
 uint8_t airfoilTiltAngle = 12; // [deg] fixed tilt angle for airfoil activation 
 float tBurn = 1.6; //[s] motor burn time
 float samplingFrequency = 20; // [Hz] how fast does the IMU sample data
-int numDataPointsChecked4Launch = 10;//ceil(tBurn/burnSafetyMargin*samplingFrequency); // how many acceleration points are averaged to see if data set is over accelRoof
+
+// possibly variable flight parameters (stuff we might change)
+float accelRoof = 1.2; // how many g's does the program need to see in order for launch to be detected
+int numDataPointsChecked4Launch = 10; // how many acceleration points are averaged to see if data set is over accelRoof
 int numDataPointsChecked4Apogee = 10; // how many altitude points must a new max not be found for apogee to be declared
 int numDataPointsChecked4Landing = 10*samplingFrequency; // how many altitude points must a new min not be found for landing to be declared
 float zDeploy = 650*ft2m; // [m] altitude at which fins will deploy above ground level
-bool restart = false;
+bool servoTest = true; // whether or not to test actuation range of servos during GO/NOGO
+bool restart = false; // tells the program whether or not we NO-GOed
 
 // servo parameters
 uint16_t pulseMin = 500; // [usecs] pulse width to send servo to one end of motion range
@@ -42,7 +42,6 @@ uint16_t numSampleReadings = 60; // amount of samples taken and averaged to find
 float servoTestTiltWaitTime = 1; // [s] amount of time between servo movement tests
 float servoTestBeginWaitTime = 1; // [s] amount of time before servo tests begin
 int imuWait = 60; //number of samples to get from IMU before actually starting to use + save data
-bool servoTest = true; //whether or not to test actuation range of servos during GO/NOGO
 
 // define 4 servo pins
 uint8_t servoPinN = 18;
@@ -128,17 +127,15 @@ int main(){
     ImuMeasurementsRegister response;
     
     startTime = getCurrentTime();
-    Log mLog("Flight Data Log MAINTEST 27", "Program Data Log MAINTEST 27", mVN, startTime);
+    Log mLog("Flight Data Log MAINTEST 28", "Program Data Log MAINTEST 28", mVN, startTime);
     
     mLog.write("Date: 8/17");
-    mLog.write("Flight Name: MAIN TEST (27)\n");
-    mLog.write("Test Notes: continous actuation of servos, new VN\n");
+    mLog.write("Flight Name: MAIN TEST (28)\n");
+    mLog.write("Test Notes: none \n");
     mLog.write("Verify Critical Parameters: ");
     mLog.write("Deployment Altitude: " + to_string(zDeploy*m2ft) + " Feet AGL");
     mLog.write("Deployment Altitude: " + to_string(zDeploy) + " Meters AGL");
     mLog.write("Deployment Angle: " + to_string(airfoilTiltAngle) + " Degrees");
-    mLog.write("Motor Burn Time: " + to_string(tBurn) + " Seconds");
-    mLog.write("Motor Burn Safety Factor: " + to_string(burnSafetyMargin));
     mLog.write("Trigger Acceleration: " + to_string(accelRoof) + " g");
     mLog.write("Launch Detection Samples: " + to_string(numDataPointsChecked4Launch));
     mLog.write("Apogee Detection Samples: " + to_string(numDataPointsChecked4Apogee));
