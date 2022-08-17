@@ -19,14 +19,14 @@ float R = 287; // [kg/JK] universal gas constant
 float B = 6.5*km2m; //[K/m] variation of temperature within the troposphere
 
 // possibly variable flight parameters (stuff we might change)
-float accelRoof = 2; // how many g's does the program need to see in order for launch to be detected
+float accelRoof = 1.5; // how many g's does the program need to see in order for launch to be detected
 float burnSafetyMargin = 2; // what fraction of t_burn will we check acceleration samples for
 
 // fixed flight parameters
 uint8_t airfoilTiltAngle = 12; // [deg] fixed tilt angle for airfoil activation 
 float tBurn = 1.6; //[s] motor burn time
 float samplingFrequency = 20; // [Hz] how fast does the IMU sample data
-int numDataPointsChecked4Launch = ceil(tBurn/burnSafetyMargin*samplingFrequency); // how many acceleration points are averaged to see if data set is over accelRoof
+int numDataPointsChecked4Launch = 10;//ceil(tBurn/burnSafetyMargin*samplingFrequency); // how many acceleration points are averaged to see if data set is over accelRoof
 int numDataPointsChecked4Apogee = 10; // how many altitude points must a new max not be found for apogee to be declared
 int numDataPointsChecked4Landing = 10*samplingFrequency; // how many altitude points must a new min not be found for landing to be declared
 float zDeploy = 650*ft2m; // [m] altitude at which fins will deploy above ground level
@@ -128,11 +128,11 @@ int main(){
     ImuMeasurementsRegister response;
     
     startTime = getCurrentTime();
-    Log mLog("Flight Data Log MAINTEST 23", "Program Data Log MAINTEST 23", mVN, startTime);
+    Log mLog("Flight Data Log MAINTEST 24", "Program Data Log MAINTEST 24", mVN, startTime);
     
     mLog.write("Date: 8/17");
-    mLog.write("Flight Name: MAIN TEST (23)\n");
-    mLog.write("Test Notes: retest burnsafteymargin to 2, accelroof to 2\n");
+    mLog.write("Flight Name: MAIN TEST (24)\n");
+    mLog.write("Test Notes: Andrew Launch Simulator\n");
     mLog.write("Verify Critical Parameters: ");
     mLog.write("Deployment Altitude: " + to_string(zDeploy*m2ft) + " Feet AGL");
     mLog.write("Deployment Altitude: " + to_string(zDeploy) + " Meters AGL");
@@ -244,7 +244,7 @@ int main(){
     
     float accelArray [numDataPointsChecked4Launch] = {0};
     float accelAvg = 0;
-    uint8_t counter = 0;
+    int counter = 0;
     
     // launched detected when avg accel exceeds accelRoog*g0 for numDataPointsChecked4Launch
     while(accelAvg < accelRoof*g0){
