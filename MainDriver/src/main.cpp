@@ -20,7 +20,7 @@ float B = 6.5*km2m; //[K/m] variation of temperature within the troposphere
 
 // possibly variable flight parameters (stuff we might change)
 float accelRoof = 1.5; // how many g's does the program need to see in order for launch to be detected
-float burnSafetyMargin = 2; // what fraction of t_burn will we check acceleration samples for
+float burnSafetyMargin = 3; // what fraction of t_burn will we check acceleration samples for
 
 // fixed flight parameters
 uint8_t airfoilTiltAngle = 12; // [deg] fixed tilt angle for airfoil activation 
@@ -42,7 +42,7 @@ uint16_t numSampleReadings = 60; // amount of samples taken and averaged to find
 float servoTestTiltWaitTime = 1; // [s] amount of time between servo movement tests
 float servoTestBeginWaitTime = 1; // [s] amount of time before servo tests begin
 int imuWait = 60; //number of samples to get from IMU before actually starting to use + save data
-bool servoTest = false; //whether or not to test actuation range of servos during GO/NOGO
+bool servoTest = true; //whether or not to test actuation range of servos during GO/NOGO
 
 // define 4 servo pins
 uint8_t servoPinN = 18;
@@ -128,11 +128,11 @@ int main(){
     ImuMeasurementsRegister response;
     
     startTime = getCurrentTime();
-    Log mLog("Flight Data Log MAINTEST 24", "Program Data Log MAINTEST 24", mVN, startTime);
+    Log mLog("Flight Data Log MAINTEST 25", "Program Data Log MAINTEST 25", mVN, startTime);
     
     mLog.write("Date: 8/17");
-    mLog.write("Flight Name: MAIN TEST (24)\n");
-    mLog.write("Test Notes: Andrew Launch Simulator\n");
+    mLog.write("Flight Name: MAIN TEST (25)\n");
+    mLog.write("Test Notes: new VN\n");
     mLog.write("Verify Critical Parameters: ");
     mLog.write("Deployment Altitude: " + to_string(zDeploy*m2ft) + " Feet AGL");
     mLog.write("Deployment Altitude: " + to_string(zDeploy) + " Meters AGL");
@@ -300,7 +300,7 @@ int main(){
     //deploy secondary pair of airfoils at apogee
     mLog.write("Altitude has not reached a new max for " + to_string(numDataPointsChecked4Apogee) + " samples... deploying second pair of airfoils.");
     mLog.writeDelim("Apogee Detected");
-    moveServoPair(servoPinE,servoPinW,airfoilTiltAngle); 
+    moveServoPair(servoPinE, servoPinW, airfoilTiltAngle); 
     mLog.write("Second Pair of Airfoils Deployed");
     
     /* D E S C E N T  S T A G E *///////////////////////////////////////

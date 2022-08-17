@@ -5,7 +5,7 @@ include_directories(include)
 #endif(COMMAND cmake_policy)
 
 
-add_executable(myProject src/main.cpp)
+add_executable(myProject src/mainTEST.cpp)
 target_link_libraries(myProject Library1 VN IMU pigpio Log)
 
 set(THREADS_PREFER_PTHREAD_FLAG ON)
