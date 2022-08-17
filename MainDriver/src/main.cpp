@@ -19,21 +19,19 @@ float R = 287; // [kg/JK] universal gas constant
 float B = 6.5*km2m; //[K/m] variation of temperature within the troposphere
 
 // possibly variable flight parameters (stuff we might change)
-float h0 = 522*ft2m; // [m] launch site altitude ASL
-float accelRoof = 3; // how many g's does the program need to see in order for launch to be detected
+// float h0 = 522*ft2m; // [m] launch site altitude ASL
+float accelRoof = 1.2; // how many g's does the program need to see in order for launch to be detected
 
 // fixed flight parameters
-
 uint8_t airfoilTiltAngle = 12; // [deg] fixed tilt angle for airfoil activation 
 float tBurn = 1.6; //[s] motor burn time
-
 float samplingFrequency = 20; // [Hz] how fast does the IMU sample data
 float burnSafetyMargin = 3; // what fraction of t_burn will we check acceleration samples for
 int numDataPointsChecked4Launch = ceil(tBurn/burnSafetyMargin*samplingFrequency); // how many acceleration points are averaged to see if data set is over accelRoof
 int numDataPointsChecked4Apogee = 10; // how many altitude points must a new max not be found for apogee to be declared
 int numDataPointsChecked4Landing = 15*samplingFrequency; // how many altitude points must a new min not be found for landing to be declared
 float zDeploy = 650*ft2m; // [m] altitude at which fins will deploy above ground level
-bool servoTest = true;
+bool servoTest = false;
 
 // servo parameters
 uint16_t pulseMin = 500; // [usecs] pulse width to send servo to one end of motion range
@@ -132,11 +130,11 @@ int main(){
     ImuMeasurementsRegister response;
     
     startTime = getCurrentTime();
-    Log mLog("Flight Data Log MAINTEST 14", "Program Data Log MAINTEST 14", mVN, startTime);
+    Log mLog("Flight Data Log MAINTEST 16", "Program Data Log MAINTEST 16", mVN, startTime);
     
-    mLog.write("Date: 8/13");
-    mLog.write("Flight Name: MAIN TEST (14)\n");
-    mLog.write("Test Notes: shorter samples\n");
+    mLog.write("Date: 8/16");
+    mLog.write("Flight Name: MAIN TEST (16)\n");
+    mLog.write("Test Notes: fixing stationary accel value spike during imu startup\n");
     mLog.write("Verify Critical Parameters: ");
     mLog.write("Deployment Altitude: " + to_string(zDeploy*m2ft) + " Feet AGL");
     mLog.write("Deployment Altitude: " + to_string(zDeploy) + " Meters AGL");
@@ -193,6 +191,15 @@ int main(){
             testServo(servoPinW,airfoilTiltAngle);
         } 
     
+        int imuWait = 60;
+    
+        for (int i = 0; i < imuWait; ++i){
+            response = mVN->readImuMeasurements();
+            mLog.write(response);
+        }
+    
+        mLog.writeTime("IMU Flushed");
+    
         // calibrate ground level pressure and temperature
         pressureSum = 0;
         tempSum = 0;
@@ -221,8 +228,8 @@ int main(){
         std::cin >> go;
         mLog.writeTime(go);
         mLog.write("");
-        
     }
+    
     
     mLog.writeTime("Pre-Flight Stage Completed");
     
@@ -230,7 +237,7 @@ int main(){
     
     mLog.write("Ready for Assembly and Launch Rail");
     
-    float accelArray [numDataPointsChecked4Launch] = {};
+    float accelArray [numDataPointsChecked4Launch] = {0};
     float accelAvg = 0;
     
     while(accelAvg < accelRoof*g0){
@@ -252,7 +259,7 @@ int main(){
     
     int sleepTime = tBurn;
     double currentTime = getCurrentTime();
-    double endTime = sleepTime + getCurrentTime();
+    double endTime = sleepTime + currentTime;
     while (currentTime < endTime){ // read measurements while waiting
         response = mVN->readImuMeasurements();
         mLog.write(response);
@@ -276,19 +283,19 @@ int main(){
     
     /* C O A S T I N G  S T A G E*//////////////////////////////////////
     
-    float zCurrentArray [numDataPointsChecked4Apogee] = {};
+    //float zCurrentArray [numDataPointsChecked4Apogee] = {};
     float maxAltitude = 0;
     int samplesSinceMaxHasChanged = 0;
     
     mLog.write("Looking for Apogee");
     
-    // loop runs until we havent hit a new max altitude for numDataPointsChecked
+    // loop runs until we havent hit a new max altitude for numDataPointsChecked // GET RID OF ARRAY FUNCTION
     // i.e. we are not going up anymore
     while(samplesSinceMaxHasChanged < numDataPointsChecked4Apogee) {
         response = mVN->readImuMeasurements();
         mLog.write(response);
         zCurrent = pressure2Altitude(T0,P0,g0,response.pressure);
-        zCurrentArray[0] = zCurrent;
+        //zCurrentArray[0] = zCurrent;
         
         if (zCurrent >= maxAltitude) {
             maxAltitude = zCurrent;
@@ -298,9 +305,9 @@ int main(){
         }
         
         // shift array values
-        for (int i = 0; i < numDataPointsChecked4Apogee; ++i) {
-            zCurrentArray[i+1] = zCurrentArray[i];
-        }
+        //for (int i = 0; i < numDataPointsChecked4Apogee; ++i) {
+        //    zCurrentArray[i+1] = zCurrentArray[i];
+        //}
     }
     
     mLog.write("Altitude has not reached a new max for " + to_string(numDataPointsChecked4Apogee) + " samples... deploying second pair of airfoils.");
@@ -312,7 +319,8 @@ int main(){
     /* D E S C E N T  S T A G E *///////////////////////////////////////
     // all that needs to happen here is data keeps being saved and foils are kept at deploy angle
     
-    zCurrentArray [numDataPointsChecked4Apogee] = {};
+    // GET RID OF ARRAY FUNCTION
+    //zCurrentArray [numDataPointsChecked4Apogee] = {};
     float minAltitude = 1000000;
     int samplesSinceMinHasChanged = 0;
     
@@ -329,9 +337,9 @@ int main(){
         }
         
         // shift array values
-        for (int i = 0; i < numDataPointsChecked4Landing; ++i) {
-            zCurrentArray[i+1] = zCurrentArray[i];
-        }
+        //for (int i = 0; i < numDataPointsChecked4Landing; ++i) {
+        //    zCurrentArray[i+1] = zCurrentArray[i];
+        //}
     }
         
     mLog.write("Altitude has not reached a new min for " + to_string(numDataPointsChecked4Landing) + " samples... ending program.");
@@ -339,7 +347,8 @@ int main(){
     //add ag check, time check
     
     if (IMU_ACTIVE){
-        delete mVN;
+        //delete mVN;
+        mVN->disconnect();
         mLog.write("IMU: Disconnected");
 	}
     

@@ -1,0 +1,54 @@
+Start Time: 1660695446986.000000
+Date: 8/13
+Flight Name: MAIN TEST (15)
+
+Test Notes: for andrew <3
+
+Verify Critical Parameters: 
+Deployment Altitude: 650.000000 Feet AGL
+Deployment Altitude: 198.119995 Meters AGL
+Deployment Angle: 12 Degrees
+Motor Burn Time: 1.600000 Seconds
+Motor Burn Safety Factor: 1.200000
+Trigger Acceleration: 3.000000 g
+Launch Detection Samples: 27
+Apogee Detection Samples: 10
+Landing Detection Samples: 300
+-----------------------------------
+
+
+
+GPIO Initialized
+IMU Connecting
+IMU Connected
+Testing Servo Activation
+Testing North...
+Testing East...
+Testing South...
+Testing West...
+Calibrating Baseline Parameters. Hold Still. (0.000000 | 14209.000000)
+Calibrated Temperature: 28.500000 C
+Calibrated Pressure: 99.373764 kPa
+Calibrated Gravity: 9.502883 m/s^2
+Are we a GO for flight? (60.000000 | 18199.000000)
+GO (60.000000 | 32403.000000)
+
+Pre-Flight Stage Completed (60.000000 | 32403.000000)
+Ready for Assembly and Launch Rail
+Average acceleration exceeded 28.508648 m/s^2 over 27 data points
+$Rocket Has Launched (61.000000 | 32451.000000)$
+Waiting for Motor Burn Time
+Actively Checking Altitude (62.000000 | 32500.000000)
+$Deployment Altitude Reached (1935.000000 | 126151.000000)$
+Airfoils Deployed (1935.000000 | 126151.000000)
+Looking for Apogee
+Altitude has not reached a new max for 10 samples... deploying second pair of airfoils.
+$Apogee Detected (2088.000000 | 133802.000000)$
+Second Pair of Airfoils Deployed
+Altitude has not reached a new min for 300 samples... ending program.
+$Landing Detected (2753.000000 | 167052.000000)$
+IMU: Disconnected
+
+END PROGRAM (2753.000000 | 167066.000000)
+End Time: 1660695614052.000000
+End Log
