@@ -19,8 +19,8 @@ float R = 287; // [kg/JK] universal gas constant
 float B = 6.5*km2m; //[K/m] variation of temperature within the troposphere
 
 // possibly variable flight parameters (stuff we might change)
-float accelRoof = 1.2; // how many g's does the program need to see in order for launch to be detected
-float burnSafetyMargin = 3; // what fraction of t_burn will we check acceleration samples for
+float accelRoof = 2; // how many g's does the program need to see in order for launch to be detected
+float burnSafetyMargin = 2; // what fraction of t_burn will we check acceleration samples for
 
 // fixed flight parameters
 uint8_t airfoilTiltAngle = 12; // [deg] fixed tilt angle for airfoil activation 
@@ -89,7 +89,7 @@ float pressure2Altitude(float T0, float P0, float g0, float P) {
 // given a float array, calculates the average of all the arrays values
 float calcArrayAverage(float array[], int size) {
     float sum;
-    for (int i = 0; i <= size; ++i) {
+    for (int i = 0; i < size; ++i) {
         sum += array[i];
     }
     return sum/size;
@@ -128,11 +128,11 @@ int main(){
     ImuMeasurementsRegister response;
     
     startTime = getCurrentTime();
-    Log mLog("Flight Data Log MAINTEST 19", "Program Data Log MAINTEST 19", mVN, startTime);
+    Log mLog("Flight Data Log MAINTEST 23", "Program Data Log MAINTEST 23", mVN, startTime);
     
-    mLog.write("Date: 8/16");
-    mLog.write("Flight Name: MAIN TEST (19)\n");
-    mLog.write("Test Notes: log updates\n");
+    mLog.write("Date: 8/17");
+    mLog.write("Flight Name: MAIN TEST (23)\n");
+    mLog.write("Test Notes: retest burnsafteymargin to 2, accelroof to 2\n");
     mLog.write("Verify Critical Parameters: ");
     mLog.write("Deployment Altitude: " + to_string(zDeploy*m2ft) + " Feet AGL");
     mLog.write("Deployment Altitude: " + to_string(zDeploy) + " Meters AGL");
@@ -244,17 +244,15 @@ int main(){
     
     float accelArray [numDataPointsChecked4Launch] = {0};
     float accelAvg = 0;
+    uint8_t counter = 0;
     
     // launched detected when avg accel exceeds accelRoog*g0 for numDataPointsChecked4Launch
     while(accelAvg < accelRoof*g0){
         response = mVN->readImuMeasurements();
         mLog.write(response);
-        accelArray[0] = sqrt(pow(response.accel[0],2) + pow(response.accel[1],2) + pow(response.accel[2],2)); // total accel vector
+        accelArray[counter%numDataPointsChecked4Launch] = sqrt(pow(response.accel[0],2) + pow(response.accel[1],2) + pow(response.accel[2],2)); // total accel vector
         accelAvg = calcArrayAverage(accelArray, numDataPointsChecked4Launch);
-        
-        for (int i = 0; i < numDataPointsChecked4Launch; ++i) { // shift array values down
-            accelArray[i+1] = accelArray[i];
-        }
+        ++counter;
     }
     
     mLog.write("Average acceleration exceeded " + to_string(accelRoof*g0) + " m/s^2 over " + to_string(numDataPointsChecked4Launch) + " data points");
