@@ -1,0 +1,61 @@
+Start Time: 1660700595947.000000
+Date: 8/16
+Flight Name: MAIN TEST (18)
+
+Test Notes: fixed active sleep
+
+Verify Critical Parameters: 
+Deployment Altitude: 650.000000 Feet AGL
+Deployment Altitude: 198.119995 Meters AGL
+Deployment Angle: 12 Degrees
+Motor Burn Time: 1.600000 Seconds
+Motor Burn Safety Factor: 3.000000
+Trigger Acceleration: 1.200000 g
+Launch Detection Samples: 11
+Apogee Detection Samples: 10
+Landing Detection Samples: 200
+-----------------------------------
+
+
+
+GPIO Initialized
+IMU Connecting
+IMU Connected
+IMU Flushed (60.000000 | 4277.000000)
+Calibrating Baseline Parameters. Hold Still. (60.000000 | 4277.000000)
+Calibrated Temperature: 30.300018 C
+Calibrated Pressure: 99.395805 kPa
+Calibrated Gravity: 9.510298 m/s^2
+Are we a GO for flight? (120.000000 | 8277.000000)
+asdf (120.000000 | 9663.000000)
+
+GPIO Initialized
+IMU Connecting
+IMU Connected
+IMU Flushed (180.000000 | 12678.000000)
+Calibrating Baseline Parameters. Hold Still. (180.000000 | 12678.000000)
+Calibrated Temperature: 30.300018 C
+Calibrated Pressure: 99.393974 kPa
+Calibrated Gravity: 9.502757 m/s^2
+Are we a GO for flight? (240.000000 | 16677.000000)
+GO (240.000000 | 19336.000000)
+
+Pre-Flight Stage Completed (240.000000 | 19336.000000)
+Ready for Assembly and Launch Rail
+Average acceleration exceeded 11.403309 m/s^2 over 11 data points
+$Rocket Has Launched (293.000000 | 21977.000000)$
+Waiting for Motor Burn Time
+Actively Checking Altitude (325.000000 | 23578.000000)
+$Deployment Altitude Reached (1656.000000 | 90127.000000)$
+Airfoils Deployed (1656.000000 | 90127.000000)
+Looking for Apogee
+Altitude has not reached a new max for 10 samples... deploying second pair of airfoils.
+$Apogee Detected (1987.000000 | 106679.000000)$
+Second Pair of Airfoils Deployed
+Altitude has not reached a new min for 200 samples... ending program.
+$Landing Detected (3709.000000 | 192778.000000)$
+IMU: Disconnected
+
+END PROGRAM (3709.000000 | 192801.000000)
+End Time: 1660700788748.000000
+End Log

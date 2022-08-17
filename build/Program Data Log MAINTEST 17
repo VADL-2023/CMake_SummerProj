@@ -1,0 +1,347 @@
+Start Time: 1660699127144.000000
+Date: 8/16
+Flight Name: MAIN TEST (17)
+
+Test Notes: GO/NOGO TEST
+
+Verify Critical Parameters: 
+Deployment Altitude: 650.000000 Feet AGL
+Deployment Altitude: 198.119995 Meters AGL
+Deployment Angle: 12 Degrees
+Motor Burn Time: 1.600000 Seconds
+Motor Burn Safety Factor: 3.000000
+Trigger Acceleration: 1.200000 g
+Launch Detection Samples: 11
+Apogee Detection Samples: 10
+Landing Detection Samples: 200
+-----------------------------------
+
+
+
+GPIO Initialized
+IMU Connecting
+IMU Connected
+IMU Flushed (60.000000 | 4200.000000)
+Calibrating Baseline Parameters. Hold Still. (60.000000 | 4200.000000)
+Calibrated Temperature: 29.998322 C
+Calibrated Pressure: 99.393761 kPa
+Calibrated Gravity: 9.502802 m/s^2
+Are we a GO for flight? (120.000000 | 8201.000000)
+NO, (120.000000 | 58046.000000)
+
+GPIO Initialized
+IMU Connecting
+IMU Connected
+IMU Flushed (180.000000 | 61050.000000)
+Calibrating Baseline Parameters. Hold Still. (180.000000 | 61050.000000)
+Calibrated Temperature: 29.966675 C
+Calibrated Pressure: 99.393600 kPa
+Calibrated Gravity: 9.505136 m/s^2
+Are we a GO for flight? (240.000000 | 65050.000000)
+do (240.000000 | 65050.000000)
+
+GPIO Initialized
+IMU Connecting
+IMU Connected
+IMU Flushed (300.000000 | 68051.000000)
+Calibrating Baseline Parameters. Hold Still. (300.000000 | 68051.000000)
+Calibrated Temperature: 29.964996 C
+Calibrated Pressure: 99.392212 kPa
+Calibrated Gravity: 9.503911 m/s^2
+Are we a GO for flight? (360.000000 | 72051.000000)
+not (360.000000 | 72051.000000)
+
+GPIO Initialized
+IMU Connecting
+IMU Connected
+IMU Flushed (420.000000 | 75075.000000)
+Calibrating Baseline Parameters. Hold Still. (420.000000 | 75075.000000)
+Calibrated Temperature: 29.986664 C
+Calibrated Pressure: 99.393242 kPa
+Calibrated Gravity: 9.506268 m/s^2
+Are we a GO for flight? (480.000000 | 79076.000000)
+go (480.000000 | 79076.000000)
+
+GPIO Initialized
+IMU Connecting
+IMU Connected
+IMU Flushed (540.000000 | 82100.000000)
+Calibrating Baseline Parameters. Hold Still. (540.000000 | 82100.000000)
+Calibrated Temperature: 29.970001 C
+Calibrated Pressure: 99.392906 kPa
+Calibrated Gravity: 9.501239 m/s^2
+Are we a GO for flight? (600.000000 | 86101.000000)
+please... (600.000000 | 86101.000000)
+
+GPIO Initialized
+IMU Connecting
+IMU Connected
+IMU Flushed (660.000000 | 89101.000000)
+Calibrating Baseline Parameters. Hold Still. (660.000000 | 89101.000000)
+Calibrated Temperature: 29.948334 C
+Calibrated Pressure: 99.394096 kPa
+Calibrated Gravity: 9.504268 m/s^2
+Are we a GO for flight? (720.000000 | 93101.000000)
+this (720.000000 | 93101.000000)
+
+GPIO Initialized
+IMU Connecting
+IMU Connected
+IMU Flushed (780.000000 | 96126.000000)
+Calibrating Baseline Parameters. Hold Still. (780.000000 | 96126.000000)
+Calibrated Temperature: 29.958344 C
+Calibrated Pressure: 99.391762 kPa
+Calibrated Gravity: 9.506679 m/s^2
+Are we a GO for flight? (840.000000 | 100126.000000)
+is (840.000000 | 100126.000000)
+
+GPIO Initialized
+IMU Connecting
+IMU Connected
+IMU Flushed (900.000000 | 103151.000000)
+Calibrating Baseline Parameters. Hold Still. (900.000000 | 103151.000000)
+Calibrated Temperature: 29.946686 C
+Calibrated Pressure: 99.390778 kPa
+Calibrated Gravity: 9.500741 m/s^2
+Are we a GO for flight? (960.000000 | 107151.000000)
+a (960.000000 | 107151.000000)
+
+GPIO Initialized
+IMU Connecting
+IMU Connected
+IMU Flushed (1020.000000 | 110175.000000)
+Calibrating Baseline Parameters. Hold Still. (1020.000000 | 110175.000000)
+Calibrated Temperature: 29.961670 C
+Calibrated Pressure: 99.392715 kPa
+Calibrated Gravity: 9.504184 m/s^2
+Are we a GO for flight? (1080.000000 | 114176.000000)
+test (1080.000000 | 114176.000000)
+
+GPIO Initialized
+IMU Connecting
+IMU Connected
+IMU Flushed (1140.000000 | 117201.000000)
+Calibrating Baseline Parameters. Hold Still. (1140.000000 | 117201.000000)
+Calibrated Temperature: 29.941681 C
+Calibrated Pressure: 99.391556 kPa
+Calibrated Gravity: 9.507549 m/s^2
+Are we a GO for flight? (1200.000000 | 121200.000000)
+to (1200.000000 | 121200.000000)
+
+GPIO Initialized
+IMU Connecting
+IMU Connected
+IMU Flushed (1260.000000 | 124201.000000)
+Calibrating Baseline Parameters. Hold Still. (1260.000000 | 124201.000000)
+Calibrated Temperature: 29.943329 C
+Calibrated Pressure: 99.389153 kPa
+Calibrated Gravity: 9.504911 m/s^2
+Are we a GO for flight? (1320.000000 | 128201.000000)
+see (1320.000000 | 128201.000000)
+
+GPIO Initialized
+IMU Connecting
+IMU Connected
+IMU Flushed (1380.000000 | 131201.000000)
+Calibrating Baseline Parameters. Hold Still. (1380.000000 | 131201.000000)
+Calibrated Temperature: 29.940002 C
+Calibrated Pressure: 99.390404 kPa
+Calibrated Gravity: 9.508024 m/s^2
+Are we a GO for flight? (1440.000000 | 135201.000000)
+if (1440.000000 | 135201.000000)
+
+GPIO Initialized
+IMU Connecting
+IMU Connected
+IMU Flushed (1500.000000 | 138226.000000)
+Calibrating Baseline Parameters. Hold Still. (1500.000000 | 138227.000000)
+Calibrated Temperature: 29.918335 C
+Calibrated Pressure: 99.388329 kPa
+Calibrated Gravity: 9.505850 m/s^2
+Are we a GO for flight? (1560.000000 | 142226.000000)
+the (1560.000000 | 142226.000000)
+
+GPIO Initialized
+IMU Connecting
+IMU Connected
+IMU Flushed (1620.000000 | 145251.000000)
+Calibrating Baseline Parameters. Hold Still. (1620.000000 | 145251.000000)
+Calibrated Temperature: 29.923340 C
+Calibrated Pressure: 99.391037 kPa
+Calibrated Gravity: 9.499759 m/s^2
+Are we a GO for flight? (1680.000000 | 149251.000000)
+go/nogo (1680.000000 | 149251.000000)
+
+GPIO Initialized
+IMU Connecting
+IMU Connected
+IMU Flushed (1740.000000 | 152276.000000)
+Calibrating Baseline Parameters. Hold Still. (1740.000000 | 152276.000000)
+Calibrated Temperature: 29.916687 C
+Calibrated Pressure: 99.390503 kPa
+Calibrated Gravity: 9.503401 m/s^2
+Are we a GO for flight? (1800.000000 | 156276.000000)
+functionality (1800.000000 | 156276.000000)
+
+GPIO Initialized
+IMU Connecting
+IMU Connected
+IMU Flushed (1860.000000 | 159300.000000)
+Calibrating Baseline Parameters. Hold Still. (1860.000000 | 159300.000000)
+Calibrated Temperature: 29.908356 C
+Calibrated Pressure: 99.390526 kPa
+Calibrated Gravity: 9.503713 m/s^2
+Are we a GO for flight? (1920.000000 | 163301.000000)
+actually (1920.000000 | 163301.000000)
+
+GPIO Initialized
+IMU Connecting
+IMU Connected
+IMU Flushed (1980.000000 | 166326.000000)
+Calibrating Baseline Parameters. Hold Still. (1980.000000 | 166327.000000)
+Calibrated Temperature: 29.916687 C
+Calibrated Pressure: 99.389015 kPa
+Calibrated Gravity: 9.500650 m/s^2
+Are we a GO for flight? (2040.000000 | 170326.000000)
+works (2040.000000 | 170326.000000)
+
+GPIO Initialized
+IMU Connecting
+IMU Connected
+IMU Flushed (2100.000000 | 173352.000000)
+Calibrating Baseline Parameters. Hold Still. (2100.000000 | 173352.000000)
+Calibrated Temperature: 29.905029 C
+Calibrated Pressure: 99.392242 kPa
+Calibrated Gravity: 9.501252 m/s^2
+Are we a GO for flight? (2160.000000 | 177351.000000)
+so (2160.000000 | 177351.000000)
+
+GPIO Initialized
+IMU Connecting
+IMU Connected
+IMU Flushed (2220.000000 | 180376.000000)
+Calibrating Baseline Parameters. Hold Still. (2220.000000 | 180376.000000)
+Calibrated Temperature: 29.903351 C
+Calibrated Pressure: 99.390823 kPa
+Calibrated Gravity: 9.499732 m/s^2
+Are we a GO for flight? (2280.000000 | 184376.000000)
+it (2280.000000 | 184376.000000)
+
+GPIO Initialized
+IMU Connecting
+IMU Connected
+IMU Flushed (2340.000000 | 187401.000000)
+Calibrating Baseline Parameters. Hold Still. (2340.000000 | 187401.000000)
+Calibrated Temperature: 29.905029 C
+Calibrated Pressure: 99.392853 kPa
+Calibrated Gravity: 9.502883 m/s^2
+Are we a GO for flight? (2400.000000 | 191402.000000)
+is (2400.000000 | 191402.000000)
+
+GPIO Initialized
+IMU Connecting
+IMU Connected
+IMU Flushed (2460.000000 | 194426.000000)
+Calibrating Baseline Parameters. Hold Still. (2460.000000 | 194426.000000)
+Calibrated Temperature: 29.905029 C
+Calibrated Pressure: 99.389542 kPa
+Calibrated Gravity: 9.502898 m/s^2
+Are we a GO for flight? (2520.000000 | 198426.000000)
+important (2520.000000 | 198426.000000)
+
+GPIO Initialized
+IMU Connecting
+IMU Connected
+IMU Flushed (2580.000000 | 201451.000000)
+Calibrating Baseline Parameters. Hold Still. (2580.000000 | 201451.000000)
+Calibrated Temperature: 29.905029 C
+Calibrated Pressure: 99.390533 kPa
+Calibrated Gravity: 9.504071 m/s^2
+Are we a GO for flight? (2640.000000 | 205450.000000)
+to (2640.000000 | 205450.000000)
+
+GPIO Initialized
+IMU Connecting
+IMU Connected
+IMU Flushed (2700.000000 | 208451.000000)
+Calibrating Baseline Parameters. Hold Still. (2700.000000 | 208451.000000)
+Calibrated Temperature: 29.908356 C
+Calibrated Pressure: 99.391968 kPa
+Calibrated Gravity: 9.500794 m/s^2
+Are we a GO for flight? (2760.000000 | 212452.000000)
+not (2760.000000 | 212452.000000)
+
+GPIO Initialized
+IMU Connecting
+IMU Connected
+IMU Flushed (2820.000000 | 215475.000000)
+Calibrating Baseline Parameters. Hold Still. (2820.000000 | 215475.000000)
+Calibrated Temperature: 29.905029 C
+Calibrated Pressure: 99.392426 kPa
+Calibrated Gravity: 9.504543 m/s^2
+Are we a GO for flight? (2880.000000 | 219475.000000)
+go (2880.000000 | 219475.000000)
+
+GPIO Initialized
+IMU Connecting
+IMU Connected
+IMU Flushed (2940.000000 | 222501.000000)
+Calibrating Baseline Parameters. Hold Still. (2940.000000 | 222501.000000)
+Calibrated Temperature: 29.903351 C
+Calibrated Pressure: 99.389351 kPa
+Calibrated Gravity: 9.499689 m/s^2
+Are we a GO for flight? (3000.000000 | 226501.000000)
+at (3000.000000 | 226501.000000)
+
+GPIO Initialized
+IMU Connecting
+IMU Connected
+IMU Flushed (3060.000000 | 229501.000000)
+Calibrating Baseline Parameters. Hold Still. (3060.000000 | 229501.000000)
+Calibrated Temperature: 29.920013 C
+Calibrated Pressure: 99.388054 kPa
+Calibrated Gravity: 9.499884 m/s^2
+Are we a GO for flight? (3120.000000 | 233502.000000)
+this (3120.000000 | 233502.000000)
+
+GPIO Initialized
+IMU Connecting
+IMU Connected
+IMU Flushed (3180.000000 | 236526.000000)
+Calibrating Baseline Parameters. Hold Still. (3180.000000 | 236526.000000)
+Calibrated Temperature: 29.918335 C
+Calibrated Pressure: 99.390953 kPa
+Calibrated Gravity: 9.507368 m/s^2
+Are we a GO for flight? (3240.000000 | 240526.000000)
+moment (3240.000000 | 240526.000000)
+
+GPIO Initialized
+IMU Connecting
+IMU Connected
+IMU Flushed (3300.000000 | 243550.000000)
+Calibrating Baseline Parameters. Hold Still. (3300.000000 | 243550.000000)
+Calibrated Temperature: 29.921692 C
+Calibrated Pressure: 99.390732 kPa
+Calibrated Gravity: 9.507915 m/s^2
+Are we a GO for flight? (3360.000000 | 247551.000000)
+GO (3360.000000 | 265602.000000)
+
+Pre-Flight Stage Completed (3360.000000 | 265602.000000)
+Ready for Assembly and Launch Rail
+Average acceleration exceeded 11.409498 m/s^2 over 11 data points
+$Rocket Has Launched (3439.000000 | 269551.000000)$
+Waiting for Motor Burn Time
+Actively Checking Altitude (3459.000000 | 270551.000000)
+$Deployment Altitude Reached (4625.000000 | 328851.000000)$
+Airfoils Deployed (4625.000000 | 328851.000000)
+Looking for Apogee
+Altitude has not reached a new max for 10 samples... deploying second pair of airfoils.
+$Apogee Detected (4843.000000 | 339751.000000)$
+Second Pair of Airfoils Deployed
+Altitude has not reached a new min for 200 samples... ending program.
+$Landing Detected (5823.000000 | 388751.000000)$
+IMU: Disconnected
+
+END PROGRAM (5823.000000 | 388794.000000)
+End Time: 1660699515938.000000
+End Log

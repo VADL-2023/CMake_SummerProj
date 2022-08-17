@@ -5,7 +5,7 @@ mIMU(imu)
 {
     //initialize variables
     this->startTime = sTime;
-    this->sampleNumber = 0;
+    this->sampleNumber = 1;
     this->savedParameters = false;
     this->delim = "$";
     
@@ -18,15 +18,15 @@ mIMU(imu)
     }else {
         mFlightLog
                 << "Time\t MagX\t MagY\t MagZ\t AccelX\t AccelY\t AccelZ\t Yaw\t Pitch\t Roll\t Temperature\t Pressure\t Altitude\n";
-        mProgLog << "Start Time: " << std::__cxx11::to_string(startTime) << "\n";
+        mProgLog << "START TIME: " << std::__cxx11::to_string(startTime) << "\n";
     }
 }
 
 // deletion of Log pointer, close flight and program data files
 Log::~Log() {
-    mProgLog << "End Time: ";
+    mProgLog << "END TIME: ";
     mProgLog << std::__cxx11::to_string(startTime + elapsedTime()) << '\n';
-    mProgLog << "End Log";
+    mProgLog << "END LOG";
     mFlightLog.close();
     mProgLog.close();
     mIMU = nullptr;
