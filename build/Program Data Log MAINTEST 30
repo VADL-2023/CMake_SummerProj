@@ -1,0 +1,47 @@
+START TIME: 1660845826477.000000
+Date: 8/18
+Flight Name: MAINTEST (30)
+
+Test Notes: added max flight time exit conditions
+
+Verify Critical Parameters: 
+Max Flight Time: 30 s
+Deployment Altitude: 650.000000 Feet AGL
+Deployment Altitude: 198.119995 Meters AGL
+Deployment Angle: 12 Degrees
+Motor Burn Time: 1.600000 Seconds
+Trigger Acceleration: 1.000000 g
+Launch Detection Samples: 8
+Apogee Detection Samples: 10
+Landing Detection Samples: 200
+-----------------------------------
+
+
+
+GPIO Initialized
+IMU Connecting
+IMU Connected
+Testing Servo Activation
+Testing North...
+Testing East...
+Testing South...
+Testing West...
+Flushing IMU
+IMU Flushed
+Calibrating Baseline Parameters. Hold Still. (61.000000 | 16183.000000)
+Calibrated Temperature: 35.194977 C
+Calibrated Pressure: 99.434601 kPa
+Calibrated Gravity: 9.878514 m/s^2
+Are we a GO for flight? (121.000000 | 19183.000000)
+GO (121.000000 | 37306.000000)
+
+Pre-Flight Stage Completed (121.000000 | 37306.000000)
+Ready for Assembly and Launch Rail
+Average acceleration exceeded 9.878514 m/s^2 over 8 data points
+$Rocket Has Launched (236.000000 | 43062.000000)$
+Waiting for Motor Burn Time
+Actively Checking Altitude (268.000000 | 44663.000000)
+IMU: Disconnected
+Ending program due to time overflow (836.000000 | 73077.000000)
+END TIME: 1660845899554.000000
+END LOG

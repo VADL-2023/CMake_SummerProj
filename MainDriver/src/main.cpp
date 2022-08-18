@@ -24,13 +24,14 @@ float tBurn = 1.6; // [s] motor burn time
 float samplingFrequency = 20; // [Hz] how fast does the IMU sample data
 
 // possibly variable flight parameters (stuff we might change)
-float accelRoof = 3; // how many g's does the program need to see in order for launch to be detected
+float accelRoof = 1.2; // how many g's does the program need to see in order for launch to be detected
 int numDataPointsChecked4Launch = 8; // how many acceleration points are averaged to see if data set is over accelRoof
 int numDataPointsChecked4Apogee = 10; // how many altitude points must a new max not be found for apogee to be declared
 int numDataPointsChecked4Landing = 10*samplingFrequency; // how many altitude points must a new min not be found for landing to be declared
 float zDeploy = 650*ft2m; // [m] altitude at which fins will deploy above ground level
 bool servoTest = true; // whether or not to test actuation range of servos during GO/NOGO
 bool restart = false; // tells the program whether or not we NO-GOed
+int maxFlightTime = 300; // [s] max allowable flight time, if exceeded program ends
 
 // servo parameters
 uint16_t pulseMin = 500; // [usecs] pulse width to send servo to one end of motion range
@@ -110,6 +111,29 @@ void activeSleep(float sleepTime, VnSensor* imu, ImuMeasurementsRegister &respon
     }
 }    
 
+// checks if flight has gone on for too long, if so returns true to end program
+bool timeFlight(double launchTime, double flightTime){
+    if (getCurrentTime() - launchTime > flightTime*1000){
+        return true;
+    } else {
+        return false;
+    }
+}
+
+// disconnects IMU and gpio, returns true if IMU was active but was successfuly disconnected
+bool terminateConnections(VnSensor* imu){
+    bool out;
+    if (IMU_ACTIVE){
+        out = true;
+        imu->disconnect();
+	} else {
+        out = false;
+    }
+    
+    gpioTerminate();
+    return out;
+}
+
     
 int main(){
     /* P R E - F L I G H T  S T A G E*//////////////////////////////////
@@ -127,12 +151,13 @@ int main(){
     ImuMeasurementsRegister response;
     
     startTime = getCurrentTime();
-    Log mLog("Flight Data Log Deployment Test", "Program Data Log Deployment Test", mVN, startTime);
+    Log mLog("Flight Data Log MAINTEST 32", "Program Data Log MAINTEST 32", mVN, startTime);
     
     mLog.write("Date: 8/18");
-    mLog.write("Flight Name: Deployment Test\n");
-    mLog.write("Test Notes: aaaaahhhhhhhhhhhhhhhhhhhhh\n");
+    mLog.write("Flight Name: MAINTEST (32)\n");
+    mLog.write("Test Notes: \n");
     mLog.write("Verify Critical Parameters: ");
+    mLog.write("Max Flight Time: " + to_string(maxFlightTime) + " s");
     mLog.write("Deployment Altitude: " + to_string(zDeploy*m2ft) + " Feet AGL");
     mLog.write("Deployment Altitude: " + to_string(zDeploy) + " Meters AGL");
     mLog.write("Deployment Angle: " + to_string(airfoilTiltAngle) + " Degrees");
@@ -194,6 +219,7 @@ int main(){
         } 
     
         // flush IMU data during init
+        mLog.write("IMU Flushing");
         for (int i = 0; i < imuWait; ++i){
             response = mVN->readImuMeasurements();
             mLog.write(response);
@@ -255,6 +281,8 @@ int main(){
     mLog.writeDelim("Rocket Has Launched");
     mLog.write("Waiting for Motor Burn Time");
     
+    double launchTime = getCurrentTime();
+    
     activeSleep(tBurn, mVN, response, mLog); //wait for motor burn to complete while still collecting IMU data
     
     float zCurrent = 0;
@@ -265,8 +293,16 @@ int main(){
         response = mVN->readImuMeasurements();
         mLog.write(response);
         zCurrent = pressure2Altitude(T0, P0, g0, response.pressure);
+        
+        // ensure program successfully exits if time exceeds limit
+        if (timeFlight(launchTime, maxFlightTime)) {
+            if(terminateConnections(mVN)){
+                mLog.write("IMU: Disconnected");
+            }
+            mLog.writeTime("Ending program due to time overflow");
+            return 0;
+        }
     }
-    
     // deploy primary pair of airfoils at deployment alt
     mLog.writeDelim("Deployment Altitude Reached");
     moveServoPair(servoPinN, servoPinS, airfoilTiltAngle);
@@ -290,6 +326,15 @@ int main(){
             samplesSinceMaxHasChanged = 0;
         } else {
             ++samplesSinceMaxHasChanged;
+        }
+        
+        // ensure program successfully exits if time exceeds limit
+        if (timeFlight(launchTime, maxFlightTime)) {
+            if(terminateConnections(mVN)){
+                mLog.write("IMU: Disconnected");
+            }
+            mLog.writeTime("Ending program due to time overflow");
+            return 0;
         }
     }
     
@@ -316,18 +361,23 @@ int main(){
         } else{
             ++samplesSinceMinHasChanged;
         }
+        
+        // ensure program successfully exits if time exceeds limit
+        if (timeFlight(launchTime, maxFlightTime)) {
+            if(terminateConnections(mVN)){
+                mLog.write("IMU: Disconnected");
+            }
+            mLog.writeTime("Ending program due to time overflow");
+            return 0;
+        }
     }
         
     mLog.write("Altitude has not reached a new min for " + to_string(numDataPointsChecked4Landing) + " samples... ending program.");
     mLog.writeDelim("Landing Detected");
     
-    // terminate IMU and GPIO
-    if (IMU_ACTIVE){
-        mVN->disconnect();
+    if(terminateConnections(mVN)){
         mLog.write("IMU: Disconnected");
-	}
-    
-    gpioTerminate();
+    }    
     
     mLog.writeTime("\nEND PROGRAM");
 
