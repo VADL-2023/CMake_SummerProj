@@ -16,16 +16,16 @@ float km2m = 0.001; // [km/m]
 
 // constants
 float R = 287; // [kg/JK] universal gas constant
-float B = 6.5*km2m; //[K/m] variation of temperature within the troposphere
+float B = 6.5*km2m; // [K/m] variation of temperature within the troposphere
 
 // fixed flight parameters
 uint8_t airfoilTiltAngle = 12; // [deg] fixed tilt angle for airfoil activation 
-float tBurn = 1.6; //[s] motor burn time
+float tBurn = 1.6; // [s] motor burn time
 float samplingFrequency = 20; // [Hz] how fast does the IMU sample data
 
 // possibly variable flight parameters (stuff we might change)
-float accelRoof = 1.2; // how many g's does the program need to see in order for launch to be detected
-int numDataPointsChecked4Launch = 10; // how many acceleration points are averaged to see if data set is over accelRoof
+float accelRoof = 3; // how many g's does the program need to see in order for launch to be detected
+int numDataPointsChecked4Launch = 8; // how many acceleration points are averaged to see if data set is over accelRoof
 int numDataPointsChecked4Apogee = 10; // how many altitude points must a new max not be found for apogee to be declared
 int numDataPointsChecked4Landing = 10*samplingFrequency; // how many altitude points must a new min not be found for landing to be declared
 float zDeploy = 650*ft2m; // [m] altitude at which fins will deploy above ground level
@@ -127,11 +127,11 @@ int main(){
     ImuMeasurementsRegister response;
     
     startTime = getCurrentTime();
-    Log mLog("Flight Data Log MAINTEST 25", "Program Data Log MAINTEST 25", mVN, startTime);
+    Log mLog("Flight Data Log Deployment Test", "Program Data Log Deployment Test", mVN, startTime);
     
-    mLog.write("Date: 8/17");
-    mLog.write("Flight Name: MAIN TEST (25)\n");
-    mLog.write("Test Notes: new VN\n");
+    mLog.write("Date: 8/18");
+    mLog.write("Flight Name: Deployment Test\n");
+    mLog.write("Test Notes: aaaaahhhhhhhhhhhhhhhhhhhhh\n");
     mLog.write("Verify Critical Parameters: ");
     mLog.write("Deployment Altitude: " + to_string(zDeploy*m2ft) + " Feet AGL");
     mLog.write("Deployment Altitude: " + to_string(zDeploy) + " Meters AGL");
@@ -142,7 +142,7 @@ int main(){
     mLog.write("Apogee Detection Samples: " + to_string(numDataPointsChecked4Apogee));
     mLog.write("Landing Detection Samples: " + to_string(numDataPointsChecked4Landing));
     mLog.write("-----------------------------------\n\n\n");
-    sleep(1);
+
     
     // begin GO-NOGO Protocol
     string go = "NOGO";
@@ -205,8 +205,6 @@ int main(){
         tempSum = 0;
         gravSum = 0;
         mLog.writeTime("Calibrating Baseline Parameters. Hold Still.");
-        sleep(1);
-        // rewrite calibration code so that it does prelim calibration and then keeps calibrating until launch detection
         
         for (int i = 0; i < numSampleReadings; ++i){
             response = mVN->readImuMeasurements();
@@ -271,7 +269,7 @@ int main(){
     
     // deploy primary pair of airfoils at deployment alt
     mLog.writeDelim("Deployment Altitude Reached");
-    moveServoPair(servoPinN, servoPinS, airfoilTiltAngle); //CHECK IF NEED TO CONTINOUSLY "MOVE" SERVOS TO DEPLOY ANGLE
+    moveServoPair(servoPinN, servoPinS, airfoilTiltAngle);
     mLog.writeTime("Airfoils Deployed");
     
     /* C O A S T I N G  S T A G E*//////////////////////////////////////
@@ -323,6 +321,7 @@ int main(){
     mLog.write("Altitude has not reached a new min for " + to_string(numDataPointsChecked4Landing) + " samples... ending program.");
     mLog.writeDelim("Landing Detected");
     
+    // terminate IMU and GPIO
     if (IMU_ACTIVE){
         mVN->disconnect();
         mLog.write("IMU: Disconnected");
