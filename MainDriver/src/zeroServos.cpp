@@ -119,14 +119,17 @@ int main(){
             std::cout << "gpio is working" <<std::endl;
         }
         
-        moveServo(servoPinN, 0);
-        //sleep(1);
-        moveServo(servoPinE, 0);
-        //sleep(1);
-        moveServo(servoPinS, 0);
-        //sleep(1);
-        moveServo(servoPinW, 0);
-        sleep(1);
+        
+        while(true){
+            moveServo(servoPinN, 0);
+            //sleep(1);
+            moveServo(servoPinE, 0);
+            //sleep(1);
+            moveServo(servoPinS, 0);
+            //sleep(1);
+            moveServo(servoPinW, 0);
+            sleep(1);
+        }
         
         
         std::cout << "servos have been zeroed" <<std::endl;
