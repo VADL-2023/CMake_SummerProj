@@ -26,11 +26,11 @@ bool restart = false; // tells the program whether or not we NO-GOed
 bool failedIMU = false; // whether or not IMU has failed
 
 // possibly variable flight parameters (stuff we might change)
-float accelRoof = 3; // how many g's does the program need to see in order for launch to be detected
+float accelRoof = 3.25; // how many g's does the program need to see in order for launch to be detected
 int numDataPointsChecked4Launch = 8; // how many acceleration points are averaged to see if data set is over accelRoof
 int numDataPointsChecked4Apogee = 10; // how many altitude points must a new max not be found for apogee to be declared
 int numDataPointsChecked4Landing = 10*samplingFrequency; // how many altitude points must a new min not be found for landing to be declared
-float zDeploy = 900*ft2m; // [m] altitude at which fins will deploy above ground level
+float zDeploy = 450*ft2m; // [m] altitude at which fins will deploy above ground level
 bool servoTest = true; // whether or not to test actuation range of servos during GO/NOGO
 int maxFlightTime = 300; // [s] max allowable flight time, if exceeded program ends
 int timeToDeploy = 5; // [s] deploy servos after this amount of time from launch detection (5s after launch = 900ft)
@@ -156,7 +156,7 @@ int main(){
     startTime = getCurrentTime();
     Log mLog("Flight Data Log 8/20", "Program Data Log 8/20", mVN, startTime);
     
-    mLog.write("Date: 8/18");
+    mLog.write("Date: 8/20");
     mLog.write("Flight Name: AAC Maiden Flight\n");
     mLog.write("Test Notes: \n");
     mLog.write("Verify Critical Parameters: ");
