@@ -1,2 +1,0 @@
-Successfully opened both file output streams 
-In Destructor of Log2 object, closing fstreams, setting pointer to null

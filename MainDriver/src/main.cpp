@@ -154,10 +154,10 @@ int main(){
     ImuMeasurementsRegister response;
     
     startTime = getCurrentTime();
-    Log mLog("Flight Data Log MAINTEST 32", "Program Data Log MAINTEST 32", mVN, startTime);
+    Log mLog("Flight Data Log 8/20", "Program Data Log 8/20", mVN, startTime);
     
     mLog.write("Date: 8/18");
-    mLog.write("Flight Name: MAINTEST (32)\n");
+    mLog.write("Flight Name: AAC Maiden Flight\n");
     mLog.write("Test Notes: \n");
     mLog.write("Verify Critical Parameters: ");
     mLog.write("Max Flight Time: " + to_string(maxFlightTime) + " s");

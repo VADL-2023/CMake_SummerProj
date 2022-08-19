@@ -1,4 +1,4 @@
-START TIME: 1660916234034.000000
+START TIME: 1660915796649.000000
 Date: 8/18
 Flight Name: MAINTEST (32)
 
@@ -7,8 +7,8 @@ Test Notes:
 Verify Critical Parameters: 
 Max Flight Time: 300 s
 Max Time to Deploy: 5 s
-Deployment Altitude: 900.000061 Feet AGL
-Deployment Altitude: 274.320007 Meters AGL
+Deployment Altitude: 500.000031 Feet AGL
+Deployment Altitude: 152.400009 Meters AGL
 Deployment Angle: 12 Degrees
 Motor Burn Time: 1.600000 Seconds
 Trigger Acceleration: 3.000000 g
@@ -30,15 +30,15 @@ Testing West...
 IMU Flushing
 IMU Flushed
 Calibrating Baseline Parameters. Hold Still. (61.000000 | 19273.000000)
-Calibrated Temperature: 31.300018 C
-Calibrated Pressure: 99.451973 kPa
-Calibrated Gravity: 9.827362 m/s^2
-Are we a GO for flight? (121.000000 | 22276.000000)
-GO (121.000000 | 25436.000000)
+Calibrated Temperature: 29.578308 C
+Calibrated Pressure: 99.445412 kPa
+Calibrated Gravity: 9.833276 m/s^2
+Are we a GO for flight? (121.000000 | 22275.000000)
+GO (121.000000 | 31763.000000)
 
-Pre-Flight Stage Completed (121.000000 | 25436.000000)
+Pre-Flight Stage Completed (121.000000 | 31763.000000)
 Ready for Assembly and Launch Rail
 IMU disconnected while waiting for launch
-Ending Program (365.000000 | 38038.000000)
-END TIME: 1660916272078.000000
+Ending Program (507.000000 | 51273.000000)
+END TIME: 1660915847938.000000
 END LOG
