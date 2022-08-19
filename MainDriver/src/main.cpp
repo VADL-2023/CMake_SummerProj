@@ -30,7 +30,7 @@ float accelRoof = 3; // how many g's does the program need to see in order for l
 int numDataPointsChecked4Launch = 8; // how many acceleration points are averaged to see if data set is over accelRoof
 int numDataPointsChecked4Apogee = 10; // how many altitude points must a new max not be found for apogee to be declared
 int numDataPointsChecked4Landing = 10*samplingFrequency; // how many altitude points must a new min not be found for landing to be declared
-float zDeploy = 550*ft2m; // [m] altitude at which fins will deploy above ground level
+float zDeploy = 900*ft2m; // [m] altitude at which fins will deploy above ground level
 bool servoTest = true; // whether or not to test actuation range of servos during GO/NOGO
 int maxFlightTime = 300; // [s] max allowable flight time, if exceeded program ends
 int timeToDeploy = 5; // [s] deploy servos after this amount of time from launch detection (5s after launch = 900ft)
