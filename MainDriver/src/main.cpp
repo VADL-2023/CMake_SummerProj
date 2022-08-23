@@ -154,7 +154,7 @@ int main(){
     ImuMeasurementsRegister response;
     
     startTime = getCurrentTime();
-    Log mLog("Flight Data Log 8/20", "Program Data Log 8/20", mVN, startTime);
+    Log mLog("Flight Data Log 8_20", "Program Data Log 8_20", mVN, startTime); // don't use special characters in filename
     
     mLog.write("Date: 8/20");
     mLog.write("Flight Name: AAC Maiden Flight\n");

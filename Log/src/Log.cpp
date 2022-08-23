@@ -9,9 +9,16 @@ mIMU(imu)
     this->savedParameters = false;
     this->delim = "$";
     
-    //open flight and program data files
-    mFlightLog.open(flightFilename);
-    mProgLog.open(programFilename);
+    // catch errors involving special characters in filenames rip AAC madien flight 8/20 D:
+    for (size_t i = 0; i < numSpecialCharacters; i++){
+        if(flightFilename.find(specialCharacters[i]) != std::string::npos || programFilename.find(specialCharacters[i]) != std::string::npos){
+            throw std::invalid_argument("Remove special characters from log filenames");
+        }
+    }
+    
+    // open flight and program data files
+    mFlightLog.open(flightFilename + " " + std::to_string(sTime));
+    mProgLog.open(programFilename + " " + std::to_string(sTime));
 
     if (!(mFlightLog.is_open() && mProgLog.is_open())){
         mProgLog << "Error opening file streams";

@@ -29,11 +29,11 @@ private:
     float R;
     float B;
     float currentAlt;
-    bool savedParameters;
-    std::string delim;
-    
-    
     float calcAlt(vn::sensors::ImuMeasurementsRegister& data);
+    bool savedParameters;
+    int numSpecialCharacters = 10; // match this to number of specialCharacters (don't tell matt we hardcoded this lol)
+    std::string specialCharacters[10] = {"/", "\\", "*", "<", ">", ",", ".", "`", "~", "|"}; // not all of these are invalid but rather be safe than sorry
+    std::string delim;
     
 public:
 
