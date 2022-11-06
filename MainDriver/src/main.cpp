@@ -26,14 +26,14 @@ bool restart = false; // tells the program whether or not we NO-GOed
 bool failedIMU = false; // whether or not IMU has failed
 
 // possibly variable flight parameters (stuff we might change)
-float accelRoof = 3.25; // how many g's does the program need to see in order for launch to be detected
+float accelRoof = 1.2; // how many g's does the program need to see in order for launch to be detected
 int numDataPointsChecked4Launch = 8; // how many acceleration points are averaged to see if data set is over accelRoof
 int numDataPointsChecked4Apogee = 10; // how many altitude points must a new max not be found for apogee to be declared
 int numDataPointsChecked4Landing = 10*samplingFrequency; // how many altitude points must a new min not be found for landing to be declared
-float zDeploy = 450*ft2m; // [m] altitude at which fins will deploy above ground level
-bool servoTest = true; // whether or not to test actuation range of servos during GO/NOGO
+float zDeploy = 800*ft2m; // [m] altitude at which fins will deploy above ground level
+bool servoTest = false; // whether or not to test actuation range of servos during GO/NOGO
 int maxFlightTime = 300; // [s] max allowable flight time, if exceeded program ends
-int timeToDeploy = 5; // [s] deploy servos after this amount of time from launch detection (5s after launch = 900ft)
+int timeToDeploy = 120; // [s] deploy servos after this amount of time from launch detection (5s after launch = 900ft)
 
 // servo parameters
 uint16_t pulseMin = 500; // [usecs] pulse width to send servo to one end of motion range
@@ -154,11 +154,11 @@ int main(){
     ImuMeasurementsRegister response;
     
     startTime = getCurrentTime();
-    Log mLog("Flight Data Log 8_20", "Program Data Log 8_20", mVN, startTime); // don't use special characters in filename
+    Log mLog("Flight Data Log", "Program Data Log", mVN, startTime); // don't use special characters in filename
     
-    mLog.write("Date: 8/20");
-    mLog.write("Flight Name: AAC Maiden Flight\n");
-    mLog.write("Test Notes: \n");
+    mLog.write("Date: 11/5");
+    mLog.write("Flight Name: No\n");
+    mLog.write("Test Notes: Re-verification in vacuum chamber\n");
     mLog.write("Verify Critical Parameters: ");
     mLog.write("Max Flight Time: " + to_string(maxFlightTime) + " s");
     mLog.write("Max Time to Deploy: " + to_string(timeToDeploy) + " s");

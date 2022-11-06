@@ -126,7 +126,7 @@ int main(){
     auto startTime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
     
     //Initialize Log object to save data
-    Log mLog("VT Flight Data 9", "VT Program Data 9", mVN, double(startTime));
+    Log mLog("VT Flight Data", "VT Program Data", mVN, double(startTime));
     
     P0 = 99.73;
     T0 = 30.7;
@@ -134,8 +134,8 @@ int main(){
     
     mLog.saveBaselineParameters(R, B, P0, T0, g0);
     
-    mLog.write("Date: 8/12");
-    mLog.write("Test Number: 9");
+    mLog.write("Date: 10/5");
+    mLog.write("Test Number: 1");
     mLog.write("Number of samples: ");
     mLog.write(to_string(nMeasurements));
     mLog.write("Expected run time (us): ");
@@ -143,19 +143,21 @@ int main(){
     mLog.write("Deployment altitude: ");
     mLog.write(to_string(targetAlt));
     mLog.write("-----------------------------------");
+
+    // connect to IMU
     mLog.write("IMU Connecting");
-
-    mVN->connect(IMU_PORT,IMU_BAUD_RATE);
-    if (!mVN->isConnected()){
-        throw "IMU Failed to Connect";
-    }else{
+    try{
+        mVN->connect(IMU_PORT, IMU_BAUD_RATE);
         mLog.write("IMU Connected");
+    } catch(std::exception){
+        mLog.write("IMU failed to connect... restart program");
+        return 0;
     }
-    
-    time_t t_start1, t_end1;
-    time(&t_start1);
 
-    auto mTimeStart = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+    //time_t t_start1, t_end1;
+    //time(&t_start1);
+
+    //auto mTimeStart = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
     
     for (int i = 0; i < nMeasurements; ++i){
         response = mVN->readImuMeasurements();
