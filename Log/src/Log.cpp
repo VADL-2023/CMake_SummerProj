@@ -17,8 +17,9 @@ mIMU(imu)
     }
     
     // open flight and program data files
-    mFlightLog.open(flightFilename + " " + std::to_string(sTime));
-    mProgLog.open(programFilename + " " + std::to_string(sTime));
+    mFlightLog.open(flightFilename + " " + std::to_string(long(sTime)));
+    mProgLog.open(programFilename + " " + std::to_string(long(sTime)
+    ));
 
     if (!(mFlightLog.is_open() && mProgLog.is_open())){
         mProgLog << "Error opening file streams";

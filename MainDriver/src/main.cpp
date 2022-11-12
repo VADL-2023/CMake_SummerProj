@@ -17,21 +17,22 @@ float km2m = 0.001; // [km/m]
 // constants
 float R = 287; // [kg/JK] universal gas constant
 float B = 6.5*km2m; // [K/m] variation of temperature within the troposphere
+bool restart = false; // tells the program whether or not we NO-GOed
+bool failedIMU = false; // whether or not IMU has failed
 
 // fixed flight parameters
 uint8_t airfoilTiltAngle = 12; // [deg] fixed tilt angle for airfoil activation 
 float tBurn = 1.6; // [s] motor burn time
 float samplingFrequency = 20; // [Hz] how fast does the IMU sample data
-bool restart = false; // tells the program whether or not we NO-GOed
-bool failedIMU = false; // whether or not IMU has failed
+
 
 // possibly variable flight parameters (stuff we might change)
-float accelRoof = 1.2; // how many g's does the program need to see in order for launch to be detected
+float accelRoof = 3; // how many g's does the program need to see in order for launch to be detected
 int numDataPointsChecked4Launch = 8; // how many acceleration points are averaged to see if data set is over accelRoof
 int numDataPointsChecked4Apogee = 10; // how many altitude points must a new max not be found for apogee to be declared
 int numDataPointsChecked4Landing = 10*samplingFrequency; // how many altitude points must a new min not be found for landing to be declared
-float zDeploy = 800*ft2m; // [m] altitude at which fins will deploy above ground level
-bool servoTest = false; // whether or not to test actuation range of servos during GO/NOGO
+float zDeploy = 450*ft2m; // [m] altitude at which airfoils will deploy above ground level
+bool servoTest = true; // whether or not to test actuation range of servos during GO/NOGO
 int maxFlightTime = 300; // [s] max allowable flight time, if exceeded program ends
 int timeToDeploy = 120; // [s] deploy servos after this amount of time from launch detection (5s after launch = 900ft)
 
@@ -154,11 +155,11 @@ int main(){
     ImuMeasurementsRegister response;
     
     startTime = getCurrentTime();
-    Log mLog("Flight Data Log", "Program Data Log", mVN, startTime); // don't use special characters in filename
+    Log mLog("AAC Reflight Flight Data Log", "AAC Reflight Program Data Log", mVN, startTime); // don't use special characters in filename
     
-    mLog.write("Date: 11/5");
+    mLog.write("Date: 11-5");
     mLog.write("Flight Name: No\n");
-    mLog.write("Test Notes: Re-verification in vacuum chamber\n");
+    mLog.write("Test Notes: None\n");
     mLog.write("Verify Critical Parameters: ");
     mLog.write("Max Flight Time: " + to_string(maxFlightTime) + " s");
     mLog.write("Max Time to Deploy: " + to_string(timeToDeploy) + " s");
@@ -232,7 +233,7 @@ int main(){
                 response = mVN->readImuMeasurements();
                 mLog.write(response);
             } catch(std::exception){
-                mLog.write("IMU disconnected... restart program");
+                mLog.write("IMU disconnected during flush... restart program");
                 return 0;
             }
         }
@@ -252,7 +253,7 @@ int main(){
                 tempSum += response.temp;
                 gravSum += sqrt(pow(response.accel[0],2) + pow(response.accel[1],2) + pow(response.accel[2],2));
             } catch(std::exception){
-                mLog.write("IMU disconnected... restart program");
+                mLog.write("IMU disconnected during calibration... restart program");
                 return 0;
             }
         }
@@ -286,7 +287,7 @@ int main(){
     float accelAvg = 0;
     int counter = 0;
     
-    // launched detected when avg accel exceeds accelRoog*g0 for numDataPointsChecked4Launch
+    // launched detected when avg accel exceeds accelRoof*g0 for numDataPointsChecked4Launch
     while(accelAvg < accelRoof*g0){
         try{
             response = mVN->readImuMeasurements();
