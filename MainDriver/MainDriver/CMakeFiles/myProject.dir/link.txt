@@ -1,0 +1,1 @@
+/usr/bin/c++ -rdynamic CMakeFiles/myProject.dir/src/dualDeployTest.o -o myProject  -Wl,-rpath,/home/pi/CMake_SummerProj/MainDriver/IMU:/home/pi/CMake_SummerProj/MainDriver/pigpio-master:/home/pi/CMake_SummerProj/MainDriver/Log ../Library1/libLibrary1.a ../VectorNav/libVN.a ../IMU/libIMU.so ../pigpio-master/libpigpio.so ../Log/libLog.so -pthread -lpython3.9 ../VectorNav/libVN.a 

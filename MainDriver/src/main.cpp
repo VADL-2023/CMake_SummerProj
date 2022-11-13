@@ -27,14 +27,17 @@ float samplingFrequency = 20; // [Hz] how fast does the IMU sample data
 
 
 // possibly variable flight parameters (stuff we might change)
-float accelRoof = 3; // how many g's does the program need to see in order for launch to be detected
+float accelRoof = 2; // how many g's does the program need to see in order for launch to be detected
 int numDataPointsChecked4Launch = 8; // how many acceleration points are averaged to see if data set is over accelRoof
 int numDataPointsChecked4Apogee = 10; // how many altitude points must a new max not be found for apogee to be declared
 int numDataPointsChecked4Landing = 10*samplingFrequency; // how many altitude points must a new min not be found for landing to be declared
-float zDeploy = 450*ft2m; // [m] altitude at which airfoils will deploy above ground level
+float zDeployPrimary = 450*ft2m; // [m] altitude at which airfoils will deploy AGL in pitch configuration
+float zDeploySecondary = 800*ft2m; // [m] altitude at which airfoils will deploy AGL in drag configuration 
+bool dualDeployEvents = true; // whether or not dual deployment events will occur; false means only primary deployment will occur
+bool pitchFirst = true; // whether or not to do pitch config first if doing dual deployment
 bool servoTest = true; // whether or not to test actuation range of servos during GO/NOGO
 int maxFlightTime = 300; // [s] max allowable flight time, if exceeded program ends
-int timeToDeploy = 120; // [s] deploy servos after this amount of time from launch detection (5s after launch = 900ft)
+int timeToDeploy = 5; // [s] deploy servos after this amount of time from launch detection (5s after launch = 900ft)
 
 // servo parameters
 uint16_t pulseMin = 500; // [usecs] pulse width to send servo to one end of motion range
@@ -58,13 +61,27 @@ float convertAngle2PulseWidth(float angle) {
     return (pulseMax - pulseMin)*angle/servoRange + (pulseMax + pulseMin)/2.0; // angle between +-90
 }
 
-// moves a pair of servos in opposite CW/CCW directions (but same linear direction) by the same amount (you are outside of the rocket facing radially inward)
-void moveServoPair(int8_t pin1, uint8_t pin2, float angle){
-    float pulseWidth1 = convertAngle2PulseWidth(angle);
-    float pulseWidth2 = convertAngle2PulseWidth(-angle);
-    
-    gpioServo(pin1, pulseWidth1);
-    gpioServo(pin2, pulseWidth2);
+// moves a pair of servos in opposite CW/CCW directions (but same linear direction) 
+// by the same amount (you are outside of the rocket facing radially inward) if pitchConfig == true (pitch configuration)
+// else moves a pair of servos in same CW/CCW directions (different linear direction) if pitchConfig == false (drag configuration)
+void moveServoPair(int8_t pin1, uint8_t pin2, float angle, bool pitchConfig){
+    if(pitchConfig){
+        // pitch config
+        
+        float pulseWidth1 = convertAngle2PulseWidth(angle);
+        float pulseWidth2 = convertAngle2PulseWidth(-angle);
+        
+        gpioServo(pin1, pulseWidth1);
+        gpioServo(pin2, pulseWidth2);
+    } else{
+        // drag config
+        
+        float pulseWidth1 = convertAngle2PulseWidth(angle);
+        float pulseWidth2 = convertAngle2PulseWidth(angle);
+        
+        gpioServo(pin1, pulseWidth1);
+        gpioServo(pin2, pulseWidth2);
+    }
 }
 
 // moves a single servo on [pin] to specified angle [deg]
@@ -155,16 +172,20 @@ int main(){
     ImuMeasurementsRegister response;
     
     startTime = getCurrentTime();
-    Log mLog("AAC Reflight Flight Data Log", "AAC Reflight Program Data Log", mVN, startTime); // don't use special characters in filename
+    Log mLog("AAC Reflight Flight Data Log Test", "AAC Reflight Program Data Log Test", mVN, startTime); // don't use special characters in filename
     
-    mLog.write("Date: 11-5");
-    mLog.write("Flight Name: No\n");
-    mLog.write("Test Notes: None\n");
+    mLog.write("Date: 11-30");
+    mLog.write("Flight Name: Test\n");
+    mLog.write("Test Notes: Vacuum Chamber test for dual deployment altitudes\n");
     mLog.write("Verify Critical Parameters: ");
     mLog.write("Max Flight Time: " + to_string(maxFlightTime) + " s");
     mLog.write("Max Time to Deploy: " + to_string(timeToDeploy) + " s");
-    mLog.write("Deployment Altitude: " + to_string(zDeploy*m2ft) + " Feet AGL");
-    mLog.write("Deployment Altitude: " + to_string(zDeploy) + " Meters AGL");
+    mLog.write("Primary Deployment Altitude: " + to_string(zDeployPrimary*m2ft) + " Feet AGL");
+    mLog.write("Primary Deployment Altitude: " + to_string(zDeployPrimary) + " Meters AGL");
+    mLog.write("Dual Deployment Events: " + to_string(dualDeployEvents));
+    mLog.write("Pitch Configuration Is Primary: " + to_string(pitchFirst));
+    mLog.write("Secondary Deployment Altitude: " + to_string(zDeploySecondary*m2ft) + " Feet AGL");
+    mLog.write("Secondary Deployment Altitude: " + to_string(zDeploySecondary) + " Meters AGL");
     mLog.write("Deployment Angle: " + to_string(airfoilTiltAngle) + " Degrees");
     mLog.write("Motor Burn Time: " + to_string(tBurn) + " Seconds");
     mLog.write("Trigger Acceleration: " + to_string(accelRoof) + " g");
@@ -172,7 +193,7 @@ int main(){
     mLog.write("Apogee Detection Samples: " + to_string(numDataPointsChecked4Apogee));
     mLog.write("Landing Detection Samples: " + to_string(numDataPointsChecked4Landing));
     mLog.write("-----------------------------------\n\n\n");
-    sleep(3);
+    sleep(5);
     
     // begin GO-NOGO Protocol
     string go = "NOGO";
@@ -314,9 +335,9 @@ int main(){
     
     float zCurrent = 0;
     
-    // begin checking for deployment altitude
-    mLog.writeTime("Actively Checking Altitude");
-    while (zCurrent < zDeploy) {
+    // begin checking for first deployment altitude (pitching)
+    mLog.writeTime("Actively Checking Altitude for first deployment");
+    while (zCurrent < zDeployPrimary) {
         try{
             response = mVN->readImuMeasurements();
             mLog.write(response);
@@ -345,10 +366,51 @@ int main(){
         }
     }
     
-    // deploy primary pair of airfoils at deployment alt
-    mLog.writeDelim("Deployment Altitude Reached");
-    moveServoPair(servoPinN, servoPinS, airfoilTiltAngle);
-    mLog.writeTime("Airfoils Deployed");
+    // deploy both pairs of airfoils at primary deployment alt in pitch configuration
+    mLog.writeDelim("First Deployment Altitude Reached");
+    moveServoPair(servoPinN, servoPinS, airfoilTiltAngle, pitchFirst);
+    moveServoPair(servoPinE, servoPinW, airfoilTiltAngle, pitchFirst);
+    mLog.writeTime("Airfoils Deployed in Pitch Configuration");
+    
+    // begin checking for second deployment altitude (drag configuration)
+    //NOTE: Check logic for time override; Check logic for dualDeployEvents
+    if(dualDeployEvents){
+        mLog.writeTime("Actively Checking Altitude for second deployment");
+        while (zCurrent < zDeploySecondary) {
+            try{
+                response = mVN->readImuMeasurements();
+                mLog.write(response);
+                zCurrent = pressure2Altitude(T0, P0, g0, response.pressure);
+            } catch(std::exception){
+                if(!failedIMU){
+                    mLog.write("IMU disconnected while waiting for deployment altitude... waiting for time override");
+                    failedIMU = true;
+                    zCurrent = 0; //only exit loop after timeToDeploy seconds have passed
+                }
+            } 
+            
+            // ensure program successfully exits if time exceeds limit
+            if (timeFlight(launchTime, maxFlightTime)) {
+                if(terminateConnections(mVN)){
+                    mLog.write("IMU: Disconnected");
+                }
+                mLog.writeTime("Ending program due to time overflow");
+                return 0;
+            }
+            
+            // if timeToDeploy seconds pass after launch detection, move on to next part of code
+            if (timeFlight(launchTime, timeToDeploy)){
+                mLog.write("Deploying airfoils due to time override after " + to_string(timeToDeploy));
+                break;
+            }
+        }
+        
+        // deploy both pairs of airfoils at secondary deployment alt in drag configuration
+        mLog.writeDelim("Second Deployment Altitude Reached");
+        moveServoPair(servoPinN, servoPinS, airfoilTiltAngle, !pitchFirst);
+        moveServoPair(servoPinW, servoPinE, -airfoilTiltAngle, !pitchFirst);
+        mLog.writeTime("Airfoils Deployed in Drag Configuration");
+    }
     
     /* C O A S T I N G  S T A G E*//////////////////////////////////////
     
@@ -391,8 +453,6 @@ int main(){
     //deploy secondary pair of airfoils at apogee
     mLog.write("Altitude has not reached a new max for " + to_string(numDataPointsChecked4Apogee) + " samples... deploying second pair of airfoils.");
     mLog.writeDelim("Apogee Detected");
-    moveServoPair(servoPinE, servoPinW, airfoilTiltAngle); 
-    mLog.write("Second Pair of Airfoils Deployed");
     
     /* D E S C E N T  S T A G E *///////////////////////////////////////
 
