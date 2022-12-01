@@ -31,13 +31,13 @@ float accelRoof = 2; // how many g's does the program need to see in order for l
 int numDataPointsChecked4Launch = 8; // how many acceleration points are averaged to see if data set is over accelRoof
 int numDataPointsChecked4Apogee = 10; // how many altitude points must a new max not be found for apogee to be declared
 int numDataPointsChecked4Landing = 10*samplingFrequency; // how many altitude points must a new min not be found for landing to be declared
-float zDeployPrimary = 450*ft2m; // [m] altitude at which airfoils will deploy AGL in pitch configuration
-float zDeploySecondary = 800*ft2m; // [m] altitude at which airfoils will deploy AGL in drag configuration 
+float zDeployPrimary = 1050*ft2m; // [m] altitude at which airfoils will deploy AGL in pitch configuration
+float zDeploySecondary = 1500*ft2m; // [m] altitude at which airfoils will deploy AGL in drag configuration 
 bool dualDeployEvents = true; // whether or not dual deployment events will occur; false means only primary deployment will occur
 bool pitchFirst = true; // whether or not to do pitch config first if doing dual deployment
 bool servoTest = true; // whether or not to test actuation range of servos during GO/NOGO
 int maxFlightTime = 300; // [s] max allowable flight time, if exceeded program ends
-int timeToDeploy = 5; // [s] deploy servos after this amount of time from launch detection (5s after launch = 900ft)
+int timeToDeploy = 300; // [s] deploy servos after this amount of time from launch detection (5s after launch = 900ft)
 
 // servo parameters
 uint16_t pulseMin = 500; // [usecs] pulse width to send servo to one end of motion range
@@ -172,7 +172,7 @@ int main(){
     ImuMeasurementsRegister response;
     
     startTime = getCurrentTime();
-    Log mLog("AAC Reflight Flight Data Log Test", "AAC Reflight Program Data Log Test", mVN, startTime); // don't use special characters in filename
+    Log mLog("AAC Reflight Flight Data Log Test 2", "AAC Reflight Program Data Log Test 2", mVN, startTime); // don't use special characters in filename
     
     mLog.write("Date: 11-30");
     mLog.write("Flight Name: Test\n");
