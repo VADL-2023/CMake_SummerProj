@@ -1,25 +1,28 @@
 #include "../include/Log.h"
 
-Log::Log(std::string flightFilename, std::string programFilename, vn::sensors::VnSensor* imu, double sTime):
+Log::Log(std::string fFilename, std::string pFilename, vn::sensors::VnSensor* imu, double sTime):
 mIMU(imu)
 {
     //initialize variables
     this->startTime = sTime;
+    this->lastTime = 0;
+    this->currTime = sTime;
     this->sampleNumber = 1;
     this->savedParameters = false;
     this->delim = "$";
+    this->flightFilename = fFilename + " " + std::to_string(long(sTime));
+    this->programFilename = pFilename + " " + std::to_string(long(sTime));
     
     // catch errors involving special characters in filenames rip AAC madien flight 8/20 D:
     for (size_t i = 0; i < numSpecialCharacters; i++){
-        if(flightFilename.find(specialCharacters[i]) != std::string::npos || programFilename.find(specialCharacters[i]) != std::string::npos){
+        if(fFilename.find(specialCharacters[i]) != std::string::npos || programFilename.find(specialCharacters[i]) != std::string::npos){
             throw std::invalid_argument("Remove special characters from log filenames");
         }
     }
     
     // open flight and program data files
-    mFlightLog.open(flightFilename + " " + std::to_string(long(sTime)));
-    mProgLog.open(programFilename + " " + std::to_string(long(sTime)
-    ));
+    mFlightLog.open(flightFilename);
+    mProgLog.open(programFilename);
 
     if (!(mFlightLog.is_open() && mProgLog.is_open())){
         mProgLog << "Error opening file streams";
@@ -28,13 +31,28 @@ mIMU(imu)
                 << "Time\t MagX\t MagY\t MagZ\t AccelX\t AccelY\t AccelZ\t Yaw\t Pitch\t Roll\t Temperature\t Pressure\t Altitude\n";
         mProgLog << "START TIME: " << std::__cxx11::to_string(startTime) << "\n";
     }
+    
+    // close flight and program data files
+    mFlightLog.close();
+    mProgLog.close();
 }
 
-// deletion of Log pointer, close flight and program data files
+// appened last curent data, deletion of Log pointer, close flight and program data files
 Log::~Log() {
+    // reopen files
+    mFlightLog.open(flightFilename, std::ofstream::app);
+    mProgLog.open(programFilename, std::ofstream::app);
+    
+    // appened current data
+    mFlightLog << currentFlightData;
+    mProgLog << currentProgData;
+    
+    // Note ending time
     mProgLog << "END TIME: ";
     mProgLog << std::__cxx11::to_string(startTime + elapsedTime()) << '\n';
     mProgLog << "END LOG";
+    
+    // close files and IMU pointer
     mFlightLog.close();
     mProgLog.close();
     mIMU = nullptr;
@@ -50,29 +68,62 @@ void Log::write(vn::sensors::ImuMeasurementsRegister& data){
     
     ++sampleNumber;
     
+    // save and reopen file after 1000 ms
+    currTime = elapsedTime();
+    if ((currTime - lastTime) > 1000) {
+            //reopen files
+            mFlightLog.open(flightFilename, std::ofstream::app);
+            mProgLog.open(programFilename, std::ofstream::app);
+            
+            // appened current data
+            mFlightLog << currentFlightData;
+            mProgLog << currentProgData;
+            
+            // clear variables
+            currentFlightData = "";
+            currentProgData = "";
+            
+            // close files
+            mFlightLog.close();
+            mProgLog.close();
+            
+            lastTime = currTime; // update lastTime
+            
+            std::cout<<"SEEEEEEEEE ME"<<std::endl;
+    }
+    
+    
     char buf[256];
-    sprintf(buf, "%g\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\n",
-            elapsedTime(), data.mag[0], data.mag[1], data.mag[2], data.accel[0], data.accel[1], data.accel[2], data.gyro[0], data.gyro[1], data.gyro[2], data.temp, data.pressure, currentAlt);
-    mFlightLog << buf;
+    sprintf(buf, "%g\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f",
+            currTime, data.mag[0], data.mag[1], data.mag[2], data.accel[0], data.accel[1], data.accel[2], 
+            data.gyro[0], data.gyro[1], data.gyro[2], data.temp, data.pressure, currentAlt);
+    //mFlightLog << buf;
+    currentFlightData = currentFlightData + buf + '\n';
 }
 
 // write string to program data file and to console
 void Log::write(std::string outputString){
     std::cout << outputString << std::endl;
-    mProgLog << outputString << '\n';
+    //mProgLog << outputString << '\n';
+
+    currentProgData = currentProgData + outputString + '\n';
 }
 
 // write string to program data file with timestamp and to console
 void Log::writeTime(std::string outputString){
     std::cout << outputString << std::endl;
-    mProgLog << outputString + " (" + std::to_string(sampleNumber) + " | " + std::to_string(elapsedTime()) << ")\n";
+    //mProgLog << outputString + " (" + std::to_string(sampleNumber) + " | " + std::to_string(elapsedTime()) << ")\n";
     //mProgLog << elapsedTime() << '\n';
+
+    currentProgData = currentProgData + outputString + " (" + std::to_string(sampleNumber) + " | " + std::to_string(elapsedTime()) + ")\n";
 }
 
 // write string to program data file with special delimiters and timestamp for MATLAB postprocessing, and to console
 void Log::writeDelim(std::string outputString){
     std::cout << outputString << std::endl;
-    mProgLog <<delim + outputString + " (" + std::to_string(sampleNumber) + " | " + std::to_string(elapsedTime()) + ")" + delim << '\n';
+    //mProgLog <<delim + outputString + " (" + std::to_string(sampleNumber) + " | " + std::to_string(elapsedTime()) + ")" + delim << '\n';
+
+    currentProgData = currentProgData + delim + outputString + " (" + std::to_string(sampleNumber) + " | " + std::to_string(elapsedTime()) + ")" + delim + '\n';
 }
 
 // calculate time in milliseconds since Log pointer was created

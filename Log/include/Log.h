@@ -22,6 +22,8 @@ private:
      
     double startTime;
     double currentTime;
+    double currTime;
+    double lastTime; 
     double sampleNumber;
     float pressure0;
     float temperature0;
@@ -34,6 +36,10 @@ private:
     int numSpecialCharacters = 10; // match this to number of specialCharacters (don't tell matt we hardcoded this lol)
     std::string specialCharacters[10] = {"/", "\\", "*", "<", ">", ",", ".", "`", "~", "|"}; // not all of these are invalid but rather be safe than sorry
     std::string delim;
+    std::string flightFilename;
+    std::string programFilename;
+    std::string currentFlightData;
+    std::string currentProgData;
     
 public:
 

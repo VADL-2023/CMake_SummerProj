@@ -19,15 +19,15 @@ float R = 287; // [kg/JK] universal gas constant
 float B = 6.5*km2m; // [K/m] variation of temperature within the troposphere
 bool restart = false; // tells the program whether or not we NO-GOed
 bool failedIMU = false; // whether or not IMU has failed
+bool timeToDeployOverride = false; // whether or not to go to lastest deployment mode if time exceeds timeToDeploy
 
 // fixed flight parameters
 uint8_t airfoilTiltAngle = 12; // [deg] fixed tilt angle for airfoil activation 
 float tBurn = 1.6; // [s] motor burn time
 float samplingFrequency = 20; // [Hz] how fast does the IMU sample data
 
-
 // possibly variable flight parameters (stuff we might change)
-float accelRoof = 2; // how many g's does the program need to see in order for launch to be detected
+float accelRoof = 1.5; // how many g's does the program need to see in order for launch to be detected
 int numDataPointsChecked4Launch = 8; // how many acceleration points are averaged to see if data set is over accelRoof
 int numDataPointsChecked4Apogee = 10; // how many altitude points must a new max not be found for apogee to be declared
 int numDataPointsChecked4Landing = 10*samplingFrequency; // how many altitude points must a new min not be found for landing to be declared
@@ -35,9 +35,9 @@ float zDeployPrimary = 1050*ft2m; // [m] altitude at which airfoils will deploy 
 float zDeploySecondary = 1500*ft2m; // [m] altitude at which airfoils will deploy AGL in drag configuration 
 bool dualDeployEvents = true; // whether or not dual deployment events will occur; false means only primary deployment will occur
 bool pitchFirst = true; // whether or not to do pitch config first if doing dual deployment
-bool servoTest = true; // whether or not to test actuation range of servos during GO/NOGO
-int maxFlightTime = 300; // [s] max allowable flight time, if exceeded program ends
-int timeToDeploy = 300; // [s] deploy servos after this amount of time from launch detection (5s after launch = 900ft)
+bool servoTest = false; // whether or not to test actuation range of servos during GO/NOGO
+int maxFlightTime = 180; // [s] max allowable flight time, if exceeded program ends
+int timeToDeploy = 10; // [s] deploy servos after this amount of time from launch detection (5s after launch = 900ft)
 
 // servo parameters
 uint16_t pulseMin = 500; // [usecs] pulse width to send servo to one end of motion range
@@ -172,11 +172,11 @@ int main(){
     ImuMeasurementsRegister response;
     
     startTime = getCurrentTime();
-    Log mLog("AAC Reflight Flight Data Log Test 2", "AAC Reflight Program Data Log Test 2", mVN, startTime); // don't use special characters in filename
+    Log mLog("AAC Reflight Flight Log TEST", "AAC Reflight Program Log TEST", mVN, startTime); // don't use special characters in filename
     
-    mLog.write("Date: 11-30");
-    mLog.write("Flight Name: Test\n");
-    mLog.write("Test Notes: Vacuum Chamber test for dual deployment altitudes\n");
+    mLog.write("Date: 12-2");
+    mLog.write("Flight Name: VC Testings\n");
+    mLog.write("Test Notes: Log Testings\n");
     mLog.write("Verify Critical Parameters: ");
     mLog.write("Max Flight Time: " + to_string(maxFlightTime) + " s");
     mLog.write("Max Time to Deploy: " + to_string(timeToDeploy) + " s");
@@ -350,7 +350,8 @@ int main(){
             }
         } 
         
-        // ensure program successfully exits if time exceeds limit
+        // ensure program successfully exits if time exceeds limit\
+        // NOTE: this seems unneeded as shouldn't timeToDeploy always trigger before this?
         if (timeFlight(launchTime, maxFlightTime)) {
             if(terminateConnections(mVN)){
                 mLog.write("IMU: Disconnected");
@@ -360,20 +361,30 @@ int main(){
         }
         
         // if timeToDeploy seconds pass after launch detection, move on to next part of code
+        // if there are dual deployment events, move to actuate in secondary condition only
         if (timeFlight(launchTime, timeToDeploy)){
-            mLog.write("Deploying airfoils due to time override after " + to_string(timeToDeploy));
+            if (!dualDeployEvents){
+                mLog.write("Deploying airfoils due to time override after " + to_string(timeToDeploy));
+            } else{
+                timeToDeployOverride = true;
+            }
             break;
         }
     }
     
-    // deploy both pairs of airfoils at primary deployment alt in pitch configuration
-    mLog.writeDelim("First Deployment Altitude Reached");
-    moveServoPair(servoPinN, servoPinS, airfoilTiltAngle, pitchFirst);
-    moveServoPair(servoPinE, servoPinW, airfoilTiltAngle, pitchFirst);
-    mLog.writeTime("Airfoils Deployed in Pitch Configuration");
+        // actuate servos if either we reached zDeployPrimary alt or if (there are not dual deployment events and
+        // the time override occurred)
+        if (zCurrent >= zDeployPrimary || (!dualDeployEvents && !timeToDeployOverride)){
+            // deploy both pairs of airfoils at primary deployment alt in pitch configuration
+            mLog.writeDelim("First Deployment Altitude Reached");
+            moveServoPair(servoPinN, servoPinS, airfoilTiltAngle, pitchFirst);
+            moveServoPair(servoPinE, servoPinW, airfoilTiltAngle, pitchFirst);
+            mLog.writeTime("Airfoils Deployed in Pitch Configuration");
+        }
+    }
     
     // begin checking for second deployment altitude (drag configuration)
-    //NOTE: Check logic for time override; Check logic for dualDeployEvents
+    // NOTE: Check logic for time override; Check logic for dualDeployEvents
     if(dualDeployEvents){
         mLog.writeTime("Actively Checking Altitude for second deployment");
         while (zCurrent < zDeploySecondary) {
@@ -390,6 +401,7 @@ int main(){
             } 
             
             // ensure program successfully exits if time exceeds limit
+            // NOTE: this seems unneeded as shouldn't timeToDeploy always trigger before this?
             if (timeFlight(launchTime, maxFlightTime)) {
                 if(terminateConnections(mVN)){
                     mLog.write("IMU: Disconnected");
@@ -401,6 +413,7 @@ int main(){
             // if timeToDeploy seconds pass after launch detection, move on to next part of code
             if (timeFlight(launchTime, timeToDeploy)){
                 mLog.write("Deploying airfoils due to time override after " + to_string(timeToDeploy));
+                timeToDeployOverride = true;
                 break;
             }
         }
