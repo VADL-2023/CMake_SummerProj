@@ -1,0 +1,42 @@
+START TIME: 1670020669108.000000
+Date: 12-2
+Flight Name: VC Testings
+
+Test Notes: Log Testings
+
+Verify Critical Parameters: 
+Max Flight Time: 300 s
+Max Time to Deploy: 300 s
+Primary Deployment Altitude: 450.000031 Feet AGL
+Primary Deployment Altitude: 137.160004 Meters AGL
+Dual Deployment Events: 1
+Pitch Configuration Is Primary: 1
+Secondary Deployment Altitude: 800.000000 Feet AGL
+Secondary Deployment Altitude: 243.839996 Meters AGL
+Deployment Angle: 12 Degrees
+Motor Burn Time: 1.600000 Seconds
+Trigger Acceleration: 1.500000 g
+Launch Detection Samples: 8
+Apogee Detection Samples: 10
+Landing Detection Samples: 200
+-----------------------------------
+
+
+
+GPIO Initialized
+IMU Connecting
+IMU Connected
+IMU Flushing
+IMU Flushed
+Calibrating Baseline Parameters. Hold Still. (61.000000 | 8460.000000)
+Calibrated Temperature: 33.099976 C
+Calibrated Pressure: 100.047623 kPa
+Calibrated Gravity: 9.769316 m/s^2
+Are we a GO for flight? (121.000000 | 11460.000000)
+GO (121.000000 | 14401.000000)
+
+Pre-Flight Stage Completed (121.000000 | 14401.000000)
+Ready for Assembly and Launch Rail
+Average acceleration exceeded 14.653974 m/s^2 over 8 data points
+$Rocket Has Launched (292.000000 | 22934.000000)$
+Waiting for Motor Burn Time

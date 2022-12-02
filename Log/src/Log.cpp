@@ -88,9 +88,7 @@ void Log::write(vn::sensors::ImuMeasurementsRegister& data){
             mProgLog.close();
             
             lastTime = currTime; // update lastTime
-            
-            std::cout<<"SEEEEEEEEE ME"<<std::endl;
-    }
+            }
     
     
     char buf[256];

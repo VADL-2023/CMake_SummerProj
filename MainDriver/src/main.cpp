@@ -31,13 +31,13 @@ float accelRoof = 1.5; // how many g's does the program need to see in order for
 int numDataPointsChecked4Launch = 8; // how many acceleration points are averaged to see if data set is over accelRoof
 int numDataPointsChecked4Apogee = 10; // how many altitude points must a new max not be found for apogee to be declared
 int numDataPointsChecked4Landing = 10*samplingFrequency; // how many altitude points must a new min not be found for landing to be declared
-float zDeployPrimary = 1050*ft2m; // [m] altitude at which airfoils will deploy AGL in pitch configuration
-float zDeploySecondary = 1500*ft2m; // [m] altitude at which airfoils will deploy AGL in drag configuration 
+float zDeployPrimary = 450*ft2m; // [m] altitude at which airfoils will deploy AGL in pitch configuration
+float zDeploySecondary = 800*ft2m; // [m] altitude at which airfoils will deploy AGL in drag configuration 
 bool dualDeployEvents = true; // whether or not dual deployment events will occur; false means only primary deployment will occur
 bool pitchFirst = true; // whether or not to do pitch config first if doing dual deployment
 bool servoTest = false; // whether or not to test actuation range of servos during GO/NOGO
-int maxFlightTime = 180; // [s] max allowable flight time, if exceeded program ends
-int timeToDeploy = 10; // [s] deploy servos after this amount of time from launch detection (5s after launch = 900ft)
+int maxFlightTime = 300; // [s] max allowable flight time, if exceeded program ends
+int timeToDeploy = 300; // [s] deploy servos after this amount of time from launch detection (5s after launch = 900ft)
 
 // servo parameters
 uint16_t pulseMin = 500; // [usecs] pulse width to send servo to one end of motion range
@@ -125,9 +125,14 @@ void activeSleep(float sleepTime, VnSensor* imu, ImuMeasurementsRegister &respon
     double currentTime = getCurrentTime();
     double endTime = sleepTime*1000 + currentTime;
     while (currentTime < endTime){
-        response = imu->readImuMeasurements();
-        log.write(response);
-        currentTime = getCurrentTime();
+        try{
+            response = imu->readImuMeasurements();
+            log.write(response);
+            currentTime = getCurrentTime();
+        } catch(std::exception){
+            log.write("IMU disconnected during active sleep");
+            //mLog.writeTime("Ending Program");
+        }
     }
 }    
 
@@ -364,7 +369,7 @@ int main(){
         // if there are dual deployment events, move to actuate in secondary condition only
         if (timeFlight(launchTime, timeToDeploy)){
             if (!dualDeployEvents){
-                mLog.write("Deploying airfoils due to time override after " + to_string(timeToDeploy));
+                mLog.write("Deploying airfoils in primary configuration due to time override after " + to_string(timeToDeploy));
             } else{
                 timeToDeployOverride = true;
             }
@@ -372,20 +377,19 @@ int main(){
         }
     }
     
-        // actuate servos if either we reached zDeployPrimary alt or if (there are not dual deployment events and
-        // the time override occurred)
-        if (zCurrent >= zDeployPrimary || (!dualDeployEvents && !timeToDeployOverride)){
-            // deploy both pairs of airfoils at primary deployment alt in pitch configuration
-            mLog.writeDelim("First Deployment Altitude Reached");
-            moveServoPair(servoPinN, servoPinS, airfoilTiltAngle, pitchFirst);
-            moveServoPair(servoPinE, servoPinW, airfoilTiltAngle, pitchFirst);
-            mLog.writeTime("Airfoils Deployed in Pitch Configuration");
-        }
+    // actuate servos if either we reached zDeployPrimary alt or if (there are not dual deployment events and
+    // the time override occurred)
+    if (zCurrent >= zDeployPrimary || (!dualDeployEvents && !timeToDeployOverride)){
+        // deploy both pairs of airfoils at primary deployment alt in pitch configuration
+        mLog.writeDelim("First Deployment Altitude Reached");
+        moveServoPair(servoPinN, servoPinS, airfoilTiltAngle, pitchFirst);
+        moveServoPair(servoPinE, servoPinW, airfoilTiltAngle, pitchFirst);
+        mLog.writeTime("Airfoils Deployed in primary configuration");
     }
     
     // begin checking for second deployment altitude (drag configuration)
     // NOTE: Check logic for time override; Check logic for dualDeployEvents
-    if(dualDeployEvents){
+    if (dualDeployEvents){
         mLog.writeTime("Actively Checking Altitude for second deployment");
         while (zCurrent < zDeploySecondary) {
             try{
@@ -412,7 +416,7 @@ int main(){
             
             // if timeToDeploy seconds pass after launch detection, move on to next part of code
             if (timeFlight(launchTime, timeToDeploy)){
-                mLog.write("Deploying airfoils due to time override after " + to_string(timeToDeploy));
+                mLog.write("Deploying airfoils in secondary configuration due to time override after " + to_string(timeToDeploy));
                 timeToDeployOverride = true;
                 break;
             }
@@ -422,7 +426,7 @@ int main(){
         mLog.writeDelim("Second Deployment Altitude Reached");
         moveServoPair(servoPinN, servoPinS, airfoilTiltAngle, !pitchFirst);
         moveServoPair(servoPinW, servoPinE, -airfoilTiltAngle, !pitchFirst);
-        mLog.writeTime("Airfoils Deployed in Drag Configuration");
+        mLog.writeTime("Airfoils Deployed in secondary configuration");
     }
     
     /* C O A S T I N G  S T A G E*//////////////////////////////////////
@@ -464,7 +468,7 @@ int main(){
     }
     
     //deploy secondary pair of airfoils at apogee
-    mLog.write("Altitude has not reached a new max for " + to_string(numDataPointsChecked4Apogee) + " samples... deploying second pair of airfoils.");
+    mLog.write("Altitude has not reached a new max for " + to_string(numDataPointsChecked4Apogee) + " samples");
     mLog.writeDelim("Apogee Detected");
     
     /* D E S C E N T  S T A G E *///////////////////////////////////////
