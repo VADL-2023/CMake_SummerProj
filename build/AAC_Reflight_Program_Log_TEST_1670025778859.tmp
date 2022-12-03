@@ -1,4 +1,4 @@
-START TIME: 1670020953710.000000
+START TIME: 1670025778859.000000
 Date: 12-2
 Flight Name: VC Testings
 
@@ -28,16 +28,16 @@ IMU Connecting
 IMU Connected
 IMU Flushing
 IMU Flushed
-Calibrating Baseline Parameters. Hold Still. (61.000000 | 8219.000000)
-Calibrated Temperature: 33.199982 C
-Calibrated Pressure: 100.045898 kPa
-Calibrated Gravity: 9.767546 m/s^2
-Are we a GO for flight? (121.000000 | 11219.000000)
-GO (121.000000 | 13330.000000)
+Calibrating Baseline Parameters. Hold Still. (61.000000 | 8304.000000)
+Calibrated Temperature: 32.283356 C
+Calibrated Pressure: 99.946365 kPa
+Calibrated Gravity: 9.770686 m/s^2
+Are we a GO for flight? (121.000000 | 11304.000000)
+GO (121.000000 | 12859.000000)
 
-Pre-Flight Stage Completed (121.000000 | 13330.000000)
+Pre-Flight Stage Completed (121.000000 | 12859.000000)
 Ready for Assembly and Launch Rail
-Average acceleration exceeded 14.651319 m/s^2 over 8 data points
-$Rocket Has Launched (172.000000 | 15869.000000)$
+Average acceleration exceeded 14.656029 m/s^2 over 8 data points
+$Rocket Has Launched (217.000000 | 17655.000000)$
 Waiting for Motor Burn Time
-Actively Checking Altitude for first deployment (204.000000 | 17469.000000)
+Actively Checking Altitude for first deployment (249.000000 | 19255.000000)

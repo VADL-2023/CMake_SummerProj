@@ -3,15 +3,16 @@
 Log::Log(std::string fFilename, std::string pFilename, vn::sensors::VnSensor* imu, double sTime):
 mIMU(imu)
 {
-    //initialize variables
+    // initialize variables
     this->startTime = sTime;
-    this->lastTime = 0;
     this->currTime = sTime;
+    this->lastTime = 0;
     this->sampleNumber = 1;
     this->savedParameters = false;
     this->delim = "$";
-    this->flightFilename = fFilename + " " + std::to_string(long(sTime));
-    this->programFilename = pFilename + " " + std::to_string(long(sTime));
+    this->flightFilename = fFilename + "_" + std::to_string(long(sTime)) + ".tmp";
+    this->programFilename = pFilename + "_" + std::to_string(long(sTime)) + ".tmp";
+    //std::cout << "Initial name: " << fFilename << std::endl;
     
     // catch errors involving special characters in filenames rip AAC madien flight 8/20 D:
     for (size_t i = 0; i < numSpecialCharacters; i++){
@@ -37,13 +38,13 @@ mIMU(imu)
     mProgLog.close();
 }
 
-// appened last curent data, deletion of Log pointer, close flight and program data files
+// append last curent data, deletion of Log pointer, close flight and program data files
 Log::~Log() {
     // reopen files
     mFlightLog.open(flightFilename, std::ofstream::app);
     mProgLog.open(programFilename, std::ofstream::app);
     
-    // appened current data
+    // append current data
     mFlightLog << currentFlightData;
     mProgLog << currentProgData;
     
@@ -70,7 +71,7 @@ void Log::write(vn::sensors::ImuMeasurementsRegister& data){
     
     // save and reopen file after 1000 ms
     currTime = elapsedTime();
-    if ((currTime - lastTime) > 1000) {
+    if ((currTime - lastTime) > 1000){
             //reopen files
             mFlightLog.open(flightFilename, std::ofstream::app);
             mProgLog.open(programFilename, std::ofstream::app);
@@ -79,18 +80,16 @@ void Log::write(vn::sensors::ImuMeasurementsRegister& data){
             mFlightLog << currentFlightData;
             mProgLog << currentProgData;
             
-            // clear variables
-            currentFlightData = "";
-            currentProgData = "";
-            
             // close files
             mFlightLog.close();
             mProgLog.close();
             
-            lastTime = currTime; // update lastTime
-            }
-    
-    
+            // reset variables
+            currentFlightData = "";
+            currentProgData = "";
+            lastTime = currTime;
+        }
+        
     char buf[256];
     sprintf(buf, "%g\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f",
             currTime, data.mag[0], data.mag[1], data.mag[2], data.accel[0], data.accel[1], data.accel[2], 
@@ -103,7 +102,6 @@ void Log::write(vn::sensors::ImuMeasurementsRegister& data){
 void Log::write(std::string outputString){
     std::cout << outputString << std::endl;
     //mProgLog << outputString << '\n';
-
     currentProgData = currentProgData + outputString + '\n';
 }
 
@@ -112,7 +110,6 @@ void Log::writeTime(std::string outputString){
     std::cout << outputString << std::endl;
     //mProgLog << outputString + " (" + std::to_string(sampleNumber) + " | " + std::to_string(elapsedTime()) << ")\n";
     //mProgLog << elapsedTime() << '\n';
-
     currentProgData = currentProgData + outputString + " (" + std::to_string(sampleNumber) + " | " + std::to_string(elapsedTime()) + ")\n";
 }
 
@@ -120,7 +117,6 @@ void Log::writeTime(std::string outputString){
 void Log::writeDelim(std::string outputString){
     std::cout << outputString << std::endl;
     //mProgLog <<delim + outputString + " (" + std::to_string(sampleNumber) + " | " + std::to_string(elapsedTime()) + ")" + delim << '\n';
-
     currentProgData = currentProgData + delim + outputString + " (" + std::to_string(sampleNumber) + " | " + std::to_string(elapsedTime()) + ")" + delim + '\n';
 }
 

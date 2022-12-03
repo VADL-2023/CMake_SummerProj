@@ -6,11 +6,3 @@
 
 #IncludeRegexTransform: 
 
-../Library1/include/foo.h
-iostream
--
-
-/home/pi/CMake_SummerProj/Library1/src/foo.cpp
-foo.h
-/home/pi/CMake_SummerProj/Library1/src/foo.h
-
