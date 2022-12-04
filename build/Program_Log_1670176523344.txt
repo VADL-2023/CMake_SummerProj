@@ -1,12 +1,12 @@
-START TIME: 1670096032967.000000
-Date: 12-3
-Flight Name: VC Testings
+START TIME: 1670176523344.000000
+Date: 12-4
+Flight Name: AAC Reflight
 
-Test Notes: Log Testings
+Test Notes: This is NOT a test
 
 Verify Critical Parameters: 
 Max Flight Time: 300 s
-Max Time to Deploy: 300 s
+Max Time to Deploy: 6 s
 
 Dual Deployment Events: 1
 Pitch Configuration Is Primary: 1
@@ -20,7 +20,7 @@ Secondary Deployment Altitude: 243.839996 Meters AGL
 
 Deployment Angle: 12 Degrees
 Motor Burn Time: 1.600000 Seconds
-Trigger Acceleration: 1.500000 g
+Trigger Acceleration: 3.000000 g
 
 Launch Detection Samples: 8
 Apogee Detection Samples: 10
@@ -39,4 +39,4 @@ Testing South...
 Testing West...
 IMU Flushing
 IMU Flushed
-Calibrating Baseline Parameters. Hold Still. (61.000000 | 26293.000000)
+Calibrating Baseline Parameters. Hold Still. (61.000000 | 31294.000000)

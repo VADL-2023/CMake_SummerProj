@@ -28,7 +28,7 @@ float tBurn = 1.6; // [s] motor burn time
 float samplingFrequency = 20; // [Hz] how fast does the IMU sample data
 
 // possibly variable flight parameters (stuff we might change)
-float accelRoof = 1.5; // how many g's does the program need to see in order for launch to be detected
+float accelRoof = 3; // how many g's does the program need to see in order for launch to be detected
 int numDataPointsChecked4Launch = 8; // how many acceleration points are averaged to see if data set is over accelRoof
 int numDataPointsChecked4Apogee = 10; // how many altitude points must a new max not be found for apogee to be declared
 int numDataPointsChecked4Landing = 10*samplingFrequency; // how many altitude points must a new min not be found for landing to be declared
@@ -39,7 +39,7 @@ bool pitchFirst = true; // whether or not to do pitch config first if doing dual
 bool servoTest = true; // whether or not to test actuation range of servos during GO/NOGO
 bool apogeeEvent = false; // whether or not to reset airfoil position at apogee
 int maxFlightTime = 300; // [s] max allowable flight time, if exceeded program ends
-int timeToDeploy = 10; // [s] deploy servos after this amount of time from launch detection (5s after launch = 900ft)
+int timeToDeploy = 6; // [s] deploy servos after this amount of time from launch detection (6s after launch = 1000ft)
 
 // servo parameters
 uint16_t pulseMin = 500; // [usecs] pulse width to send servo to one end of motion range
@@ -178,11 +178,11 @@ int main(){
     ImuMeasurementsRegister response; // VN response object
     
     startTime = getCurrentTime();
-    Log mLog("AAC_Reflight_Flight_Log_TEST", "AAC_Reflight_Program_Log_TEST", mVN, startTime); // don't use special characters in filename
+    Log mLog("Flight_Log", "Program_Log", mVN, startTime); // don't use special characters in filename
     
-    mLog.write("Date: 12-3");
-    mLog.write("Flight Name: VC Testings\n");
-    mLog.write("Test Notes: Log Testings\n");
+    mLog.write("Date: 12-4");
+    mLog.write("Flight Name: AAC Reflight\n");
+    mLog.write("Test Notes: This is NOT a test\n");
     mLog.write("Verify Critical Parameters: ");
     mLog.write("Max Flight Time: " + to_string(maxFlightTime) + " s");
     mLog.write("Max Time to Deploy: " + to_string(timeToDeploy) + " s\n");
@@ -200,7 +200,7 @@ int main(){
     mLog.write("Apogee Detection Samples: " + to_string(numDataPointsChecked4Apogee));
     mLog.write("Landing Detection Samples: " + to_string(numDataPointsChecked4Landing));
     mLog.write("-----------------------------------\n\n\n");
-    sleep(10);
+    sleep(15);
     
     // begin GO-NOGO Protocol
     string go = "NOGO";

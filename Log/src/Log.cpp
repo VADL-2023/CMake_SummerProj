@@ -10,8 +10,8 @@ mIMU(imu)
     this->sampleNumber = 1;
     this->savedParameters = false;
     this->delim = "$";
-    this->flightFilename = fFilename + "_" + std::to_string(long(sTime)) + ".tmp";
-    this->programFilename = pFilename + "_" + std::to_string(long(sTime)) + ".tmp";
+    this->flightFilename = fFilename + "_" + std::to_string(long(sTime)) + ".txt";
+    this->programFilename = pFilename + "_" + std::to_string(long(sTime)) + ".txt";
     //std::cout << "Initial name: " << fFilename << std::endl;
     
     // catch errors involving special characters in filenames rip AAC madien flight 8/20 D:
