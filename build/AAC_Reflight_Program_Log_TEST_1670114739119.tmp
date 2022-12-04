@@ -1,0 +1,85 @@
+START TIME: 1670114739119.000000
+Date: 12-3
+Flight Name: VC Testings
+
+Test Notes: Log Testings
+
+Verify Critical Parameters: 
+Max Flight Time: 300 s
+Max Time to Deploy: 10 s
+
+Dual Deployment Events: 1
+Pitch Configuration Is Primary: 1
+Apogee Event: 0
+
+Primary Deployment Altitude: 450.000031 Feet AGL
+Primary Deployment Altitude: 137.160004 Meters AGL
+
+Secondary Deployment Altitude: 800.000000 Feet AGL
+Secondary Deployment Altitude: 243.839996 Meters AGL
+
+Deployment Angle: 12 Degrees
+Motor Burn Time: 1.600000 Seconds
+Trigger Acceleration: 1.500000 g
+
+Launch Detection Samples: 8
+Apogee Detection Samples: 10
+Landing Detection Samples: 200
+-----------------------------------
+
+
+
+GPIO Initialized
+IMU Connecting
+IMU Connected
+Testing Servo Activation
+Testing North...
+Testing East...
+Testing South...
+Testing West...
+IMU Flushing
+IMU Flushed
+Calibrating Baseline Parameters. Hold Still. (61.000000 | 26286.000000)
+Calibrated Temperature: 32.400024 C
+Calibrated Pressure: 100.895912 kPa
+Calibrated Gravity: 9.761773 m/s^2
+Are we a GO for flight? (121.000000 | 29286.000000)
+\GO (121.000000 | 33040.000000)
+
+GPIO Initialized
+IMU Connecting
+IMU Connected
+Testing Servo Activation
+Testing North...
+Testing East...
+Testing South...
+Testing West...
+IMU Flushing
+IMU Flushed
+Calibrating Baseline Parameters. Hold Still. (181.000000 | 49072.000000)
+Calibrated Temperature: 32.400024 C
+Calibrated Pressure: 100.896881 kPa
+Calibrated Gravity: 9.792088 m/s^2
+Are we a GO for flight? (241.000000 | 52075.000000)
+GO (241.000000 | 56308.000000)
+
+Pre-Flight Stage Completed (241.000000 | 56308.000000)
+Ready for Assembly and Launch Rail
+Average acceleration exceeded 14.688131 m/s^2 over 8 data points
+$Rocket Has Launched (307.000000 | 59606.000000)$
+Waiting for Motor Burn Time
+Actively Checking Altitude for first deployment (339.000000 | 61207.000000)
+Actively Checking Altitude for second deployment (507.000000 | 69612.000000)
+Deploying airfoils in secondary configuration due to time override after 10
+$Second Deployment Altitude Reached (508.000000 | 69662.000000)$
+Airfoils Deployed in secondary configuration (508.000000 | 69662.000000)
+Looking for Apogee
+Altitude has not reached a new max for 10 samples
+$Apogee Detected (535.000000 | 71012.000000)$
+Altitude has not reached a new min for 200 samples... ending program.
+$Landing Detected (837.000000 | 86121.000000)$
+IMU: Disconnected
+
+END PROGRAM (837.000000 | 86162.000000)
+END TIME: 1670114825281.000000
+END LOG

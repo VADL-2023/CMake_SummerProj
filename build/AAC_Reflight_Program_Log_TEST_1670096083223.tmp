@@ -1,0 +1,68 @@
+START TIME: 1670096083223.000000
+Date: 12-3
+Flight Name: VC Testings
+
+Test Notes: Log Testings
+
+Verify Critical Parameters: 
+Max Flight Time: 300 s
+Max Time to Deploy: 10 s
+
+Dual Deployment Events: 1
+Pitch Configuration Is Primary: 1
+Apogee Event: 0
+
+Primary Deployment Altitude: 450.000031 Feet AGL
+Primary Deployment Altitude: 137.160004 Meters AGL
+
+Secondary Deployment Altitude: 800.000000 Feet AGL
+Secondary Deployment Altitude: 243.839996 Meters AGL
+
+Deployment Angle: 12 Degrees
+Motor Burn Time: 1.600000 Seconds
+Trigger Acceleration: 1.500000 g
+
+Launch Detection Samples: 8
+Apogee Detection Samples: 10
+Landing Detection Samples: 200
+-----------------------------------
+
+
+
+GPIO Initialized
+IMU Connecting
+IMU Connected
+Testing Servo Activation
+Testing North...
+Testing East...
+Testing South...
+Testing West...
+IMU Flushing
+IMU Flushed
+Calibrating Baseline Parameters. Hold Still. (61.000000 | 26287.000000)
+Calibrated Temperature: 32.258331 C
+Calibrated Pressure: 100.895782 kPa
+Calibrated Gravity: 9.789908 m/s^2
+Are we a GO for flight? (121.000000 | 29288.000000)
+GO (121.000000 | 39281.000000)
+
+Pre-Flight Stage Completed (121.000000 | 39281.000000)
+Ready for Assembly and Launch Rail
+Average acceleration exceeded 14.684862 m/s^2 over 8 data points
+$Rocket Has Launched (267.000000 | 46564.000000)$
+Waiting for Motor Burn Time
+Actively Checking Altitude for first deployment (300.000000 | 48212.000000)
+Actively Checking Altitude for second deployment (468.000000 | 56613.000000)
+Deploying airfoils in secondary configuration due to time override after 10
+$Second Deployment Altitude Reached (469.000000 | 56663.000000)$
+Airfoils Deployed in secondary configuration (469.000000 | 56663.000000)
+Looking for Apogee
+Altitude has not reached a new max for 10 samples
+$Apogee Detected (490.000000 | 57713.000000)$
+Altitude has not reached a new min for 200 samples... ending program.
+$Landing Detected (707.000000 | 68564.000000)$
+IMU: Disconnected
+
+END PROGRAM (707.000000 | 68606.000000)
+END TIME: 1670096151829.000000
+END LOG

@@ -1,0 +1,42 @@
+START TIME: 1670096032967.000000
+Date: 12-3
+Flight Name: VC Testings
+
+Test Notes: Log Testings
+
+Verify Critical Parameters: 
+Max Flight Time: 300 s
+Max Time to Deploy: 300 s
+
+Dual Deployment Events: 1
+Pitch Configuration Is Primary: 1
+Apogee Event: 0
+
+Primary Deployment Altitude: 450.000031 Feet AGL
+Primary Deployment Altitude: 137.160004 Meters AGL
+
+Secondary Deployment Altitude: 800.000000 Feet AGL
+Secondary Deployment Altitude: 243.839996 Meters AGL
+
+Deployment Angle: 12 Degrees
+Motor Burn Time: 1.600000 Seconds
+Trigger Acceleration: 1.500000 g
+
+Launch Detection Samples: 8
+Apogee Detection Samples: 10
+Landing Detection Samples: 200
+-----------------------------------
+
+
+
+GPIO Initialized
+IMU Connecting
+IMU Connected
+Testing Servo Activation
+Testing North...
+Testing East...
+Testing South...
+Testing West...
+IMU Flushing
+IMU Flushed
+Calibrating Baseline Parameters. Hold Still. (61.000000 | 26293.000000)

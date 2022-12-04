@@ -36,10 +36,10 @@ float zDeployPrimary = 450*ft2m; // [m] altitude at which airfoils will deploy A
 float zDeploySecondary = 800*ft2m; // [m] altitude at which airfoils will deploy AGL in drag configuration 
 bool dualDeployEvents = true; // whether or not dual deployment events will occur; false means only primary deployment will occur
 bool pitchFirst = true; // whether or not to do pitch config first if doing dual deployment
-bool servoTest = false; // whether or not to test actuation range of servos during GO/NOGO
+bool servoTest = true; // whether or not to test actuation range of servos during GO/NOGO
 bool apogeeEvent = false; // whether or not to reset airfoil position at apogee
 int maxFlightTime = 300; // [s] max allowable flight time, if exceeded program ends
-int timeToDeploy = 300; // [s] deploy servos after this amount of time from launch detection (5s after launch = 900ft)
+int timeToDeploy = 10; // [s] deploy servos after this amount of time from launch detection (5s after launch = 900ft)
 
 // servo parameters
 uint16_t pulseMin = 500; // [usecs] pulse width to send servo to one end of motion range
@@ -133,7 +133,6 @@ void activeSleep(float sleepTime, VnSensor* imu, ImuMeasurementsRegister &respon
             currentTime = getCurrentTime();
         } catch(std::exception){
             log.write("IMU disconnected during active sleep");
-            //mLog.writeTime("Ending Program");
         }
     }
 }    
@@ -201,7 +200,7 @@ int main(){
     mLog.write("Apogee Detection Samples: " + to_string(numDataPointsChecked4Apogee));
     mLog.write("Landing Detection Samples: " + to_string(numDataPointsChecked4Landing));
     mLog.write("-----------------------------------\n\n\n");
-    sleep(3);
+    sleep(10);
     
     // begin GO-NOGO Protocol
     string go = "NOGO";
@@ -358,15 +357,6 @@ int main(){
             }
         } 
         
-        // ensure program successfully exits if time exceeds limit
-        // NOTE: this seems unneeded as shouldn't timeToDeploy always trigger before this?
-        if (timeFlight(launchTime, maxFlightTime)){
-            if(terminateConnections(mVN)){
-                mLog.write("IMU: Disconnected");
-            }
-            mLog.writeTime("Ending program due to time overflow");
-            return 0;
-        }
         
         // if timeToDeploy seconds pass after launch detection, move on to next part of code
         // if there are dual deployment events, move to actuate in secondary condition only
@@ -382,7 +372,7 @@ int main(){
     
     // actuate servos if either we reached zDeployPrimary alt or if (there are not dual deployment events and
     // the time override occurred)
-    if (zCurrent >= zDeployPrimary || (!dualDeployEvents && !timeToDeployOverride)){
+    if (zCurrent >= zDeployPrimary){
         // deploy both pairs of airfoils at primary deployment alt in pitch configuration
         mLog.writeDelim("First Deployment Altitude Reached");
         moveServoPair(servoPinN, servoPinS, airfoilTiltAngle, pitchFirst);
@@ -407,15 +397,6 @@ int main(){
                 }
             } 
             
-            // ensure program successfully exits if time exceeds limit
-            // NOTE: this seems unneeded as shouldn't timeToDeploy always trigger before this?
-            if (timeFlight(launchTime, maxFlightTime)){
-                if(terminateConnections(mVN)){
-                    mLog.write("IMU: Disconnected");
-                }
-                mLog.writeTime("Ending program due to time overflow");
-                return 0;
-            }
             
             // if timeToDeploy seconds pass after launch detection, move on to next part of code
             if (timeFlight(launchTime, timeToDeploy)){
