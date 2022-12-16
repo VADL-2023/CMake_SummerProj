@@ -22,20 +22,20 @@ bool failedIMU = false; // whether or not IMU has failed
 bool timeToDeployOverride = false; // whether or not to go to lastest deployment mode if time exceeds timeToDeploy
 
 // fixed flight parameters
-uint8_t airfoilTiltAngle = 12; // [deg] fixed tilt angle for airfoil activation at primary and secondary deployment events  
-uint8_t apogeeTiltAngle = 12; // [deg] fixed tilt angle for airfoil activation at apogee 
+uint8_t airfoilTiltAngle = 20; // [deg] fixed tilt angle for airfoil activation at primary and secondary deployment events  
+uint8_t apogeeTiltAngle = 20; // [deg] fixed tilt angle for airfoil activation at apogee 
 float tBurn = 1.6; // [s] motor burn time
 float samplingFrequency = 20; // [Hz] how fast does the IMU sample data
 
 // possibly variable flight parameters (stuff we might change)
-float accelRoof = 3; // how many g's does the program need to see in order for launch to be detected
+float accelRoof = 1.2; // how many g's does the program need to see in order for launch to be detected
 int numDataPointsChecked4Launch = 8; // how many acceleration points are averaged to see if data set is over accelRoof
 int numDataPointsChecked4Apogee = 10; // how many altitude points must a new max not be found for apogee to be declared
 int numDataPointsChecked4Landing = 10*samplingFrequency; // how many altitude points must a new min not be found for landing to be declared
 float zDeployPrimary = 450*ft2m; // [m] altitude at which airfoils will deploy AGL in pitch configuration
 float zDeploySecondary = 800*ft2m; // [m] altitude at which airfoils will deploy AGL in drag configuration 
-bool dualDeployEvents = true; // whether or not dual deployment events will occur; false means only primary deployment will occur
-bool pitchFirst = true; // whether or not to do pitch config first if doing dual deployment
+bool dualDeployEvents = false; // whether or not dual deployment events will occur; false means only primary deployment will occur
+bool pitchFirst = false; // whether or not to do pitch config first if doing dual deployment
 bool servoTest = true; // whether or not to test actuation range of servos during GO/NOGO
 bool apogeeEvent = false; // whether or not to reset airfoil position at apogee
 int maxFlightTime = 300; // [s] max allowable flight time, if exceeded program ends
@@ -124,6 +124,7 @@ double getCurrentTime(){
 
 // functional the same as sleep() command but still records and logs IMU data
 void activeSleep(float sleepTime, VnSensor* imu, ImuMeasurementsRegister &response, Log &log){
+    bool IMUfail = false;
     double currentTime = getCurrentTime();
     double endTime = sleepTime*1000 + currentTime;
     while (currentTime < endTime){
@@ -132,7 +133,10 @@ void activeSleep(float sleepTime, VnSensor* imu, ImuMeasurementsRegister &respon
             log.write(response);
             currentTime = getCurrentTime();
         } catch(std::exception){
-            log.write("IMU disconnected during active sleep");
+            if(!IMUfail){
+                IMUfail = true;
+                log.write("IMU disconnected during active sleep");
+            }
         }
     }
 }    
@@ -180,27 +184,43 @@ int main(){
     startTime = getCurrentTime();
     Log mLog("Flight_Log", "Program_Log", mVN, startTime); // don't use special characters in filename
     
-    mLog.write("Date: 12-4");
-    mLog.write("Flight Name: AAC Reflight\n");
+    mLog.write("Date: 12-17");
+    mLog.write("Flight Name: AAC Reflight 2\n");
     mLog.write("Test Notes: This is NOT a test\n");
     mLog.write("Verify Critical Parameters: ");
     mLog.write("Max Flight Time: " + to_string(maxFlightTime) + " s");
     mLog.write("Max Time to Deploy: " + to_string(timeToDeploy) + " s\n");
-    mLog.write("Dual Deployment Events: " + to_string(dualDeployEvents));
-    mLog.write("Pitch Configuration Is Primary: " + to_string(pitchFirst));
-    mLog.write("Apogee Event: " + to_string(apogeeEvent) +  + "\n");
+    
+    if(dualDeployEvents){
+        mLog.write("Dual Deployment Events: TRUE");
+    } else{
+        mLog.write("Dual Deployment Events: FALSE");
+    }
+    
+    if(pitchFirst && dualDeployEvents){
+        mLog.write("Pitch Configuration Is Primary: TRUE");
+    } else{
+        mLog.write("Pitch Configuration Is Primary: FALSE");
+    }
+    
+    if(apogeeEvent){
+        mLog.write("Apogee Event: TRUE\n");
+    } else{
+        mLog.write("Apogee Event: FALSE\n");
+    }
+    
     mLog.write("Primary Deployment Altitude: " + to_string(zDeployPrimary*m2ft) + " Feet AGL");
     mLog.write("Primary Deployment Altitude: " + to_string(zDeployPrimary) + " Meters AGL\n");
     mLog.write("Secondary Deployment Altitude: " + to_string(zDeploySecondary*m2ft) + " Feet AGL");
     mLog.write("Secondary Deployment Altitude: " + to_string(zDeploySecondary) + " Meters AGL\n");
-    mLog.write("Deployment Angle: " + to_string(airfoilTiltAngle) + " Degrees");
+    mLog.write("Deployment Angle: " + to_string(airfoilTiltAngle) + " Degrees\n");
     mLog.write("Motor Burn Time: " + to_string(tBurn) + " Seconds");
     mLog.write("Trigger Acceleration: " + to_string(accelRoof) + " g\n");
     mLog.write("Launch Detection Samples: " + to_string(numDataPointsChecked4Launch));
     mLog.write("Apogee Detection Samples: " + to_string(numDataPointsChecked4Apogee));
     mLog.write("Landing Detection Samples: " + to_string(numDataPointsChecked4Landing));
     mLog.write("-----------------------------------\n\n\n");
-    sleep(15);
+    sleep(2);
     
     // begin GO-NOGO Protocol
     string go = "NOGO";
@@ -365,6 +385,7 @@ int main(){
                 mLog.write("Deploying airfoils in primary configuration due to time override after " + to_string(timeToDeploy));
             } else{
                 timeToDeployOverride = true;
+                //NOTE THIS NEEDS TO BE LOOKED AT LATER
             }
             break;
         }
@@ -372,11 +393,11 @@ int main(){
     
     // actuate servos if either we reached zDeployPrimary alt or if (there are not dual deployment events and
     // the time override occurred)
-    if (zCurrent >= zDeployPrimary){
+    if (zCurrent >= zDeployPrimary || !dualDeployEvents){
         // deploy both pairs of airfoils at primary deployment alt in pitch configuration
         mLog.writeDelim("First Deployment Altitude Reached");
         moveServoPair(servoPinN, servoPinS, airfoilTiltAngle, pitchFirst);
-        moveServoPair(servoPinE, servoPinW, airfoilTiltAngle, pitchFirst);
+        moveServoPair(servoPinE, servoPinW, -airfoilTiltAngle, pitchFirst);
         mLog.writeTime("Airfoils Deployed in primary configuration");
     }
     
@@ -426,7 +447,7 @@ int main(){
             response = mVN->readImuMeasurements();
             mLog.write(response);
             zCurrent = pressure2Altitude(T0, P0, g0, response.pressure);
-            
+                        
             if (zCurrent >= maxAltitude){
                 maxAltitude = zCurrent;
                 samplesSinceMaxHasChanged = 0;
@@ -435,7 +456,7 @@ int main(){
             }
             
         } catch(std::exception){
-            mLog.write("IMU disconnected while waiting for apogee");
+            mLog.write("IMU disconnected while waiting for apogee");    
             mLog.writeTime("Ending Program");
             terminateConnections(mVN);
             return 0;

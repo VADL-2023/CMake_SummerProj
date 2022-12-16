@@ -1,0 +1,61 @@
+START TIME: 1671225623270.000000
+Date: 12-17
+Flight Name: AAC Reflight 2
+
+Test Notes: This is NOT a test
+
+Verify Critical Parameters: 
+Max Flight Time: 300 s
+Max Time to Deploy: 6 s
+
+Dual Deployment Events: FALSE
+Pitch Configuration Is Primary: FALSE
+Apogee Event: FALSE
+
+Primary Deployment Altitude: 450.000031 Feet AGL
+Primary Deployment Altitude: 137.160004 Meters AGL
+
+Secondary Deployment Altitude: 800.000000 Feet AGL
+Secondary Deployment Altitude: 243.839996 Meters AGL
+
+Deployment Angle: 20 Degrees
+
+Motor Burn Time: 1.600000 Seconds
+Trigger Acceleration: 1.500000 g
+
+Launch Detection Samples: 8
+Apogee Detection Samples: 10
+Landing Detection Samples: 200
+-----------------------------------
+
+
+
+GPIO Initialized
+IMU Connecting
+IMU Connected
+IMU Flushing
+IMU Flushed
+Calibrating Baseline Parameters. Hold Still. (61.000000 | 8221.000000)
+Calibrated Temperature: 32.881683 C
+Calibrated Pressure: 99.117043 kPa
+Calibrated Gravity: 9.759944 m/s^2
+Are we a GO for flight? (121.000000 | 11222.000000)
+GO (121.000000 | 73040.000000)
+
+Pre-Flight Stage Completed (121.000000 | 73040.000000)
+Ready for Assembly and Launch Rail
+Average acceleration exceeded 14.639915 m/s^2 over 8 data points
+$Rocket Has Launched (315.000000 | 82723.000000)$
+Waiting for Motor Burn Time
+Actively Checking Altitude for first deployment (348.000000 | 84372.000000)
+Deploying airfoils in primary configuration due to time override after 6
+Looking for Apogee
+Altitude has not reached a new max for 10 samples
+$Apogee Detected (451.000000 | 89523.000000)$
+Altitude has not reached a new min for 200 samples... ending program.
+$Landing Detected (846.000000 | 109273.000000)$
+IMU: Disconnected
+
+END PROGRAM (846.000000 | 109309.000000)
+END TIME: 1671225732579.000000
+END LOG

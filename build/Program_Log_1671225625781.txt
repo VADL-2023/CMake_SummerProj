@@ -1,0 +1,68 @@
+START TIME: 1671225625781.000000
+Date: 12-17
+Flight Name: AAC Reflight 2
+
+Test Notes: This is NOT a test
+
+Verify Critical Parameters: 
+Max Flight Time: 300 s
+Max Time to Deploy: 6 s
+
+Dual Deployment Events: FALSE
+Pitch Configuration Is Primary: FALSE
+Apogee Event: FALSE
+
+Primary Deployment Altitude: 450.000031 Feet AGL
+Primary Deployment Altitude: 137.160004 Meters AGL
+
+Secondary Deployment Altitude: 800.000000 Feet AGL
+Secondary Deployment Altitude: 243.839996 Meters AGL
+
+Deployment Angle: 20 Degrees
+
+Motor Burn Time: 1.600000 Seconds
+Trigger Acceleration: 1.200000 g
+
+Launch Detection Samples: 8
+Apogee Detection Samples: 10
+Landing Detection Samples: 200
+-----------------------------------
+
+
+
+GPIO Initialized
+IMU Connecting
+IMU Connected
+Testing Servo Activation
+Testing North...
+Testing East...
+Testing South...
+Testing West...
+IMU Flushing
+IMU Flushed
+Calibrating Baseline Parameters. Hold Still. (61.000000 | 18223.000000)
+Calibrated Temperature: 29.400024 C
+Calibrated Pressure: 99.130791 kPa
+Calibrated Gravity: 9.774475 m/s^2
+Are we a GO for flight? (121.000000 | 21223.000000)
+GO (121.000000 | 24173.000000)
+
+Pre-Flight Stage Completed (121.000000 | 24173.000000)
+Ready for Assembly and Launch Rail
+Average acceleration exceeded 11.729370 m/s^2 over 8 data points
+$Rocket Has Launched (990.000000 | 67624.000000)$
+Waiting for Motor Burn Time
+Actively Checking Altitude for first deployment (1022.000000 | 69224.000000)
+Deploying airfoils in primary configuration due to time override after 6
+$First Deployment Altitude Reached (1111.000000 | 73674.000000)$
+Airfoils Deployed in primary configuration (1111.000000 | 73674.000000)
+Looking for Apogee
+Altitude has not reached a new max for 10 samples
+$Apogee Detected (1136.000000 | 74924.000000)$
+Altitude has not reached a new min for 200 samples... ending program.
+$Landing Detected (1429.000000 | 89574.000000)$
+IMU: Disconnected
+
+END PROGRAM (1429.000000 | 89620.000000)
+END TIME: 1671225715401.000000
+END LOG

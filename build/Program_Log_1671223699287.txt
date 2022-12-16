@@ -1,0 +1,68 @@
+START TIME: 1671223699287.000000
+Date: 12-17
+Flight Name: AAC Reflight 2
+
+Test Notes: This is NOT a test
+
+Verify Critical Parameters: 
+Max Flight Time: 300 s
+Max Time to Deploy: 6 s
+
+Dual Deployment Events: 1
+Pitch Configuration Is Primary: 0
+Apogee Event: 0
+
+Primary Deployment Altitude: 450.000031 Feet AGL
+Primary Deployment Altitude: 137.160004 Meters AGL
+
+Secondary Deployment Altitude: 800.000000 Feet AGL
+Secondary Deployment Altitude: 243.839996 Meters AGL
+
+Deployment Angle: 12 Degrees
+Motor Burn Time: 1.600000 Seconds
+Trigger Acceleration: 3.000000 g
+
+Launch Detection Samples: 8
+Apogee Detection Samples: 10
+Landing Detection Samples: 200
+-----------------------------------
+
+
+
+GPIO Initialized
+IMU Connecting
+IMU Connected
+Testing Servo Activation
+Testing North...
+Testing East...
+Testing South...
+Testing West...
+IMU Flushing
+IMU Flushed
+Calibrating Baseline Parameters. Hold Still. (61.000000 | 31282.000000)
+Calibrated Temperature: 30.544983 C
+Calibrated Pressure: 99.086884 kPa
+Calibrated Gravity: 9.764971 m/s^2
+Are we a GO for flight? (121.000000 | 34284.000000)
+GO (121.000000 | 50032.000000)
+
+Pre-Flight Stage Completed (121.000000 | 50032.000000)
+Ready for Assembly and Launch Rail
+Average acceleration exceeded 29.294912 m/s^2 over 8 data points
+$Rocket Has Launched (309.000000 | 59433.000000)$
+Waiting for Motor Burn Time
+Actively Checking Altitude for first deployment (341.000000 | 61033.000000)
+Actively Checking Altitude for second deployment (430.000000 | 65483.000000)
+Deploying airfoils in secondary configuration due to time override after 6
+$Second Deployment Altitude Reached (431.000000 | 65533.000000)$
+Airfoils Deployed in secondary configuration (431.000000 | 65533.000000)
+Looking for Apogee
+Altitude has not reached a new max for 10 samples
+$Apogee Detected (465.000000 | 67234.000000)$
+Altitude has not reached a new min for 200 samples... ending program.
+$Landing Detected (850.000000 | 86484.000000)$
+IMU: Disconnected
+
+END PROGRAM (850.000000 | 86519.000000)
+END TIME: 1671223785806.000000
+END LOG

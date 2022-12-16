@@ -1,0 +1,45 @@
+START TIME: 1671224145758.000000
+Date: 12-17
+Flight Name: AAC Reflight 2
+
+Test Notes: This is NOT a test
+
+Verify Critical Parameters: 
+Max Flight Time: 300 s
+Max Time to Deploy: 6 s
+
+Dual Deployment Events: FALSE
+Pitch Configuration Is Primary: FALSE
+Apogee Event: FALSE
+
+Primary Deployment Altitude: 450.000031 Feet AGL
+Primary Deployment Altitude: 137.160004 Meters AGL
+
+Secondary Deployment Altitude: 800.000000 Feet AGL
+Secondary Deployment Altitude: 243.839996 Meters AGL
+
+Deployment Angle: 12 Degrees
+Motor Burn Time: 1.600000 Seconds
+Trigger Acceleration: 3.000000 g
+
+Launch Detection Samples: 8
+Apogee Detection Samples: 10
+Landing Detection Samples: 200
+-----------------------------------
+
+
+
+GPIO Initialized
+IMU Connecting
+IMU Connected
+IMU Flushing
+IMU Flushed
+Calibrating Baseline Parameters. Hold Still. (61.000000 | 18519.000000)
+Calibrated Temperature: 31.699982 C
+Calibrated Pressure: 99.081955 kPa
+Calibrated Gravity: 9.757531 m/s^2
+Are we a GO for flight? (121.000000 | 21522.000000)
+GO (121.000000 | 27089.000000)
+
+Pre-Flight Stage Completed (121.000000 | 27089.000000)
+Ready for Assembly and Launch Rail
