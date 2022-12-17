@@ -28,7 +28,7 @@ float tBurn = 1.6; // [s] motor burn time
 float samplingFrequency = 20; // [Hz] how fast does the IMU sample data
 
 // possibly variable flight parameters (stuff we might change)
-float accelRoof = 1.2; // how many g's does the program need to see in order for launch to be detected
+float accelRoof = 3; // how many g's does the program need to see in order for launch to be detected
 int numDataPointsChecked4Launch = 8; // how many acceleration points are averaged to see if data set is over accelRoof
 int numDataPointsChecked4Apogee = 10; // how many altitude points must a new max not be found for apogee to be declared
 int numDataPointsChecked4Landing = 10*samplingFrequency; // how many altitude points must a new min not be found for landing to be declared
@@ -197,7 +197,7 @@ int main(){
         mLog.write("Dual Deployment Events: FALSE");
     }
     
-    if(pitchFirst && dualDeployEvents){
+    if(pitchFirst){
         mLog.write("Pitch Configuration Is Primary: TRUE");
     } else{
         mLog.write("Pitch Configuration Is Primary: FALSE");
@@ -211,8 +211,11 @@ int main(){
     
     mLog.write("Primary Deployment Altitude: " + to_string(zDeployPrimary*m2ft) + " Feet AGL");
     mLog.write("Primary Deployment Altitude: " + to_string(zDeployPrimary) + " Meters AGL\n");
-    mLog.write("Secondary Deployment Altitude: " + to_string(zDeploySecondary*m2ft) + " Feet AGL");
-    mLog.write("Secondary Deployment Altitude: " + to_string(zDeploySecondary) + " Meters AGL\n");
+    
+    if(dualDeployEvents){
+        mLog.write("Secondary Deployment Altitude: " + to_string(zDeploySecondary*m2ft) + " Feet AGL");
+        mLog.write("Secondary Deployment Altitude: " + to_string(zDeploySecondary) + " Meters AGL\n");
+    }
     mLog.write("Deployment Angle: " + to_string(airfoilTiltAngle) + " Degrees\n");
     mLog.write("Motor Burn Time: " + to_string(tBurn) + " Seconds");
     mLog.write("Trigger Acceleration: " + to_string(accelRoof) + " g\n");
