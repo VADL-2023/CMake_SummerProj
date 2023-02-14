@@ -1,0 +1,1 @@
+Time	 MagX	 MagY	 MagZ	 AccelX	 AccelY	 AccelZ	 Yaw	 Pitch	 Roll	 Temperature	 Pressure	 Altitude

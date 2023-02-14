@@ -1,0 +1,10 @@
+START TIME: 1676340479464.000000
+Date: 1-16
+Flight Name: User input test
+
+Test Notes: User input test
+
+Enter Primary Deployment Altitude (ft): 
+Invalid input... restart program
+END TIME: 1676340484255.000000
+END LOG

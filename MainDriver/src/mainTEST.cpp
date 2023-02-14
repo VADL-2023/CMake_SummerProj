@@ -19,8 +19,8 @@ float R = 287; // [kg/JK] universal gas constant
 float B = 6.5*km2m; //[K/m] variation of temperature within the troposphere
 
 // fixed flight parameters
-uint8_t airfoilTiltAngle = 12; // [deg] fixed tilt angle for airfoil activation 
-float tBurn = 1.6; //[s] motor burn time
+uint8_t airfoilTiltAngle = 20; // [deg] fixed tilt angle for airfoil activation 
+float tBurn = 2.1; //[s] motor burn time
 float samplingFrequency = 20; // [Hz] how fast does the IMU sample data
 
 // possibly variable flight parameters (stuff we might change)
@@ -28,7 +28,7 @@ float accelRoof = 1.2; // how many g's does the program need to see in order for
 int numDataPointsChecked4Launch = 10; // how many acceleration points are averaged to see if data set is over accelRoof
 int numDataPointsChecked4Apogee = 10; // how many altitude points must a new max not be found for apogee to be declared
 int numDataPointsChecked4Landing = 10*samplingFrequency; // how many altitude points must a new min not be found for landing to be declared
-float zDeploy = 650*ft2m; // [m] altitude at which fins will deploy above ground level
+float zDeploy = 1250*ft2m; // [m] altitude at which fins will deploy above ground level
 bool servoTest = true; // whether or not to test actuation range of servos during GO/NOGO
 bool restart = false; // tells the program whether or not we NO-GOed
 

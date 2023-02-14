@@ -36,7 +36,7 @@ uint8_t servoPinS = 13;
 uint8_t servoPinW = 19;
 
 uint16_t nMeasurements = 30;
-float targetAlt = 550*ft2m; //AGL (m)
+float targetAlt = 1250*ft2m; //AGL (m)
 //float targetAltMin = 500*ft2m; //AGL (m)
 bool targetDetected = false;
 bool apogeeReady = false;
@@ -134,7 +134,7 @@ int main(){
     
     mLog.saveBaselineParameters(R, B, P0, T0, g0);
     
-    mLog.write("Date: 10/5");
+    mLog.write("Date: 2-16-23");
     mLog.write("Test Number: 1");
     mLog.write("Number of samples: ");
     mLog.write(to_string(nMeasurements));

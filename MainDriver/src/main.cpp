@@ -20,11 +20,12 @@ float B = 6.5*km2m; // [K/m] variation of temperature within the troposphere
 bool restart = false; // tells the program whether or not we NO-GOed
 bool failedIMU = false; // whether or not IMU has failed
 bool timeToDeployOverride = false; // whether or not to go to lastest deployment mode if time exceeds timeToDeploy
+bool successInput = false; // whether or not input for deployment alts was successful
 
 // fixed flight parameters
 uint8_t airfoilTiltAngle = 20; // [deg] fixed tilt angle for airfoil activation at primary and secondary deployment events  
 uint8_t apogeeTiltAngle = 20; // [deg] fixed tilt angle for airfoil activation at apogee 
-float tBurn = 1.6; // [s] motor burn time
+float tBurn = 20; // [s] motor burn time
 float samplingFrequency = 20; // [Hz] how fast does the IMU sample data
 
 // possibly variable flight parameters (stuff we might change)
@@ -32,14 +33,16 @@ float accelRoof = 3; // how many g's does the program need to see in order for l
 int numDataPointsChecked4Launch = 8; // how many acceleration points are averaged to see if data set is over accelRoof
 int numDataPointsChecked4Apogee = 10; // how many altitude points must a new max not be found for apogee to be declared
 int numDataPointsChecked4Landing = 10*samplingFrequency; // how many altitude points must a new min not be found for landing to be declared
-float zDeployPrimary = 450*ft2m; // [m] altitude at which airfoils will deploy AGL in pitch configuration
-float zDeploySecondary = 800*ft2m; // [m] altitude at which airfoils will deploy AGL in drag configuration 
+float zDeployPrimary = 1250*ft2m; // [m] altitude at which airfoils will deploy AGL in pitch configuration
+float zDeploySecondary = 1350*ft2m; // [m] altitude at which airfoils will deploy AGL in drag configuration 
 bool dualDeployEvents = false; // whether or not dual deployment events will occur; false means only primary deployment will occur
 bool pitchFirst = false; // whether or not to do pitch config first if doing dual deployment
 bool servoTest = true; // whether or not to test actuation range of servos during GO/NOGO
 bool apogeeEvent = false; // whether or not to reset airfoil position at apogee
 int maxFlightTime = 300; // [s] max allowable flight time, if exceeded program ends
 int timeToDeploy = 6; // [s] deploy servos after this amount of time from launch detection (6s after launch = 1000ft)
+bool inputDeploymentAlts = false; // whether or not to use user input to set deployment altitudes
+                                 // NOTE: user input will override the above zDeployPrimary and zDeploySecondary!!!
 
 // servo parameters
 uint16_t pulseMin = 500; // [usecs] pulse width to send servo to one end of motion range
@@ -184,9 +187,59 @@ int main(){
     startTime = getCurrentTime();
     Log mLog("Flight_Log", "Program_Log", mVN, startTime); // don't use special characters in filename
     
-    mLog.write("Date: 12-17");
-    mLog.write("Flight Name: AAC Reflight 2\n");
-    mLog.write("Test Notes: This is NOT a test\n");
+    mLog.write("Date: 2-16-23");
+    mLog.write("Flight Name: Vehicle Demo Flight\n");
+    mLog.write("Test Notes: Pressure chamber verification with new electronics - Mott \n");
+    
+    // user input for deployment alts 
+    while(inputDeploymentAlts && !successInput){
+        string confirmValues = "FALSE"; // user confirmation 
+        string tempUserInput; 
+        
+        mLog.write("Enter Primary Deployment Altitude (ft): ");
+        
+        try{
+            std::cin >> tempUserInput;
+            zDeployPrimary = std::stof(tempUserInput);
+            zDeployPrimary = zDeployPrimary*ft2m;
+        } catch(std::exception){
+            mLog.write("Invalid input... restart program");
+            return 0;
+        }
+        
+        //std::cout << to_string(zDeployPrimary) << std::endl;
+        
+        if(dualDeployEvents){  
+            mLog.write("Enter Secondary Deployment Altitude (ft): ");
+            
+            try{
+                std::cin >> tempUserInput; 
+                zDeploySecondary = std::stof(tempUserInput);
+                zDeploySecondary = zDeploySecondary*ft2m;
+            } catch(std::exception){
+                mLog.write("Invalid input... restart program");
+                return 0;
+            }
+        }
+        
+        mLog.write("CONFIRM Deployment Altitude(s): ");
+        mLog.write("Primary Deployment Altitude: " + to_string(zDeployPrimary*m2ft) + " Feet AGL");
+        mLog.write("Primary Deployment Altitude: " + to_string(zDeployPrimary) + " Meters AGL\n");
+            
+        if(dualDeployEvents){
+            mLog.write("Secondary Deployment Altitude: " + to_string(zDeploySecondary*m2ft) + " Feet AGL");
+            mLog.write("Secondary Deployment Altitude: " + to_string(zDeploySecondary) + " Meters AGL\n");
+        }
+        
+        std::cin >> confirmValues; // get user input
+        
+        if(confirmValues == "CONFIRM"){
+            successInput = true; // exit condition 
+            std::cout << "\n\n\n" << std::endl;
+            
+        }
+    }
+    
     mLog.write("Verify Critical Parameters: ");
     mLog.write("Max Flight Time: " + to_string(maxFlightTime) + " s");
     mLog.write("Max Time to Deploy: " + to_string(timeToDeploy) + " s\n");
@@ -216,6 +269,7 @@ int main(){
         mLog.write("Secondary Deployment Altitude: " + to_string(zDeploySecondary*m2ft) + " Feet AGL");
         mLog.write("Secondary Deployment Altitude: " + to_string(zDeploySecondary) + " Meters AGL\n");
     }
+    
     mLog.write("Deployment Angle: " + to_string(airfoilTiltAngle) + " Degrees\n");
     mLog.write("Motor Burn Time: " + to_string(tBurn) + " Seconds");
     mLog.write("Trigger Acceleration: " + to_string(accelRoof) + " g\n");
@@ -223,7 +277,7 @@ int main(){
     mLog.write("Apogee Detection Samples: " + to_string(numDataPointsChecked4Apogee));
     mLog.write("Landing Detection Samples: " + to_string(numDataPointsChecked4Landing));
     mLog.write("-----------------------------------\n\n\n");
-    sleep(2);
+    sleep(15);
     
     // begin GO-NOGO Protocol
     string go = "NOGO";
