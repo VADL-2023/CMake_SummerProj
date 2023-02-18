@@ -1,0 +1,39 @@
+START TIME: 1676675733691.000000
+Date: 2-18-23
+Flight Name: Vehicle Demo Flight
+
+Test Notes: No User Input in Code - 1250 ft
+Verify Critical Parameters: 
+Max Flight Time: 300 s
+Max Time to Deploy: 6 s
+
+Dual Deployment Events: FALSE
+Pitch Configuration Is Primary: FALSE
+Apogee Event: FALSE
+
+Primary Deployment Altitude: 1250.000000 Feet AGL
+Primary Deployment Altitude: 381.000000 Meters AGL
+
+Deployment Angle: 20 Degrees
+
+Motor Burn Time: 1.900000 Seconds
+Trigger Acceleration: 3.500000 g
+
+Launch Detection Samples: 8
+Apogee Detection Samples: 10
+Landing Detection Samples: 200
+-----------------------------------
+
+
+
+GPIO Initialized
+IMU Connecting
+IMU Connected
+Testing Servo Activation
+Testing North...
+Testing East...
+Testing South...
+Testing West...
+IMU Flushing
+IMU Flushed
+Calibrating Baseline Parameters. Hold Still. (61.000000 | 31300.000000)

@@ -132,7 +132,7 @@ int.h
 export.h
 ../VectorNav/include/vn/export.h
 
-/home/pi/CMake_SummerProj/MainDriver/src/mainTEST.cpp
+/home/pi/CMake_SummerProj/MainDriver/src/main.cpp
 sensors.h
 /home/pi/CMake_SummerProj/MainDriver/src/sensors.h
 config_IMU.hpp

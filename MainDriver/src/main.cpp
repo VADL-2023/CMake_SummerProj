@@ -25,11 +25,11 @@ bool successInput = false; // whether or not input for deployment alts was succe
 // fixed flight parameters
 uint8_t airfoilTiltAngle = 20; // [deg] fixed tilt angle for airfoil activation at primary and secondary deployment events  
 uint8_t apogeeTiltAngle = 20; // [deg] fixed tilt angle for airfoil activation at apogee 
-float tBurn = 20; // [s] motor burn time
+float tBurn = 1.9; // [s] motor burn time
 float samplingFrequency = 20; // [Hz] how fast does the IMU sample data
 
 // possibly variable flight parameters (stuff we might change)
-float accelRoof = 3; // how many g's does the program need to see in order for launch to be detected
+float accelRoof = 3.5; // how many g's does the program need to see in order for launch to be detected
 int numDataPointsChecked4Launch = 8; // how many acceleration points are averaged to see if data set is over accelRoof
 int numDataPointsChecked4Apogee = 10; // how many altitude points must a new max not be found for apogee to be declared
 int numDataPointsChecked4Landing = 10*samplingFrequency; // how many altitude points must a new min not be found for landing to be declared
@@ -187,9 +187,9 @@ int main(){
     startTime = getCurrentTime();
     Log mLog("Flight_Log", "Program_Log", mVN, startTime); // don't use special characters in filename
     
-    mLog.write("Date: 2-16-23");
+    mLog.write("Date: 2-18-23");
     mLog.write("Flight Name: Vehicle Demo Flight\n");
-    mLog.write("Test Notes: Pressure chamber verification with new electronics - Mott \n");
+    mLog.write("Test Notes: No User Input in Code - 1250 ft");
     
     // user input for deployment alts 
     while(inputDeploymentAlts && !successInput){
