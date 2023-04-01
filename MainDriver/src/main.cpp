@@ -7,6 +7,7 @@
 #include <algorithm> 
 #include <iostream>
 #include "Log.h"
+#include <chrono>
 
 // conversion factors
 float ft2m = 0.3048; // [m/ft]
@@ -200,6 +201,7 @@ int main(){
         
         try{
             std::cin >> tempUserInput;
+            mLog.write(tempUserInput);
             zDeployPrimary = std::stof(tempUserInput);
             zDeployPrimary = zDeployPrimary*ft2m;
         } catch(std::exception){
@@ -213,7 +215,8 @@ int main(){
             mLog.write("Enter Secondary Deployment Altitude (ft): ");
             
             try{
-                std::cin >> tempUserInput; 
+                std::cin >> tempUserInput;
+                mLog.write(tempUserInput); 
                 zDeploySecondary = std::stof(tempUserInput);
                 zDeploySecondary = zDeploySecondary*ft2m;
             } catch(std::exception){

@@ -10,8 +10,11 @@ mIMU(imu)
     this->sampleNumber = 1;
     this->savedParameters = false;
     this->delim = "$";
-    this->flightFilename = fFilename + "_" + std::to_string(long(sTime)) + ".txt";
-    this->programFilename = pFilename + "_" + std::to_string(long(sTime)) + ".txt";
+    std::string timestring = std::__cxx11::to_string(startTime);
+    timestring = timestring.substr(0, timestring.find('.'));
+    
+    this->flightFilename = fFilename + "_" + timestring + ".txt";
+    this->programFilename = pFilename + "_" + timestring + ".txt";
     //std::cout << "Initial name: " << fFilename << std::endl;
     
     // catch errors involving special characters in filenames rip AAC madien flight 8/20 D:
@@ -30,7 +33,7 @@ mIMU(imu)
     }else {
         mFlightLog
                 << "Time\t MagX\t MagY\t MagZ\t AccelX\t AccelY\t AccelZ\t Yaw\t Pitch\t Roll\t Temperature\t Pressure\t Altitude\n";
-        mProgLog << "START TIME: " << std::__cxx11::to_string(startTime) << "\n";
+        mProgLog << "START TIME: " << timestring << "\n";
     }
     
     // close flight and program data files
