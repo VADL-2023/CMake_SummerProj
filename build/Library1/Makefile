@@ -67,10 +67,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pi/CMake_SummerProj
+CMAKE_SOURCE_DIR = /home/vadl/CMake_SummerProj
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pi/CMake_SummerProj/build
+CMAKE_BINARY_DIR = /home/vadl/CMake_SummerProj/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,28 +87,6 @@ install/strip/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
-# Special rule for the target package_source
-package_source:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
-	cd /home/pi/CMake_SummerProj/build && /usr/bin/cpack --config ./CPackSourceConfig.cmake /home/pi/CMake_SummerProj/build/CPackSourceConfig.cmake
-.PHONY : package_source
-
-# Special rule for the target package_source
-package_source/fast: package_source
-
-.PHONY : package_source/fast
-
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
@@ -120,38 +98,6 @@ install/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
-
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
-
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
-# Special rule for the target package
-package: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool..."
-	cd /home/pi/CMake_SummerProj/build && /usr/bin/cpack --config ./CPackConfig.cmake
-.PHONY : package
-
-# Special rule for the target package
-package/fast: package
-
-.PHONY : package/fast
 
 # Special rule for the target install/local
 install/local: preinstall
@@ -165,16 +111,70 @@ install/local/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
 
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
+
+# Special rule for the target package_source
+package_source:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
+	cd /home/vadl/CMake_SummerProj/build && /usr/bin/cpack --config ./CPackSourceConfig.cmake /home/vadl/CMake_SummerProj/build/CPackSourceConfig.cmake
+.PHONY : package_source
+
+# Special rule for the target package_source
+package_source/fast: package_source
+
+.PHONY : package_source/fast
+
+# Special rule for the target package
+package: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool..."
+	cd /home/vadl/CMake_SummerProj/build && /usr/bin/cpack --config ./CPackConfig.cmake
+.PHONY : package
+
+# Special rule for the target package
+package/fast: package
+
+.PHONY : package/fast
+
 # The main all target
 all: cmake_check_build_system
-	cd /home/pi/CMake_SummerProj/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/pi/CMake_SummerProj/build/CMakeFiles /home/pi/CMake_SummerProj/build/Library1//CMakeFiles/progress.marks
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Library1/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/CMake_SummerProj/build/CMakeFiles 0
+	cd /home/vadl/CMake_SummerProj/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/vadl/CMake_SummerProj/build/CMakeFiles /home/vadl/CMake_SummerProj/build/Library1//CMakeFiles/progress.marks
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Library1/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/vadl/CMake_SummerProj/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Library1/clean
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Library1/clean
 .PHONY : clean
 
 # The main clean target
@@ -184,22 +184,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Library1/preinstall
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Library1/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Library1/preinstall
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Library1/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/pi/CMake_SummerProj/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/vadl/CMake_SummerProj/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 Library1/CMakeFiles/Library1.dir/rule:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Library1/CMakeFiles/Library1.dir/rule
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Library1/CMakeFiles/Library1.dir/rule
 .PHONY : Library1/CMakeFiles/Library1.dir/rule
 
 # Convenience name for target.
@@ -209,22 +209,22 @@ Library1: Library1/CMakeFiles/Library1.dir/rule
 
 # fast build rule for target.
 Library1/fast:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f Library1/CMakeFiles/Library1.dir/build.make Library1/CMakeFiles/Library1.dir/build
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f Library1/CMakeFiles/Library1.dir/build.make Library1/CMakeFiles/Library1.dir/build
 .PHONY : Library1/fast
 
 # target to build an object file
 src/foo.o:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f Library1/CMakeFiles/Library1.dir/build.make Library1/CMakeFiles/Library1.dir/src/foo.o
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f Library1/CMakeFiles/Library1.dir/build.make Library1/CMakeFiles/Library1.dir/src/foo.o
 .PHONY : src/foo.o
 
 # target to preprocess a source file
 src/foo.i:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f Library1/CMakeFiles/Library1.dir/build.make Library1/CMakeFiles/Library1.dir/src/foo.i
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f Library1/CMakeFiles/Library1.dir/build.make Library1/CMakeFiles/Library1.dir/src/foo.i
 .PHONY : src/foo.i
 
 # target to generate assembly for a file
 src/foo.s:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f Library1/CMakeFiles/Library1.dir/build.make Library1/CMakeFiles/Library1.dir/src/foo.s
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f Library1/CMakeFiles/Library1.dir/build.make Library1/CMakeFiles/Library1.dir/src/foo.s
 .PHONY : src/foo.s
 
 # Help Target
@@ -256,6 +256,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/pi/CMake_SummerProj/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/vadl/CMake_SummerProj/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

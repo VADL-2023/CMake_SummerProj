@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/pi/CMake_SummerProj/pigpio-master/command.c
+/home/vadl/CMake_SummerProj/pigpio-master/command.c
 stdio.h
 -
 string.h
@@ -20,19 +20,19 @@ ctype.h
 inttypes.h
 -
 pigpio.h
-/home/pi/CMake_SummerProj/pigpio-master/pigpio.h
+/home/vadl/CMake_SummerProj/pigpio-master/pigpio.h
 command.h
-/home/pi/CMake_SummerProj/pigpio-master/command.h
+/home/vadl/CMake_SummerProj/pigpio-master/command.h
 
-/home/pi/CMake_SummerProj/pigpio-master/command.h
+/home/vadl/CMake_SummerProj/pigpio-master/command.h
 stdio.h
 -
 string.h
 -
 pigpio.h
-/home/pi/CMake_SummerProj/pigpio-master/pigpio.h
+/home/vadl/CMake_SummerProj/pigpio-master/pigpio.h
 
-/home/pi/CMake_SummerProj/pigpio-master/pigpio.h
+/home/vadl/CMake_SummerProj/pigpio-master/pigpio.h
 stddef.h
 -
 stdint.h
@@ -46,7 +46,7 @@ pigpio.h
 stdio.h
 -
 pigpio.h
-/home/pi/CMake_SummerProj/pigpio-master/pigpio.h
+/home/vadl/CMake_SummerProj/pigpio-master/pigpio.h
 stdio.h
 -
 pigpio.h
@@ -60,7 +60,7 @@ stdio.h
 pigpio.h
 -
 
-/home/pi/CMake_SummerProj/pigpio-master/pigs.c
+/home/vadl/CMake_SummerProj/pigpio-master/pigs.c
 stdio.h
 -
 stdlib.h
@@ -82,11 +82,11 @@ netdb.h
 arpa/inet.h
 -
 pigpio.h
-/home/pi/CMake_SummerProj/pigpio-master/pigpio.h
+/home/vadl/CMake_SummerProj/pigpio-master/pigpio.h
 command.h
-/home/pi/CMake_SummerProj/pigpio-master/command.h
+/home/vadl/CMake_SummerProj/pigpio-master/command.h
 pigs.h
-/home/pi/CMake_SummerProj/pigpio-master/pigs.h
+/home/vadl/CMake_SummerProj/pigpio-master/pigs.h
 
-/home/pi/CMake_SummerProj/pigpio-master/pigs.h
+/home/vadl/CMake_SummerProj/pigpio-master/pigs.h
 

@@ -17,4 +17,4 @@ MainDriver/CMakeFiles/myProject.dir/src/main.o
  ../VectorNav/include/vn/types.h
  ../VectorNav/include/vn/vector.h
  ../VectorNav/include/vn/vntime.h
- /home/pi/CMake_SummerProj/MainDriver/src/main.cpp
+ /home/vadl/CMake_SummerProj/MainDriver/src/main.cpp

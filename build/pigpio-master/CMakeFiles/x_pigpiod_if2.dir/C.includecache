@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/pi/CMake_SummerProj/pigpio-master/pigpio.h
+/home/vadl/CMake_SummerProj/pigpio-master/pigpio.h
 stddef.h
 -
 stdint.h
@@ -20,7 +20,7 @@ pigpio.h
 stdio.h
 -
 pigpio.h
-/home/pi/CMake_SummerProj/pigpio-master/pigpio.h
+/home/vadl/CMake_SummerProj/pigpio-master/pigpio.h
 stdio.h
 -
 pigpio.h
@@ -34,9 +34,9 @@ stdio.h
 pigpio.h
 -
 
-/home/pi/CMake_SummerProj/pigpio-master/pigpiod_if2.h
+/home/vadl/CMake_SummerProj/pigpio-master/pigpiod_if2.h
 pigpio.h
-/home/pi/CMake_SummerProj/pigpio-master/pigpio.h
+/home/vadl/CMake_SummerProj/pigpio-master/pigpio.h
 stdio.h
 -
 pigpiod_if2.h
@@ -44,7 +44,7 @@ pigpiod_if2.h
 stdio.h
 -
 pigpiod_if2.h
-/home/pi/CMake_SummerProj/pigpio-master/pigpiod_if2.h
+/home/vadl/CMake_SummerProj/pigpio-master/pigpiod_if2.h
 stdio.h
 -
 pigpiod_if2.h
@@ -54,7 +54,7 @@ stdio.h
 pigpiod_if2.h
 -
 
-/home/pi/CMake_SummerProj/pigpio-master/x_pigpiod_if2.c
+/home/vadl/CMake_SummerProj/pigpio-master/x_pigpiod_if2.c
 stdio.h
 -
 sys/types.h
@@ -70,5 +70,5 @@ string.h
 ctype.h
 -
 pigpiod_if2.h
-/home/pi/CMake_SummerProj/pigpio-master/pigpiod_if2.h
+/home/vadl/CMake_SummerProj/pigpio-master/pigpiod_if2.h
 

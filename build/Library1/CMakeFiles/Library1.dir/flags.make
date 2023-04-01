@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -DLibrary1_EXPORTS
 
-CXX_INCLUDES = -I/home/pi/CMake_SummerProj/Library1/include
+CXX_INCLUDES = -I/home/vadl/CMake_SummerProj/Library1/include
 
 CXX_FLAGS = -fPIC
 

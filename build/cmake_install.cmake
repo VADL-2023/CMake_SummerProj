@@ -1,4 +1,4 @@
-# Install script for directory: /home/pi/CMake_SummerProj
+# Install script for directory: /home/vadl/CMake_SummerProj
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,12 +44,12 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/pi/CMake_SummerProj/build/Library1/cmake_install.cmake")
-  include("/home/pi/CMake_SummerProj/build/VectorNav/cmake_install.cmake")
-  include("/home/pi/CMake_SummerProj/build/pigpio-master/cmake_install.cmake")
-  include("/home/pi/CMake_SummerProj/build/IMU/cmake_install.cmake")
-  include("/home/pi/CMake_SummerProj/build/Log/cmake_install.cmake")
-  include("/home/pi/CMake_SummerProj/build/MainDriver/cmake_install.cmake")
+  include("/home/vadl/CMake_SummerProj/build/Library1/cmake_install.cmake")
+  include("/home/vadl/CMake_SummerProj/build/VectorNav/cmake_install.cmake")
+  include("/home/vadl/CMake_SummerProj/build/pigpio-master/cmake_install.cmake")
+  include("/home/vadl/CMake_SummerProj/build/IMU/cmake_install.cmake")
+  include("/home/vadl/CMake_SummerProj/build/Log/cmake_install.cmake")
+  include("/home/vadl/CMake_SummerProj/build/MainDriver/cmake_install.cmake")
 
 endif()
 
@@ -61,5 +61,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/pi/CMake_SummerProj/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/vadl/CMake_SummerProj/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

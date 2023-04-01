@@ -67,10 +67,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pi/CMake_SummerProj
+CMAKE_SOURCE_DIR = /home/vadl/CMake_SummerProj
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pi/CMake_SummerProj/build
+CMAKE_BINARY_DIR = /home/vadl/CMake_SummerProj/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,29 +87,6 @@ install/strip/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
-
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
@@ -122,6 +99,17 @@ install/fast: preinstall/fast
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
+
 # Special rule for the target list_install_components
 list_install_components:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
@@ -131,6 +119,40 @@ list_install_components:
 list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
+
+# Special rule for the target package_source
+package_source:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
+	cd /home/vadl/CMake_SummerProj/build && /usr/bin/cpack --config ./CPackSourceConfig.cmake /home/vadl/CMake_SummerProj/build/CPackSourceConfig.cmake
+.PHONY : package_source
+
+# Special rule for the target package_source
+package_source/fast: package_source
+
+.PHONY : package_source/fast
+
+# Special rule for the target package
+package: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool..."
+	cd /home/vadl/CMake_SummerProj/build && /usr/bin/cpack --config ./CPackConfig.cmake
+.PHONY : package
+
+# Special rule for the target package
+package/fast: package
+
+.PHONY : package/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
 
 # Special rule for the target rebuild_cache
 rebuild_cache:
@@ -143,38 +165,16 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
-# Special rule for the target package
-package: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool..."
-	cd /home/pi/CMake_SummerProj/build && /usr/bin/cpack --config ./CPackConfig.cmake
-.PHONY : package
-
-# Special rule for the target package
-package/fast: package
-
-.PHONY : package/fast
-
-# Special rule for the target package_source
-package_source:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
-	cd /home/pi/CMake_SummerProj/build && /usr/bin/cpack --config ./CPackSourceConfig.cmake /home/pi/CMake_SummerProj/build/CPackSourceConfig.cmake
-.PHONY : package_source
-
-# Special rule for the target package_source
-package_source/fast: package_source
-
-.PHONY : package_source/fast
-
 # The main all target
 all: cmake_check_build_system
-	cd /home/pi/CMake_SummerProj/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/pi/CMake_SummerProj/build/CMakeFiles /home/pi/CMake_SummerProj/build/VectorNav//CMakeFiles/progress.marks
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 VectorNav/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/CMake_SummerProj/build/CMakeFiles 0
+	cd /home/vadl/CMake_SummerProj/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/vadl/CMake_SummerProj/build/CMakeFiles /home/vadl/CMake_SummerProj/build/VectorNav//CMakeFiles/progress.marks
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 VectorNav/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/vadl/CMake_SummerProj/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 VectorNav/clean
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 VectorNav/clean
 .PHONY : clean
 
 # The main clean target
@@ -184,22 +184,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 VectorNav/preinstall
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 VectorNav/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 VectorNav/preinstall
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 VectorNav/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/pi/CMake_SummerProj/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/vadl/CMake_SummerProj/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 VectorNav/CMakeFiles/VN.dir/rule:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 VectorNav/CMakeFiles/VN.dir/rule
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 VectorNav/CMakeFiles/VN.dir/rule
 .PHONY : VectorNav/CMakeFiles/VN.dir/rule
 
 # Convenience name for target.
@@ -209,322 +209,322 @@ VN: VectorNav/CMakeFiles/VN.dir/rule
 
 # fast build rule for target.
 VN/fast:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/build
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/build
 .PHONY : VN/fast
 
 # target to build an object file
 src/attitude.o:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/attitude.o
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/attitude.o
 .PHONY : src/attitude.o
 
 # target to preprocess a source file
 src/attitude.i:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/attitude.i
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/attitude.i
 .PHONY : src/attitude.i
 
 # target to generate assembly for a file
 src/attitude.s:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/attitude.s
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/attitude.s
 .PHONY : src/attitude.s
 
 # target to build an object file
 src/compositedata.o:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/compositedata.o
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/compositedata.o
 .PHONY : src/compositedata.o
 
 # target to preprocess a source file
 src/compositedata.i:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/compositedata.i
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/compositedata.i
 .PHONY : src/compositedata.i
 
 # target to generate assembly for a file
 src/compositedata.s:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/compositedata.s
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/compositedata.s
 .PHONY : src/compositedata.s
 
 # target to build an object file
 src/conversions.o:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/conversions.o
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/conversions.o
 .PHONY : src/conversions.o
 
 # target to preprocess a source file
 src/conversions.i:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/conversions.i
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/conversions.i
 .PHONY : src/conversions.i
 
 # target to generate assembly for a file
 src/conversions.s:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/conversions.s
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/conversions.s
 .PHONY : src/conversions.s
 
 # target to build an object file
 src/criticalsection.o:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/criticalsection.o
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/criticalsection.o
 .PHONY : src/criticalsection.o
 
 # target to preprocess a source file
 src/criticalsection.i:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/criticalsection.i
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/criticalsection.i
 .PHONY : src/criticalsection.i
 
 # target to generate assembly for a file
 src/criticalsection.s:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/criticalsection.s
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/criticalsection.s
 .PHONY : src/criticalsection.s
 
 # target to build an object file
 src/dllvalidator.o:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/dllvalidator.o
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/dllvalidator.o
 .PHONY : src/dllvalidator.o
 
 # target to preprocess a source file
 src/dllvalidator.i:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/dllvalidator.i
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/dllvalidator.i
 .PHONY : src/dllvalidator.i
 
 # target to generate assembly for a file
 src/dllvalidator.s:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/dllvalidator.s
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/dllvalidator.s
 .PHONY : src/dllvalidator.s
 
 # target to build an object file
 src/error_detection.o:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/error_detection.o
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/error_detection.o
 .PHONY : src/error_detection.o
 
 # target to preprocess a source file
 src/error_detection.i:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/error_detection.i
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/error_detection.i
 .PHONY : src/error_detection.i
 
 # target to generate assembly for a file
 src/error_detection.s:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/error_detection.s
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/error_detection.s
 .PHONY : src/error_detection.s
 
 # target to build an object file
 src/event.o:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/event.o
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/event.o
 .PHONY : src/event.o
 
 # target to preprocess a source file
 src/event.i:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/event.i
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/event.i
 .PHONY : src/event.i
 
 # target to generate assembly for a file
 src/event.s:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/event.s
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/event.s
 .PHONY : src/event.s
 
 # target to build an object file
 src/ezasyncdata.o:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/ezasyncdata.o
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/ezasyncdata.o
 .PHONY : src/ezasyncdata.o
 
 # target to preprocess a source file
 src/ezasyncdata.i:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/ezasyncdata.i
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/ezasyncdata.i
 .PHONY : src/ezasyncdata.i
 
 # target to generate assembly for a file
 src/ezasyncdata.s:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/ezasyncdata.s
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/ezasyncdata.s
 .PHONY : src/ezasyncdata.s
 
 # target to build an object file
 src/memoryport.o:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/memoryport.o
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/memoryport.o
 .PHONY : src/memoryport.o
 
 # target to preprocess a source file
 src/memoryport.i:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/memoryport.i
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/memoryport.i
 .PHONY : src/memoryport.i
 
 # target to generate assembly for a file
 src/memoryport.s:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/memoryport.s
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/memoryport.s
 .PHONY : src/memoryport.s
 
 # target to build an object file
 src/packet.o:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/packet.o
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/packet.o
 .PHONY : src/packet.o
 
 # target to preprocess a source file
 src/packet.i:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/packet.i
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/packet.i
 .PHONY : src/packet.i
 
 # target to generate assembly for a file
 src/packet.s:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/packet.s
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/packet.s
 .PHONY : src/packet.s
 
 # target to build an object file
 src/packetfinder.o:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/packetfinder.o
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/packetfinder.o
 .PHONY : src/packetfinder.o
 
 # target to preprocess a source file
 src/packetfinder.i:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/packetfinder.i
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/packetfinder.i
 .PHONY : src/packetfinder.i
 
 # target to generate assembly for a file
 src/packetfinder.s:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/packetfinder.s
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/packetfinder.s
 .PHONY : src/packetfinder.s
 
 # target to build an object file
 src/port.o:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/port.o
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/port.o
 .PHONY : src/port.o
 
 # target to preprocess a source file
 src/port.i:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/port.i
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/port.i
 .PHONY : src/port.i
 
 # target to generate assembly for a file
 src/port.s:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/port.s
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/port.s
 .PHONY : src/port.s
 
 # target to build an object file
 src/position.o:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/position.o
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/position.o
 .PHONY : src/position.o
 
 # target to preprocess a source file
 src/position.i:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/position.i
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/position.i
 .PHONY : src/position.i
 
 # target to generate assembly for a file
 src/position.s:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/position.s
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/position.s
 .PHONY : src/position.s
 
 # target to build an object file
 src/searcher.o:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/searcher.o
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/searcher.o
 .PHONY : src/searcher.o
 
 # target to preprocess a source file
 src/searcher.i:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/searcher.i
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/searcher.i
 .PHONY : src/searcher.i
 
 # target to generate assembly for a file
 src/searcher.s:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/searcher.s
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/searcher.s
 .PHONY : src/searcher.s
 
 # target to build an object file
 src/sensors.o:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/sensors.o
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/sensors.o
 .PHONY : src/sensors.o
 
 # target to preprocess a source file
 src/sensors.i:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/sensors.i
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/sensors.i
 .PHONY : src/sensors.i
 
 # target to generate assembly for a file
 src/sensors.s:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/sensors.s
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/sensors.s
 .PHONY : src/sensors.s
 
 # target to build an object file
 src/serialport.o:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/serialport.o
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/serialport.o
 .PHONY : src/serialport.o
 
 # target to preprocess a source file
 src/serialport.i:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/serialport.i
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/serialport.i
 .PHONY : src/serialport.i
 
 # target to generate assembly for a file
 src/serialport.s:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/serialport.s
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/serialport.s
 .PHONY : src/serialport.s
 
 # target to build an object file
 src/thread.o:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/thread.o
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/thread.o
 .PHONY : src/thread.o
 
 # target to preprocess a source file
 src/thread.i:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/thread.i
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/thread.i
 .PHONY : src/thread.i
 
 # target to generate assembly for a file
 src/thread.s:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/thread.s
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/thread.s
 .PHONY : src/thread.s
 
 # target to build an object file
 src/types.o:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/types.o
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/types.o
 .PHONY : src/types.o
 
 # target to preprocess a source file
 src/types.i:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/types.i
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/types.i
 .PHONY : src/types.i
 
 # target to generate assembly for a file
 src/types.s:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/types.s
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/types.s
 .PHONY : src/types.s
 
 # target to build an object file
 src/util.o:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/util.o
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/util.o
 .PHONY : src/util.o
 
 # target to preprocess a source file
 src/util.i:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/util.i
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/util.i
 .PHONY : src/util.i
 
 # target to generate assembly for a file
 src/util.s:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/util.s
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/util.s
 .PHONY : src/util.s
 
 # target to build an object file
 src/utilities.o:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/utilities.o
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/utilities.o
 .PHONY : src/utilities.o
 
 # target to preprocess a source file
 src/utilities.i:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/utilities.i
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/utilities.i
 .PHONY : src/utilities.i
 
 # target to generate assembly for a file
 src/utilities.s:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/utilities.s
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/utilities.s
 .PHONY : src/utilities.s
 
 # target to build an object file
 src/vntime.o:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/vntime.o
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/vntime.o
 .PHONY : src/vntime.o
 
 # target to preprocess a source file
 src/vntime.i:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/vntime.i
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/vntime.i
 .PHONY : src/vntime.i
 
 # target to generate assembly for a file
 src/vntime.s:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/vntime.s
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f VectorNav/CMakeFiles/VN.dir/build.make VectorNav/CMakeFiles/VN.dir/src/vntime.s
 .PHONY : src/vntime.s
 
 # Help Target
@@ -616,6 +616,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/pi/CMake_SummerProj/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/vadl/CMake_SummerProj/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

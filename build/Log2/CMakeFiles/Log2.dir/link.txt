@@ -1,1 +1,0 @@
-/usr/bin/c++ -fPIC -shared -Wl,-soname,libLog2.so -o libLog2.so CMakeFiles/Log2.dir/src/Log2.o  -Wl,-rpath,/home/pi/CMake_SummerProj/build/VectorNav ../VectorNav/libVN.so 

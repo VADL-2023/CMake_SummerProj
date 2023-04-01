@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/pi/CMake_SummerProj/Log/src/Log.cpp" "/home/pi/CMake_SummerProj/build/Log/CMakeFiles/Log.dir/src/Log.o"
+  "/home/vadl/CMake_SummerProj/Log/src/Log.cpp" "/home/vadl/CMake_SummerProj/build/Log/CMakeFiles/Log.dir/src/Log.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -21,7 +21,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/pi/CMake_SummerProj/build/VectorNav/CMakeFiles/VN.dir/DependInfo.cmake"
+  "/home/vadl/CMake_SummerProj/build/VectorNav/CMakeFiles/VN.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

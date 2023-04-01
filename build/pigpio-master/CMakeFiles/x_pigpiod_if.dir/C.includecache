@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/pi/CMake_SummerProj/pigpio-master/pigpio.h
+/home/vadl/CMake_SummerProj/pigpio-master/pigpio.h
 stddef.h
 -
 stdint.h
@@ -20,7 +20,7 @@ pigpio.h
 stdio.h
 -
 pigpio.h
-/home/pi/CMake_SummerProj/pigpio-master/pigpio.h
+/home/vadl/CMake_SummerProj/pigpio-master/pigpio.h
 stdio.h
 -
 pigpio.h
@@ -34,15 +34,15 @@ stdio.h
 pigpio.h
 -
 
-/home/pi/CMake_SummerProj/pigpio-master/pigpiod_if.h
+/home/vadl/CMake_SummerProj/pigpio-master/pigpiod_if.h
 pigpio.h
-/home/pi/CMake_SummerProj/pigpio-master/pigpio.h
+/home/vadl/CMake_SummerProj/pigpio-master/pigpio.h
 stdio.h
 -
 pigpiod_if.h
 -
 
-/home/pi/CMake_SummerProj/pigpio-master/x_pigpiod_if.c
+/home/vadl/CMake_SummerProj/pigpio-master/x_pigpiod_if.c
 stdio.h
 -
 sys/types.h
@@ -58,5 +58,5 @@ string.h
 ctype.h
 -
 pigpiod_if.h
-/home/pi/CMake_SummerProj/pigpio-master/pigpiod_if.h
+/home/vadl/CMake_SummerProj/pigpio-master/pigpiod_if.h
 

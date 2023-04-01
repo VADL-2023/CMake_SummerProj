@@ -19,6 +19,6 @@ setup(name='pigpio',
          "Programming Language :: Python :: 2",
          "Programming Language :: Python :: 3",
       ],
-      package_dir={ '': '/home/pi/CMake_SummerProj/pigpio-master'}
+      package_dir={ '': '/home/vadl/CMake_SummerProj/pigpio-master'}
      )
 

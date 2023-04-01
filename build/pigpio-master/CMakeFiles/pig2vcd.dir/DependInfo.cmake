@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/pi/CMake_SummerProj/pigpio-master/command.c" "/home/pi/CMake_SummerProj/build/pigpio-master/CMakeFiles/pig2vcd.dir/command.c.o"
-  "/home/pi/CMake_SummerProj/pigpio-master/pig2vcd.c" "/home/pi/CMake_SummerProj/build/pigpio-master/CMakeFiles/pig2vcd.dir/pig2vcd.c.o"
+  "/home/vadl/CMake_SummerProj/pigpio-master/command.c" "/home/vadl/CMake_SummerProj/build/pigpio-master/CMakeFiles/pig2vcd.dir/command.c.o"
+  "/home/vadl/CMake_SummerProj/pigpio-master/pig2vcd.c" "/home/vadl/CMake_SummerProj/build/pigpio-master/CMakeFiles/pig2vcd.dir/pig2vcd.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

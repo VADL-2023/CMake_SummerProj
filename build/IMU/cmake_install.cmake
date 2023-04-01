@@ -1,4 +1,4 @@
-# Install script for directory: /home/pi/CMake_SummerProj/IMU
+# Install script for directory: /home/vadl/CMake_SummerProj/IMU
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

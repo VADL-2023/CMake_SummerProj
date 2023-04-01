@@ -62,10 +62,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pi/CMake_SummerProj
+CMAKE_SOURCE_DIR = /home/vadl/CMake_SummerProj
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pi/CMake_SummerProj/build
+CMAKE_BINARY_DIR = /home/vadl/CMake_SummerProj/build
 
 # Include any dependencies generated for this target.
 include IMU/CMakeFiles/IMU.dir/depend.make
@@ -78,42 +78,42 @@ include IMU/CMakeFiles/IMU.dir/flags.make
 
 IMU/CMakeFiles/IMU.dir/src/IMU.o: IMU/CMakeFiles/IMU.dir/flags.make
 IMU/CMakeFiles/IMU.dir/src/IMU.o: ../IMU/src/IMU.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object IMU/CMakeFiles/IMU.dir/src/IMU.o"
-	cd /home/pi/CMake_SummerProj/build/IMU && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/IMU.dir/src/IMU.o -c /home/pi/CMake_SummerProj/IMU/src/IMU.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vadl/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object IMU/CMakeFiles/IMU.dir/src/IMU.o"
+	cd /home/vadl/CMake_SummerProj/build/IMU && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/IMU.dir/src/IMU.o -c /home/vadl/CMake_SummerProj/IMU/src/IMU.cpp
 
 IMU/CMakeFiles/IMU.dir/src/IMU.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/IMU.dir/src/IMU.i"
-	cd /home/pi/CMake_SummerProj/build/IMU && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/CMake_SummerProj/IMU/src/IMU.cpp > CMakeFiles/IMU.dir/src/IMU.i
+	cd /home/vadl/CMake_SummerProj/build/IMU && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vadl/CMake_SummerProj/IMU/src/IMU.cpp > CMakeFiles/IMU.dir/src/IMU.i
 
 IMU/CMakeFiles/IMU.dir/src/IMU.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/IMU.dir/src/IMU.s"
-	cd /home/pi/CMake_SummerProj/build/IMU && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/CMake_SummerProj/IMU/src/IMU.cpp -o CMakeFiles/IMU.dir/src/IMU.s
+	cd /home/vadl/CMake_SummerProj/build/IMU && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vadl/CMake_SummerProj/IMU/src/IMU.cpp -o CMakeFiles/IMU.dir/src/IMU.s
 
 IMU/CMakeFiles/IMU.dir/src/common.o: IMU/CMakeFiles/IMU.dir/flags.make
 IMU/CMakeFiles/IMU.dir/src/common.o: ../IMU/src/common.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object IMU/CMakeFiles/IMU.dir/src/common.o"
-	cd /home/pi/CMake_SummerProj/build/IMU && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/IMU.dir/src/common.o -c /home/pi/CMake_SummerProj/IMU/src/common.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vadl/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object IMU/CMakeFiles/IMU.dir/src/common.o"
+	cd /home/vadl/CMake_SummerProj/build/IMU && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/IMU.dir/src/common.o -c /home/vadl/CMake_SummerProj/IMU/src/common.cpp
 
 IMU/CMakeFiles/IMU.dir/src/common.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/IMU.dir/src/common.i"
-	cd /home/pi/CMake_SummerProj/build/IMU && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/CMake_SummerProj/IMU/src/common.cpp > CMakeFiles/IMU.dir/src/common.i
+	cd /home/vadl/CMake_SummerProj/build/IMU && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vadl/CMake_SummerProj/IMU/src/common.cpp > CMakeFiles/IMU.dir/src/common.i
 
 IMU/CMakeFiles/IMU.dir/src/common.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/IMU.dir/src/common.s"
-	cd /home/pi/CMake_SummerProj/build/IMU && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/CMake_SummerProj/IMU/src/common.cpp -o CMakeFiles/IMU.dir/src/common.s
+	cd /home/vadl/CMake_SummerProj/build/IMU && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vadl/CMake_SummerProj/IMU/src/common.cpp -o CMakeFiles/IMU.dir/src/common.s
 
 IMU/CMakeFiles/IMU.dir/src/commonOutMutex.o: IMU/CMakeFiles/IMU.dir/flags.make
 IMU/CMakeFiles/IMU.dir/src/commonOutMutex.o: ../IMU/src/commonOutMutex.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object IMU/CMakeFiles/IMU.dir/src/commonOutMutex.o"
-	cd /home/pi/CMake_SummerProj/build/IMU && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/IMU.dir/src/commonOutMutex.o -c /home/pi/CMake_SummerProj/IMU/src/commonOutMutex.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vadl/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object IMU/CMakeFiles/IMU.dir/src/commonOutMutex.o"
+	cd /home/vadl/CMake_SummerProj/build/IMU && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/IMU.dir/src/commonOutMutex.o -c /home/vadl/CMake_SummerProj/IMU/src/commonOutMutex.cpp
 
 IMU/CMakeFiles/IMU.dir/src/commonOutMutex.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/IMU.dir/src/commonOutMutex.i"
-	cd /home/pi/CMake_SummerProj/build/IMU && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/CMake_SummerProj/IMU/src/commonOutMutex.cpp > CMakeFiles/IMU.dir/src/commonOutMutex.i
+	cd /home/vadl/CMake_SummerProj/build/IMU && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vadl/CMake_SummerProj/IMU/src/commonOutMutex.cpp > CMakeFiles/IMU.dir/src/commonOutMutex.i
 
 IMU/CMakeFiles/IMU.dir/src/commonOutMutex.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/IMU.dir/src/commonOutMutex.s"
-	cd /home/pi/CMake_SummerProj/build/IMU && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/CMake_SummerProj/IMU/src/commonOutMutex.cpp -o CMakeFiles/IMU.dir/src/commonOutMutex.s
+	cd /home/vadl/CMake_SummerProj/build/IMU && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vadl/CMake_SummerProj/IMU/src/commonOutMutex.cpp -o CMakeFiles/IMU.dir/src/commonOutMutex.s
 
 # Object files for target IMU
 IMU_OBJECTS = \
@@ -130,10 +130,10 @@ IMU/libIMU.so: IMU/CMakeFiles/IMU.dir/src/commonOutMutex.o
 IMU/libIMU.so: IMU/CMakeFiles/IMU.dir/build.make
 IMU/libIMU.so: VectorNav/libVN.so
 IMU/libIMU.so: pigpio-master/libpigpio.so
-IMU/libIMU.so: /usr/lib/aarch64-linux-gnu/libpython3.9.so
+IMU/libIMU.so: /usr/lib/arm-linux-gnueabihf/libpython3.9.so
 IMU/libIMU.so: IMU/CMakeFiles/IMU.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pi/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX shared library libIMU.so"
-	cd /home/pi/CMake_SummerProj/build/IMU && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/IMU.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/vadl/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX shared library libIMU.so"
+	cd /home/vadl/CMake_SummerProj/build/IMU && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/IMU.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 IMU/CMakeFiles/IMU.dir/build: IMU/libIMU.so
@@ -141,10 +141,10 @@ IMU/CMakeFiles/IMU.dir/build: IMU/libIMU.so
 .PHONY : IMU/CMakeFiles/IMU.dir/build
 
 IMU/CMakeFiles/IMU.dir/clean:
-	cd /home/pi/CMake_SummerProj/build/IMU && $(CMAKE_COMMAND) -P CMakeFiles/IMU.dir/cmake_clean.cmake
+	cd /home/vadl/CMake_SummerProj/build/IMU && $(CMAKE_COMMAND) -P CMakeFiles/IMU.dir/cmake_clean.cmake
 .PHONY : IMU/CMakeFiles/IMU.dir/clean
 
 IMU/CMakeFiles/IMU.dir/depend:
-	cd /home/pi/CMake_SummerProj/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pi/CMake_SummerProj /home/pi/CMake_SummerProj/IMU /home/pi/CMake_SummerProj/build /home/pi/CMake_SummerProj/build/IMU /home/pi/CMake_SummerProj/build/IMU/CMakeFiles/IMU.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/vadl/CMake_SummerProj/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/vadl/CMake_SummerProj /home/vadl/CMake_SummerProj/IMU /home/vadl/CMake_SummerProj/build /home/vadl/CMake_SummerProj/build/IMU /home/vadl/CMake_SummerProj/build/IMU/CMakeFiles/IMU.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : IMU/CMakeFiles/IMU.dir/depend
 

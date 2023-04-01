@@ -9,7 +9,7 @@ VectorNav/CMakeFiles/VN.dir/src/attitude.o
  ../VectorNav/include/vn/int.h
  ../VectorNav/include/vn/matrix.h
  ../VectorNav/include/vn/vector.h
- /home/pi/CMake_SummerProj/VectorNav/src/attitude.cpp
+ /home/vadl/CMake_SummerProj/VectorNav/src/attitude.cpp
 VectorNav/CMakeFiles/VN.dir/src/compositedata.o
  ../VectorNav/include/vn/attitude.h
  ../VectorNav/include/vn/compositedata.h
@@ -23,7 +23,7 @@ VectorNav/CMakeFiles/VN.dir/src/compositedata.o
  ../VectorNav/include/vn/position.h
  ../VectorNav/include/vn/types.h
  ../VectorNav/include/vn/vector.h
- /home/pi/CMake_SummerProj/VectorNav/src/compositedata.cpp
+ /home/vadl/CMake_SummerProj/VectorNav/src/compositedata.cpp
 VectorNav/CMakeFiles/VN.dir/src/conversions.o
  ../VectorNav/include/vn/consts.h
  ../VectorNav/include/vn/conversions.h
@@ -32,27 +32,27 @@ VectorNav/CMakeFiles/VN.dir/src/conversions.o
  ../VectorNav/include/vn/int.h
  ../VectorNav/include/vn/matrix.h
  ../VectorNav/include/vn/vector.h
- /home/pi/CMake_SummerProj/VectorNav/src/conversions.cpp
+ /home/vadl/CMake_SummerProj/VectorNav/src/conversions.cpp
 VectorNav/CMakeFiles/VN.dir/src/criticalsection.o
  ../VectorNav/include/vn/criticalsection.h
  ../VectorNav/include/vn/exceptions.h
  ../VectorNav/include/vn/export.h
  ../VectorNav/include/vn/nocopy.h
- /home/pi/CMake_SummerProj/VectorNav/src/criticalsection.cpp
+ /home/vadl/CMake_SummerProj/VectorNav/src/criticalsection.cpp
 VectorNav/CMakeFiles/VN.dir/src/dllvalidator.o
  ../VectorNav/include/vn/dllvalidator.h
- /home/pi/CMake_SummerProj/VectorNav/src/dllvalidator.cpp
+ /home/vadl/CMake_SummerProj/VectorNav/src/dllvalidator.cpp
 VectorNav/CMakeFiles/VN.dir/src/error_detection.o
  ../VectorNav/include/vn/error_detection.h
  ../VectorNav/include/vn/int.h
- /home/pi/CMake_SummerProj/VectorNav/src/error_detection.cpp
+ /home/vadl/CMake_SummerProj/VectorNav/src/error_detection.cpp
 VectorNav/CMakeFiles/VN.dir/src/event.o
  ../VectorNav/include/vn/event.h
  ../VectorNav/include/vn/exceptions.h
  ../VectorNav/include/vn/export.h
  ../VectorNav/include/vn/int.h
  ../VectorNav/include/vn/nocopy.h
- /home/pi/CMake_SummerProj/VectorNav/src/event.cpp
+ /home/vadl/CMake_SummerProj/VectorNav/src/event.cpp
 VectorNav/CMakeFiles/VN.dir/src/ezasyncdata.o
  ../VectorNav/include/vn/attitude.h
  ../VectorNav/include/vn/boostpython.h
@@ -73,7 +73,7 @@ VectorNav/CMakeFiles/VN.dir/src/ezasyncdata.o
  ../VectorNav/include/vn/types.h
  ../VectorNav/include/vn/vector.h
  ../VectorNav/include/vn/vntime.h
- /home/pi/CMake_SummerProj/VectorNav/src/ezasyncdata.cpp
+ /home/vadl/CMake_SummerProj/VectorNav/src/ezasyncdata.cpp
 VectorNav/CMakeFiles/VN.dir/src/memoryport.o
  ../VectorNav/include/vn/criticalsection.h
  ../VectorNav/include/vn/exceptions.h
@@ -82,7 +82,7 @@ VectorNav/CMakeFiles/VN.dir/src/memoryport.o
  ../VectorNav/include/vn/memoryport.h
  ../VectorNav/include/vn/nocopy.h
  ../VectorNav/include/vn/port.h
- /home/pi/CMake_SummerProj/VectorNav/src/memoryport.cpp
+ /home/vadl/CMake_SummerProj/VectorNav/src/memoryport.cpp
 VectorNav/CMakeFiles/VN.dir/src/packet.o
  ../VectorNav/include/vn/compiler.h
  ../VectorNav/include/vn/error_detection.h
@@ -96,7 +96,7 @@ VectorNav/CMakeFiles/VN.dir/src/packet.o
  ../VectorNav/include/vn/util.h
  ../VectorNav/include/vn/utilities.h
  ../VectorNav/include/vn/vector.h
- /home/pi/CMake_SummerProj/VectorNav/src/packet.cpp
+ /home/vadl/CMake_SummerProj/VectorNav/src/packet.cpp
 VectorNav/CMakeFiles/VN.dir/src/packetfinder.o
  ../VectorNav/include/vn/boostpython.h
  ../VectorNav/include/vn/error_detection.h
@@ -111,17 +111,17 @@ VectorNav/CMakeFiles/VN.dir/src/packetfinder.o
  ../VectorNav/include/vn/utilities.h
  ../VectorNav/include/vn/vector.h
  ../VectorNav/include/vn/vntime.h
- /home/pi/CMake_SummerProj/VectorNav/src/packetfinder.cpp
+ /home/vadl/CMake_SummerProj/VectorNav/src/packetfinder.cpp
 VectorNav/CMakeFiles/VN.dir/src/port.o
  ../VectorNav/include/vn/export.h
  ../VectorNav/include/vn/port.h
- /home/pi/CMake_SummerProj/VectorNav/src/port.cpp
+ /home/vadl/CMake_SummerProj/VectorNav/src/port.cpp
 VectorNav/CMakeFiles/VN.dir/src/position.o
  ../VectorNav/include/vn/exceptions.h
  ../VectorNav/include/vn/int.h
  ../VectorNav/include/vn/position.h
  ../VectorNav/include/vn/vector.h
- /home/pi/CMake_SummerProj/VectorNav/src/position.cpp
+ /home/vadl/CMake_SummerProj/VectorNav/src/position.cpp
 VectorNav/CMakeFiles/VN.dir/src/searcher.o
  ../VectorNav/include/vn/boostpython.h
  ../VectorNav/include/vn/event.h
@@ -139,7 +139,7 @@ VectorNav/CMakeFiles/VN.dir/src/searcher.o
  ../VectorNav/include/vn/types.h
  ../VectorNav/include/vn/vector.h
  ../VectorNav/include/vn/vntime.h
- /home/pi/CMake_SummerProj/VectorNav/src/searcher.cpp
+ /home/vadl/CMake_SummerProj/VectorNav/src/searcher.cpp
 VectorNav/CMakeFiles/VN.dir/src/sensors.o
  ../VectorNav/include/vn/boostpython.h
  ../VectorNav/include/vn/compiler.h
@@ -161,7 +161,7 @@ VectorNav/CMakeFiles/VN.dir/src/sensors.o
  ../VectorNav/include/vn/util.h
  ../VectorNav/include/vn/vector.h
  ../VectorNav/include/vn/vntime.h
- /home/pi/CMake_SummerProj/VectorNav/src/sensors.cpp
+ /home/vadl/CMake_SummerProj/VectorNav/src/sensors.cpp
 VectorNav/CMakeFiles/VN.dir/src/serialport.o
  ../VectorNav/include/vn/boostpython.h
  ../VectorNav/include/vn/compiler.h
@@ -176,33 +176,33 @@ VectorNav/CMakeFiles/VN.dir/src/serialport.o
  ../VectorNav/include/vn/thread.h
  ../VectorNav/include/vn/types.h
  ../VectorNav/include/vn/util.h
- /home/pi/CMake_SummerProj/VectorNav/src/serialport.cpp
+ /home/vadl/CMake_SummerProj/VectorNav/src/serialport.cpp
 VectorNav/CMakeFiles/VN.dir/src/thread.o
  ../VectorNav/include/vn/exceptions.h
  ../VectorNav/include/vn/export.h
  ../VectorNav/include/vn/int.h
  ../VectorNav/include/vn/nocopy.h
  ../VectorNav/include/vn/thread.h
- /home/pi/CMake_SummerProj/VectorNav/src/thread.cpp
+ /home/vadl/CMake_SummerProj/VectorNav/src/thread.cpp
 VectorNav/CMakeFiles/VN.dir/src/types.o
  ../VectorNav/include/vn/int.h
  ../VectorNav/include/vn/types.h
- /home/pi/CMake_SummerProj/VectorNav/src/types.cpp
+ /home/vadl/CMake_SummerProj/VectorNav/src/types.cpp
 VectorNav/CMakeFiles/VN.dir/src/util.o
  ../VectorNav/include/vn/exceptions.h
  ../VectorNav/include/vn/int.h
  ../VectorNav/include/vn/types.h
  ../VectorNav/include/vn/util.h
- /home/pi/CMake_SummerProj/VectorNav/src/util.cpp
+ /home/vadl/CMake_SummerProj/VectorNav/src/util.cpp
 VectorNav/CMakeFiles/VN.dir/src/utilities.o
  ../VectorNav/include/vn/dllvalidator.h
  ../VectorNav/include/vn/export.h
  ../VectorNav/include/vn/int.h
  ../VectorNav/include/vn/utilities.h
- /home/pi/CMake_SummerProj/VectorNav/src/utilities.cpp
+ /home/vadl/CMake_SummerProj/VectorNav/src/utilities.cpp
 VectorNav/CMakeFiles/VN.dir/src/vntime.o
  ../VectorNav/include/vn/exceptions.h
  ../VectorNav/include/vn/export.h
  ../VectorNav/include/vn/int.h
  ../VectorNav/include/vn/vntime.h
- /home/pi/CMake_SummerProj/VectorNav/src/vntime.cpp
+ /home/vadl/CMake_SummerProj/VectorNav/src/vntime.cpp

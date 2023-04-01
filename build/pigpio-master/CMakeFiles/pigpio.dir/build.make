@@ -62,10 +62,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pi/CMake_SummerProj
+CMAKE_SOURCE_DIR = /home/vadl/CMake_SummerProj
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pi/CMake_SummerProj/build
+CMAKE_BINARY_DIR = /home/vadl/CMake_SummerProj/build
 
 # Include any dependencies generated for this target.
 include pigpio-master/CMakeFiles/pigpio.dir/depend.make
@@ -78,29 +78,29 @@ include pigpio-master/CMakeFiles/pigpio.dir/flags.make
 
 pigpio-master/CMakeFiles/pigpio.dir/pigpio.c.o: pigpio-master/CMakeFiles/pigpio.dir/flags.make
 pigpio-master/CMakeFiles/pigpio.dir/pigpio.c.o: ../pigpio-master/pigpio.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object pigpio-master/CMakeFiles/pigpio.dir/pigpio.c.o"
-	cd /home/pi/CMake_SummerProj/build/pigpio-master && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/pigpio.dir/pigpio.c.o -c /home/pi/CMake_SummerProj/pigpio-master/pigpio.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vadl/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object pigpio-master/CMakeFiles/pigpio.dir/pigpio.c.o"
+	cd /home/vadl/CMake_SummerProj/build/pigpio-master && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/pigpio.dir/pigpio.c.o -c /home/vadl/CMake_SummerProj/pigpio-master/pigpio.c
 
 pigpio-master/CMakeFiles/pigpio.dir/pigpio.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/pigpio.dir/pigpio.c.i"
-	cd /home/pi/CMake_SummerProj/build/pigpio-master && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/pi/CMake_SummerProj/pigpio-master/pigpio.c > CMakeFiles/pigpio.dir/pigpio.c.i
+	cd /home/vadl/CMake_SummerProj/build/pigpio-master && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/vadl/CMake_SummerProj/pigpio-master/pigpio.c > CMakeFiles/pigpio.dir/pigpio.c.i
 
 pigpio-master/CMakeFiles/pigpio.dir/pigpio.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/pigpio.dir/pigpio.c.s"
-	cd /home/pi/CMake_SummerProj/build/pigpio-master && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/pi/CMake_SummerProj/pigpio-master/pigpio.c -o CMakeFiles/pigpio.dir/pigpio.c.s
+	cd /home/vadl/CMake_SummerProj/build/pigpio-master && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/vadl/CMake_SummerProj/pigpio-master/pigpio.c -o CMakeFiles/pigpio.dir/pigpio.c.s
 
 pigpio-master/CMakeFiles/pigpio.dir/command.c.o: pigpio-master/CMakeFiles/pigpio.dir/flags.make
 pigpio-master/CMakeFiles/pigpio.dir/command.c.o: ../pigpio-master/command.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object pigpio-master/CMakeFiles/pigpio.dir/command.c.o"
-	cd /home/pi/CMake_SummerProj/build/pigpio-master && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/pigpio.dir/command.c.o -c /home/pi/CMake_SummerProj/pigpio-master/command.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vadl/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object pigpio-master/CMakeFiles/pigpio.dir/command.c.o"
+	cd /home/vadl/CMake_SummerProj/build/pigpio-master && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/pigpio.dir/command.c.o -c /home/vadl/CMake_SummerProj/pigpio-master/command.c
 
 pigpio-master/CMakeFiles/pigpio.dir/command.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/pigpio.dir/command.c.i"
-	cd /home/pi/CMake_SummerProj/build/pigpio-master && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/pi/CMake_SummerProj/pigpio-master/command.c > CMakeFiles/pigpio.dir/command.c.i
+	cd /home/vadl/CMake_SummerProj/build/pigpio-master && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/vadl/CMake_SummerProj/pigpio-master/command.c > CMakeFiles/pigpio.dir/command.c.i
 
 pigpio-master/CMakeFiles/pigpio.dir/command.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/pigpio.dir/command.c.s"
-	cd /home/pi/CMake_SummerProj/build/pigpio-master && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/pi/CMake_SummerProj/pigpio-master/command.c -o CMakeFiles/pigpio.dir/command.c.s
+	cd /home/vadl/CMake_SummerProj/build/pigpio-master && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/vadl/CMake_SummerProj/pigpio-master/command.c -o CMakeFiles/pigpio.dir/command.c.s
 
 # Object files for target pigpio
 pigpio_OBJECTS = \
@@ -114,8 +114,8 @@ pigpio-master/libpigpio.so: pigpio-master/CMakeFiles/pigpio.dir/pigpio.c.o
 pigpio-master/libpigpio.so: pigpio-master/CMakeFiles/pigpio.dir/command.c.o
 pigpio-master/libpigpio.so: pigpio-master/CMakeFiles/pigpio.dir/build.make
 pigpio-master/libpigpio.so: pigpio-master/CMakeFiles/pigpio.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pi/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C shared library libpigpio.so"
-	cd /home/pi/CMake_SummerProj/build/pigpio-master && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/pigpio.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/vadl/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C shared library libpigpio.so"
+	cd /home/vadl/CMake_SummerProj/build/pigpio-master && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/pigpio.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 pigpio-master/CMakeFiles/pigpio.dir/build: pigpio-master/libpigpio.so
@@ -123,10 +123,10 @@ pigpio-master/CMakeFiles/pigpio.dir/build: pigpio-master/libpigpio.so
 .PHONY : pigpio-master/CMakeFiles/pigpio.dir/build
 
 pigpio-master/CMakeFiles/pigpio.dir/clean:
-	cd /home/pi/CMake_SummerProj/build/pigpio-master && $(CMAKE_COMMAND) -P CMakeFiles/pigpio.dir/cmake_clean.cmake
+	cd /home/vadl/CMake_SummerProj/build/pigpio-master && $(CMAKE_COMMAND) -P CMakeFiles/pigpio.dir/cmake_clean.cmake
 .PHONY : pigpio-master/CMakeFiles/pigpio.dir/clean
 
 pigpio-master/CMakeFiles/pigpio.dir/depend:
-	cd /home/pi/CMake_SummerProj/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pi/CMake_SummerProj /home/pi/CMake_SummerProj/pigpio-master /home/pi/CMake_SummerProj/build /home/pi/CMake_SummerProj/build/pigpio-master /home/pi/CMake_SummerProj/build/pigpio-master/CMakeFiles/pigpio.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/vadl/CMake_SummerProj/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/vadl/CMake_SummerProj /home/vadl/CMake_SummerProj/pigpio-master /home/vadl/CMake_SummerProj/build /home/vadl/CMake_SummerProj/build/pigpio-master /home/vadl/CMake_SummerProj/build/pigpio-master/CMakeFiles/pigpio.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : pigpio-master/CMakeFiles/pigpio.dir/depend
 

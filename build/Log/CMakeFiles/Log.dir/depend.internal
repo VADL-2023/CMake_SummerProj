@@ -15,5 +15,5 @@ Log/CMakeFiles/Log.dir/src/Log.o
  ../VectorNav/include/vn/types.h
  ../VectorNav/include/vn/vector.h
  ../VectorNav/include/vn/vntime.h
- /home/pi/CMake_SummerProj/Log/include/Log.h
- /home/pi/CMake_SummerProj/Log/src/Log.cpp
+ /home/vadl/CMake_SummerProj/Log/include/Log.h
+ /home/vadl/CMake_SummerProj/Log/src/Log.cpp

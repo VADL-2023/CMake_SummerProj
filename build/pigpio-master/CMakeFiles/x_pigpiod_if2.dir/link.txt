@@ -1,1 +1,1 @@
-/usr/bin/cc -rdynamic CMakeFiles/x_pigpiod_if2.dir/x_pigpiod_if2.c.o -o x_pigpiod_if2  -Wl,-rpath,/home/pi/CMake_SummerProj/build/pigpio-master libpigpiod_if2.so -lrt -pthread 
+/usr/bin/cc -rdynamic CMakeFiles/x_pigpiod_if2.dir/x_pigpiod_if2.c.o -o x_pigpiod_if2  -Wl,-rpath,/home/vadl/CMake_SummerProj/build/pigpio-master libpigpiod_if2.so -lrt -pthread 

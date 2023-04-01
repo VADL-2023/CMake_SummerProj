@@ -1,4 +1,4 @@
-# Install script for directory: /home/pi/CMake_SummerProj/Log
+# Install script for directory: /home/vadl/CMake_SummerProj/Log
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

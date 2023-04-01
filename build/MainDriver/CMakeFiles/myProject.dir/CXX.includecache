@@ -132,13 +132,13 @@ int.h
 export.h
 ../VectorNav/include/vn/export.h
 
-/home/pi/CMake_SummerProj/MainDriver/src/main.cpp
+/home/vadl/CMake_SummerProj/MainDriver/src/main.cpp
 sensors.h
-/home/pi/CMake_SummerProj/MainDriver/src/sensors.h
+/home/vadl/CMake_SummerProj/MainDriver/src/sensors.h
 config_IMU.hpp
-/home/pi/CMake_SummerProj/MainDriver/src/config_IMU.hpp
+/home/vadl/CMake_SummerProj/MainDriver/src/config_IMU.hpp
 pigpio.h
-/home/pi/CMake_SummerProj/MainDriver/src/pigpio.h
+/home/vadl/CMake_SummerProj/MainDriver/src/pigpio.h
 stddef.h
 -
 unistd.h
@@ -150,5 +150,5 @@ algorithm
 iostream
 -
 Log.h
-/home/pi/CMake_SummerProj/MainDriver/src/Log.h
+/home/vadl/CMake_SummerProj/MainDriver/src/Log.h
 

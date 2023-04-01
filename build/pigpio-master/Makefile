@@ -67,10 +67,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pi/CMake_SummerProj
+CMAKE_SOURCE_DIR = /home/vadl/CMake_SummerProj
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pi/CMake_SummerProj/build
+CMAKE_BINARY_DIR = /home/vadl/CMake_SummerProj/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -97,29 +97,6 @@ list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
 
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
-
-# Special rule for the target package_source
-package_source:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
-	cd /home/pi/CMake_SummerProj/build && /usr/bin/cpack --config ./CPackSourceConfig.cmake /home/pi/CMake_SummerProj/build/CPackSourceConfig.cmake
-.PHONY : package_source
-
-# Special rule for the target package_source
-package_source/fast: package_source
-
-.PHONY : package_source/fast
-
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
@@ -132,10 +109,22 @@ install/local/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
 
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
 # Special rule for the target package
 package: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool..."
-	cd /home/pi/CMake_SummerProj/build && /usr/bin/cpack --config ./CPackConfig.cmake
+	cd /home/vadl/CMake_SummerProj/build && /usr/bin/cpack --config ./CPackConfig.cmake
 .PHONY : package
 
 # Special rule for the target package
@@ -154,6 +143,17 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
+# Special rule for the target package_source
+package_source:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
+	cd /home/vadl/CMake_SummerProj/build && /usr/bin/cpack --config ./CPackSourceConfig.cmake /home/vadl/CMake_SummerProj/build/CPackSourceConfig.cmake
+.PHONY : package_source
+
+# Special rule for the target package_source
+package_source/fast: package_source
+
+.PHONY : package_source/fast
+
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -167,14 +167,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/pi/CMake_SummerProj/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/pi/CMake_SummerProj/build/CMakeFiles /home/pi/CMake_SummerProj/build/pigpio-master//CMakeFiles/progress.marks
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pigpio-master/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/CMake_SummerProj/build/CMakeFiles 0
+	cd /home/vadl/CMake_SummerProj/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/vadl/CMake_SummerProj/build/CMakeFiles /home/vadl/CMake_SummerProj/build/pigpio-master//CMakeFiles/progress.marks
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pigpio-master/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/vadl/CMake_SummerProj/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pigpio-master/clean
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pigpio-master/clean
 .PHONY : clean
 
 # The main clean target
@@ -184,22 +184,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pigpio-master/preinstall
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pigpio-master/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pigpio-master/preinstall
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pigpio-master/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/pi/CMake_SummerProj/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/vadl/CMake_SummerProj/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 pigpio-master/CMakeFiles/pigpio.dir/rule:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pigpio-master/CMakeFiles/pigpio.dir/rule
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pigpio-master/CMakeFiles/pigpio.dir/rule
 .PHONY : pigpio-master/CMakeFiles/pigpio.dir/rule
 
 # Convenience name for target.
@@ -209,12 +209,12 @@ pigpio: pigpio-master/CMakeFiles/pigpio.dir/rule
 
 # fast build rule for target.
 pigpio/fast:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpio.dir/build.make pigpio-master/CMakeFiles/pigpio.dir/build
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpio.dir/build.make pigpio-master/CMakeFiles/pigpio.dir/build
 .PHONY : pigpio/fast
 
 # Convenience name for target.
 pigpio-master/CMakeFiles/pigpiod_if.dir/rule:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pigpio-master/CMakeFiles/pigpiod_if.dir/rule
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pigpio-master/CMakeFiles/pigpiod_if.dir/rule
 .PHONY : pigpio-master/CMakeFiles/pigpiod_if.dir/rule
 
 # Convenience name for target.
@@ -224,72 +224,12 @@ pigpiod_if: pigpio-master/CMakeFiles/pigpiod_if.dir/rule
 
 # fast build rule for target.
 pigpiod_if/fast:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpiod_if.dir/build.make pigpio-master/CMakeFiles/pigpiod_if.dir/build
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpiod_if.dir/build.make pigpio-master/CMakeFiles/pigpiod_if.dir/build
 .PHONY : pigpiod_if/fast
 
 # Convenience name for target.
-pigpio-master/CMakeFiles/pigpiod_if2.dir/rule:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pigpio-master/CMakeFiles/pigpiod_if2.dir/rule
-.PHONY : pigpio-master/CMakeFiles/pigpiod_if2.dir/rule
-
-# Convenience name for target.
-pigpiod_if2: pigpio-master/CMakeFiles/pigpiod_if2.dir/rule
-
-.PHONY : pigpiod_if2
-
-# fast build rule for target.
-pigpiod_if2/fast:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpiod_if2.dir/build.make pigpio-master/CMakeFiles/pigpiod_if2.dir/build
-.PHONY : pigpiod_if2/fast
-
-# Convenience name for target.
-pigpio-master/CMakeFiles/x_pigpio.dir/rule:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pigpio-master/CMakeFiles/x_pigpio.dir/rule
-.PHONY : pigpio-master/CMakeFiles/x_pigpio.dir/rule
-
-# Convenience name for target.
-x_pigpio: pigpio-master/CMakeFiles/x_pigpio.dir/rule
-
-.PHONY : x_pigpio
-
-# fast build rule for target.
-x_pigpio/fast:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/x_pigpio.dir/build.make pigpio-master/CMakeFiles/x_pigpio.dir/build
-.PHONY : x_pigpio/fast
-
-# Convenience name for target.
-pigpio-master/CMakeFiles/x_pigpiod_if.dir/rule:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pigpio-master/CMakeFiles/x_pigpiod_if.dir/rule
-.PHONY : pigpio-master/CMakeFiles/x_pigpiod_if.dir/rule
-
-# Convenience name for target.
-x_pigpiod_if: pigpio-master/CMakeFiles/x_pigpiod_if.dir/rule
-
-.PHONY : x_pigpiod_if
-
-# fast build rule for target.
-x_pigpiod_if/fast:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/x_pigpiod_if.dir/build.make pigpio-master/CMakeFiles/x_pigpiod_if.dir/build
-.PHONY : x_pigpiod_if/fast
-
-# Convenience name for target.
-pigpio-master/CMakeFiles/x_pigpiod_if2.dir/rule:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pigpio-master/CMakeFiles/x_pigpiod_if2.dir/rule
-.PHONY : pigpio-master/CMakeFiles/x_pigpiod_if2.dir/rule
-
-# Convenience name for target.
-x_pigpiod_if2: pigpio-master/CMakeFiles/x_pigpiod_if2.dir/rule
-
-.PHONY : x_pigpiod_if2
-
-# fast build rule for target.
-x_pigpiod_if2/fast:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/x_pigpiod_if2.dir/build.make pigpio-master/CMakeFiles/x_pigpiod_if2.dir/build
-.PHONY : x_pigpiod_if2/fast
-
-# Convenience name for target.
 pigpio-master/CMakeFiles/pigs.dir/rule:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pigpio-master/CMakeFiles/pigs.dir/rule
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pigpio-master/CMakeFiles/pigs.dir/rule
 .PHONY : pigpio-master/CMakeFiles/pigs.dir/rule
 
 # Convenience name for target.
@@ -299,12 +239,42 @@ pigs: pigpio-master/CMakeFiles/pigs.dir/rule
 
 # fast build rule for target.
 pigs/fast:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigs.dir/build.make pigpio-master/CMakeFiles/pigs.dir/build
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigs.dir/build.make pigpio-master/CMakeFiles/pigs.dir/build
 .PHONY : pigs/fast
 
 # Convenience name for target.
+pigpio-master/CMakeFiles/pigpiod_if2.dir/rule:
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pigpio-master/CMakeFiles/pigpiod_if2.dir/rule
+.PHONY : pigpio-master/CMakeFiles/pigpiod_if2.dir/rule
+
+# Convenience name for target.
+pigpiod_if2: pigpio-master/CMakeFiles/pigpiod_if2.dir/rule
+
+.PHONY : pigpiod_if2
+
+# fast build rule for target.
+pigpiod_if2/fast:
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpiod_if2.dir/build.make pigpio-master/CMakeFiles/pigpiod_if2.dir/build
+.PHONY : pigpiod_if2/fast
+
+# Convenience name for target.
+pigpio-master/CMakeFiles/x_pigpio.dir/rule:
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pigpio-master/CMakeFiles/x_pigpio.dir/rule
+.PHONY : pigpio-master/CMakeFiles/x_pigpio.dir/rule
+
+# Convenience name for target.
+x_pigpio: pigpio-master/CMakeFiles/x_pigpio.dir/rule
+
+.PHONY : x_pigpio
+
+# fast build rule for target.
+x_pigpio/fast:
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/x_pigpio.dir/build.make pigpio-master/CMakeFiles/x_pigpio.dir/build
+.PHONY : x_pigpio/fast
+
+# Convenience name for target.
 pigpio-master/CMakeFiles/pig2vcd.dir/rule:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pigpio-master/CMakeFiles/pig2vcd.dir/rule
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pigpio-master/CMakeFiles/pig2vcd.dir/rule
 .PHONY : pigpio-master/CMakeFiles/pig2vcd.dir/rule
 
 # Convenience name for target.
@@ -314,12 +284,42 @@ pig2vcd: pigpio-master/CMakeFiles/pig2vcd.dir/rule
 
 # fast build rule for target.
 pig2vcd/fast:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pig2vcd.dir/build.make pigpio-master/CMakeFiles/pig2vcd.dir/build
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pig2vcd.dir/build.make pigpio-master/CMakeFiles/pig2vcd.dir/build
 .PHONY : pig2vcd/fast
 
 # Convenience name for target.
+pigpio-master/CMakeFiles/x_pigpiod_if.dir/rule:
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pigpio-master/CMakeFiles/x_pigpiod_if.dir/rule
+.PHONY : pigpio-master/CMakeFiles/x_pigpiod_if.dir/rule
+
+# Convenience name for target.
+x_pigpiod_if: pigpio-master/CMakeFiles/x_pigpiod_if.dir/rule
+
+.PHONY : x_pigpiod_if
+
+# fast build rule for target.
+x_pigpiod_if/fast:
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/x_pigpiod_if.dir/build.make pigpio-master/CMakeFiles/x_pigpiod_if.dir/build
+.PHONY : x_pigpiod_if/fast
+
+# Convenience name for target.
+pigpio-master/CMakeFiles/x_pigpiod_if2.dir/rule:
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pigpio-master/CMakeFiles/x_pigpiod_if2.dir/rule
+.PHONY : pigpio-master/CMakeFiles/x_pigpiod_if2.dir/rule
+
+# Convenience name for target.
+x_pigpiod_if2: pigpio-master/CMakeFiles/x_pigpiod_if2.dir/rule
+
+.PHONY : x_pigpiod_if2
+
+# fast build rule for target.
+x_pigpiod_if2/fast:
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/x_pigpiod_if2.dir/build.make pigpio-master/CMakeFiles/x_pigpiod_if2.dir/build
+.PHONY : x_pigpiod_if2/fast
+
+# Convenience name for target.
 pigpio-master/CMakeFiles/pigpiod.dir/rule:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pigpio-master/CMakeFiles/pigpiod.dir/rule
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pigpio-master/CMakeFiles/pigpiod.dir/rule
 .PHONY : pigpio-master/CMakeFiles/pigpiod.dir/rule
 
 # Convenience name for target.
@@ -329,7 +329,7 @@ pigpiod: pigpio-master/CMakeFiles/pigpiod.dir/rule
 
 # fast build rule for target.
 pigpiod/fast:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpiod.dir/build.make pigpio-master/CMakeFiles/pigpiod.dir/build
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpiod.dir/build.make pigpio-master/CMakeFiles/pigpiod.dir/build
 .PHONY : pigpiod/fast
 
 command.o: command.c.o
@@ -338,11 +338,11 @@ command.o: command.c.o
 
 # target to build an object file
 command.c.o:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpio.dir/build.make pigpio-master/CMakeFiles/pigpio.dir/command.c.o
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpiod_if.dir/build.make pigpio-master/CMakeFiles/pigpiod_if.dir/command.c.o
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpiod_if2.dir/build.make pigpio-master/CMakeFiles/pigpiod_if2.dir/command.c.o
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigs.dir/build.make pigpio-master/CMakeFiles/pigs.dir/command.c.o
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pig2vcd.dir/build.make pigpio-master/CMakeFiles/pig2vcd.dir/command.c.o
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpio.dir/build.make pigpio-master/CMakeFiles/pigpio.dir/command.c.o
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpiod_if.dir/build.make pigpio-master/CMakeFiles/pigpiod_if.dir/command.c.o
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigs.dir/build.make pigpio-master/CMakeFiles/pigs.dir/command.c.o
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpiod_if2.dir/build.make pigpio-master/CMakeFiles/pigpiod_if2.dir/command.c.o
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pig2vcd.dir/build.make pigpio-master/CMakeFiles/pig2vcd.dir/command.c.o
 .PHONY : command.c.o
 
 command.i: command.c.i
@@ -351,11 +351,11 @@ command.i: command.c.i
 
 # target to preprocess a source file
 command.c.i:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpio.dir/build.make pigpio-master/CMakeFiles/pigpio.dir/command.c.i
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpiod_if.dir/build.make pigpio-master/CMakeFiles/pigpiod_if.dir/command.c.i
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpiod_if2.dir/build.make pigpio-master/CMakeFiles/pigpiod_if2.dir/command.c.i
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigs.dir/build.make pigpio-master/CMakeFiles/pigs.dir/command.c.i
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pig2vcd.dir/build.make pigpio-master/CMakeFiles/pig2vcd.dir/command.c.i
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpio.dir/build.make pigpio-master/CMakeFiles/pigpio.dir/command.c.i
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpiod_if.dir/build.make pigpio-master/CMakeFiles/pigpiod_if.dir/command.c.i
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigs.dir/build.make pigpio-master/CMakeFiles/pigs.dir/command.c.i
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpiod_if2.dir/build.make pigpio-master/CMakeFiles/pigpiod_if2.dir/command.c.i
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pig2vcd.dir/build.make pigpio-master/CMakeFiles/pig2vcd.dir/command.c.i
 .PHONY : command.c.i
 
 command.s: command.c.s
@@ -364,11 +364,11 @@ command.s: command.c.s
 
 # target to generate assembly for a file
 command.c.s:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpio.dir/build.make pigpio-master/CMakeFiles/pigpio.dir/command.c.s
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpiod_if.dir/build.make pigpio-master/CMakeFiles/pigpiod_if.dir/command.c.s
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpiod_if2.dir/build.make pigpio-master/CMakeFiles/pigpiod_if2.dir/command.c.s
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigs.dir/build.make pigpio-master/CMakeFiles/pigs.dir/command.c.s
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pig2vcd.dir/build.make pigpio-master/CMakeFiles/pig2vcd.dir/command.c.s
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpio.dir/build.make pigpio-master/CMakeFiles/pigpio.dir/command.c.s
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpiod_if.dir/build.make pigpio-master/CMakeFiles/pigpiod_if.dir/command.c.s
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigs.dir/build.make pigpio-master/CMakeFiles/pigs.dir/command.c.s
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpiod_if2.dir/build.make pigpio-master/CMakeFiles/pigpiod_if2.dir/command.c.s
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pig2vcd.dir/build.make pigpio-master/CMakeFiles/pig2vcd.dir/command.c.s
 .PHONY : command.c.s
 
 pig2vcd.o: pig2vcd.c.o
@@ -377,7 +377,7 @@ pig2vcd.o: pig2vcd.c.o
 
 # target to build an object file
 pig2vcd.c.o:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pig2vcd.dir/build.make pigpio-master/CMakeFiles/pig2vcd.dir/pig2vcd.c.o
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pig2vcd.dir/build.make pigpio-master/CMakeFiles/pig2vcd.dir/pig2vcd.c.o
 .PHONY : pig2vcd.c.o
 
 pig2vcd.i: pig2vcd.c.i
@@ -386,7 +386,7 @@ pig2vcd.i: pig2vcd.c.i
 
 # target to preprocess a source file
 pig2vcd.c.i:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pig2vcd.dir/build.make pigpio-master/CMakeFiles/pig2vcd.dir/pig2vcd.c.i
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pig2vcd.dir/build.make pigpio-master/CMakeFiles/pig2vcd.dir/pig2vcd.c.i
 .PHONY : pig2vcd.c.i
 
 pig2vcd.s: pig2vcd.c.s
@@ -395,7 +395,7 @@ pig2vcd.s: pig2vcd.c.s
 
 # target to generate assembly for a file
 pig2vcd.c.s:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pig2vcd.dir/build.make pigpio-master/CMakeFiles/pig2vcd.dir/pig2vcd.c.s
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pig2vcd.dir/build.make pigpio-master/CMakeFiles/pig2vcd.dir/pig2vcd.c.s
 .PHONY : pig2vcd.c.s
 
 pigpio.o: pigpio.c.o
@@ -404,7 +404,7 @@ pigpio.o: pigpio.c.o
 
 # target to build an object file
 pigpio.c.o:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpio.dir/build.make pigpio-master/CMakeFiles/pigpio.dir/pigpio.c.o
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpio.dir/build.make pigpio-master/CMakeFiles/pigpio.dir/pigpio.c.o
 .PHONY : pigpio.c.o
 
 pigpio.i: pigpio.c.i
@@ -413,7 +413,7 @@ pigpio.i: pigpio.c.i
 
 # target to preprocess a source file
 pigpio.c.i:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpio.dir/build.make pigpio-master/CMakeFiles/pigpio.dir/pigpio.c.i
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpio.dir/build.make pigpio-master/CMakeFiles/pigpio.dir/pigpio.c.i
 .PHONY : pigpio.c.i
 
 pigpio.s: pigpio.c.s
@@ -422,7 +422,7 @@ pigpio.s: pigpio.c.s
 
 # target to generate assembly for a file
 pigpio.c.s:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpio.dir/build.make pigpio-master/CMakeFiles/pigpio.dir/pigpio.c.s
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpio.dir/build.make pigpio-master/CMakeFiles/pigpio.dir/pigpio.c.s
 .PHONY : pigpio.c.s
 
 pigpiod.o: pigpiod.c.o
@@ -431,7 +431,7 @@ pigpiod.o: pigpiod.c.o
 
 # target to build an object file
 pigpiod.c.o:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpiod.dir/build.make pigpio-master/CMakeFiles/pigpiod.dir/pigpiod.c.o
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpiod.dir/build.make pigpio-master/CMakeFiles/pigpiod.dir/pigpiod.c.o
 .PHONY : pigpiod.c.o
 
 pigpiod.i: pigpiod.c.i
@@ -440,7 +440,7 @@ pigpiod.i: pigpiod.c.i
 
 # target to preprocess a source file
 pigpiod.c.i:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpiod.dir/build.make pigpio-master/CMakeFiles/pigpiod.dir/pigpiod.c.i
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpiod.dir/build.make pigpio-master/CMakeFiles/pigpiod.dir/pigpiod.c.i
 .PHONY : pigpiod.c.i
 
 pigpiod.s: pigpiod.c.s
@@ -449,7 +449,7 @@ pigpiod.s: pigpiod.c.s
 
 # target to generate assembly for a file
 pigpiod.c.s:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpiod.dir/build.make pigpio-master/CMakeFiles/pigpiod.dir/pigpiod.c.s
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpiod.dir/build.make pigpio-master/CMakeFiles/pigpiod.dir/pigpiod.c.s
 .PHONY : pigpiod.c.s
 
 pigpiod_if.o: pigpiod_if.c.o
@@ -458,7 +458,7 @@ pigpiod_if.o: pigpiod_if.c.o
 
 # target to build an object file
 pigpiod_if.c.o:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpiod_if.dir/build.make pigpio-master/CMakeFiles/pigpiod_if.dir/pigpiod_if.c.o
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpiod_if.dir/build.make pigpio-master/CMakeFiles/pigpiod_if.dir/pigpiod_if.c.o
 .PHONY : pigpiod_if.c.o
 
 pigpiod_if.i: pigpiod_if.c.i
@@ -467,7 +467,7 @@ pigpiod_if.i: pigpiod_if.c.i
 
 # target to preprocess a source file
 pigpiod_if.c.i:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpiod_if.dir/build.make pigpio-master/CMakeFiles/pigpiod_if.dir/pigpiod_if.c.i
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpiod_if.dir/build.make pigpio-master/CMakeFiles/pigpiod_if.dir/pigpiod_if.c.i
 .PHONY : pigpiod_if.c.i
 
 pigpiod_if.s: pigpiod_if.c.s
@@ -476,7 +476,7 @@ pigpiod_if.s: pigpiod_if.c.s
 
 # target to generate assembly for a file
 pigpiod_if.c.s:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpiod_if.dir/build.make pigpio-master/CMakeFiles/pigpiod_if.dir/pigpiod_if.c.s
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpiod_if.dir/build.make pigpio-master/CMakeFiles/pigpiod_if.dir/pigpiod_if.c.s
 .PHONY : pigpiod_if.c.s
 
 pigpiod_if2.o: pigpiod_if2.c.o
@@ -485,7 +485,7 @@ pigpiod_if2.o: pigpiod_if2.c.o
 
 # target to build an object file
 pigpiod_if2.c.o:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpiod_if2.dir/build.make pigpio-master/CMakeFiles/pigpiod_if2.dir/pigpiod_if2.c.o
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpiod_if2.dir/build.make pigpio-master/CMakeFiles/pigpiod_if2.dir/pigpiod_if2.c.o
 .PHONY : pigpiod_if2.c.o
 
 pigpiod_if2.i: pigpiod_if2.c.i
@@ -494,7 +494,7 @@ pigpiod_if2.i: pigpiod_if2.c.i
 
 # target to preprocess a source file
 pigpiod_if2.c.i:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpiod_if2.dir/build.make pigpio-master/CMakeFiles/pigpiod_if2.dir/pigpiod_if2.c.i
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpiod_if2.dir/build.make pigpio-master/CMakeFiles/pigpiod_if2.dir/pigpiod_if2.c.i
 .PHONY : pigpiod_if2.c.i
 
 pigpiod_if2.s: pigpiod_if2.c.s
@@ -503,7 +503,7 @@ pigpiod_if2.s: pigpiod_if2.c.s
 
 # target to generate assembly for a file
 pigpiod_if2.c.s:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpiod_if2.dir/build.make pigpio-master/CMakeFiles/pigpiod_if2.dir/pigpiod_if2.c.s
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigpiod_if2.dir/build.make pigpio-master/CMakeFiles/pigpiod_if2.dir/pigpiod_if2.c.s
 .PHONY : pigpiod_if2.c.s
 
 pigs.o: pigs.c.o
@@ -512,7 +512,7 @@ pigs.o: pigs.c.o
 
 # target to build an object file
 pigs.c.o:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigs.dir/build.make pigpio-master/CMakeFiles/pigs.dir/pigs.c.o
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigs.dir/build.make pigpio-master/CMakeFiles/pigs.dir/pigs.c.o
 .PHONY : pigs.c.o
 
 pigs.i: pigs.c.i
@@ -521,7 +521,7 @@ pigs.i: pigs.c.i
 
 # target to preprocess a source file
 pigs.c.i:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigs.dir/build.make pigpio-master/CMakeFiles/pigs.dir/pigs.c.i
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigs.dir/build.make pigpio-master/CMakeFiles/pigs.dir/pigs.c.i
 .PHONY : pigs.c.i
 
 pigs.s: pigs.c.s
@@ -530,7 +530,7 @@ pigs.s: pigs.c.s
 
 # target to generate assembly for a file
 pigs.c.s:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigs.dir/build.make pigpio-master/CMakeFiles/pigs.dir/pigs.c.s
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/pigs.dir/build.make pigpio-master/CMakeFiles/pigs.dir/pigs.c.s
 .PHONY : pigs.c.s
 
 x_pigpio.o: x_pigpio.c.o
@@ -539,7 +539,7 @@ x_pigpio.o: x_pigpio.c.o
 
 # target to build an object file
 x_pigpio.c.o:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/x_pigpio.dir/build.make pigpio-master/CMakeFiles/x_pigpio.dir/x_pigpio.c.o
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/x_pigpio.dir/build.make pigpio-master/CMakeFiles/x_pigpio.dir/x_pigpio.c.o
 .PHONY : x_pigpio.c.o
 
 x_pigpio.i: x_pigpio.c.i
@@ -548,7 +548,7 @@ x_pigpio.i: x_pigpio.c.i
 
 # target to preprocess a source file
 x_pigpio.c.i:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/x_pigpio.dir/build.make pigpio-master/CMakeFiles/x_pigpio.dir/x_pigpio.c.i
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/x_pigpio.dir/build.make pigpio-master/CMakeFiles/x_pigpio.dir/x_pigpio.c.i
 .PHONY : x_pigpio.c.i
 
 x_pigpio.s: x_pigpio.c.s
@@ -557,7 +557,7 @@ x_pigpio.s: x_pigpio.c.s
 
 # target to generate assembly for a file
 x_pigpio.c.s:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/x_pigpio.dir/build.make pigpio-master/CMakeFiles/x_pigpio.dir/x_pigpio.c.s
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/x_pigpio.dir/build.make pigpio-master/CMakeFiles/x_pigpio.dir/x_pigpio.c.s
 .PHONY : x_pigpio.c.s
 
 x_pigpiod_if.o: x_pigpiod_if.c.o
@@ -566,7 +566,7 @@ x_pigpiod_if.o: x_pigpiod_if.c.o
 
 # target to build an object file
 x_pigpiod_if.c.o:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/x_pigpiod_if.dir/build.make pigpio-master/CMakeFiles/x_pigpiod_if.dir/x_pigpiod_if.c.o
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/x_pigpiod_if.dir/build.make pigpio-master/CMakeFiles/x_pigpiod_if.dir/x_pigpiod_if.c.o
 .PHONY : x_pigpiod_if.c.o
 
 x_pigpiod_if.i: x_pigpiod_if.c.i
@@ -575,7 +575,7 @@ x_pigpiod_if.i: x_pigpiod_if.c.i
 
 # target to preprocess a source file
 x_pigpiod_if.c.i:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/x_pigpiod_if.dir/build.make pigpio-master/CMakeFiles/x_pigpiod_if.dir/x_pigpiod_if.c.i
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/x_pigpiod_if.dir/build.make pigpio-master/CMakeFiles/x_pigpiod_if.dir/x_pigpiod_if.c.i
 .PHONY : x_pigpiod_if.c.i
 
 x_pigpiod_if.s: x_pigpiod_if.c.s
@@ -584,7 +584,7 @@ x_pigpiod_if.s: x_pigpiod_if.c.s
 
 # target to generate assembly for a file
 x_pigpiod_if.c.s:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/x_pigpiod_if.dir/build.make pigpio-master/CMakeFiles/x_pigpiod_if.dir/x_pigpiod_if.c.s
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/x_pigpiod_if.dir/build.make pigpio-master/CMakeFiles/x_pigpiod_if.dir/x_pigpiod_if.c.s
 .PHONY : x_pigpiod_if.c.s
 
 x_pigpiod_if2.o: x_pigpiod_if2.c.o
@@ -593,7 +593,7 @@ x_pigpiod_if2.o: x_pigpiod_if2.c.o
 
 # target to build an object file
 x_pigpiod_if2.c.o:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/x_pigpiod_if2.dir/build.make pigpio-master/CMakeFiles/x_pigpiod_if2.dir/x_pigpiod_if2.c.o
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/x_pigpiod_if2.dir/build.make pigpio-master/CMakeFiles/x_pigpiod_if2.dir/x_pigpiod_if2.c.o
 .PHONY : x_pigpiod_if2.c.o
 
 x_pigpiod_if2.i: x_pigpiod_if2.c.i
@@ -602,7 +602,7 @@ x_pigpiod_if2.i: x_pigpiod_if2.c.i
 
 # target to preprocess a source file
 x_pigpiod_if2.c.i:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/x_pigpiod_if2.dir/build.make pigpio-master/CMakeFiles/x_pigpiod_if2.dir/x_pigpiod_if2.c.i
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/x_pigpiod_if2.dir/build.make pigpio-master/CMakeFiles/x_pigpiod_if2.dir/x_pigpiod_if2.c.i
 .PHONY : x_pigpiod_if2.c.i
 
 x_pigpiod_if2.s: x_pigpiod_if2.c.s
@@ -611,7 +611,7 @@ x_pigpiod_if2.s: x_pigpiod_if2.c.s
 
 # target to generate assembly for a file
 x_pigpiod_if2.c.s:
-	cd /home/pi/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/x_pigpiod_if2.dir/build.make pigpio-master/CMakeFiles/x_pigpiod_if2.dir/x_pigpiod_if2.c.s
+	cd /home/vadl/CMake_SummerProj/build && $(MAKE) $(MAKESILENT) -f pigpio-master/CMakeFiles/x_pigpiod_if2.dir/build.make pigpio-master/CMakeFiles/x_pigpiod_if2.dir/x_pigpiod_if2.c.s
 .PHONY : x_pigpiod_if2.c.s
 
 # Help Target
@@ -678,6 +678,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/pi/CMake_SummerProj/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/vadl/CMake_SummerProj/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

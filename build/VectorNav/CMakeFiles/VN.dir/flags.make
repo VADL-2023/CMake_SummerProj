@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -DVN_EXPORTS
 
-CXX_INCLUDES = -I/home/pi/CMake_SummerProj/VectorNav/include -I/home/pi/CMake_SummerProj/VectorNav/include/vn
+CXX_INCLUDES = -I/home/vadl/CMake_SummerProj/VectorNav/include -I/home/vadl/CMake_SummerProj/VectorNav/include/vn
 
 CXX_FLAGS = -fPIC
 

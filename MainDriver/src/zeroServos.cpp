@@ -19,7 +19,7 @@ float R = 287; // [kg/JK] universal gas constant
 float B = 6.5*km2m; //[K/m] variation of temperature within the troposphere
 
 // fixed flight parameters
-uint8_t airfoilTiltAngle = 12; // [deg] fixed tilt angle for airfoil activation 
+uint8_t airfoilTiltAngle = 0; // [deg] fixed tilt angle for airfoil activation 
 float tBurn = 1.6; //[s] motor burn time
 float samplingFrequency = 20; // [Hz] how fast does the IMU sample data
 
@@ -119,18 +119,15 @@ int main(){
             std::cout << "gpio is working" <<std::endl;
         }
         
+        moveServo(servoPinN, airfoilTiltAngle);
         
-        while(true){
-            moveServo(servoPinN, 0);
-            //sleep(1);
-            moveServo(servoPinE, 0);
-            //sleep(1);
-            moveServo(servoPinS, 0);
-            //sleep(1);
-            moveServo(servoPinW, 0);
-            sleep(1);
-        }
+        moveServo(servoPinE, airfoilTiltAngle);
+        
+        moveServo(servoPinS, -airfoilTiltAngle);
+        
+        moveServo(servoPinW, -airfoilTiltAngle);
+        sleep(1);
         
         
-        std::cout << "servos have been zeroed" <<std::endl;
+        std::cout << "servos have been deployed" <<std::endl;
 }

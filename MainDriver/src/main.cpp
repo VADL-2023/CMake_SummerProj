@@ -29,19 +29,19 @@ float tBurn = 1.9; // [s] motor burn time
 float samplingFrequency = 20; // [Hz] how fast does the IMU sample data
 
 // possibly variable flight parameters (stuff we might change)
-float accelRoof = 3.5; // how many g's does the program need to see in order for launch to be detected
+float accelRoof = 1.5; // how many g's does the program need to see in order for launch to be detected
 int numDataPointsChecked4Launch = 8; // how many acceleration points are averaged to see if data set is over accelRoof
 int numDataPointsChecked4Apogee = 10; // how many altitude points must a new max not be found for apogee to be declared
 int numDataPointsChecked4Landing = 10*samplingFrequency; // how many altitude points must a new min not be found for landing to be declared
-float zDeployPrimary = 1250*ft2m; // [m] altitude at which airfoils will deploy AGL in pitch configuration
-float zDeploySecondary = 1350*ft2m; // [m] altitude at which airfoils will deploy AGL in drag configuration 
+float zDeployPrimary = 2500*ft2m; // [m] altitude at which airfoils will deploy AGL in pitch configuration
+float zDeploySecondary = 3500*ft2m; // [m] altitude at which airfoils will deploy AGL in drag configuration 
 bool dualDeployEvents = false; // whether or not dual deployment events will occur; false means only primary deployment will occur
 bool pitchFirst = false; // whether or not to do pitch config first if doing dual deployment
 bool servoTest = true; // whether or not to test actuation range of servos during GO/NOGO
 bool apogeeEvent = false; // whether or not to reset airfoil position at apogee
-int maxFlightTime = 300; // [s] max allowable flight time, if exceeded program ends
-int timeToDeploy = 6; // [s] deploy servos after this amount of time from launch detection (6s after launch = 1000ft)
-bool inputDeploymentAlts = false; // whether or not to use user input to set deployment altitudes
+int maxFlightTime = 600; // [s] max allowable flight time, if exceeded program ends
+int timeToDeploy = 30; // [s] deploy servos after this amount of time from launch detection (8s after launch = 3250ft)
+bool inputDeploymentAlts = true; // whether or not to use user input to set deployment altitudes
                                  // NOTE: user input will override the above zDeployPrimary and zDeploySecondary!!!
 
 // servo parameters

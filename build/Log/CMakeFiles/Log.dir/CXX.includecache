@@ -112,11 +112,11 @@ int.h
 export.h
 ../VectorNav/include/vn/export.h
 
-/home/pi/CMake_SummerProj/Log/include/Log.h
+/home/vadl/CMake_SummerProj/Log/include/Log.h
 sensors.h
-/home/pi/CMake_SummerProj/Log/include/sensors.h
+/home/vadl/CMake_SummerProj/Log/include/sensors.h
 registers.h
-/home/pi/CMake_SummerProj/Log/include/registers.h
+/home/vadl/CMake_SummerProj/Log/include/registers.h
 fstream
 -
 chrono
@@ -128,7 +128,7 @@ sys/time.h
 ctime
 -
 
-/home/pi/CMake_SummerProj/Log/src/Log.cpp
+/home/vadl/CMake_SummerProj/Log/src/Log.cpp
 ../include/Log.h
-/home/pi/CMake_SummerProj/Log/include/Log.h
+/home/vadl/CMake_SummerProj/Log/include/Log.h
 
