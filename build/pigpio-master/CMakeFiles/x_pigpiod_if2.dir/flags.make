@@ -6,5 +6,5 @@ C_DEFINES =
 
 C_INCLUDES = 
 
-C_FLAGS = -Wall -pthread
+C_FLAGS = -fPIE -Wall -pthread
 

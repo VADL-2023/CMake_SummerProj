@@ -99,7 +99,7 @@ pigpiod_EXTERNAL_OBJECTS =
 pigpio-master/pigpiod: pigpio-master/CMakeFiles/pigpiod.dir/pigpiod.c.o
 pigpio-master/pigpiod: pigpio-master/CMakeFiles/pigpiod.dir/build.make
 pigpio-master/pigpiod: pigpio-master/libpigpio.so
-pigpio-master/pigpiod: /usr/lib/arm-linux-gnueabihf/librt.so
+pigpio-master/pigpiod: /usr/lib/aarch64-linux-gnu/librt.so
 pigpio-master/pigpiod: pigpio-master/CMakeFiles/pigpiod.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/vadl/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable pigpiod"
 	cd /home/vadl/CMake_SummerProj/build/pigpio-master && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/pigpiod.dir/link.txt --verbose=$(VERBOSE)

@@ -132,7 +132,7 @@ int.h
 export.h
 ../VectorNav/include/vn/export.h
 
-/home/vadl/CMake_SummerProj/MainDriver/src/main.cpp
+/home/vadl/CMake_SummerProj/MainDriver/src/zeroServos.cpp
 sensors.h
 /home/vadl/CMake_SummerProj/MainDriver/src/sensors.h
 config_IMU.hpp
@@ -151,6 +151,4 @@ iostream
 -
 Log.h
 /home/vadl/CMake_SummerProj/MainDriver/src/Log.h
-chrono
--
 

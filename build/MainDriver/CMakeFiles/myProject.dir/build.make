@@ -76,33 +76,33 @@ include MainDriver/CMakeFiles/myProject.dir/progress.make
 # Include the compile flags for this target's objects.
 include MainDriver/CMakeFiles/myProject.dir/flags.make
 
-MainDriver/CMakeFiles/myProject.dir/src/main.o: MainDriver/CMakeFiles/myProject.dir/flags.make
-MainDriver/CMakeFiles/myProject.dir/src/main.o: ../MainDriver/src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vadl/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object MainDriver/CMakeFiles/myProject.dir/src/main.o"
-	cd /home/vadl/CMake_SummerProj/build/MainDriver && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/myProject.dir/src/main.o -c /home/vadl/CMake_SummerProj/MainDriver/src/main.cpp
+MainDriver/CMakeFiles/myProject.dir/src/zeroServos.o: MainDriver/CMakeFiles/myProject.dir/flags.make
+MainDriver/CMakeFiles/myProject.dir/src/zeroServos.o: ../MainDriver/src/zeroServos.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vadl/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object MainDriver/CMakeFiles/myProject.dir/src/zeroServos.o"
+	cd /home/vadl/CMake_SummerProj/build/MainDriver && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/myProject.dir/src/zeroServos.o -c /home/vadl/CMake_SummerProj/MainDriver/src/zeroServos.cpp
 
-MainDriver/CMakeFiles/myProject.dir/src/main.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/myProject.dir/src/main.i"
-	cd /home/vadl/CMake_SummerProj/build/MainDriver && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vadl/CMake_SummerProj/MainDriver/src/main.cpp > CMakeFiles/myProject.dir/src/main.i
+MainDriver/CMakeFiles/myProject.dir/src/zeroServos.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/myProject.dir/src/zeroServos.i"
+	cd /home/vadl/CMake_SummerProj/build/MainDriver && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vadl/CMake_SummerProj/MainDriver/src/zeroServos.cpp > CMakeFiles/myProject.dir/src/zeroServos.i
 
-MainDriver/CMakeFiles/myProject.dir/src/main.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/myProject.dir/src/main.s"
-	cd /home/vadl/CMake_SummerProj/build/MainDriver && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vadl/CMake_SummerProj/MainDriver/src/main.cpp -o CMakeFiles/myProject.dir/src/main.s
+MainDriver/CMakeFiles/myProject.dir/src/zeroServos.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/myProject.dir/src/zeroServos.s"
+	cd /home/vadl/CMake_SummerProj/build/MainDriver && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vadl/CMake_SummerProj/MainDriver/src/zeroServos.cpp -o CMakeFiles/myProject.dir/src/zeroServos.s
 
 # Object files for target myProject
 myProject_OBJECTS = \
-"CMakeFiles/myProject.dir/src/main.o"
+"CMakeFiles/myProject.dir/src/zeroServos.o"
 
 # External object files for target myProject
 myProject_EXTERNAL_OBJECTS =
 
-MainDriver/myProject: MainDriver/CMakeFiles/myProject.dir/src/main.o
+MainDriver/myProject: MainDriver/CMakeFiles/myProject.dir/src/zeroServos.o
 MainDriver/myProject: MainDriver/CMakeFiles/myProject.dir/build.make
 MainDriver/myProject: Library1/libLibrary1.so
 MainDriver/myProject: IMU/libIMU.so
 MainDriver/myProject: pigpio-master/libpigpio.so
 MainDriver/myProject: Log/libLog.so
-MainDriver/myProject: /usr/lib/arm-linux-gnueabihf/libpython3.9.so
+MainDriver/myProject: /usr/lib/aarch64-linux-gnu/libpython3.9.so
 MainDriver/myProject: VectorNav/libVN.so
 MainDriver/myProject: MainDriver/CMakeFiles/myProject.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/vadl/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable myProject"

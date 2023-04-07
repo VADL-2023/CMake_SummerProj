@@ -283,7 +283,7 @@ CPACK_SOURCE_ZIP:BOOL=OFF
 EXECUTABLE_OUTPUT_PATH:PATH=
 
 //Dependencies for the target
-IMU_LIB_DEPENDS:STATIC=general;VN;general;pigpio;general;/usr/lib/arm-linux-gnueabihf/libpython3.9.so;
+IMU_LIB_DEPENDS:STATIC=general;VN;general;pigpio;general;/usr/lib/aarch64-linux-gnu/libpython3.9.so;
 
 //Single output directory for building all libraries.
 LIBRARY_OUTPUT_PATH:PATH=
@@ -295,7 +295,7 @@ Log_LIB_DEPENDS:STATIC=general;VN;
 PYTHON_INCLUDE_DIR:PATH=/usr/include/python3.9
 
 //Path to a library.
-PYTHON_LIBRARY:FILEPATH=/usr/lib/arm-linux-gnueabihf/libpython3.9.so
+PYTHON_LIBRARY:FILEPATH=/usr/lib/aarch64-linux-gnu/libpython3.9.so
 
 //Path to a library.
 PYTHON_LIBRARY_DEBUG:FILEPATH=PYTHON_LIBRARY_DEBUG-NOTFOUND
@@ -304,7 +304,7 @@ PYTHON_LIBRARY_DEBUG:FILEPATH=PYTHON_LIBRARY_DEBUG-NOTFOUND
 RT_INCLUDE_DIR:PATH=/usr/include
 
 //Path to a library.
-RT_LIBRARIES:FILEPATH=/usr/lib/arm-linux-gnueabihf/librt.so
+RT_LIBRARIES:FILEPATH=/usr/lib/aarch64-linux-gnu/librt.so
 
 //Value Computed by CMake
 myProject_BINARY_DIR:STATIC=/home/vadl/CMake_SummerProj/build
@@ -515,11 +515,11 @@ CPACK_SOURCE_TZ-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CPACK_SOURCE_ZIP
 CPACK_SOURCE_ZIP-ADVANCED:INTERNAL=1
 //Details about finding PythonLibs
-FIND_PACKAGE_MESSAGE_DETAILS_PythonLibs:INTERNAL=[/usr/lib/arm-linux-gnueabihf/libpython3.9.so][/usr/include/python3.9][v3.9.2()]
+FIND_PACKAGE_MESSAGE_DETAILS_PythonLibs:INTERNAL=[/usr/lib/aarch64-linux-gnu/libpython3.9.so][/usr/include/python3.9][v3.9.2()]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
 //Details about finding rt
-FIND_PACKAGE_MESSAGE_DETAILS_rt:INTERNAL=[/usr/lib/arm-linux-gnueabihf/librt.so][/usr/include][v()]
+FIND_PACKAGE_MESSAGE_DETAILS_rt:INTERNAL=[/usr/lib/aarch64-linux-gnu/librt.so][/usr/include][v()]
 //ADVANCED property for variable: PYTHON_INCLUDE_DIR
 PYTHON_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: PYTHON_LIBRARY
@@ -535,6 +535,6 @@ THREADS_HAVE_PTHREAD_ARG:INTERNAL=TRUE
 //Path to a program.
 _Python_EXECUTABLE:INTERNAL=/usr/bin/python3.9
 //Python Properties
-_Python_INTERPRETER_PROPERTIES:INTERNAL=Python;3;9;2;32;;cpython-39-arm-linux-gnueabihf;/usr/lib/python3.9;/usr/lib/python3.9;/usr/lib/python3/dist-packages;/usr/lib/python3/dist-packages
+_Python_INTERPRETER_PROPERTIES:INTERNAL=Python;3;9;2;64;;cpython-39-aarch64-linux-gnu;/usr/lib/python3.9;/usr/lib/python3.9;/usr/lib/python3/dist-packages;/usr/lib/python3/dist-packages
 _Python_INTERPRETER_SIGNATURE:INTERNAL=a40be8c2fcb8cff70b008e09b37f6755
 

@@ -99,7 +99,7 @@ x_pigpiod_if2_EXTERNAL_OBJECTS =
 pigpio-master/x_pigpiod_if2: pigpio-master/CMakeFiles/x_pigpiod_if2.dir/x_pigpiod_if2.c.o
 pigpio-master/x_pigpiod_if2: pigpio-master/CMakeFiles/x_pigpiod_if2.dir/build.make
 pigpio-master/x_pigpiod_if2: pigpio-master/libpigpiod_if2.so
-pigpio-master/x_pigpiod_if2: /usr/lib/arm-linux-gnueabihf/librt.so
+pigpio-master/x_pigpiod_if2: /usr/lib/aarch64-linux-gnu/librt.so
 pigpio-master/x_pigpiod_if2: pigpio-master/CMakeFiles/x_pigpiod_if2.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/vadl/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable x_pigpiod_if2"
 	cd /home/vadl/CMake_SummerProj/build/pigpio-master && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/x_pigpiod_if2.dir/link.txt --verbose=$(VERBOSE)

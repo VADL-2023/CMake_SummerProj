@@ -1,22 +1,22 @@
 Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
 Change Dir: /home/vadl/CMake_SummerProj/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/gmake cmTC_0331c/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_0331c.dir/build.make CMakeFiles/cmTC_0331c.dir/build
+Run Build Command(s):/usr/bin/gmake cmTC_1a616/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_1a616.dir/build.make CMakeFiles/cmTC_1a616.dir/build
 gmake[1]: Entering directory '/home/vadl/CMake_SummerProj/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_0331c.dir/src.c.o
-/usr/bin/cc   -DCMAKE_HAVE_LIBC_PTHREAD -o CMakeFiles/cmTC_0331c.dir/src.c.o -c /home/vadl/CMake_SummerProj/build/CMakeFiles/CMakeTmp/src.c
-Linking C executable cmTC_0331c
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0331c.dir/link.txt --verbose=1
-/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD -rdynamic CMakeFiles/cmTC_0331c.dir/src.c.o -o cmTC_0331c 
-/usr/bin/ld: CMakeFiles/cmTC_0331c.dir/src.c.o: in function `main':
-src.c:(.text+0x40): undefined reference to `pthread_create'
-/usr/bin/ld: src.c:(.text+0x4c): undefined reference to `pthread_detach'
-/usr/bin/ld: src.c:(.text+0x58): undefined reference to `pthread_cancel'
-/usr/bin/ld: src.c:(.text+0x68): undefined reference to `pthread_join'
+Building C object CMakeFiles/cmTC_1a616.dir/src.c.o
+/usr/bin/cc   -DCMAKE_HAVE_LIBC_PTHREAD -fPIE -o CMakeFiles/cmTC_1a616.dir/src.c.o -c /home/vadl/CMake_SummerProj/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_1a616
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1a616.dir/link.txt --verbose=1
+/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD -rdynamic CMakeFiles/cmTC_1a616.dir/src.c.o -o cmTC_1a616 
+/usr/bin/ld: CMakeFiles/cmTC_1a616.dir/src.c.o: in function `main':
+src.c:(.text+0x34): undefined reference to `pthread_create'
+/usr/bin/ld: src.c:(.text+0x3c): undefined reference to `pthread_detach'
+/usr/bin/ld: src.c:(.text+0x44): undefined reference to `pthread_cancel'
+/usr/bin/ld: src.c:(.text+0x50): undefined reference to `pthread_join'
 collect2: error: ld returned 1 exit status
-gmake[1]: *** [CMakeFiles/cmTC_0331c.dir/build.make:106: cmTC_0331c] Error 1
+gmake[1]: *** [CMakeFiles/cmTC_1a616.dir/build.make:106: cmTC_1a616] Error 1
 gmake[1]: Leaving directory '/home/vadl/CMake_SummerProj/build/CMakeFiles/CMakeTmp'
-gmake: *** [Makefile:140: cmTC_0331c/fast] Error 2
+gmake: *** [Makefile:140: cmTC_1a616/fast] Error 2
 
 
 Source file was:
@@ -43,18 +43,18 @@ int main(void)
 Determining if the function pthread_create exists in the pthreads failed with the following output:
 Change Dir: /home/vadl/CMake_SummerProj/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/gmake cmTC_8fcf1/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_8fcf1.dir/build.make CMakeFiles/cmTC_8fcf1.dir/build
+Run Build Command(s):/usr/bin/gmake cmTC_a0de0/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_a0de0.dir/build.make CMakeFiles/cmTC_a0de0.dir/build
 gmake[1]: Entering directory '/home/vadl/CMake_SummerProj/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_8fcf1.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create -o CMakeFiles/cmTC_8fcf1.dir/CheckFunctionExists.c.o -c /usr/share/cmake-3.18/Modules/CheckFunctionExists.c
-Linking C executable cmTC_8fcf1
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8fcf1.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create -rdynamic CMakeFiles/cmTC_8fcf1.dir/CheckFunctionExists.c.o -o cmTC_8fcf1  -lpthreads 
+Building C object CMakeFiles/cmTC_a0de0.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create -fPIE -o CMakeFiles/cmTC_a0de0.dir/CheckFunctionExists.c.o -c /usr/share/cmake-3.18/Modules/CheckFunctionExists.c
+Linking C executable cmTC_a0de0
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a0de0.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create -rdynamic CMakeFiles/cmTC_a0de0.dir/CheckFunctionExists.c.o -o cmTC_a0de0  -lpthreads 
 /usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
-gmake[1]: *** [CMakeFiles/cmTC_8fcf1.dir/build.make:106: cmTC_8fcf1] Error 1
+gmake[1]: *** [CMakeFiles/cmTC_a0de0.dir/build.make:106: cmTC_a0de0] Error 1
 gmake[1]: Leaving directory '/home/vadl/CMake_SummerProj/build/CMakeFiles/CMakeTmp'
-gmake: *** [Makefile:140: cmTC_8fcf1/fast] Error 2
+gmake: *** [Makefile:140: cmTC_a0de0/fast] Error 2
 
 
 

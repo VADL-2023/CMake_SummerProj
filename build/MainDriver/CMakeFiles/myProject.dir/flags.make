@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/vadl/CMake_SummerProj/MainDriver/include -I/home/vadl/CMake_SummerProj/Library1/include -I/home/vadl/CMake_SummerProj/VectorNav/include/vn -I/home/vadl/CMake_SummerProj/IMU/include -I/home/vadl/CMake_SummerProj/Log/include
 
-CXX_FLAGS = 
+CXX_FLAGS = -fPIE
 

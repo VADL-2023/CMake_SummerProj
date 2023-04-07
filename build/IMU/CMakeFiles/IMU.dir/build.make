@@ -130,7 +130,7 @@ IMU/libIMU.so: IMU/CMakeFiles/IMU.dir/src/commonOutMutex.o
 IMU/libIMU.so: IMU/CMakeFiles/IMU.dir/build.make
 IMU/libIMU.so: VectorNav/libVN.so
 IMU/libIMU.so: pigpio-master/libpigpio.so
-IMU/libIMU.so: /usr/lib/arm-linux-gnueabihf/libpython3.9.so
+IMU/libIMU.so: /usr/lib/aarch64-linux-gnu/libpython3.9.so
 IMU/libIMU.so: IMU/CMakeFiles/IMU.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/vadl/CMake_SummerProj/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX shared library libIMU.so"
 	cd /home/vadl/CMake_SummerProj/build/IMU && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/IMU.dir/link.txt --verbose=$(VERBOSE)
