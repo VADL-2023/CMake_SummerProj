@@ -1,0 +1,70 @@
+START TIME: 1681918686662
+Date: 2-18-23
+Flight Name: Vehicle Demo Flight
+
+Test Notes: No User Input in Code - 1250 ft
+Enter Primary Deployment Altitude (ft): 
+2750
+CONFIRM Deployment Altitude(s): 
+Primary Deployment Altitude: 2750.000000 Feet AGL
+Primary Deployment Altitude: 838.200012 Meters AGL
+
+Verify Critical Parameters: 
+Max Flight Time: 600 s
+Max Time to Deploy: 30 s
+
+Dual Deployment Events: FALSE
+Pitch Configuration Is Primary: FALSE
+Apogee Event: FALSE
+
+Primary Deployment Altitude: 2750.000000 Feet AGL
+Primary Deployment Altitude: 838.200012 Meters AGL
+
+Deployment Angle: 20 Degrees
+
+Motor Burn Time: 30.000000 Seconds
+Trigger Acceleration: 1.500000 g
+
+Launch Detection Samples: 8
+Apogee Detection Samples: 10
+Landing Detection Samples: 200
+-----------------------------------
+
+
+
+GPIO Initialized
+IMU Connecting
+IMU Connected
+Testing Servo Activation
+Testing North...
+Testing East...
+Testing South...
+Testing West...
+IMU Flushing
+IMU Flushed
+Calibrating Baseline Parameters. Hold Still. (61.000000 | 47930.000000)
+Calibrated Temperature: 26.900024 C
+Calibrated Pressure: 99.750984 kPa
+Calibrated Gravity: 9.746535 m/s^2
+Are we a GO for flight? (121.000000 | 50931.000000)
+GO (121.000000 | 56562.000000)
+
+Pre-Flight Stage Completed (121.000000 | 56562.000000)
+Ready for Assembly and Launch Rail
+Average acceleration exceeded 14.619802 m/s^2 over 8 data points
+$Rocket Has Launched (389.000000 | 69956.000000)$
+Waiting for Motor Burn Time
+Actively Checking Altitude for first deployment (989.000000 | 99956.000000)
+Deploying airfoils in primary configuration due to time override after 30
+$First Deployment Altitude Reached (990.000000 | 100008.000000)$
+Airfoils Deployed in primary configuration (990.000000 | 100008.000000)
+Looking for Apogee
+Altitude has not reached a new max for 10 samples
+$Apogee Detected (1038.000000 | 102406.000000)$
+Altitude has not reached a new min for 200 samples... ending program.
+$Landing Detected (1240.000000 | 112506.000000)$
+IMU: Disconnected
+
+END PROGRAM (1240.000000 | 112585.000000)
+END TIME: 1681918799247.000000
+END LOG
