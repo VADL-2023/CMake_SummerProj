@@ -26,7 +26,7 @@ bool successInput = false; // whether or not input for deployment alts was succe
 // fixed flight parameters
 uint8_t airfoilTiltAngle = 20; // [deg] fixed tilt angle for airfoil activation at primary and secondary deployment events  
 uint8_t apogeeTiltAngle = 20; // [deg] fixed tilt angle for airfoil activation at apogee 
-float tBurn = 1.9; // [s] motor burn time
+float tBurn = 30; // [s] motor burn time
 float samplingFrequency = 20; // [Hz] how fast does the IMU sample data
 
 // possibly variable flight parameters (stuff we might change)

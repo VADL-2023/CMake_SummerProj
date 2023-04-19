@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/myProject.dir/src/zeroServos.o"
+  "CMakeFiles/myProject.dir/src/main.o"
   "myProject"
   "myProject.pdb"
 )
